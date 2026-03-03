@@ -6,147 +6,221 @@
 <title>AIRINA Labs — AI Research and Innovation Nexus for Africa</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
+/* ══════════════════════════════════════════
+   DESIGN TOKENS — dark (default)
+══════════════════════════════════════════ */
 :root {
-  --navy:       #060C18;
-  --navy2:      #0A1325;
-  --navy3:      #0F1C35;
+  --bg:         #060C18;
+  --bg2:        #0A1325;
+  --bg3:        #0F1C35;
   --gold:       #F59E0B;
   --gold2:      #FBBF24;
   --gold3:      #D97706;
   --gold-dim:   rgba(245,158,11,0.12);
-  --gold-glow:  rgba(245,158,11,0.25);
   --cream:      #F5F0E8;
+  --heading:    #F5F0E8;
   --text:       #CBD5E8;
+  --text-muted: #8A9FBF;
   --text-dim:   #4A5C7A;
   --border:     rgba(245,158,11,0.18);
+  --nav-bg:     rgba(6,12,24,0.88);
+  --card-bg:    #0A1325;
+  --card-bg2:   #0F1C35;
+  --sep-color:  rgba(245,158,11,0.15);
+  --pillar-p:   #6A7F9B;
+  --repo-p:     #5A7090;
+  --grid-line:  rgba(245,158,11,0.03);
   --green:      #10B981;
   --blue:       #3B82F6;
   --purple:     #8B5CF6;
+  --shadow:     none;
+  --toggle-bg:  rgba(255,255,255,0.06);
+  --toggle-border: rgba(255,255,255,0.12);
+}
+
+/* ══════════════════════════════════════════
+   LIGHT MODE TOKENS
+══════════════════════════════════════════ */
+html.light {
+  --bg:         #F7F3EC;
+  --bg2:        #EDE7DC;
+  --bg3:        #E4DCCF;
+  --gold:       #C27D0A;
+  --gold2:      #D68F0C;
+  --gold3:      #A86A08;
+  --gold-dim:   rgba(194,125,10,0.10);
+  --cream:      #0D1626;
+  --heading:    #0D1626;
+  --text:       #2A3A52;
+  --text-muted: #4A5E78;
+  --text-dim:   #7A8FA8;
+  --border:     rgba(194,125,10,0.22);
+  --nav-bg:     rgba(247,243,236,0.92);
+  --card-bg:    #EDE7DC;
+  --card-bg2:   #E4DCCF;
+  --sep-color:  rgba(194,125,10,0.18);
+  --pillar-p:   #5A6E88;
+  --repo-p:     #5A6E88;
+  --grid-line:  rgba(194,125,10,0.04);
+  --green:      #0D9668;
+  --blue:       #2563EB;
+  --purple:     #7C3AED;
+  --shadow:     0 2px 24px rgba(0,0,0,0.06);
+  --toggle-bg:  rgba(0,0,0,0.05);
+  --toggle-border: rgba(0,0,0,0.12);
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--navy);
+  background: var(--bg);
   color: var(--text);
   font-family: 'Syne', sans-serif;
   font-weight: 400;
   line-height: 1.65;
   overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* ── GRID OVERLAY ── */
+/* Grid overlay */
 body::before {
   content: '';
   position: fixed; inset: 0;
   background-image:
-    linear-gradient(rgba(245,158,11,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245,158,11,0.03) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 72px 72px;
   pointer-events: none;
   z-index: 0;
-}
-
-/* ── NOISE TEXTURE ── */
-body::after {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.4;
+  transition: background-image 0.4s ease;
 }
 
 .page { position: relative; z-index: 1; }
 
-/* ── NAVBAR ── */
+/* ══════════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════════ */
 nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 1.1rem 3rem;
-  background: rgba(6,12,24,0.85);
-  backdrop-filter: blur(16px);
+  padding: 1rem 2.5rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border);
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .nav-logo {
-  display: flex; align-items: center; gap: 0.75rem;
-  text-decoration: none;
+  display: flex; align-items: center; gap: 0.7rem;
+  text-decoration: none; flex-shrink: 0;
 }
 
-.nav-hex {
-  width: 32px; height: 32px;
-}
+.nav-hex { width: 30px; height: 30px; }
 
 .nav-wordmark {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: 0.15em;
-  color: var(--cream);
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 1rem; letter-spacing: 0.15em; color: var(--heading);
+  transition: color 0.4s;
 }
-
 .nav-wordmark span { color: var(--gold); }
 
 .nav-links {
-  display: flex; gap: 2rem; list-style: none;
+  display: flex; gap: 1.8rem; list-style: none;
 }
-
 .nav-links a {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.05em;
-  color: var(--text-dim);
-  text-decoration: none;
+  font-size: 0.75rem; letter-spacing: 0.05em;
+  color: var(--text-dim); text-decoration: none;
   transition: color 0.25s;
 }
-
 .nav-links a:hover { color: var(--gold); }
 
+/* Controls: theme + language + github */
+.nav-controls {
+  display: flex; align-items: center; gap: 0.6rem;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  display: flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px;
+  border: 1px solid var(--toggle-border);
+  border-radius: 50%;
+  background: var(--toggle-bg);
+  cursor: pointer;
+  font-size: 1rem; line-height: 1;
+  transition: border-color 0.25s, background 0.25s, transform 0.2s;
+  user-select: none;
+}
+.theme-toggle:hover { border-color: var(--gold); transform: rotate(20deg); }
+
+/* Language toggle */
+.lang-toggle {
+  display: flex; align-items: center;
+  border: 1px solid var(--toggle-border);
+  border-radius: 30px;
+  background: var(--toggle-bg);
+  overflow: hidden;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+}
+.lang-btn {
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+  color: var(--text-dim);
+  transition: color 0.2s, background 0.2s;
+  letter-spacing: 0.08em;
+  border: none; background: transparent;
+  font-family: inherit; font-size: inherit;
+}
+.lang-btn.active {
+  background: var(--gold);
+  color: var(--bg);
+  font-weight: 600;
+}
+.lang-btn:not(.active):hover { color: var(--gold); }
+
 .nav-cta {
-  display: flex; align-items: center; gap: 0.5rem;
-  padding: 0.5rem 1.2rem;
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.45rem 1rem;
   border: 1px solid var(--gold);
   border-radius: 2px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  color: var(--gold);
-  text-decoration: none;
+  font-size: 0.72rem; letter-spacing: 0.05em;
+  color: var(--gold); text-decoration: none;
   transition: background 0.25s, color 0.25s;
+  white-space: nowrap;
 }
+.nav-cta:hover { background: var(--gold); color: var(--bg); }
 
-.nav-cta:hover { background: var(--gold); color: var(--navy); }
-
-/* ── HERO ── */
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
 .hero {
   min-height: 100vh;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   text-align: center;
   padding: 7rem 2rem 4rem;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
 
-/* Radial aurora behind hero */
 .hero::before {
   content: '';
-  position: absolute;
-  top: 10%; left: 50%;
+  position: absolute; top: 10%; left: 50%;
   transform: translateX(-50%);
   width: 800px; height: 500px;
   background: radial-gradient(ellipse, rgba(245,158,11,0.07) 0%, transparent 65%);
   pointer-events: none;
 }
 
-/* Kente-inspired geometric border top */
+html.light .hero::before {
+  background: radial-gradient(ellipse, rgba(194,125,10,0.05) 0%, transparent 65%);
+}
+
 .hero-kente {
-  position: absolute; top: 80px; left: 0; right: 0;
-  height: 4px;
+  position: absolute; top: 80px; left: 0; right: 0; height: 4px;
   background: repeating-linear-gradient(
     90deg,
     var(--gold) 0px, var(--gold) 20px,
@@ -159,717 +233,421 @@ nav {
 
 .hero-eyebrow {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  color: var(--gold);
-  margin-bottom: 2rem;
-  opacity: 0;
-  animation: fadeUp 1s ease forwards 0.3s;
+  font-size: 0.72rem; letter-spacing: 0.22em;
+  color: var(--gold); margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 1s ease forwards 0.3s;
 }
 
-/* LOGO SVG inline in hero */
 .hero-logo-wrap {
   margin-bottom: 2.5rem;
-  opacity: 0;
-  animation: fadeUp 1s ease forwards 0.5s;
+  opacity: 0; animation: fadeUp 1s ease forwards 0.5s;
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--cream);
-  margin-bottom: 1rem;
-  opacity: 0;
-  animation: fadeUp 1s ease forwards 0.7s;
+  font-weight: 900; font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.05; letter-spacing: -0.02em;
+  color: var(--heading); margin-bottom: 1rem;
+  opacity: 0; animation: fadeUp 1s ease forwards 0.7s;
+  transition: color 0.4s;
 }
-
-h1 em {
-  font-style: italic;
-  color: var(--gold);
-  font-weight: 700;
-}
+h1 em { font-style: italic; color: var(--gold); font-weight: 700; }
 
 .hero-subtitle {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: clamp(1rem, 2.5vw, 1.35rem);
-  color: #7A91B0;
-  max-width: 600px;
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--text-muted); max-width: 600px;
   margin: 0 auto 2.5rem;
-  opacity: 0;
-  animation: fadeUp 1s ease forwards 0.9s;
+  opacity: 0; animation: fadeUp 1s ease forwards 0.9s;
+  transition: color 0.4s;
 }
 
 .hero-divider {
   display: flex; align-items: center; gap: 1rem;
-  margin: 0 auto 2.5rem;
-  width: 280px;
-  opacity: 0;
-  animation: fadeUp 1s ease forwards 1.1s;
+  margin: 0 auto 2.5rem; width: 280px;
+  opacity: 0; animation: fadeUp 1s ease forwards 1.1s;
 }
-
 .hero-divider::before, .hero-divider::after {
   content: ''; flex: 1; height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold));
 }
-
 .hero-divider::after { background: linear-gradient(270deg, transparent, var(--gold)); }
-
-.hero-diamond {
-  width: 8px; height: 8px;
-  background: var(--gold);
-  transform: rotate(45deg);
-  flex-shrink: 0;
-}
+.hero-diamond { width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
 
 .hero-quote {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
-  color: #8A9FBF;
-  max-width: 760px;
-  line-height: 1.85;
-  margin: 0 auto 3rem;
-  padding: 1.5rem 2rem;
-  border-left: 2px solid var(--gold3);
-  text-align: left;
-  opacity: 0;
-  animation: fadeUp 1s ease forwards 1.3s;
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  color: var(--text-muted); max-width: 760px; line-height: 1.85;
+  margin: 0 auto 3rem; padding: 1.5rem 2rem;
+  border-left: 2px solid var(--gold3); text-align: left;
+  opacity: 0; animation: fadeUp 1s ease forwards 1.3s;
+  transition: color 0.4s;
 }
 
 .hero-badges {
   display: flex; flex-wrap: wrap; gap: 0.75rem;
-  justify-content: center;
-  opacity: 0;
-  animation: fadeUp 1s ease forwards 1.5s;
-  margin-bottom: 3rem;
+  justify-content: center; margin-bottom: 3rem;
+  opacity: 0; animation: fadeUp 1s ease forwards 1.5s;
 }
 
 .badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.45rem 1rem;
-  border: 1px solid;
-  border-radius: 2px;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.42rem 1rem;
+  border: 1px solid; border-radius: 2px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-decoration: none;
-  transition: all 0.25s;
-  cursor: pointer;
+  font-size: 0.7rem; letter-spacing: 0.08em;
+  text-decoration: none; transition: all 0.25s; cursor: pointer;
 }
-
-.badge-gold { border-color: var(--gold); color: var(--gold); }
-.badge-gold:hover { background: var(--gold); color: var(--navy); }
-.badge-green { border-color: var(--green); color: var(--green); }
-.badge-green:hover { background: var(--green); color: var(--navy); }
-.badge-blue { border-color: var(--blue); color: var(--blue); }
-.badge-blue:hover { background: var(--blue); color: white; }
-.badge-purple { border-color: var(--purple); color: var(--purple); }
-.badge-purple:hover { background: var(--purple); color: white; }
+.badge-gold  { border-color: var(--gold);   color: var(--gold);   }
+.badge-gold:hover  { background: var(--gold);   color: var(--bg); }
+.badge-green { border-color: var(--green);  color: var(--green);  }
+.badge-green:hover { background: var(--green);  color: var(--bg); }
+.badge-blue  { border-color: var(--blue);   color: var(--blue);   }
+.badge-blue:hover  { background: var(--blue);   color: white; }
+.badge-purple{ border-color: var(--purple); color: var(--purple); }
+.badge-purple:hover{ background: var(--purple); color: white; }
 
 .scroll-hint {
   position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
-  opacity: 0;
-  animation: fadeUp 1s ease forwards 2s;
+  opacity: 0; animation: fadeUp 1s ease forwards 2s;
 }
-
 .scroll-hint span {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  color: var(--text-dim);
+  font-size: 0.62rem; letter-spacing: 0.18em; color: var(--text-dim);
 }
-
 .scroll-arrow {
   width: 20px; height: 30px;
-  border: 1px solid var(--text-dim);
-  border-radius: 10px;
-  position: relative;
+  border: 1px solid var(--text-dim); border-radius: 10px; position: relative;
 }
-
 .scroll-arrow::after {
   content: '';
-  position: absolute;
-  top: 5px; left: 50%; transform: translateX(-50%);
+  position: absolute; top: 5px; left: 50%; transform: translateX(-50%);
   width: 3px; height: 8px;
-  background: var(--gold);
-  border-radius: 2px;
+  background: var(--gold); border-radius: 2px;
   animation: scrollBounce 2s ease infinite;
 }
 
-/* ── SECTIONS ── */
+/* ══════════════════════════════════════════
+   SECTIONS (shared)
+══════════════════════════════════════════ */
 .section {
   padding: 6rem 0;
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 0; transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-
 .section.visible { opacity: 1; transform: translateY(0); }
 
-.container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; }
-.container-narrow { max-width: 820px; margin: 0 auto; padding: 0 2.5rem; }
+.container       { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; }
+.container-narrow{ max-width: 820px;  margin: 0 auto; padding: 0 2.5rem; }
 
 .section-tag {
-  display: flex; align-items: center; gap: 1rem;
-  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;
 }
-
 .section-tag-text {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  color: var(--gold);
+  font-size: 0.68rem; letter-spacing: 0.15em; color: var(--gold);
+  white-space: nowrap;
 }
-
-.section-tag-line {
-  flex: 1; height: 1px;
-  background: var(--border);
-}
+.section-tag-line { flex: 1; height: 1px; background: var(--border); }
 
 h2 {
   font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.15;
-  color: var(--cream);
-  margin-bottom: 1.5rem;
+  font-weight: 700; font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15; color: var(--heading); margin-bottom: 1.5rem;
+  transition: color 0.4s;
 }
-
 h2 em { font-style: italic; color: var(--gold); }
 
 h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--cream);
-  margin-bottom: 0.6rem;
+  font-size: 1.2rem; font-weight: 600;
+  color: var(--heading); margin-bottom: 0.6rem;
+  transition: color 0.4s;
 }
 
-p { color: #8A9FBF; font-size: 0.97rem; line-height: 1.8; }
+p { color: var(--text-muted); font-size: 0.97rem; line-height: 1.8; transition: color 0.4s; }
 
-/* ── PROBLEM SECTION ── */
+.sep {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--sep-color) 30%, var(--sep-color) 70%, transparent 100%);
+}
+
+/* ══════════════════════════════════════════
+   PROBLEM
+══════════════════════════════════════════ */
 .problem-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: 2.5rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; margin-top: 2.5rem;
 }
-
 .problem-card {
-  background: var(--navy2);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 2.5rem;
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.3s, transform 0.3s;
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 3px;
+  padding: 2.5rem; position: relative; overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s, background 0.4s;
+  box-shadow: var(--shadow);
 }
-
-.problem-card:hover {
-  border-color: rgba(245,158,11,0.45);
-  transform: translateY(-4px);
-}
-
+.problem-card:hover { border-color: rgba(245,158,11,0.45); transform: translateY(-4px); }
 .problem-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0;
+  content: ''; position: absolute; top: 0; left: 0;
   width: 100%; height: 3px;
   background: linear-gradient(90deg, var(--gold), transparent);
 }
-
 .problem-num {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.25em;
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 1rem;
-  opacity: 0.85;
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.25em;
+  color: var(--gold); margin-bottom: 1rem; opacity: 0.85;
 }
-
-.problem-card h3 { color: var(--gold2); }
-.problem-card p { font-size: 0.92rem; }
+.problem-card h3 { color: var(--gold2); font-size: 1.1rem; }
+.problem-card p  { font-size: 0.92rem; }
 
 .problem-conclusion {
-  margin-top: 2rem;
-  padding: 1.5rem 2rem;
+  margin-top: 2rem; padding: 1.5rem 2rem;
   background: var(--gold-dim);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--gold);
+  border: 1px solid var(--border); border-left: 3px solid var(--gold);
   border-radius: 0 3px 3px 0;
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.05rem;
-  color: var(--cream);
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1.05rem; color: var(--heading); transition: color 0.4s;
 }
 
-/* ── PILLARS ── */
+/* ══════════════════════════════════════════
+   PILLARS
+══════════════════════════════════════════ */
 .pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  margin-top: 2.5rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  overflow: hidden;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; margin-top: 2.5rem;
+  border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
 }
-
 .pillar {
-  background: var(--navy2);
-  padding: 2.5rem 1.75rem;
-  position: relative;
-  transition: background 0.3s;
-  cursor: default;
+  background: var(--card-bg); padding: 2.5rem 1.75rem;
+  transition: background 0.3s; cursor: default;
 }
-
-.pillar:hover { background: var(--navy3); }
-
+.pillar:hover { background: var(--card-bg2); }
 .pillar + .pillar { border-left: 1px solid var(--border); }
-
 .pillar-num {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  color: var(--gold3);
-  margin-bottom: 1.2rem;
-  display: block;
+  font-size: 0.62rem; letter-spacing: 0.1em;
+  color: var(--gold3); margin-bottom: 1.2rem; display: block;
 }
-
-.pillar-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
+.pillar-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
 .pillar h3 { font-size: 1rem; margin-bottom: 0.75rem; }
-.pillar p { font-size: 0.82rem; line-height: 1.7; color: #6A7F9B; }
+.pillar p  { font-size: 0.82rem; line-height: 1.7; color: var(--pillar-p); }
 
 .pillar-connector {
-  text-align: center;
-  margin-top: 1.5rem;
-  padding: 1rem;
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  color: var(--text-dim);
-  letter-spacing: 0.1em;
-  background: var(--navy2);
+  text-align: center; margin-top: 1.5rem; padding: 1rem;
+  border: 1px solid var(--border); border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+  color: var(--text-dim); letter-spacing: 0.08em;
+  background: var(--card-bg); transition: background 0.4s;
 }
-
 .pillar-connector strong { color: var(--gold); font-weight: 500; }
 
-/* ── VALUES ── */
+/* ══════════════════════════════════════════
+   VALUES
+══════════════════════════════════════════ */
 .values-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-top: 2.5rem;
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem; margin-top: 2.5rem;
 }
-
 .value-card {
   display: flex; gap: 1.5rem; align-items: flex-start;
-  padding: 1.75rem;
-  background: var(--navy2);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  transition: border-color 0.3s;
+  padding: 1.75rem; background: var(--card-bg);
+  border: 1px solid var(--border); border-radius: 3px;
+  transition: border-color 0.3s, background 0.4s;
+  box-shadow: var(--shadow);
 }
-
 .value-card:hover { border-color: rgba(245,158,11,0.4); }
-
 .value-icon-wrap {
   width: 48px; height: 48px; flex-shrink: 0;
-  border: 1px solid var(--border);
-  border-radius: 50%;
+  border: 1px solid var(--border); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem;
-  background: var(--gold-dim);
+  font-size: 1.3rem; background: var(--gold-dim);
 }
-
 .value-card h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
-.value-card p { font-size: 0.85rem; }
+.value-card p  { font-size: 0.85rem; }
 
-/* ── TECH STACK ── */
+/* ══════════════════════════════════════════
+   TECH STACK
+══════════════════════════════════════════ */
 .stack-section { text-align: center; }
-
-.stack-group { margin-bottom: 2rem; }
-
+.stack-group   { margin-bottom: 2.2rem; }
 .stack-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  color: var(--text-dim);
-  margin-bottom: 0.9rem;
+  font-size: 0.62rem; letter-spacing: 0.22em;
+  color: var(--text-dim); margin-bottom: 0.9rem;
+  transition: color 0.4s;
 }
-
-.stack-badges {
-  display: flex; flex-wrap: wrap;
-  gap: 0.6rem; justify-content: center;
-}
+.stack-badges { display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: center; }
 
 .tech-badge {
-  padding: 0.35rem 0.9rem;
-  background: var(--navy2);
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  color: var(--text);
-  letter-spacing: 0.05em;
-  transition: border-color 0.25s, color 0.25s;
+  padding: 0.32rem 0.85rem; background: var(--card-bg);
+  border: 1px solid var(--border); border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+  color: var(--text); letter-spacing: 0.04em;
+  transition: border-color 0.25s, color 0.25s, background 0.25s, background-color 0.4s;
   cursor: default;
 }
-
 .tech-badge:hover { border-color: var(--gold); color: var(--gold); }
-
-.tech-badge-link {
-  text-decoration: none;
-  cursor: pointer;
-}
-
+.tech-badge-link { text-decoration: none; cursor: pointer; }
 .tech-badge-link:hover {
-  border-color: var(--gold2);
-  color: var(--gold2);
-  background: var(--gold-dim);
+  border-color: var(--gold2); color: var(--gold2); background: var(--gold-dim);
 }
 
-/* ── ROADMAP ── */
-.roadmap {
-  margin-top: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.roadmap-item {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 2rem;
-  align-items: stretch;
-  position: relative;
-}
-
-.roadmap-item + .roadmap-item { margin-top: 0; }
-
-.roadmap-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 2rem 0;
-  gap: 0.3rem;
-}
-
-.roadmap-phase {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  color: var(--text-dim);
-}
-
-.roadmap-time {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.9rem;
-  color: var(--gold);
-  font-style: italic;
-}
-
-.roadmap-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 1.8rem;
-  gap: 0;
-}
-
-.roadmap-dot {
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  border: 2px solid var(--gold);
-  background: var(--navy);
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.roadmap-dot.active { background: var(--gold); box-shadow: 0 0 12px rgba(245,158,11,0.5); }
-
-.roadmap-line {
-  width: 2px;
-  flex: 1;
-  background: var(--border);
-  margin: 4px 0;
-}
-
-.roadmap-right {
-  padding: 1.5rem 0 1.5rem 0;
-}
-
-.roadmap-card {
-  background: var(--navy2);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 1.75rem 2rem;
-  transition: border-color 0.3s;
-}
-
-.roadmap-card:hover { border-color: rgba(245,158,11,0.4); }
-
-.roadmap-status {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.6rem;
-}
-
-.status-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  animation: pulse 2s ease infinite;
-}
-
-.status-active .status-dot { background: var(--green); }
-.status-active { color: var(--green); }
-.status-planned .status-dot { background: var(--blue); animation: none; }
-.status-planned { color: var(--blue); }
-.status-future .status-dot { background: var(--purple); animation: none; }
-.status-future { color: var(--purple); }
-
-.roadmap-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
-.roadmap-card p { font-size: 0.87rem; }
-
-/* ── WHO WE SERVE ── */
+/* ══════════════════════════════════════════
+   WHO WE SERVE
+══════════════════════════════════════════ */
 .serve-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-top: 2.5rem;
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem; margin-top: 2.5rem;
 }
-
 .serve-card {
-  background: var(--navy2);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.3s, transform 0.3s;
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 3px;
+  padding: 2rem; position: relative; overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s, background 0.4s;
+  box-shadow: var(--shadow);
 }
-
-.serve-card:hover {
-  border-color: rgba(245,158,11,0.4);
-  transform: translateY(-3px);
-}
-
+.serve-card:hover { border-color: rgba(245,158,11,0.4); transform: translateY(-3px); }
 .serve-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; right: 0;
+  content: ''; position: absolute; bottom: 0; right: 0;
   width: 80px; height: 80px;
   background: radial-gradient(circle, var(--gold-dim), transparent);
-  border-radius: 50%;
-  transform: translate(30%, 30%);
+  border-radius: 50%; transform: translate(30%, 30%);
 }
-
 .serve-icon { font-size: 2rem; margin-bottom: 0.8rem; display: block; }
 .serve-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
-.serve-card p { font-size: 0.85rem; }
+.serve-card p  { font-size: 0.85rem; }
 
-/* ── REPOS ── */
+/* ══════════════════════════════════════════
+   REPOS
+══════════════════════════════════════════ */
 .repos-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-top: 2rem;
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1rem; margin-top: 2rem;
 }
-
 .repo-card {
-  background: var(--navy2);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 1.5rem;
-  display: flex; gap: 1rem; align-items: flex-start;
-  transition: border-color 0.3s;
-  text-decoration: none;
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 3px;
+  padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start;
+  transition: border-color 0.3s, background 0.4s;
+  text-decoration: none; box-shadow: var(--shadow);
 }
-
 .repo-card:hover { border-color: var(--gold); }
-
 .repo-icon {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--gold);
-  padding: 0.25rem 0.6rem;
-  background: var(--gold-dim);
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  flex-shrink: 0;
-  margin-top: 0.1rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+  color: var(--gold); padding: 0.22rem 0.55rem;
+  background: var(--gold-dim); border: 1px solid var(--border);
+  border-radius: 2px; flex-shrink: 0; margin-top: 0.1rem;
 }
+.repo-card h3 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+.repo-card p  { font-size: 0.82rem; color: var(--repo-p); }
 
-.repo-card h3 { font-size: 0.95rem; margin-bottom: 0.3rem; color: var(--cream); }
-.repo-card p { font-size: 0.82rem; color: #5A7090; }
-
-/* ── CTA ── */
-.cta-section {
-  padding: 6rem 0;
-  text-align: center;
-  position: relative;
-}
-
+/* ══════════════════════════════════════════
+   CTA
+══════════════════════════════════════════ */
+.cta-section { padding: 6rem 0; text-align: center; position: relative; }
 .cta-section::before {
-  content: '';
-  position: absolute; inset: 0;
+  content: ''; position: absolute; inset: 0;
   background: radial-gradient(ellipse at center, rgba(245,158,11,0.05) 0%, transparent 70%);
   pointer-events: none;
 }
-
 .cta-kente {
-  width: 100%;
-  height: 3px;
+  width: 100%; height: 3px;
   background: repeating-linear-gradient(
-    90deg,
-    var(--gold) 0px, var(--gold) 20px,
+    90deg, var(--gold) 0px, var(--gold) 20px,
     transparent 20px, transparent 28px,
     var(--gold3) 28px, var(--gold3) 34px,
     transparent 34px, transparent 42px
   );
-  opacity: 0.4;
-  margin-bottom: 5rem;
+  opacity: 0.4; margin-bottom: 5rem;
 }
-
 .cta-section h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; }
-.cta-section p { max-width: 560px; margin: 0 auto 2.5rem; font-size: 1rem; }
+.cta-section p  { max-width: 560px; margin: 0 auto 2.5rem; font-size: 1rem; }
 
-.cta-buttons {
-  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-}
+.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.6rem;
-  padding: 0.85rem 2rem;
-  background: var(--gold);
-  color: var(--navy);
-  border: none;
-  border-radius: 2px;
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  cursor: pointer;
+  padding: 0.85rem 2rem; background: var(--gold); color: var(--bg);
+  border: none; border-radius: 2px;
+  font-family: 'Syne', sans-serif; font-weight: 700;
+  font-size: 0.9rem; letter-spacing: 0.04em;
+  text-decoration: none; cursor: pointer;
   transition: background 0.25s, transform 0.2s;
 }
-
 .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
 
 .btn-outline {
   display: inline-flex; align-items: center; gap: 0.6rem;
-  padding: 0.85rem 2rem;
-  background: transparent;
-  color: var(--cream);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 2px;
-  font-family: 'Syne', sans-serif;
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  cursor: pointer;
+  padding: 0.85rem 2rem; background: transparent; color: var(--heading);
+  border: 1px solid var(--border); border-radius: 2px;
+  font-family: 'Syne', sans-serif; font-weight: 600;
+  font-size: 0.9rem; letter-spacing: 0.04em;
+  text-decoration: none; cursor: pointer;
   transition: border-color 0.25s, color 0.25s, transform 0.2s;
 }
-
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
 
-/* ── FOOTER ── */
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
 footer {
-  padding: 3rem 0;
+  padding: 2.5rem 0;
   border-top: 1px solid var(--border);
+  transition: border-color 0.4s;
+}
+.footer-inner {
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 1rem;
 }
-
-.footer-left {
-  display: flex; align-items: center; gap: 0.75rem;
-}
-
 .footer-brand {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 0.95rem;
-  letter-spacing: 0.15em;
-  color: var(--cream);
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 0.95rem; letter-spacing: 0.15em; color: var(--heading);
+  transition: color 0.4s;
 }
-
 .footer-brand span { color: var(--gold); }
-
 .footer-tagline {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  color: var(--text-dim);
+  font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text-dim);
+  transition: color 0.4s;
 }
-
-.footer-right {
-  display: flex; gap: 1.5rem;
-}
-
+.footer-links { display: flex; gap: 1.5rem; }
 .footer-link {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  color: var(--text-dim);
-  text-decoration: none;
+  font-size: 0.68rem; letter-spacing: 0.08em;
+  color: var(--text-dim); text-decoration: none;
   transition: color 0.25s;
 }
-
 .footer-link:hover { color: var(--gold); }
 
-/* ── ANIMATIONS ── */
+/* ══════════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════════ */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.7); }
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:0.5; transform:scale(0.7); }
 }
-
 @keyframes scrollBounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(8px); }
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(8px); }
 }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  nav { padding: 1rem 1.5rem; }
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 820px) {
+  nav { padding: 0.9rem 1.25rem; }
   .nav-links { display: none; }
   .pillars-grid { grid-template-columns: 1fr 1fr; }
   .problem-grid, .values-grid, .serve-grid, .repos-grid { grid-template-columns: 1fr; }
-  .roadmap-item { grid-template-columns: 80px 1fr; gap: 1rem; }
-}
-
-/* ── SECTION SEPARATORS ── */
-.sep {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--border) 30%, var(--border) 70%, transparent 100%);
-  margin: 0;
 }
 </style>
 </head>
 <body>
 <div class="page">
 
-<!-- ── NAV ── -->
+<!-- ══ NAVBAR ══ -->
 <nav>
   <a href="#" class="nav-logo">
     <svg class="nav-hex" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -886,29 +664,38 @@ footer {
     </svg>
     <span class="nav-wordmark">AIRINA <span>LABS</span></span>
   </a>
+
   <ul class="nav-links">
-    <li><a href="#problem">Problem</a></li>
-    <li><a href="#pillars">What we do</a></li>
-    <li><a href="#repos">Repositories</a></li>
+    <li><a href="#problem"  data-en="Problem"       data-fr="Problème">Problem</a></li>
+    <li><a href="#pillars"  data-en="What we do"    data-fr="Ce que nous faisons">What we do</a></li>
+    <li><a href="#serve"    data-en="Who we serve"  data-fr="Qui nous servons">Who we serve</a></li>
+    <li><a href="#repos"    data-en="Repositories"  data-fr="Répertoires">Repositories</a></li>
   </ul>
-  <a href="https://github.com/AIRINA-Labs/AIRINA-Labs/blob/main/README.md" target="_blank" class="nav-cta">
-    ↗ GitHub
-  </a>
+
+  <div class="nav-controls">
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle light/dark mode">🌙</button>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
+      <button class="lang-btn"        id="btnFR" onclick="setLang('fr')">FR</button>
+    </div>
+    <a href="https://github.com/AIRINA-Labs/AIRINA-Labs/blob/main/README.md" target="_blank" class="nav-cta">↗ GitHub</a>
+  </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- ══ HERO ══ -->
 <section class="hero">
   <div class="hero-kente"></div>
 
-  <div class="hero-eyebrow">Cotonou, Benin Republic · Est. 2026</div>
+  <div class="hero-eyebrow" data-en="Cotonou, Benin Republic · Est. 2025" data-fr="Cotonou, République du Bénin · Fondé en 2025">
+    Cotonou, Benin Republic · Est. 2025
+  </div>
 
-  <!-- Inline SVG Logo -->
   <div class="hero-logo-wrap">
     <svg viewBox="0 0 480 120" width="380" height="95" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="hGold" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#F59E0B"/>
-          <stop offset="60%" stop-color="#FBBF24"/>
+          <stop offset="0%"   stop-color="#F59E0B"/>
+          <stop offset="60%"  stop-color="#FBBF24"/>
           <stop offset="100%" stop-color="#D97706"/>
         </linearGradient>
         <filter id="hGlow">
@@ -916,98 +703,120 @@ footer {
           <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
       </defs>
-      <!-- Hexagon mark -->
       <g transform="translate(56,60)" filter="url(#hGlow)">
         <polygon points="0,-44 38,-22 38,22 0,44 -38,22 -38,-22" fill="none" stroke="url(#hGold)" stroke-width="1.8"/>
         <polygon points="0,-30 26,-15 26,15 0,30 -26,15 -26,-15" fill="none" stroke="url(#hGold)" stroke-width="0.9" opacity="0.3"/>
         <g stroke="#F59E0B" stroke-width="0.9" opacity="0.5">
-          <line x1="0" y1="0" x2="-13" y2="-17"/>
-          <line x1="0" y1="0" x2="13" y2="-13"/>
-          <line x1="0" y1="0" x2="17" y2="5"/>
-          <line x1="0" y1="0" x2="7" y2="20"/>
-          <line x1="0" y1="0" x2="-15" y2="15"/>
-          <line x1="0" y1="0" x2="-17" y2="2"/>
-          <line x1="-13" y1="-17" x2="13" y2="-13"/>
-          <line x1="13" y1="-13" x2="17" y2="5"/>
-          <line x1="17" y1="5" x2="7" y2="20"/>
-          <line x1="7" y1="20" x2="-15" y2="15"/>
+          <line x1="0" y1="0" x2="-13" y2="-17"/><line x1="0" y1="0" x2="13" y2="-13"/>
+          <line x1="0" y1="0" x2="17" y2="5"/> <line x1="0" y1="0" x2="7"  y2="20"/>
+          <line x1="0" y1="0" x2="-15" y2="15"/><line x1="0" y1="0" x2="-17" y2="2"/>
+          <line x1="-13" y1="-17" x2="13" y2="-13"/><line x1="13" y1="-13" x2="17" y2="5"/>
+          <line x1="17" y1="5" x2="7" y2="20"/><line x1="7" y1="20" x2="-15" y2="15"/>
           <line x1="-15" y1="15" x2="-17" y2="2"/>
         </g>
         <g fill="#F59E0B">
-          <circle cx="-13" cy="-17" r="3.2"/>
-          <circle cx="13" cy="-13" r="3.2"/>
-          <circle cx="17" cy="5" r="3.2"/>
-          <circle cx="7" cy="20" r="2.8"/>
-          <circle cx="-15" cy="15" r="2.8"/>
-          <circle cx="-17" cy="2" r="3.2"/>
+          <circle cx="-13" cy="-17" r="3.2"/><circle cx="13" cy="-13" r="3.2"/>
+          <circle cx="17"  cy="5"   r="3.2"/><circle cx="7"  cy="20"  r="2.8"/>
+          <circle cx="-15" cy="15"  r="2.8"/><circle cx="-17" cy="2"  r="3.2"/>
         </g>
         <circle cx="0" cy="0" r="5.5" fill="url(#hGold)"/>
         <circle cx="0" cy="0" r="2.5" fill="#FFF8E7"/>
         <g fill="#F59E0B" opacity="0.5">
-          <circle cx="0" cy="-44" r="1.8"/>
-          <circle cx="38" cy="-22" r="1.8"/>
-          <circle cx="38" cy="22" r="1.8"/>
-          <circle cx="0" cy="44" r="1.8"/>
-          <circle cx="-38" cy="22" r="1.8"/>
-          <circle cx="-38" cy="-22" r="1.8"/>
+          <circle cx="0" cy="-44" r="1.8"/><circle cx="38" cy="-22" r="1.8"/>
+          <circle cx="38" cy="22" r="1.8"/><circle cx="0"  cy="44"  r="1.8"/>
+          <circle cx="-38" cy="22" r="1.8"/><circle cx="-38" cy="-22" r="1.8"/>
         </g>
       </g>
-      <!-- Wordmark -->
-      <text x="112" y="52" font-family="'Syne', sans-serif" font-weight="800" font-size="32" letter-spacing="6" fill="#F0EBE0">AIRINA</text>
+      <text x="112" y="52" font-family="'Syne',sans-serif" font-weight="800" font-size="32" letter-spacing="6" fill="#F59E0B">AIRINA</text>
       <rect x="112" y="58" width="220" height="1.5" rx="1" fill="url(#hGold)" opacity="0.7"/>
-      <text x="114" y="76" font-family="'Syne', sans-serif" font-weight="400" font-size="12" letter-spacing="11" fill="#F59E0B">LABS</text>
-      <text x="112" y="100" font-family="'JetBrains Mono', monospace" font-size="7.5" letter-spacing="2.2" fill="#4A5C7A">AI RESEARCH AND INNOVATION NEXUS FOR AFRICA</text>
+      <text x="114" y="76" font-family="'Syne',sans-serif" font-weight="400" font-size="12" letter-spacing="11" fill="#F59E0B">LABS</text>
+      <text x="112" y="100" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="2.2" fill="#8A9FBF"
+            data-en="AI RESEARCH AND INNOVATION NEXUS FOR AFRICA"
+            data-fr="NEXUS DE RECHERCHE ET D'INNOVATION EN IA POUR L'AFRIQUE">
+        AI RESEARCH AND INNOVATION NEXUS FOR AFRICA
+      </text>
     </svg>
   </div>
 
-  <h1>African <em>Knowledge.</em><br/>African <em>Solutions.</em></h1>
-  <p class="hero-subtitle">Building the institution Africa needs — one researcher, one product, one cohort at a time.</p>
+  <h1>
+    <span data-en="African" data-fr="Savoir">African</span>
+    <em><span data-en="Knowledge." data-fr="africain.">Knowledge.</span></em><br/>
+    <span data-en="African" data-fr="Solutions">African</span>
+    <em><span data-en="Solutions." data-fr="africaines.">Solutions.</span></em>
+  </h1>
+
+  <p class="hero-subtitle"
+     data-en="Building the institution Africa needs — one researcher, one product, one cohort at a time."
+     data-fr="Construire l'institution dont l'Afrique a besoin — un chercheur, un produit, une cohorte à la fois.">
+    Building the institution Africa needs — one researcher, one product, one cohort at a time.
+  </p>
 
   <div class="hero-divider"><div class="hero-diamond"></div></div>
 
-  <blockquote class="hero-quote">
+  <blockquote class="hero-quote"
+    data-en="&ldquo;To advance financial inclusion and human development across Africa through applied AI research, world-class data science products, and structured programs that transition STEM graduates into impactful careers — building African knowledge, African talent, and African solutions for the entire continent.&rdquo;"
+    data-fr="&ldquo;Promouvoir l'inclusion financière et le développement humain à travers l'Afrique grâce à la recherche appliquée en IA, des produits de science des données de classe mondiale, et des programmes structurés qui convertissent les diplômés STIM en carrières à fort impact — en construisant le savoir africain, les talents africains, et les solutions africaines pour tout le continent.&rdquo;">
     "To advance financial inclusion and human development across Africa through applied AI research, world-class data science products, and structured programs that transition STEM graduates into impactful careers — building African knowledge, African talent, and African solutions for the entire continent."
   </blockquote>
 
   <div class="hero-badges">
     <a href="https://airina.africa" target="_blank" class="badge badge-gold">🌐 airina.africa</a>
-    <a href="mailto:contact@airina.africa" class="badge badge-blue">✉ contact@airina.africa</a>
-    <span class="badge badge-green">📍 Cotonou, Benin</span>
-    <span class="badge badge-purple">🔬 Financial Inclusion · AI Research</span>
+    <a href="mailto:contact@airina.africa"           class="badge badge-blue">✉ contact@airina.africa</a>
+    <span class="badge badge-green"
+          data-en="📍 Cotonou, Benin" data-fr="📍 Cotonou, Bénin">📍 Cotonou, Benin</span>
+    <span class="badge badge-purple"
+          data-en="🔬 Financial inclusion · AI research"
+          data-fr="🔬 Inclusion financière · Recherche en IA">🔬 Financial inclusion · AI research</span>
   </div>
 
   <div class="scroll-hint">
-    <span>Scroll</span>
+    <span data-en="Scroll" data-fr="Défiler">Scroll</span>
     <div class="scroll-arrow"></div>
   </div>
 </section>
 
 <div class="sep"></div>
 
-<!-- ── PROBLEM ── -->
+<!-- ══ PROBLEM ══ -->
 <section class="section" id="problem">
   <div class="container">
     <div class="section-tag">
-      <span class="section-tag-text">01 — The problem</span>
+      <span class="section-tag-text"
+            data-en="01 — The problem" data-fr="01 — Le problème">01 — The problem</span>
       <div class="section-tag-line"></div>
     </div>
-    <h2>A double failure with a<br/><em>single root cause</em></h2>
-    <p style="max-width:600px">Africa produces the talent. Africa has the need. What's missing is the institution that bridges both.</p>
+    <h2>
+      <span data-en="A double failure with a" data-fr="Un double échec avec une">A double failure with a</span><br/>
+      <em><span data-en="single root cause" data-fr="seule cause profonde">single root cause</span></em>
+    </h2>
+    <p style="max-width:600px"
+       data-en="Africa produces the talent. Africa has the need. What's missing is the institution that bridges both."
+       data-fr="L'Afrique produit les talents. L'Afrique en a besoin. Ce qui manque, c'est l'institution qui fait le pont entre les deux.">
+      Africa produces the talent. Africa has the need. What's missing is the institution that bridges both.
+    </p>
 
     <div class="problem-grid">
       <div class="problem-card">
         <div class="problem-num">01</div>
-        <h3>Financial exclusion at scale</h3>
-        <p>Over <strong style="color:#CBD5E8">60% of adults</strong> in West and Central Africa remain excluded from formal financial systems — no credit, no insurance, no savings. Financial institutions cannot leverage their data effectively because local AI talent has no structured pathway to reach them.</p>
+        <h3 data-en="Financial exclusion at scale" data-fr="Exclusion financière à grande échelle">Financial exclusion at scale</h3>
+        <p data-en="Over 60% of adults in West and Central Africa remain excluded from formal financial systems — no credit, no insurance, no savings. Financial institutions cannot leverage their data effectively because local AI talent has no structured pathway to reach them."
+           data-fr="Plus de 60 % des adultes en Afrique de l'Ouest et centrale sont exclus des systèmes financiers formels — pas de crédit, pas d'assurance, pas d'épargne. Les institutions financières ne peuvent pas exploiter efficacement leurs données, car les talents locaux en IA n'ont pas de voie structurée pour les atteindre.">
+          Over <strong style="color:var(--heading)">60% of adults</strong> in West and Central Africa remain excluded from formal financial systems — no credit, no insurance, no savings. Financial institutions cannot leverage their data effectively because local AI talent has no structured pathway to reach them.
+        </p>
       </div>
       <div class="problem-card">
         <div class="problem-num">02</div>
-        <h3>Talent without a bridge</h3>
-        <p>Africa produces thousands of STEM graduates every year — mathematicians, statisticians, engineers, computer scientists. The vast majority remain <strong style="color:#CBD5E8">unemployed or underemployed</strong> — not for lack of talent, but because no structured bridge exists between university and industry.</p>
+        <h3 data-en="Talent without a bridge" data-fr="Des talents sans passerelle">Talent without a bridge</h3>
+        <p data-en="Africa produces thousands of STEM graduates every year — mathematicians, statisticians, engineers, computer scientists. The vast majority remain unemployed or underemployed — not for lack of talent, but because no structured bridge exists between university and industry."
+           data-fr="L'Afrique produit des milliers de diplômés STIM chaque année — mathématiciens, statisticiens, ingénieurs, informaticiens. La grande majorité reste sans emploi ou sous-employée — non pas par manque de talent, mais parce qu'aucune passerelle structurée n'existe entre l'université et l'industrie.">
+          Africa produces thousands of STEM graduates every year — mathematicians, statisticians, engineers, computer scientists. The vast majority remain <strong style="color:var(--heading)">unemployed or underemployed</strong> — not for lack of talent, but because no structured bridge exists between university and industry.
+        </p>
       </div>
     </div>
 
-    <div class="problem-conclusion">
+    <div class="problem-conclusion"
+         data-en="AIRINA Labs exists to close this gap — simultaneously advancing African AI knowledge, building local talent, and translating both into practical solutions for African challenges."
+         data-fr="AIRINA Labs existe pour combler ce fossé — en faisant avancer simultanément le savoir africain en IA, en développant les talents locaux, et en traduisant les deux en solutions pratiques pour les défis africains.">
       AIRINA Labs exists to close this gap — simultaneously advancing African AI knowledge, building local talent, and translating both into practical solutions for African challenges.
     </div>
   </div>
@@ -1015,87 +824,131 @@ footer {
 
 <div class="sep"></div>
 
-<!-- ── PILLARS ── -->
+<!-- ══ PILLARS ══ -->
 <section class="section" id="pillars">
   <div class="container">
     <div class="section-tag">
-      <span class="section-tag-text">02 — What we do</span>
+      <span class="section-tag-text"
+            data-en="02 — What we do" data-fr="02 — Ce que nous faisons">02 — What we do</span>
       <div class="section-tag-line"></div>
     </div>
-    <h2>Four <em>integrated</em> pillars</h2>
-    <p style="max-width:640px">Each pillar is distinct in function — but deeply interconnected. Research informs products. Products generate revenue. Training builds talent. The incubator transforms talent into founders.</p>
+    <h2>
+      <span data-en="Four" data-fr="Quatre">Four</span>
+      <em><span data-en="integrated pillars" data-fr="piliers intégrés">integrated pillars</span></em>
+    </h2>
+    <p style="max-width:640px"
+       data-en="Each pillar is distinct in function — but deeply interconnected. Research informs products. Products generate revenue. Training builds talent. The incubator transforms talent into founders."
+       data-fr="Chaque pilier est distinct dans sa fonction — mais profondément interconnecté. La recherche informe les produits. Les produits génèrent des revenus. La formation construit les talents. L'incubateur transforme les talents en fondateurs.">
+      Each pillar is distinct in function — but deeply interconnected. Research informs products. Products generate revenue. Training builds talent. The incubator transforms talent into founders.
+    </p>
 
     <div class="pillars-grid">
       <div class="pillar">
-        <span class="pillar-num">01 · Research</span>
+        <span class="pillar-num">01 · <span data-en="Research" data-fr="Recherche">Research</span></span>
         <span class="pillar-icon">🔬</span>
-        <h3>Applied research</h3>
-        <p>Original, applied research on AI, data science, and financial inclusion in Africa. We publish, contribute to global knowledge, and make findings accessible to policymakers and practitioners.</p>
+        <h3 data-en="Applied research" data-fr="Recherche appliquée">Applied research</h3>
+        <p data-en="Original, applied research on AI, data science, and financial inclusion in Africa. We publish, contribute to global knowledge, and make findings accessible to policymakers and practitioners."
+           data-fr="Recherche originale et appliquée en IA, science des données et inclusion financière en Afrique. Nous publions, contribuons au savoir mondial et rendons nos résultats accessibles aux décideurs et praticiens.">
+          Original, applied research on AI, data science, and financial inclusion in Africa. We publish, contribute to global knowledge, and make findings accessible to policymakers and practitioners.
+        </p>
       </div>
       <div class="pillar">
-        <span class="pillar-num">02 · Products</span>
+        <span class="pillar-num">02 · <span data-en="Products" data-fr="Produits">Products</span></span>
         <span class="pillar-icon">🛠️</span>
-        <h3>AI products</h3>
-        <p>Research translated into practical tools — credit scoring models, fraud detection, customer analytics, and financial access tools — designed specifically for African realities.</p>
+        <h3 data-en="AI products" data-fr="Produits IA">AI products</h3>
+        <p data-en="Research translated into practical tools — credit scoring models, fraud detection, customer analytics, and financial access tools — designed specifically for African realities."
+           data-fr="La recherche traduite en outils pratiques — modèles de notation de crédit, détection de fraude, analyse client, et outils d'accès financier — conçus spécifiquement pour les réalités africaines.">
+          Research translated into practical tools — credit scoring models, fraud detection, customer analytics, and financial access tools — designed specifically for African realities.
+        </p>
       </div>
       <div class="pillar">
-        <span class="pillar-num">03 · Training</span>
+        <span class="pillar-num">03 · <span data-en="Training" data-fr="Formation">Training</span></span>
         <span class="pillar-icon">🎯</span>
-        <h3>Talent programs</h3>
-        <p>Structured transition programs moving STEM graduates from academic knowledge into industry-ready careers. Participants work on live research and real client problems — learning by doing.</p>
+        <h3 data-en="Talent programs" data-fr="Programmes de talents">Talent programs</h3>
+        <p data-en="Structured transition programs moving STEM graduates from academic knowledge into industry-ready careers. Participants work on live research and real client problems — learning by doing."
+           data-fr="Programmes de transition structurés faisant passer les diplômés STIM du savoir académique aux carrières industrielles. Les participants travaillent sur des recherches en cours et de vrais problèmes clients — en apprenant par la pratique.">
+          Structured transition programs moving STEM graduates from academic knowledge into industry-ready careers. Participants work on live research and real client problems — learning by doing.
+        </p>
       </div>
       <div class="pillar">
-        <span class="pillar-num">04 · Incubator</span>
+        <span class="pillar-num">04 · <span data-en="Incubator" data-fr="Incubateur">Incubator</span></span>
         <span class="pillar-icon">🚀</span>
         <h3>AIRINA Ventures</h3>
-        <p>Supporting STEM graduates who want to build AI-driven companies — with mentorship, technical support, workspace, and institutional network access. Launching Phase 2.</p>
+        <p data-en="Supporting STEM graduates who want to build AI-driven companies — with mentorship, technical support, workspace, and institutional network access. Launching Phase 2."
+           data-fr="Soutenir les diplômés STIM qui souhaitent créer des entreprises axées sur l'IA — avec mentorat, soutien technique, espace de travail et accès au réseau institutionnel. Lancement en Phase 2.">
+          Supporting STEM graduates who want to build AI-driven companies — with mentorship, technical support, workspace, and institutional network access. Launching Phase 2.
+        </p>
       </div>
     </div>
 
     <div class="pillar-connector">
-      <strong>Research</strong> informs <strong>Products</strong> · <strong>Products</strong> generate credibility &amp; revenue · <strong>Training</strong> powers both · <strong>Incubator</strong> transforms talent into founders
+      <strong data-en="Research" data-fr="Recherche">Research</strong>
+      <span data-en="informs" data-fr="informe">informs</span>
+      <strong data-en="Products" data-fr="Produits">Products</strong> ·
+      <strong data-en="Products" data-fr="Produits">Products</strong>
+      <span data-en="generate credibility &amp; revenue" data-fr="génèrent crédibilité &amp; revenus">generate credibility &amp; revenue</span> ·
+      <strong data-en="Training" data-fr="Formation">Training</strong>
+      <span data-en="powers both" data-fr="alimente les deux">powers both</span> ·
+      <strong data-en="Incubator" data-fr="Incubateur">Incubator</strong>
+      <span data-en="transforms talent into founders" data-fr="transforme les talents en fondateurs">transforms talent into founders</span>
     </div>
   </div>
 </section>
 
 <div class="sep"></div>
 
-<!-- ── VALUES ── -->
+<!-- ══ VALUES ══ -->
 <section class="section">
   <div class="container">
     <div class="section-tag">
-      <span class="section-tag-text">03 — Core values</span>
+      <span class="section-tag-text"
+            data-en="03 — Core values" data-fr="03 — Valeurs fondamentales">03 — Core values</span>
       <div class="section-tag-line"></div>
     </div>
-    <h2>What we <em>stand for</em></h2>
+    <h2>
+      <span data-en="What we" data-fr="Ce en quoi">What we</span>
+      <em><span data-en="stand for" data-fr="nous croyons">stand for</span></em>
+    </h2>
 
     <div class="values-grid">
       <div class="value-card">
         <div class="value-icon-wrap">🎯</div>
         <div>
-          <h3>Rigor</h3>
-          <p>We hold our research and products to the highest standards. We publish, validate, and are honest about what we know and what we do not.</p>
+          <h3 data-en="Rigor" data-fr="Rigueur">Rigor</h3>
+          <p data-en="We hold our research and products to the highest standards. We publish, validate, and are honest about what we know and what we do not."
+             data-fr="Nous maintenons nos recherches et produits aux normes les plus élevées. Nous publions, validons et sommes honnêtes sur ce que nous savons et ce que nous ignorons.">
+            We hold our research and products to the highest standards. We publish, validate, and are honest about what we know and what we do not.
+          </p>
         </div>
       </div>
       <div class="value-card">
         <div class="value-icon-wrap">🌍</div>
         <div>
-          <h3>Relevance</h3>
-          <p>Every research question and every product is grounded in the realities of African communities, institutions, and markets.</p>
+          <h3 data-en="Relevance" data-fr="Pertinence">Relevance</h3>
+          <p data-en="Every research question and every product is grounded in the realities of African communities, institutions, and markets."
+             data-fr="Chaque question de recherche et chaque produit est ancré dans les réalités des communautés, institutions et marchés africains.">
+            Every research question and every product is grounded in the realities of African communities, institutions, and markets.
+          </p>
         </div>
       </div>
       <div class="value-card">
         <div class="value-icon-wrap">🤲</div>
         <div>
-          <h3>Inclusion</h3>
-          <p>We exist for the excluded — financially, economically, and professionally. Our work is only meaningful if it reaches those who need it most.</p>
+          <h3 data-en="Inclusion" data-fr="Inclusion">Inclusion</h3>
+          <p data-en="We exist for the excluded — financially, economically, and professionally. Our work is only meaningful if it reaches those who need it most."
+             data-fr="Nous existons pour les exclus — financièrement, économiquement et professionnellement. Notre travail n'a de sens que s'il atteint ceux qui en ont le plus besoin.">
+            We exist for the excluded — financially, economically, and professionally. Our work is only meaningful if it reaches those who need it most.
+          </p>
         </div>
       </div>
       <div class="value-card">
         <div class="value-icon-wrap">🏛️</div>
         <div>
-          <h3>Continuity</h3>
-          <p>We are building an institution, not a project. Every decision we make is made with the next decade in mind.</p>
+          <h3 data-en="Continuity" data-fr="Continuité">Continuity</h3>
+          <p data-en="We are building an institution, not a project. Every decision we make is made with the next decade in mind."
+             data-fr="Nous construisons une institution, pas un projet. Chaque décision que nous prenons est prise en pensant à la prochaine décennie.">
+            We are building an institution, not a project. Every decision we make is made with the next decade in mind.
+          </p>
         </div>
       </div>
     </div>
@@ -1104,99 +957,103 @@ footer {
 
 <div class="sep"></div>
 
-<!-- ── TECH STACK ── -->
+<!-- ══ TECH STACK ══ -->
 <section class="section">
   <div class="container stack-section">
     <div class="section-tag">
-      <span class="section-tag-text">04 — Tech stack</span>
+      <span class="section-tag-text"
+            data-en="04 — Tech stack" data-fr="04 — Technologies">04 — Tech stack</span>
       <div class="section-tag-line"></div>
     </div>
-    <h2>Tools &amp; <em>technologies</em></h2>
+    <h2>
+      <span data-en="Tools &amp;" data-fr="Outils &amp;">Tools &amp;</span>
+      <em><span data-en="technologies" data-fr="technologies">technologies</span></em>
+    </h2>
 
     <div class="stack-group">
-      <p class="stack-label">Core languages</p>
+      <p class="stack-label" data-en="Core languages" data-fr="Langages principaux">Core languages</p>
       <div class="stack-badges">
-        <a href="https://www.python.org" target="_blank" class="tech-badge tech-badge-link">Python</a>
-        <a href="https://www.r-project.org" target="_blank" class="tech-badge tech-badge-link">R</a>
-        <a href="https://www.postgresql.org/docs/current/sql.html" target="_blank" class="tech-badge tech-badge-link">SQL</a>
-        <a href="https://julialang.org" target="_blank" class="tech-badge tech-badge-link">Julia</a>
-        <a href="https://www.scala-lang.org" target="_blank" class="tech-badge tech-badge-link">Scala</a>
-        <a href="https://www.gnu.org/software/bash/" target="_blank" class="tech-badge tech-badge-link">Bash</a>
-        <a href="https://www.javascript.com" target="_blank" class="tech-badge tech-badge-link">JavaScript</a>
-        <a href="https://www.typescriptlang.org" target="_blank" class="tech-badge tech-badge-link">TypeScript</a>
-        <a href="https://www.mathworks.com/products/matlab.html" target="_blank" class="tech-badge tech-badge-link">MATLAB</a>
-        <a href="https://www.latex-project.org" target="_blank" class="tech-badge tech-badge-link">LaTeX</a>
+        <a href="https://www.python.org"                                                             target="_blank" class="tech-badge tech-badge-link">Python</a>
+        <a href="https://www.r-project.org"                                                          target="_blank" class="tech-badge tech-badge-link">R</a>
+        <a href="https://www.postgresql.org/docs/current/sql.html"                                   target="_blank" class="tech-badge tech-badge-link">SQL</a>
+        <a href="https://julialang.org"                                                              target="_blank" class="tech-badge tech-badge-link">Julia</a>
+        <a href="https://www.scala-lang.org"                                                         target="_blank" class="tech-badge tech-badge-link">Scala</a>
+        <a href="https://www.gnu.org/software/bash/"                                                 target="_blank" class="tech-badge tech-badge-link">Bash</a>
+        <a href="https://www.javascript.com"                                                         target="_blank" class="tech-badge tech-badge-link">JavaScript</a>
+        <a href="https://www.typescriptlang.org"                                                     target="_blank" class="tech-badge tech-badge-link">TypeScript</a>
+        <a href="https://www.mathworks.com/products/matlab.html"                                     target="_blank" class="tech-badge tech-badge-link">MATLAB</a>
+        <a href="https://www.latex-project.org"                                                      target="_blank" class="tech-badge tech-badge-link">LaTeX</a>
       </div>
     </div>
 
     <div class="stack-group">
-      <p class="stack-label">Classical ML &amp; statistical modelling</p>
+      <p class="stack-label" data-en="Classical ML &amp; statistical modelling" data-fr="ML classique &amp; modélisation statistique">Classical ML &amp; statistical modelling</p>
       <div class="stack-badges">
-        <a href="https://scikit-learn.org" target="_blank" class="tech-badge tech-badge-link">scikit-learn</a>
-        <a href="https://xgboost.readthedocs.io" target="_blank" class="tech-badge tech-badge-link">XGBoost</a>
-        <a href="https://lightgbm.readthedocs.io" target="_blank" class="tech-badge tech-badge-link">LightGBM</a>
-        <a href="https://catboost.ai" target="_blank" class="tech-badge tech-badge-link">CatBoost</a>
-        <a href="https://www.statsmodels.org" target="_blank" class="tech-badge tech-badge-link">statsmodels</a>
-        <a href="https://www.tidymodels.org" target="_blank" class="tech-badge tech-badge-link">tidymodels</a>
-        <a href="https://mc-stan.org" target="_blank" class="tech-badge tech-badge-link">Stan</a>
+        <a href="https://scikit-learn.org"          target="_blank" class="tech-badge tech-badge-link">scikit-learn</a>
+        <a href="https://xgboost.readthedocs.io"    target="_blank" class="tech-badge tech-badge-link">XGBoost</a>
+        <a href="https://lightgbm.readthedocs.io"   target="_blank" class="tech-badge tech-badge-link">LightGBM</a>
+        <a href="https://catboost.ai"               target="_blank" class="tech-badge tech-badge-link">CatBoost</a>
+        <a href="https://www.statsmodels.org"       target="_blank" class="tech-badge tech-badge-link">statsmodels</a>
+        <a href="https://www.tidymodels.org"        target="_blank" class="tech-badge tech-badge-link">tidymodels</a>
+        <a href="https://mc-stan.org"               target="_blank" class="tech-badge tech-badge-link">Stan</a>
       </div>
     </div>
 
     <div class="stack-group">
-      <p class="stack-label">Deep learning</p>
+      <p class="stack-label" data-en="Deep learning" data-fr="Apprentissage profond">Deep learning</p>
       <div class="stack-badges">
-        <a href="https://www.tensorflow.org" target="_blank" class="tech-badge tech-badge-link">TensorFlow</a>
-        <a href="https://pytorch.org" target="_blank" class="tech-badge tech-badge-link">PyTorch</a>
-        <a href="https://keras.io" target="_blank" class="tech-badge tech-badge-link">Keras</a>
-        <a href="https://jax.readthedocs.io" target="_blank" class="tech-badge tech-badge-link">JAX</a>
-        <a href="https://flax.readthedocs.io" target="_blank" class="tech-badge tech-badge-link">Flax</a>
+        <a href="https://www.tensorflow.org"     target="_blank" class="tech-badge tech-badge-link">TensorFlow</a>
+        <a href="https://pytorch.org"            target="_blank" class="tech-badge tech-badge-link">PyTorch</a>
+        <a href="https://keras.io"               target="_blank" class="tech-badge tech-badge-link">Keras</a>
+        <a href="https://jax.readthedocs.io"     target="_blank" class="tech-badge tech-badge-link">JAX</a>
+        <a href="https://flax.readthedocs.io"    target="_blank" class="tech-badge tech-badge-link">Flax</a>
       </div>
     </div>
 
     <div class="stack-group">
-      <p class="stack-label">Generative AI &amp; large language models</p>
+      <p class="stack-label" data-en="Generative AI &amp; large language models" data-fr="IA générative &amp; grands modèles de langage">Generative AI &amp; large language models</p>
       <div class="stack-badges">
-        <a href="https://huggingface.co" target="_blank" class="tech-badge tech-badge-link">Hugging Face</a>
-        <a href="https://www.langchain.com" target="_blank" class="tech-badge tech-badge-link">LangChain</a>
-        <a href="https://docs.llamaindex.ai" target="_blank" class="tech-badge tech-badge-link">LlamaIndex</a>
-        <a href="https://openai.com/api" target="_blank" class="tech-badge tech-badge-link">OpenAI API</a>
-        <a href="https://www.anthropic.com" target="_blank" class="tech-badge tech-badge-link">Claude API</a>
-        <a href="https://ollama.com" target="_blank" class="tech-badge tech-badge-link">Ollama</a>
+        <a href="https://huggingface.co"            target="_blank" class="tech-badge tech-badge-link">Hugging Face</a>
+        <a href="https://www.langchain.com"         target="_blank" class="tech-badge tech-badge-link">LangChain</a>
+        <a href="https://docs.llamaindex.ai"        target="_blank" class="tech-badge tech-badge-link">LlamaIndex</a>
+        <a href="https://openai.com/api"            target="_blank" class="tech-badge tech-badge-link">OpenAI API</a>
+        <a href="https://www.anthropic.com"         target="_blank" class="tech-badge tech-badge-link">Claude API</a>
+        <a href="https://ollama.com"                target="_blank" class="tech-badge tech-badge-link">Ollama</a>
         <a href="https://github.com/facebookresearch/faiss" target="_blank" class="tech-badge tech-badge-link">FAISS</a>
-        <a href="https://www.trychroma.com" target="_blank" class="tech-badge tech-badge-link">ChromaDB</a>
+        <a href="https://www.trychroma.com"         target="_blank" class="tech-badge tech-badge-link">ChromaDB</a>
         <a href="https://python.langchain.com/docs/integrations/vectorstores/pgvector" target="_blank" class="tech-badge tech-badge-link">pgvector</a>
       </div>
     </div>
 
     <div class="stack-group">
-      <p class="stack-label">Data engineering &amp; infrastructure</p>
+      <p class="stack-label" data-en="Data engineering &amp; infrastructure" data-fr="Ingénierie des données &amp; infrastructure">Data engineering &amp; infrastructure</p>
       <div class="stack-badges">
-        <a href="https://pandas.pydata.org" target="_blank" class="tech-badge tech-badge-link">Pandas</a>
-        <a href="https://pola.rs" target="_blank" class="tech-badge tech-badge-link">Polars</a>
-        <a href="https://spark.apache.org" target="_blank" class="tech-badge tech-badge-link">Apache Spark</a>
-        <a href="https://dbt.io" target="_blank" class="tech-badge tech-badge-link">dbt</a>
-        <a href="https://airflow.apache.org" target="_blank" class="tech-badge tech-badge-link">Apache Airflow</a>
-        <a href="https://prefect.io" target="_blank" class="tech-badge tech-badge-link">Prefect</a>
-        <a href="https://www.postgresql.org" target="_blank" class="tech-badge tech-badge-link">PostgreSQL</a>
-        <a href="https://redis.io" target="_blank" class="tech-badge tech-badge-link">Redis</a>
-        <a href="https://duckdb.org" target="_blank" class="tech-badge tech-badge-link">DuckDB</a>
-        <a href="https://delta.io" target="_blank" class="tech-badge tech-badge-link">Delta Lake</a>
-        <a href="https://jupyter.org" target="_blank" class="tech-badge tech-badge-link">Jupyter</a>
+        <a href="https://pandas.pydata.org"     target="_blank" class="tech-badge tech-badge-link">Pandas</a>
+        <a href="https://pola.rs"               target="_blank" class="tech-badge tech-badge-link">Polars</a>
+        <a href="https://spark.apache.org"      target="_blank" class="tech-badge tech-badge-link">Apache Spark</a>
+        <a href="https://dbt.io"                target="_blank" class="tech-badge tech-badge-link">dbt</a>
+        <a href="https://airflow.apache.org"    target="_blank" class="tech-badge tech-badge-link">Apache Airflow</a>
+        <a href="https://prefect.io"            target="_blank" class="tech-badge tech-badge-link">Prefect</a>
+        <a href="https://www.postgresql.org"    target="_blank" class="tech-badge tech-badge-link">PostgreSQL</a>
+        <a href="https://redis.io"              target="_blank" class="tech-badge tech-badge-link">Redis</a>
+        <a href="https://duckdb.org"            target="_blank" class="tech-badge tech-badge-link">DuckDB</a>
+        <a href="https://delta.io"              target="_blank" class="tech-badge tech-badge-link">Delta Lake</a>
+        <a href="https://jupyter.org"           target="_blank" class="tech-badge tech-badge-link">Jupyter</a>
       </div>
     </div>
 
     <div class="stack-group">
-      <p class="stack-label">MLOps &amp; deployment</p>
+      <p class="stack-label" data-en="MLOps &amp; deployment" data-fr="MLOps &amp; déploiement">MLOps &amp; deployment</p>
       <div class="stack-badges">
-        <a href="https://www.docker.com" target="_blank" class="tech-badge tech-badge-link">Docker</a>
-        <a href="https://kubernetes.io" target="_blank" class="tech-badge tech-badge-link">Kubernetes</a>
-        <a href="https://fastapi.tiangolo.com" target="_blank" class="tech-badge tech-badge-link">FastAPI</a>
-        <a href="https://mlflow.org" target="_blank" class="tech-badge tech-badge-link">MLflow</a>
-        <a href="https://www.bentoml.com" target="_blank" class="tech-badge tech-badge-link">BentoML</a>
-        <a href="https://www.evidently.ai" target="_blank" class="tech-badge tech-badge-link">Evidently AI</a>
-        <a href="https://github.com/features/actions" target="_blank" class="tech-badge tech-badge-link">GitHub Actions</a>
-        <a href="https://grafana.com" target="_blank" class="tech-badge tech-badge-link">Grafana</a>
-        <a href="https://prometheus.io" target="_blank" class="tech-badge tech-badge-link">Prometheus</a>
+        <a href="https://www.docker.com"                target="_blank" class="tech-badge tech-badge-link">Docker</a>
+        <a href="https://kubernetes.io"                 target="_blank" class="tech-badge tech-badge-link">Kubernetes</a>
+        <a href="https://fastapi.tiangolo.com"          target="_blank" class="tech-badge tech-badge-link">FastAPI</a>
+        <a href="https://mlflow.org"                    target="_blank" class="tech-badge tech-badge-link">MLflow</a>
+        <a href="https://www.bentoml.com"               target="_blank" class="tech-badge tech-badge-link">BentoML</a>
+        <a href="https://www.evidently.ai"              target="_blank" class="tech-badge tech-badge-link">Evidently AI</a>
+        <a href="https://github.com/features/actions"   target="_blank" class="tech-badge tech-badge-link">GitHub Actions</a>
+        <a href="https://grafana.com"                   target="_blank" class="tech-badge tech-badge-link">Grafana</a>
+        <a href="https://prometheus.io"                 target="_blank" class="tech-badge tech-badge-link">Prometheus</a>
       </div>
     </div>
   </div>
@@ -1204,35 +1061,51 @@ footer {
 
 <div class="sep"></div>
 
-<!-- ── WHO WE SERVE ── -->
-<section class="section">
+<!-- ══ WHO WE SERVE ══ -->
+<section class="section" id="serve">
   <div class="container">
     <div class="section-tag">
-      <span class="section-tag-text">05 — Who we serve</span>
+      <span class="section-tag-text"
+            data-en="05 — Who we serve" data-fr="05 — Qui nous servons">05 — Who we serve</span>
       <div class="section-tag-line"></div>
     </div>
-    <h2>Four <em>communities</em></h2>
+    <h2>
+      <span data-en="Four" data-fr="Quatre">Four</span>
+      <em><span data-en="communities" data-fr="communautés">communities</span></em>
+    </h2>
 
     <div class="serve-grid">
       <div class="serve-card">
         <span class="serve-icon">🎓</span>
-        <h3>STEM graduates</h3>
-        <p>Young men and women with degrees in mathematics, statistics, computer science, and engineering — ready to build careers at the frontier of AI and data science.</p>
+        <h3 data-en="STEM graduates" data-fr="Diplômés STIM">STEM graduates</h3>
+        <p data-en="Young men and women with degrees in mathematics, statistics, computer science, and engineering — ready to build careers at the frontier of AI and data science."
+           data-fr="Jeunes hommes et femmes diplômés en mathématiques, statistiques, informatique et ingénierie — prêts à construire des carrières à la frontière de l'IA et de la science des données.">
+          Young men and women with degrees in mathematics, statistics, computer science, and engineering — ready to build careers at the frontier of AI and data science.
+        </p>
       </div>
       <div class="serve-card">
         <span class="serve-icon">🏦</span>
-        <h3>Financial institutions</h3>
-        <p>Banks, microfinance institutions, mobile money operators, and fintechs that need locally-built, contextually intelligent AI tools to serve their markets better.</p>
+        <h3 data-en="Financial institutions" data-fr="Institutions financières">Financial institutions</h3>
+        <p data-en="Banks, microfinance institutions, mobile money operators, and fintechs that need locally-built, contextually intelligent AI tools to serve their markets better."
+           data-fr="Banques, institutions de microfinance, opérateurs de monnaie mobile et fintechs qui ont besoin d'outils IA construits localement et intelligents contextuellement pour mieux servir leurs marchés.">
+          Banks, microfinance institutions, mobile money operators, and fintechs that need locally-built, contextually intelligent AI tools to serve their markets better.
+        </p>
       </div>
       <div class="serve-card">
         <span class="serve-icon">🔬</span>
-        <h3>Research &amp; academic partners</h3>
-        <p>Universities, research institutes, and individual researchers who want to collaborate on Africa-focused AI research and grow the regional knowledge ecosystem.</p>
+        <h3 data-en="Research &amp; academic partners" data-fr="Partenaires de recherche &amp; académiques">Research &amp; academic partners</h3>
+        <p data-en="Universities, research institutes, and individual researchers who want to collaborate on Africa-focused AI research and grow the regional knowledge ecosystem."
+           data-fr="Universités, instituts de recherche et chercheurs individuels qui souhaitent collaborer sur la recherche en IA axée sur l'Afrique et développer l'écosystème de connaissances régional.">
+          Universities, research institutes, and individual researchers who want to collaborate on Africa-focused AI research and grow the regional knowledge ecosystem.
+        </p>
       </div>
       <div class="serve-card">
         <span class="serve-icon">🌐</span>
-        <h3>Development organizations</h3>
-        <p>International institutions, NGOs, foundations, and development banks whose missions align with financial inclusion, youth employment, and digital transformation.</p>
+        <h3 data-en="Development organizations" data-fr="Organisations de développement">Development organizations</h3>
+        <p data-en="International institutions, NGOs, foundations, and development banks whose missions align with financial inclusion, youth employment, and digital transformation."
+           data-fr="Institutions internationales, ONG, fondations et banques de développement dont les missions s'alignent sur l'inclusion financière, l'emploi des jeunes et la transformation numérique.">
+          International institutions, NGOs, foundations, and development banks whose missions align with financial inclusion, youth employment, and digital transformation.
+        </p>
       </div>
     </div>
   </div>
@@ -1240,86 +1113,113 @@ footer {
 
 <div class="sep"></div>
 
-<!-- ── REPOS ── -->
+<!-- ══ REPOS ══ -->
 <section class="section" id="repos">
   <div class="container">
     <div class="section-tag">
-      <span class="section-tag-text">06 — Repositories</span>
+      <span class="section-tag-text"
+            data-en="06 — Repositories" data-fr="06 — Répertoires">06 — Repositories</span>
       <div class="section-tag-line"></div>
     </div>
-    <h2>Our <em>GitHub</em></h2>
-    <p style="max-width:580px">Research codebases, open training materials, and AI tools built for African financial and development contexts.</p>
+    <h2>
+      <span data-en="Our" data-fr="Notre">Our</span>
+      <em>GitHub</em>
+    </h2>
+    <p style="max-width:580px"
+       data-en="Research codebases, open training materials, and AI tools built for African financial and development contexts."
+       data-fr="Bases de code de recherche, matériaux de formation ouverts et outils IA construits pour les contextes financiers et de développement africains.">
+      Research codebases, open training materials, and AI tools built for African financial and development contexts.
+    </p>
 
     <div class="repos-grid">
       <a href="https://github.com/AIRINA-Labs/AIRINA-Labs/blob/main/README.md" target="_blank" class="repo-card">
         <span class="repo-icon">research/</span>
         <div>
-          <h3>Research codebases</h3>
-          <p>Reproducible research code, datasets, and notebooks from our published work on financial inclusion and AI.</p>
+          <h3 data-en="Research codebases" data-fr="Bases de code de recherche">Research codebases</h3>
+          <p data-en="Reproducible research code, datasets, and notebooks from our published work on financial inclusion and AI."
+             data-fr="Code de recherche reproductible, ensembles de données et notebooks issus de nos travaux publiés sur l'inclusion financière et l'IA.">
+            Reproducible research code, datasets, and notebooks from our published work on financial inclusion and AI.
+          </p>
         </div>
       </a>
       <a href="https://github.com/AIRINA-Labs/AIRINA-Labs/blob/main/README.md" target="_blank" class="repo-card">
         <span class="repo-icon">products/</span>
         <div>
-          <h3>AI tools</h3>
-          <p>Open components of our AI tools for financial inclusion — credit scoring, fraud detection, analytics.</p>
+          <h3 data-en="AI tools" data-fr="Outils IA">AI tools</h3>
+          <p data-en="Open components of our AI tools for financial inclusion — credit scoring, fraud detection, analytics."
+             data-fr="Composants ouverts de nos outils IA pour l'inclusion financière — notation de crédit, détection de fraude, analyse.">
+            Open components of our AI tools for financial inclusion — credit scoring, fraud detection, analytics.
+          </p>
         </div>
       </a>
       <a href="https://github.com/AIRINA-Labs/AIRINA-Labs/blob/main/README.md" target="_blank" class="repo-card">
         <span class="repo-icon">training/</span>
         <div>
-          <h3>Training materials</h3>
-          <p>Curricula, exercises, and project templates from our structured STEM-to-industry transition programs.</p>
+          <h3 data-en="Training materials" data-fr="Matériaux de formation">Training materials</h3>
+          <p data-en="Curricula, exercises, and project templates from our structured STEM-to-industry transition programs."
+             data-fr="Curricula, exercices et modèles de projets issus de nos programmes structurés de transition STIM vers l'industrie.">
+            Curricula, exercises, and project templates from our structured STEM-to-industry transition programs.
+          </p>
         </div>
       </a>
       <a href="https://github.com/AIRINA-Labs/AIRINA-Labs/blob/main/README.md" target="_blank" class="repo-card">
         <span class="repo-icon">experiments/</span>
         <div>
-          <h3>Prototypes &amp; experiments</h3>
-          <p>Exploratory work, research prototypes, and in-progress experiments across all our domains.</p>
+          <h3 data-en="Prototypes &amp; experiments" data-fr="Prototypes &amp; expériences">Prototypes &amp; experiments</h3>
+          <p data-en="Exploratory work, research prototypes, and in-progress experiments across all our domains."
+             data-fr="Travaux exploratoires, prototypes de recherche et expériences en cours dans tous nos domaines.">
+            Exploratory work, research prototypes, and in-progress experiments across all our domains.
+          </p>
         </div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ── CTA ── -->
+<!-- ══ CTA ══ -->
 <section class="cta-section">
   <div class="cta-kente"></div>
   <div class="container-narrow">
     <div class="section-tag" style="justify-content:center">
-      <span class="section-tag-text">Get involved</span>
+      <span class="section-tag-text"
+            data-en="Get involved" data-fr="Nous rejoindre">Get involved</span>
     </div>
-    <h2>We start in Benin.<br/><em>We don't stop there.</em></h2>
-    <p>AIRINA Labs is building for Africa — all of it. We welcome collaborations with researchers, institutions, financial sector partners, and development organizations who share our vision.</p>
+    <h2>
+      <span data-en="We start in Benin." data-fr="Nous commençons au Bénin.">We start in Benin.</span><br/>
+      <em><span data-en="We don't stop there." data-fr="Nous ne nous arrêtons pas là.">We don't stop there.</span></em>
+    </h2>
+    <p data-en="AIRINA Labs is building for Africa — all of it. We welcome collaborations with researchers, institutions, financial sector partners, and development organizations who share our vision."
+       data-fr="AIRINA Labs construit pour l'Afrique — toute l'Afrique. Nous accueillons les collaborations avec des chercheurs, institutions, partenaires du secteur financier et organisations de développement qui partagent notre vision.">
+      AIRINA Labs is building for Africa — all of it. We welcome collaborations with researchers, institutions, financial sector partners, and development organizations who share our vision.
+    </p>
 
     <div class="cta-buttons">
-      <a href="https://github.com/AIRINA-Labs/AIRINA-Labs/blob/main/README.md" target="_blank" class="btn-primary">
-        ↗ View on GitHub
-      </a>
-      <a href="mailto:contact@airina.africa" class="btn-outline">
-        ✉ Contact Us
-      </a>
-      <a href="https://airina.africa" target="_blank" class="btn-outline">
-        🌐 airina.africa
-      </a>
+      <a href="https://github.com/AIRINA-Labs/AIRINA-Labs/blob/main/README.md" target="_blank" class="btn-primary"
+         data-en="↗ View on GitHub" data-fr="↗ Voir sur GitHub">↗ View on GitHub</a>
+      <a href="mailto:contact@airina.africa" class="btn-outline"
+         data-en="✉ Contact us" data-fr="✉ Nous contacter">✉ Contact us</a>
+      <a href="https://airina.africa" target="_blank" class="btn-outline">🌐 airina.africa</a>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- ══ FOOTER ══ -->
 <footer>
-  <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
-    <div class="footer-left">
-      <div>
-        <div class="footer-brand">AIRINA <span>LABS</span></div>
-        <div class="footer-tagline">AI Research &amp; Innovation Nexus for Africa · Cotonou, Benin · 2026</div>
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">AIRINA <span>LABS</span></div>
+      <div class="footer-tagline"
+           data-en="AI Research &amp; Innovation Nexus for Africa · Cotonou, Benin · 2025"
+           data-fr="Nexus de Recherche et d'Innovation en IA pour l'Afrique · Cotonou, Bénin · 2025">
+        AI Research &amp; Innovation Nexus for Africa · Cotonou, Benin · 2025
       </div>
     </div>
-    <div class="footer-right">
+    <div class="footer-links">
       <a href="https://github.com/AIRINA-Labs/AIRINA-Labs/blob/main/README.md" target="_blank" class="footer-link">GitHub</a>
-      <a href="https://airina.africa" target="_blank" class="footer-link">Website</a>
-      <a href="mailto:contact@airina.africa" class="footer-link">Email</a>
+      <a href="https://airina.africa"     target="_blank" class="footer-link"
+         data-en="Website" data-fr="Site web">Website</a>
+      <a href="mailto:contact@airina.africa" class="footer-link"
+         data-en="Email" data-fr="E-mail">Email</a>
     </div>
   </div>
 </footer>
@@ -1327,14 +1227,57 @@ footer {
 </div><!-- /.page -->
 
 <script>
-// Intersection Observer for scroll-triggered section reveals
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+/* ══════════════════════════════════════
+   THEME TOGGLE
+══════════════════════════════════════ */
+let isDark = true;
+const themeBtn = document.getElementById('themeToggle');
+
+themeBtn.addEventListener('click', () => {
+  isDark = !isDark;
+  document.documentElement.classList.toggle('light', !isDark);
+  themeBtn.textContent = isDark ? '🌙' : '☀️';
+});
+
+/* ══════════════════════════════════════
+   LANGUAGE TOGGLE
+══════════════════════════════════════ */
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+
+  // Update button states
+  document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+  document.getElementById('btnFR').classList.toggle('active', lang === 'fr');
+
+  // Update html lang attribute
+  document.documentElement.lang = lang === 'fr' ? 'fr' : 'en';
+
+  // Swap all [data-en] / [data-fr] elements
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (!val) return;
+    // For elements that contain child elements (h1 spans, etc), only update if no children
+    if (el.children.length === 0) {
+      el.innerHTML = val;
     }
   });
-}, { threshold: 0.1 });
+
+  // Update page title
+  document.title = lang === 'fr'
+    ? 'AIRINA Labs — Nexus de Recherche et d\'Innovation en IA pour l\'Afrique'
+    : 'AIRINA Labs — AI Research and Innovation Nexus for Africa';
+}
+
+/* ══════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.08 });
 
 document.querySelectorAll('.section').forEach(el => observer.observe(el));
 </script>
