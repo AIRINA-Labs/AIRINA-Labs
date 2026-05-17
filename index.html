@@ -328,9 +328,67 @@ footer.site-footer a:hover { color: var(--accent); }
   * { transition: none !important; animation: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ANNOUNCEMENT BANNER */
+.announce {
+  background: var(--ink); color: var(--bg);
+  padding: 0.6rem 2rem;
+  font-family: var(--mono); font-size: 0.78rem;
+  display: flex; justify-content: center; gap: 0.8rem;
+  align-items: baseline; flex-wrap: wrap;
+  letter-spacing: 0.02em;
+}
+.announce strong { color: var(--accent); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.7rem; }
+.announce a { color: var(--bg); border-bottom: 1px solid rgba(245,241,234,0.3); }
+.announce a:hover { color: var(--accent); border-color: var(--accent); }
+[data-theme="dark"] .announce { background: var(--bg-soft); color: var(--ink); }
+[data-theme="dark"] .announce a { color: var(--ink); border-bottom-color: var(--rule-strong); }
+
+/* HERO CARDS */
+.hero-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.hero-card {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  padding: 1.8rem 1.6rem; background: var(--bg-soft);
+  border: 1px solid var(--rule); border-radius: 3px;
+  text-decoration: none; color: inherit; border-bottom: none;
+  transition: border-color .2s, transform .2s;
+}
+.hero-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.hero-card-visual { color: var(--accent); margin-bottom: 0.6rem; }
+.hero-card h3 { font-family: var(--serif); font-weight: 500; font-size: 1.1rem; color: var(--ink); margin-bottom: 0.3rem; transition: color .2s; }
+.hero-card:hover h3 { color: var(--accent); }
+.hero-card p { font-size: 0.92rem; line-height: 1.55; color: var(--muted); }
+.hero-card-more { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); margin-top: 0.6rem; letter-spacing: 0.04em; }
+
+/* VALUES */
+.values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem 2.5rem; }
+.value h3 { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.6rem; font-weight: 500; }
+.value p { font-size: 0.92rem; line-height: 1.55; }
+
+/* UPDATES */
+.updates { display: flex; flex-direction: column; }
+.update { padding: 1.1rem 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 110px 1fr; gap: 1.4rem; align-items: baseline; }
+.update:first-child { border-top: none; padding-top: 0; }
+.update-date { font-family: var(--mono); font-size: 0.76rem; color: var(--muted); letter-spacing: 0.04em; }
+.update-body h3 { font-family: var(--serif); font-weight: 500; font-size: 1rem; color: var(--ink); margin-bottom: 0.2rem; }
+.update-body h3 em { font-style: italic; color: var(--accent); }
+.update-body p { font-size: 0.9rem; color: var(--muted); }
+.update-body a { color: inherit; border-bottom: 1px solid var(--rule-strong); }
+.update-body a:hover { color: var(--accent); border-color: var(--accent); }
+
+@media (max-width: 860px) {
+  .hero-cards { grid-template-columns: 1fr; }
+  .values { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .update { grid-template-columns: 1fr; gap: 0.3rem; }
+  .announce { padding: 0.6rem 1rem; font-size: 0.74rem; }
+}
 </style>
 </head>
 <body>
+
+<div class="announce">
+  <strong>Cohort 1</strong> TDA for Data Scientists · in-person, Cotonou · Launching Q3 2026 · <a href="training-01-tda.html">Apply →</a>
+</div>
 
 <nav class="site-nav">
   <a class="brand" href="#">
@@ -345,8 +403,6 @@ footer.site-footer a:hover { color: var(--accent); }
     <li><a href="#pillars">Pillars</a></li>
     <li><a href="training.html">Training</a></li>
     <li><a href="#people">People</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#repos">Repos</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-controls">
@@ -367,6 +423,71 @@ footer.site-footer a:hover { color: var(--accent); }
 
 <section class="manifesto wrap-narrow" id="what-we-are">
   <p>We are an institution — built for the long term, anchored in rigorous research, and committed to the development of African talent and African solutions.</p>
+</section>
+
+<section class="wrap" id="positions">
+  <div class="section-head">
+    <div class="eyebrow">Three positions</div>
+    <h2>Where we work, in one sentence each.</h2>
+  </div>
+  <div class="hero-cards">
+    <a class="hero-card" href="pillar-research.html">
+      <div class="hero-card-visual">
+        <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
+          <polygon points="35,30 90,18 75,62" fill="currentColor" opacity="0.12"/>
+          <polygon points="90,18 75,62 130,42" fill="currentColor" opacity="0.10"/>
+          <polygon points="75,62 130,42 115,90" fill="currentColor" opacity="0.08"/>
+          <line x1="35" y1="30" x2="90" y2="18" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="35" y1="30" x2="75" y2="62" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="90" y1="18" x2="75" y2="62" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="90" y1="18" x2="130" y2="42" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="75" y1="62" x2="130" y2="42" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="130" y1="42" x2="165" y2="78" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="75" y1="62" x2="115" y2="90" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="115" y1="90" x2="165" y2="78" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="130" y1="42" x2="115" y2="90" stroke="currentColor" stroke-width="0.9"/>
+          <circle cx="35" cy="30" r="3" fill="currentColor"/>
+          <circle cx="90" cy="18" r="3" fill="currentColor"/>
+          <circle cx="75" cy="62" r="3" fill="currentColor"/>
+          <circle cx="130" cy="42" r="3" fill="currentColor"/>
+          <circle cx="165" cy="78" r="3" fill="currentColor"/>
+          <circle cx="115" cy="90" r="3" fill="currentColor"/>
+        </svg>
+      </div>
+      <h3>Mathematics-first AI for African systems.</h3>
+      <p>Topology, persistent homology, interpretable models — applied where the data, the regulation, and the customer are African, not ported from elsewhere.</p>
+      <span class="hero-card-more">Research →</span>
+    </a>
+    <a class="hero-card" href="pillar-training.html">
+      <div class="hero-card-visual">
+        <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
+          <line x1="20" y1="20" x2="20" y2="95" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
+          <line x1="20" y1="95" x2="185" y2="95" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
+          <line x1="30" y1="30" x2="170" y2="30" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="30" y1="45" x2="135" y2="45" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="30" y1="60" x2="90" y2="60" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="50" y1="75" x2="78" y2="75" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="60" y1="87" x2="68" y2="87" stroke="currentColor" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <h3>Training that ends with a defense.</h3>
+      <p>No certificates of attendance. Every program closes with a graded project, defended in front of AIRINA researchers. The certificate is worth the line on a CV.</p>
+      <span class="hero-card-more">Training →</span>
+    </a>
+    <a class="hero-card" href="pillar-products.html">
+      <div class="hero-card-visual">
+        <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
+          <ellipse cx="100" cy="55" rx="72" ry="32" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M 45,50 Q 100,78 155,50" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M 60,47 Q 100,63 140,47" fill="none" stroke="currentColor" stroke-width="1"/>
+          <ellipse cx="100" cy="55" rx="72" ry="32" fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.4" transform="rotate(12 100 55)"/>
+        </svg>
+      </div>
+      <h3>Open methods, paid integrations.</h3>
+      <p>Methods, code, and benchmarks live on GitHub. Trained models and embedded engagements are commercial. Reputation compounds; revenue follows.</p>
+      <span class="hero-card-more">Products →</span>
+    </a>
+  </div>
 </section>
 
 <section id="pillars" class="wrap">
@@ -398,6 +519,36 @@ footer.site-footer a:hover { color: var(--accent); }
   </div>
 </section>
 
+<section class="wrap" id="updates">
+  <div class="section-head">
+    <div class="eyebrow">Recent</div>
+    <h2>Updates.</h2>
+  </div>
+  <div class="updates">
+    <div class="update">
+      <span class="update-date">May 2026</span>
+      <div class="update-body">
+        <h3>Training catalog goes live — bilingual EN / FR</h3>
+        <p>Six programs across three tiers, with two anchor cohorts opening Q3 and Q4 2026. <a href="training.html">See the catalog</a> · <a href="formations.html">version française</a>.</p>
+      </div>
+    </div>
+    <div class="update">
+      <span class="update-date">Q3 2026</span>
+      <div class="update-body">
+        <h3>Cohort 1 of <em>TDA for Data Scientists</em> opens for registration</h3>
+        <p>Three days, in-person Cotonou, ~12 participants. Hands-on with GUDHI, Ripser, giotto-tda. <a href="training-01-tda.html">Full curriculum</a>.</p>
+      </div>
+    </div>
+    <div class="update">
+      <span class="update-date">2025</span>
+      <div class="update-body">
+        <h3>AIRINA Labs founded in Cotonou</h3>
+        <p>Phase 1 of three: applied AI for financial inclusion in West and Central Africa. <a href="pillar-research.html">Our research themes</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="roadmap" class="wrap">
   <div class="section-head">
     <div class="eyebrow">Where we go</div>
@@ -421,6 +572,31 @@ footer.site-footer a:hover { color: var(--accent); }
       <span class="roadmap-timeline">Years 5+</span>
       <span class="roadmap-domain"><strong>Health.</strong> Highest complexity, highest impact, entered at full institutional maturity.</span>
       <span class="roadmap-status future">Future</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="values">
+  <div class="section-head">
+    <div class="eyebrow">Our values</div>
+    <h2>Four words we have to mean.</h2>
+  </div>
+  <div class="values">
+    <div class="value">
+      <h3>Rigor</h3>
+      <p>We hold our research and products to the highest standards we know how to apply. We publish, we validate, and we are honest about what we know and what we do not.</p>
+    </div>
+    <div class="value">
+      <h3>Relevance</h3>
+      <p>Every research question and every product is grounded in the realities of African communities, institutions, and markets. Generic baselines do not count.</p>
+    </div>
+    <div class="value">
+      <h3>Inclusion</h3>
+      <p>We exist for the excluded — financially, economically, and professionally. Work that does not reach those who need it most is not the work we want to do.</p>
+    </div>
+    <div class="value">
+      <h3>Continuity</h3>
+      <p>We are building an institution, not a project. Every decision is made with the next decade in mind.</p>
     </div>
   </div>
 </section>
@@ -519,28 +695,6 @@ footer.site-footer a:hover { color: var(--accent); }
       <p>Exploratory work and prototypes in progress.</p>
     </a>
   </div>
-</section>
-
-<section id="partners" class="wrap">
-  <div class="section-head">
-    <div class="eyebrow">Working with</div>
-    <h2>Partners.</h2>
-  </div>
-  <div class="partners-grid">
-    <div class="partner">
-      <div class="partner-name">[Partner institution]</div>
-      <div class="partner-role">Type of collaboration</div>
-    </div>
-    <div class="partner">
-      <div class="partner-name">[Partner institution]</div>
-      <div class="partner-role">Type of collaboration</div>
-    </div>
-    <div class="partner">
-      <div class="partner-name">[Partner institution]</div>
-      <div class="partner-role">Type of collaboration</div>
-    </div>
-  </div>
-  <div class="placeholder-note">Placeholder section. Add real partners (universities, NGOs, financial institutions, funders) with links.</div>
 </section>
 
 <section id="contact" class="wrap">
