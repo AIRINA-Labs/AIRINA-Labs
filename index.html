@@ -390,16 +390,49 @@ footer.site-footer a:hover { color: var(--accent); }
 
 @media (max-width: 860px) {
   .hero-cards { grid-template-columns: 1fr; }
+  .hero-cards.asym { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .hero-cards.asym > a:first-child { grid-row: auto; }
   .values { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .update { grid-template-columns: 1fr; gap: 0.3rem; }
   .announce { padding: 0.6rem 1rem; font-size: 0.74rem; }
+  .hero-watermark { font-size: 6rem !important; }
 }
+
+/* HERO REDESIGN */
+.hero-wrap { position: relative; overflow: hidden; }
+.hero-watermark {
+  position: absolute; top: -1rem; right: -3rem;
+  font-family: var(--serif); font-style: italic; font-weight: 700;
+  font-size: clamp(8rem, 22vw, 16rem); line-height: 0.95;
+  color: transparent; -webkit-text-stroke: 1px var(--rule);
+  letter-spacing: -0.04em; user-select: none; pointer-events: none;
+  z-index: 0;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-coords {
+  font-family: var(--mono); font-size: 0.78rem; color: var(--muted);
+  letter-spacing: 0.04em; margin-top: 2rem;
+}
+.hero-coords strong { color: var(--ink); font-weight: 500; }
+
+/* ASYMMETRIC HERO CARDS — 1 large + 2 small */
+.hero-cards.asym { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: 1fr 1fr; gap: 1.4rem; }
+.hero-cards.asym > a:first-child { grid-row: span 2; padding: 2.5rem 2rem; }
+.hero-cards.asym > a:first-child h3 { font-size: 1.4rem; }
+.hero-cards.asym > a:first-child .hero-card-visual svg { height: 110px; }
+
+/* SECTION VARIANTS */
+.section-soft { background: var(--bg-soft); }
+.section-soft + section { border-top: 1px solid var(--rule); }
+section.tight { padding: 3rem 0; }
+.headline { margin-bottom: 2.5rem; }
+.headline h2 { max-width: 620px; }
 </style>
 </head>
 <body>
 
 <div class="announce">
-  <strong>Cohort 1</strong> TDA for Data Scientists · in-person, Cotonou · Launching Q3 2026 · <a href="training-01-tda.html">Apply →</a>
+  <strong>Cohort 1</strong> TDA for Data Scientists opens this quarter in Cotonou. <a href="training-01-tda.html">Apply →</a>
 </div>
 
 <nav class="site-nav">
@@ -425,27 +458,21 @@ footer.site-footer a:hover { color: var(--accent); }
   </div>
 </nav>
 
-<section class="hero wrap">
-  <div class="eyebrow">AIRINA Labs · Cotonou, Bénin · Est. 2025</div>
-  <h1>An African research institution for <em>applied AI</em> — building knowledge, talent, and tools for the continent.</h1>
-  <p class="lead">We advance financial inclusion and human development across Africa through applied AI research, data science products, and structured programs that move STEM graduates into impactful careers.</p>
-  <div class="hero-meta">
-    <span><strong>HQ</strong> Cotonou, Benin Republic</span>
-    <span><strong>Focus 2026</strong> Financial inclusion · Phase 1 of 3</span>
-    <span><strong>Roadmap</strong> Finance → Agriculture → Health</span>
+<section class="hero wrap hero-wrap">
+  <span class="hero-watermark" aria-hidden="true">AIRINA</span>
+  <div class="hero-content">
+    <h1>A small <em>mathematics-led</em> research institute in Cotonou.</h1>
+    <p class="lead">We work where applied AI is still mathematical — topology, persistent homology, interpretable models — and we work on the problems that West and Central African banks, microfinance institutions, and mobile-money operators actually bring through the door. We publish before we claim, we open the code, and we charge the institutions that pay our bills rather than the people we train.</p>
+    <p class="hero-coords"><strong>Cotonou, Bénin</strong> &nbsp;·&nbsp; Founded 2025 &nbsp;·&nbsp; Phase 1 of 3 — finance, then agriculture, then health.</p>
   </div>
 </section>
 
 <section class="manifesto wrap-narrow" id="what-we-are">
-  <p>We are an institution — built for the long term, anchored in rigorous research, and committed to the development of African talent and African solutions.</p>
+  <p>The longest program in our catalog is two weeks. Every program ends with a graded defense. We publish what we build. We do not charge the trainees. We expect to still be here in 2035.</p>
 </section>
 
 <section class="wrap" id="positions">
-  <div class="section-head">
-    <div class="eyebrow">Three positions</div>
-    <h2>Where we work, in one sentence each.</h2>
-  </div>
-  <div class="hero-cards">
+  <div class="hero-cards asym">
     <a class="hero-card" href="pillar-research.html">
       <div class="hero-card-visual">
         <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
@@ -469,8 +496,8 @@ footer.site-footer a:hover { color: var(--accent); }
           <circle cx="115" cy="90" r="3" fill="currentColor"/>
         </svg>
       </div>
-      <h3>Mathematics-first AI for African systems.</h3>
-      <p>Topology, persistent homology, interpretable models — applied where the data, the regulation, and the customer are African, not ported from elsewhere.</p>
+      <h3>Research is what we lead with.</h3>
+      <p>Our edge is mathematical depth. Most labs working in African fintech bring engineering and call it AI. We bring the topology, the analysis, the interpretability work, and the publication record. The papers are on arXiv. The code is on GitHub. The methods are the same whether a bank pays us or not.</p>
       <span class="hero-card-more">Research →</span>
     </a>
     <a class="hero-card" href="pillar-training.html">
@@ -485,8 +512,8 @@ footer.site-footer a:hover { color: var(--accent); }
           <line x1="60" y1="87" x2="68" y2="87" stroke="currentColor" stroke-width="2.5"/>
         </svg>
       </div>
-      <h3>Training that ends with a defense.</h3>
-      <p>No certificates of attendance. Every program closes with a graded project, defended in front of AIRINA researchers. The certificate is worth the line on a CV.</p>
+      <h3>Training, defended.</h3>
+      <p>Cohorts of twelve, taught by the people doing the research. Every program ends with a graded defense.</p>
       <span class="hero-card-more">Training →</span>
     </a>
     <a class="hero-card" href="pillar-products.html">
@@ -498,46 +525,44 @@ footer.site-footer a:hover { color: var(--accent); }
           <ellipse cx="100" cy="55" rx="72" ry="32" fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.4" transform="rotate(12 100 55)"/>
         </svg>
       </div>
-      <h3>Open methods, paid integrations.</h3>
-      <p>Methods, code, and benchmarks live on GitHub. Trained models and embedded engagements are commercial. Reputation compounds; revenue follows.</p>
+      <h3>Methods open, integrations paid.</h3>
+      <p>Code and benchmarks live on GitHub. Trained models and on-site engagements are commercial.</p>
       <span class="hero-card-more">Products →</span>
     </a>
   </div>
 </section>
 
 <section id="pillars" class="wrap">
-  <div class="section-head">
-    <div class="eyebrow">What we do</div>
-    <h2>Four pillars, one institution.</h2>
+  <div class="headline">
+    <h2>What the institute does, on a single page.</h2>
   </div>
   <div class="pillars">
     <div class="pillar">
       <span class="num">01</span>
       <h3>Research</h3>
-      <p>Original applied research on AI, mathematics, and data systems anchored in African realities. We publish, contribute to global knowledge, and make findings accessible to African policymakers and practitioners. <a href="pillar-research.html">Read more →</a></p>
+      <p>Mostly at the intersection of topology and applied machine learning. Persistent homology, interpretable models, asymmetric topology, a small bet on quantum-topological methods for finance. The papers are on arXiv; the code is on GitHub. <a href="pillar-research.html">Six active themes →</a></p>
     </div>
     <div class="pillar">
       <span class="num">02</span>
       <h3>Products</h3>
-      <p>Research translated into practical tools — beginning with financial inclusion (credit scoring, fraud detection, customer analytics) and expanding into agriculture and health over the decade. <a href="pillar-products.html">Read more →</a></p>
+      <p>Research turned into things banks and microfinance institutions can deploy. Right now: credit scoring and anomaly detection for institutions in the BCEAO zone. Later: agricultural risk. Later still: health. <a href="pillar-products.html">How we build →</a></p>
     </div>
     <div class="pillar">
       <span class="num">03</span>
       <h3>Training</h3>
-      <p>Short-form, research-led programs in TDA, interpretable AI, and the mathematical foundations of robust ML. 2 days to 2 weeks, graded, bilingual. <a href="pillar-training.html">Read more →</a> · <a href="training.html">Catalog →</a></p>
+      <p>Short cohorts, taught by the people doing the research. Two days to two weeks. Every program ends with a graded defense. Bilingual delivery. <a href="pillar-training.html">Philosophy →</a> · <a href="training.html">Catalog →</a></p>
     </div>
     <div class="pillar">
       <span class="num">04</span>
       <h3>Incubator</h3>
-      <p>AIRINA Ventures (Phase 2): mentorship, technical support, workspace, and institutional network for STEM graduates building AI-driven companies. <a href="pillar-incubator.html">Read more →</a></p>
+      <p>AIRINA Ventures opens in year three. Not active yet. Written down on this page so we hold ourselves to it. <a href="pillar-incubator.html">What it will be →</a></p>
     </div>
   </div>
 </section>
 
-<section class="wrap" id="updates">
-  <div class="section-head">
-    <div class="eyebrow">Recent</div>
-    <h2>Updates.</h2>
+<section class="wrap section-soft" id="updates">
+  <div class="headline">
+    <h2>What's happening.</h2>
   </div>
   <div class="updates">
     <div class="update">
@@ -565,9 +590,8 @@ footer.site-footer a:hover { color: var(--accent); }
 </section>
 
 <section id="roadmap" class="wrap">
-  <div class="section-head">
-    <div class="eyebrow">Where we go</div>
-    <h2>Three phases, one decade.</h2>
+  <div class="headline">
+    <h2>The plan, ten years out.</h2>
   </div>
   <div class="roadmap">
     <div class="roadmap-row">
@@ -592,34 +616,32 @@ footer.site-footer a:hover { color: var(--accent); }
 </section>
 
 <section class="wrap" id="values">
-  <div class="section-head">
-    <div class="eyebrow">Our values</div>
-    <h2>Four words we have to mean.</h2>
+  <div class="headline">
+    <h2>Four words that have to mean something.</h2>
   </div>
   <div class="values">
     <div class="value">
       <h3>Rigor</h3>
-      <p>We hold our research and products to the highest standards we know how to apply. We publish, we validate, and we are honest about what we know and what we do not.</p>
+      <p>We publish before we claim. We say so when we don't know.</p>
     </div>
     <div class="value">
       <h3>Relevance</h3>
-      <p>Every research question and every product is grounded in the realities of African communities, institutions, and markets. Generic baselines do not count.</p>
+      <p>The questions we work on come from African institutions. Benchmarks from elsewhere do not earn a pass.</p>
     </div>
     <div class="value">
       <h3>Inclusion</h3>
-      <p>We exist for the excluded — financially, economically, and professionally. Work that does not reach those who need it most is not the work we want to do.</p>
+      <p>We exist for the people the formal economy has excluded. If our work cannot reach them, it is not the work we want to do.</p>
     </div>
     <div class="value">
       <h3>Continuity</h3>
-      <p>We are building an institution, not a project. Every decision is made with the next decade in mind.</p>
+      <p>We are building an institution, not a project. The decade matters more than the quarter.</p>
     </div>
   </div>
 </section>
 
 <section id="people" class="wrap">
-  <div class="section-head">
-    <div class="eyebrow">Who we are</div>
-    <h2>People.</h2>
+  <div class="headline">
+    <h2>The people.</h2>
   </div>
   <div class="people">
     <div class="person">
@@ -642,10 +664,9 @@ footer.site-footer a:hover { color: var(--accent); }
   <div class="placeholder-note">Bios kept minimal. Expand entries and add team members / affiliated researchers (AIMS, ACAS, university partners) as the institution staffs up.</div>
 </section>
 
-<section id="work" class="wrap">
-  <div class="section-head">
-    <div class="eyebrow">Selected output</div>
-    <h2>Recent work.</h2>
+<section id="work" class="wrap section-soft">
+  <div class="headline">
+    <h2>The work.</h2>
   </div>
   <p class="work-intro">Selected publications and research outputs from AIRINA-affiliated researchers, primarily Y. U. Gaba. A curated list will land here. In the meantime, the full record lives on these profiles:</p>
   <div class="work-profiles">
@@ -669,9 +690,8 @@ footer.site-footer a:hover { color: var(--accent); }
 </section>
 
 <section id="tech" class="wrap">
-  <div class="section-head">
-    <div class="eyebrow">Tools we use</div>
-    <h2>Stack.</h2>
+  <div class="headline">
+    <h2>What we use.</h2>
   </div>
   <div class="tech-groups">
     <div class="tech-group">
@@ -690,9 +710,8 @@ footer.site-footer a:hover { color: var(--accent); }
 </section>
 
 <section id="repos" class="wrap">
-  <div class="section-head">
-    <div class="eyebrow">Open source</div>
-    <h2>Repositories.</h2>
+  <div class="headline">
+    <h2>Open repositories.</h2>
   </div>
   <div class="repos">
     <a class="repo" href="https://github.com/AIRINA-Labs">
@@ -715,9 +734,8 @@ footer.site-footer a:hover { color: var(--accent); }
 </section>
 
 <section id="contact" class="wrap">
-  <div class="section-head">
-    <div class="eyebrow">Get in touch</div>
-    <h2>Contact.</h2>
+  <div class="headline">
+    <h2>Get in touch.</h2>
   </div>
   <div class="contact">
     <div class="contact-block">
