@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Training & Certifications — AIRINA Labs</title>
+<meta name="description" content="Short-form training and certifications at AIRINA Labs: topological data analysis, interpretable AI, topological foundations of deep learning, quantum-topological methods. Graded, bilingual, research-led." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airina-labs.github.io/AIRINA-Labs/training.html" />
+<meta property="og:title" content="Training & Certifications — AIRINA Labs" />
+<meta property="og:description" content="Short-form, research-led training in TDA, interpretable AI, and the mathematical foundations of robust ML. Bilingual EN / FR." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* DESIGN TOKENS — light (default) */
+:root {
+  --bg:           #F5F1EA;
+  --bg-soft:      #EFEAE0;
+  --ink:          #1A1F2C;
+  --ink-soft:     #2E3548;
+  --muted:        #5C6478;
+  --dim:          #9098AB;
+  --rule:         rgba(26,31,44,0.10);
+  --rule-strong:  rgba(26,31,44,0.22);
+  --accent:       #B6650A;
+  --accent-soft:  rgba(182,101,10,0.10);
+  --nav-bg:       rgba(245,241,234,0.92);
+  --serif: 'IBM Plex Serif', Georgia, serif;
+  --mono:  'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+}
+[data-theme="dark"] {
+  --bg:           #0F141E;
+  --bg-soft:      #161C2A;
+  --ink:          #ECE7DC;
+  --ink-soft:     #C9C5BA;
+  --muted:        #8A91A3;
+  --dim:          #5F6680;
+  --rule:         rgba(236,231,220,0.10);
+  --rule-strong:  rgba(236,231,220,0.22);
+  --accent:       #E0A24A;
+  --accent-soft:  rgba(224,162,74,0.12);
+  --nav-bg:       rgba(15,20,30,0.92);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  font-size: 17px; line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* TYPOGRAPHY */
+h1, h2, h3, h4 { color: var(--ink); font-weight: 600; line-height: 1.2; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 500; letter-spacing: -0.018em; line-height: 1.1; }
+h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 500; letter-spacing: -0.012em; line-height: 1.15; }
+h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.003em; }
+h4 { font-size: 0.78rem; font-weight: 400; font-family: var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+p  { color: var(--ink-soft); }
+a  { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+a:hover { border-bottom-color: var(--accent); }
+
+.eyebrow {
+  font-family: var(--mono); font-size: 0.72rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted);
+}
+.lead { font-size: 1.15rem; line-height: 1.55; color: var(--ink-soft); }
+
+/* LAYOUT */
+.wrap        { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+.wrap-narrow { max-width: 760px;  margin: 0 auto; padding: 0 2rem; }
+section { padding: 5rem 0; border-top: 1px solid var(--rule); }
+section.hero, section.manifesto { border-top: none; }
+
+/* NAV */
+nav.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  font-family: var(--serif); font-weight: 600;
+  font-size: 1.05rem; letter-spacing: -0.005em;
+  color: var(--ink); border-bottom: none;
+}
+.brand em { color: var(--accent); font-style: italic; font-weight: 500; }
+.brand-mark { flex-shrink: 0; color: var(--ink); transition: color .2s; }
+.brand:hover .brand-mark { color: var(--accent); }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; }
+.nav-links a {
+  font-family: var(--mono); font-size: 0.76rem;
+  color: var(--muted); border-bottom: none;
+  letter-spacing: 0.02em;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a.active { color: var(--accent); }
+.nav-controls { display: flex; gap: 0.6rem; align-items: center; }
+.theme-btn {
+  border: 1px solid var(--rule-strong); background: transparent; cursor: pointer;
+  width: 30px; height: 30px; border-radius: 50%;
+  color: var(--muted); font-size: 0.9rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: color .2s, border-color .2s;
+}
+.theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+/* HERO */
+section.hero { padding: 6.5rem 0 4rem; }
+.hero .eyebrow { margin-bottom: 1.5rem; }
+.hero h1 { max-width: 880px; }
+.hero .lead { margin-top: 1.5rem; max-width: 720px; }
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 2rem 2.5rem;
+  margin-top: 2.5rem;
+  font-family: var(--mono); font-size: 0.78rem; color: var(--muted);
+}
+.hero-meta span { display: inline-flex; gap: 0.5rem; align-items: baseline; }
+.hero-meta strong { color: var(--ink); font-weight: 500; }
+
+/* MANIFESTO BAND */
+section.manifesto {
+  padding: 6rem 0; background: var(--ink); color: var(--bg);
+  border-top: none; border-bottom: none;
+}
+section.manifesto + section { border-top: none; }
+.manifesto p {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  line-height: 1.35; color: var(--bg); max-width: 820px;
+}
+[data-theme="dark"] section.manifesto { background: var(--bg-soft); }
+[data-theme="dark"] section.manifesto p { color: var(--ink); }
+
+/* SECTION HEAD */
+.section-head { margin-bottom: 2.5rem; }
+.section-head .eyebrow { margin-bottom: 0.7rem; }
+
+/* TRAININGS */
+.trainings { display: flex; flex-direction: column; }
+.training {
+  border-top: 1px solid var(--rule);
+  padding: 1.5rem 0;
+}
+.training[open] { padding-bottom: 2rem; }
+
+.training-summary {
+  display: grid; grid-template-columns: 50px 1fr auto;
+  gap: 1.5rem; align-items: baseline;
+  cursor: pointer; list-style: none;
+  padding: 0.4rem 0;
+}
+.training-summary::-webkit-details-marker { display: none; }
+.training-summary::marker { content: ''; }
+
+.training-num {
+  font-family: var(--mono); font-size: 0.88rem;
+  color: var(--accent); font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.training-summary-body { min-width: 0; }
+.training-summary-body h3 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 1.2rem; color: var(--ink); margin-bottom: 0.3rem;
+  transition: color .2s;
+}
+.training:hover .training-summary-body h3,
+.training[open] .training-summary-body h3 { color: var(--accent); }
+
+.training-meta {
+  font-family: var(--mono); font-size: 0.76rem;
+  color: var(--muted); line-height: 1.6;
+}
+
+.training-status {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px; white-space: nowrap;
+  align-self: center;
+}
+.status-launch    { color: var(--accent); border: 1px solid var(--accent); background: var(--accent-soft); }
+.status-year-two  { color: var(--muted);  border: 1px solid var(--rule-strong); }
+.status-specialty { color: var(--dim);    border: 1px solid var(--rule); }
+
+.training-toggle {
+  font-family: var(--mono); font-size: 0.78rem;
+  color: var(--muted); margin-left: 0.4rem;
+}
+.training[open] .training-toggle::before { content: '×'; }
+.training:not([open]) .training-toggle::before { content: '+'; }
+
+/* training detail body */
+.training-body {
+  margin-top: 1.4rem; margin-left: calc(50px + 1.5rem);
+  display: grid; gap: 1.4rem;
+}
+.training-desc {
+  font-size: 1rem; color: var(--ink-soft);
+  border-left: 2px solid var(--accent); padding-left: 1rem;
+  max-width: 760px;
+}
+.training-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem 2.2rem;
+}
+.training-block p { font-size: 0.92rem; line-height: 1.6; }
+
+.training-outline ol { list-style: none; counter-reset: ol-counter; }
+.training-outline li {
+  counter-increment: ol-counter;
+  padding: 0.7rem 0 0.7rem 2.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.93rem; line-height: 1.55;
+  position: relative;
+}
+.training-outline li:first-child { border-top: none; padding-top: 0.4rem; }
+.training-outline li::before {
+  content: counter(ol-counter, decimal-leading-zero);
+  position: absolute; left: 0; top: 0.85rem;
+  font-family: var(--mono); font-size: 0.72rem;
+  color: var(--accent); letter-spacing: 0.05em;
+}
+.training-outline li strong { font-family: var(--mono); font-weight: 500; font-size: 0.82rem; color: var(--ink); margin-right: 0.5rem; }
+
+.training-foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule);
+  font-family: var(--mono); font-size: 0.8rem; color: var(--muted);
+  flex-wrap: wrap;
+}
+.training-foot a { color: var(--ink); border-bottom: 1px solid var(--rule-strong); }
+.training-foot a:hover { color: var(--accent); border-color: var(--accent); }
+.training-cert strong { color: var(--accent); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.7rem; margin-right: 0.4rem; }
+
+/* CONTACT */
+.contact { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 720px; }
+.contact-block h3 {
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.7rem;
+}
+.contact-block p { color: var(--ink); font-size: 0.95rem; }
+.contact-block a { color: var(--ink); border-bottom: 1px solid var(--rule-strong); }
+.contact-block a:hover { color: var(--accent); border-color: var(--accent); }
+
+/* FOOTER */
+footer.site-footer {
+  padding: 2rem; border-top: 1px solid var(--rule);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--mono); font-size: 0.74rem; color: var(--muted);
+}
+footer.site-footer a { color: var(--muted); border-bottom: none; }
+footer.site-footer a:hover { color: var(--accent); }
+
+/* PHILOSOPHY / LOOP blocks */
+.prose p + p { margin-top: 1rem; }
+.prose { max-width: 760px; }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .contact, .training-grid { grid-template-columns: 1fr; }
+  .training-summary { grid-template-columns: 40px 1fr; gap: 1rem; }
+  .training-status { grid-column: 2; justify-self: start; margin-top: 0.4rem; }
+  .training-body { margin-left: 0; }
+  .nav-links { display: none; }
+  section { padding: 3.5rem 0; }
+  section.hero { padding: 4.5rem 0 3rem; }
+  section.manifesto { padding: 4rem 0; }
+  .hero-meta { gap: 0.8rem 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" width="26" height="26" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text>
+    </svg>
+    <span>AIR<em>INA</em> Labs</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#what-we-are">About</a></li>
+    <li><a href="index.html#pillars">Pillars</a></li>
+    <li><a href="training.html" class="active">Training</a></li>
+    <li><a href="index.html#people">People</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle light/dark theme">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="eyebrow">AIRINA Labs · Training &amp; Certifications</div>
+  <h1>Short-form. Mathematically rigorous. <em>Research-led.</em></h1>
+  <p class="lead">Two-day to two-week programs in topological data analysis, interpretable AI, and the mathematical foundations of robust machine learning. Graded certificates. Bilingual delivery. Each cohort is small and instructor-dense.</p>
+  <div class="hero-meta">
+    <span><strong>Format</strong> In-person · Cotonou &amp; partner sites</span>
+    <span><strong>Languages</strong> EN / FR</span>
+    <span><strong>Cohorts</strong> 8–18 participants</span>
+  </div>
+</section>
+
+<section class="manifesto wrap-narrow">
+  <p>Our trainings are not an introduction to data science. They are short-form, mathematically deep, and built around the unit's active research programs — what we teach is what we publish.</p>
+</section>
+
+<!-- TIER 1 -->
+<section class="wrap" id="tier-1">
+  <div class="section-head">
+    <div class="eyebrow">Anchor programs · Launching first</div>
+    <h2>Tier 1 — what we run now.</h2>
+  </div>
+  <div class="trainings">
+
+    <details class="training" open>
+      <summary class="training-summary">
+        <span class="training-num">/01</span>
+        <div class="training-summary-body">
+          <h3>TDA for Data Scientists <span class="training-toggle"></span></h3>
+          <div class="training-meta">3 days · In-person · Bilingual EN/FR · Cohort ~12</div>
+        </div>
+        <span class="training-status status-launch">Launching Q3 2026</span>
+      </summary>
+      <div class="training-body">
+        <p class="training-desc">Hands-on entry to topological data analysis for working data scientists. We build the GUDHI / Ripser / giotto-tda pipeline end to end — from point clouds, to filtrations, to persistence diagrams, to ML-ready features.</p>
+        <div class="training-grid">
+          <div class="training-block">
+            <h4>Audience</h4>
+            <p>Data scientists, statisticians, and ML engineers from banks, MFIs, telcos, and financial institutions. AIMS-alum graduate students with quantitative backgrounds.</p>
+          </div>
+          <div class="training-block">
+            <h4>Prerequisites</h4>
+            <p>Working Python (NumPy / pandas). Calculus and linear algebra. No prior topology required.</p>
+          </div>
+        </div>
+        <div class="training-outline">
+          <h4>Outline</h4>
+          <ol>
+            <li><strong>Day 1.</strong> Point clouds to filtrations — Vietoris–Rips, Čech, alpha complexes. Persistent homology by hand and in code (GUDHI, Ripser).</li>
+            <li><strong>Day 2.</strong> Persistence diagrams, barcodes, landscapes — interpretation and the stability theorem. Vectorization for ML in giotto-tda.</li>
+            <li><strong>Day 3.</strong> TDA on real data — time series, networks, images. Graded final mini-project and defense.</li>
+          </ol>
+        </div>
+        <div class="training-foot">
+          <span class="training-cert"><strong>Cert</strong> AIRINA TDA Foundations · graded final</span>
+          <span><a href="mailto:contact@airina.africa?subject=TDA%20for%20Data%20Scientists">Register interest →</a></span>
+        </div>
+      </div>
+    </details>
+
+    <details class="training">
+      <summary class="training-summary">
+        <span class="training-num">/02</span>
+        <div class="training-summary-body">
+          <h3>Interpretable ML for Regulated Industries <span class="training-toggle"></span></h3>
+          <div class="training-meta">3 days · In-person · Bilingual EN/FR · Cohort ~12</div>
+        </div>
+        <span class="training-status status-launch">Launching Q4 2026</span>
+      </summary>
+      <div class="training-body">
+        <p class="training-desc">For risk and analytics teams at banks, MFIs, and insurers. Interpretable-by-design models, post-hoc explanations and their failure modes, fairness audits under African data realities, and an introduction to neuro-symbolic methods.</p>
+        <div class="training-grid">
+          <div class="training-block">
+            <h4>Audience</h4>
+            <p>Risk modellers, credit and fraud analysts, model validation teams, regulatory analytics at financial institutions.</p>
+          </div>
+          <div class="training-block">
+            <h4>Prerequisites</h4>
+            <p>Working data-science Python; familiarity with logistic regression, random forests, gradient boosting.</p>
+          </div>
+        </div>
+        <div class="training-outline">
+          <h4>Outline</h4>
+          <ol>
+            <li><strong>Day 1.</strong> Regulatory landscape (BCEAO, BCBS, EU AI Act); interpretability vs explainability; interpretable-by-design models — GAMs, monotonic gradient boosting, decision lists, rule extraction.</li>
+            <li><strong>Day 2.</strong> Post-hoc explanations — SHAP, LIME, counterfactuals — strengths, failure modes, and what NOT to claim. Fairness audits and disparate-impact analysis on African data.</li>
+            <li><strong>Day 3.</strong> Neuro-symbolic methods for decisioning. Graded final — model plus interpretability and fairness audit on a real dataset.</li>
+          </ol>
+        </div>
+        <div class="training-foot">
+          <span class="training-cert"><strong>Cert</strong> AIRINA Interpretable ML for Finance · graded final</span>
+          <span><a href="mailto:contact@airina.africa?subject=Interpretable%20ML">Register interest →</a></span>
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- TIER 2 -->
+<section class="wrap" id="tier-2">
+  <div class="section-head">
+    <div class="eyebrow">Year-two expansion</div>
+    <h2>Tier 2 — once the catalog matures.</h2>
+  </div>
+  <div class="trainings">
+
+    <details class="training">
+      <summary class="training-summary">
+        <span class="training-num">/03</span>
+        <div class="training-summary-body">
+          <h3>Topological Foundations of Deep Learning <span class="training-toggle"></span></h3>
+          <div class="training-meta">2 weeks · Residential, Cotonou · Cohort ~15</div>
+        </div>
+        <span class="training-status status-year-two">2027 summer school</span>
+      </summary>
+      <div class="training-body">
+        <p class="training-desc">A summer school on what topology has to say about deep learning — the manifold hypothesis, latent geometry, persistent homology of activations, differentiable persistence, and topology-aware regularization. Heavy on theory and code in equal measure.</p>
+        <div class="training-grid">
+          <div class="training-block">
+            <h4>Audience</h4>
+            <p>Graduate students in mathematics / CS / statistics, industry research engineers, advanced ML practitioners.</p>
+          </div>
+          <div class="training-block">
+            <h4>Prerequisites</h4>
+            <p>Solid deep-learning practice; comfort with measure-theoretic probability or algebraic topology (one or the other).</p>
+          </div>
+        </div>
+        <div class="training-outline">
+          <h4>Outline</h4>
+          <ol>
+            <li><strong>Week 1.</strong> Manifold hypothesis; latent geometry of representations; persistent homology of activations; topological signatures of generalization and capacity.</li>
+            <li><strong>Week 2.</strong> Topological regularization; differentiable persistence and topological loss functions; robustness and OOD detection via topology. Research mini-project and final talk.</li>
+          </ol>
+        </div>
+        <div class="training-foot">
+          <span class="training-cert"><strong>Cert</strong> AIRINA Topological Foundations of DL · graded · seeking ECTS co-accreditation</span>
+          <span><a href="mailto:contact@airina.africa?subject=TopoFoundations">Register interest →</a></span>
+        </div>
+      </div>
+    </details>
+
+    <details class="training">
+      <summary class="training-summary">
+        <span class="training-num">/04</span>
+        <div class="training-summary-body">
+          <h3>Quantum-Topological Methods for Finance <span class="training-toggle"></span></h3>
+          <div class="training-meta">1 week · In-person + research workshop · Cohort ~15</div>
+        </div>
+        <span class="training-status status-year-two">2027 cohort</span>
+      </summary>
+      <div class="training-body">
+        <p class="training-desc">Frontier-topic bootcamp: where quantum computing, topology, and quantitative finance meet. Variational quantum circuits, quantum kernels, topological features for time series and portfolio analysis — and the open research questions at their intersection. The week doubles as a research workshop.</p>
+        <div class="training-grid">
+          <div class="training-block">
+            <h4>Audience</h4>
+            <p>Quants, financial engineering teams, advanced graduate students in math / physics / CS.</p>
+          </div>
+          <div class="training-block">
+            <h4>Prerequisites</h4>
+            <p>Quantitative finance background; basic quantum computing exposure (Qiskit / PennyLane); strong linear algebra.</p>
+          </div>
+        </div>
+        <div class="training-outline">
+          <h4>Outline</h4>
+          <ol>
+            <li><strong>Day 1.</strong> Quantum-computing primer for finance — variational circuits, QAOA, quantum kernels.</li>
+            <li><strong>Day 2.</strong> Topological methods for time series and portfolio analysis.</li>
+            <li><strong>Day 3.</strong> Bridging the two — topological features inside quantum-enhanced models.</li>
+            <li><strong>Day 4.</strong> Research case studies: volatility surface, regime detection, credit risk.</li>
+            <li><strong>Day 5.</strong> Mini-project, research workshop session, group writeup.</li>
+          </ol>
+        </div>
+        <div class="training-foot">
+          <span class="training-cert"><strong>Cert</strong> AIRINA Quantum-Topological Methods · graded final</span>
+          <span><a href="mailto:contact@airina.africa?subject=QuantumTopo">Register interest →</a></span>
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- TIER 3 -->
+<section class="wrap" id="tier-3">
+  <div class="section-head">
+    <div class="eyebrow">Specialized · Lower volume</div>
+    <h2>Tier 3 — research school and advanced.</h2>
+  </div>
+  <div class="trainings">
+
+    <details class="training">
+      <summary class="training-summary">
+        <span class="training-num">/05</span>
+        <div class="training-summary-body">
+          <h3>Asymmetric Topology &amp; Complexity — Research School <span class="training-toggle"></span></h3>
+          <div class="training-meta">1 week · Co-hosted with university partner · Cohort ~12</div>
+        </div>
+        <span class="training-status status-specialty">2027–2028</span>
+      </summary>
+      <div class="training-body">
+        <p class="training-desc">An advanced research school on the AIRINA director's pure-math specialty: quasi-metric spaces, bipolar metrics, fixed-point theory in asymmetric settings, and applications to theoretical computer science and machine learning. Low volume, high credibility — feeds the unit's academic network.</p>
+        <div class="training-grid">
+          <div class="training-block">
+            <h4>Audience</h4>
+            <p>Pure-mathematics graduate students, postdocs, theoretical computer scientists.</p>
+          </div>
+          <div class="training-block">
+            <h4>Prerequisites</h4>
+            <p>Graduate-level topology and functional analysis.</p>
+          </div>
+        </div>
+        <div class="training-outline">
+          <h4>Outline</h4>
+          <ol>
+            <li><strong>Lectures.</strong> Quasi-metric and bipolar metric spaces; fixed-point theory in asymmetric settings; asymmetric complexity; selected open problems.</li>
+            <li><strong>Applications.</strong> Bridges to theoretical CS (denotational semantics, domain theory) and to ML (asymmetric similarity, dissimilarity learning).</li>
+            <li><strong>Daily working groups.</strong> Problem sets, joint proofs, research-question scoping.</li>
+          </ol>
+        </div>
+        <div class="training-foot">
+          <span class="training-cert"><strong>Cert</strong> Research school attendance certificate · academic</span>
+          <span><a href="mailto:contact@airina.africa?subject=AsymTopo">Register interest →</a></span>
+        </div>
+      </div>
+    </details>
+
+    <details class="training">
+      <summary class="training-summary">
+        <span class="training-num">/06</span>
+        <div class="training-summary-body">
+          <h3>TDA for Robust &amp; OOD-Aware ML <span class="training-toggle"></span></h3>
+          <div class="training-meta">5 days · In-person · Cohort ~12</div>
+        </div>
+        <span class="training-status status-specialty">When research matures</span>
+      </summary>
+      <div class="training-body">
+        <p class="training-desc">For ML engineers and AI-safety researchers. Adversarial robustness, OOD detection via topological signatures, certified robustness via topological structure, and topology-aware training. Launched once AIRINA's published work in this area gives it the standing to teach it.</p>
+        <div class="training-grid">
+          <div class="training-block">
+            <h4>Audience</h4>
+            <p>ML engineers, AI-safety researchers, robustness/security teams at financial institutions and beyond.</p>
+          </div>
+          <div class="training-block">
+            <h4>Prerequisites</h4>
+            <p>Strong ML practitioner background; some TDA exposure — or training /01 as a stepping stone.</p>
+          </div>
+        </div>
+        <div class="training-outline">
+          <h4>Outline</h4>
+          <ol>
+            <li><strong>Day 1.</strong> Adversarial robustness — landscape, current methods, where they fail.</li>
+            <li><strong>Day 2.</strong> Topological signatures of OOD examples; persistence-based OOD detectors.</li>
+            <li><strong>Day 3.</strong> Certified robustness via topological structure.</li>
+            <li><strong>Day 4.</strong> Topological regularization during training.</li>
+            <li><strong>Day 5.</strong> Final project and defense.</li>
+          </ol>
+        </div>
+        <div class="training-foot">
+          <span class="training-cert"><strong>Cert</strong> AIRINA Robust ML with TDA · graded final</span>
+          <span><a href="mailto:contact@airina.africa?subject=RobustML">Register interest →</a></span>
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- CERTIFICATION PHILOSOPHY -->
+<section class="wrap" id="philosophy">
+  <div class="section-head">
+    <div class="eyebrow">How we certify</div>
+    <h2>The certificate has to mean something.</h2>
+  </div>
+  <div class="prose">
+    <p>AIRINA does not issue certificates of attendance. Every training ends with a graded final — a TDA pipeline on a real dataset, an interpretability and fairness audit, a research mini-project — defended in front of AIRINA researchers. That is what makes the certificate worth listing on a CV.</p>
+    <p>Where appropriate, the longer programs (Tier 2 and the research school) are co-accredited with university partners so they carry academic weight beyond the AIRINA brand.</p>
+  </div>
+</section>
+
+<!-- TRAINING × RESEARCH LOOP -->
+<section class="wrap" id="loop">
+  <div class="section-head">
+    <div class="eyebrow">Training × research</div>
+    <h2>One engine, two timescales.</h2>
+  </div>
+  <div class="prose">
+    <p>Each training has a paid industry-consulting twin. A bank that sends two analysts to <em>TDA for Data Scientists</em> can then hire AIRINA on a six-week engagement applying TDA to its fraud-detection problem. The engagement generates the case study used in the next cohort. The published paper from that engagement gives the next training its credibility.</p>
+    <p>Top participants from short trainings are recruited into AIRINA research collaborations on the deeper themes — symbolic and interpretable AI, topological foundations of RL, quantum-topological AI for finance. The certificate program is the front door; the research arm is the back room. Same engine, different timescales.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="wrap" id="contact">
+  <div class="section-head">
+    <div class="eyebrow">Register &amp; enquiries</div>
+    <h2>Contact.</h2>
+  </div>
+  <div class="contact">
+    <div class="contact-block">
+      <h3>Trainings</h3>
+      <p><a href="mailto:contact@airina.africa">contact@airina.africa</a></p>
+    </div>
+    <div class="contact-block">
+      <h3>Industry partnerships</h3>
+      <p><a href="mailto:contact@airina.africa">contact@airina.africa</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="index.html">← Back to home</a></span>
+</footer>
+
+<script>
+(function () {
+  var saved = localStorage.getItem('airina-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('airina-theme', next);
+  });
+})();
+</script>
+
+</body>
+</html>
