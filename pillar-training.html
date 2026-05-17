@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Training — AIRINA Labs</title>
+<meta name="description" content="The AIRINA Labs training line: short-form, mathematically rigorous, research-led programs. Graded certificates. Bilingual EN / FR." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root { --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548; --muted:#5C6478; --dim:#9098AB; --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22); --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10); --nav-bg:rgba(245,241,234,0.92); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA; --muted:#8A91A3; --dim:#5F6680; --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22); --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12); --nav-bg:rgba(15,20,30,0.92); }
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.2rem, 5vw, 3.8rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
+h1 em { font-style:italic; color:var(--accent); font-weight:500; }
+h2 { font-size:clamp(1.6rem, 3vw, 2.2rem); font-weight:500; letter-spacing:-0.012em; line-height:1.18; }
+h3 { font-size:1.15rem; font-weight:600; letter-spacing:-0.003em; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.15rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+.wrap-narrow { max-width:760px; margin:0 auto; padding:0 2rem; }
+section { padding:5rem 0; border-top:1px solid var(--rule); }
+section.hero { border-top:none; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; letter-spacing:-0.005em; color:var(--ink); border-bottom:none; }
+.brand em { color:var(--accent); font-style:italic; font-weight:500; }
+.brand-mark { flex-shrink:0; color:var(--ink); transition:color .2s; }
+.brand:hover .brand-mark { color:var(--accent); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); letter-spacing:0.05em; border-bottom:none; cursor:pointer; transition:color .2s; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-link:hover:not(.active) { color:var(--ink); }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; transition:color .2s, border-color .2s; }
+.theme-btn:hover { color:var(--accent); border-color:var(--accent); }
+section.hero { padding:6rem 0 4rem; }
+.hero .eyebrow { margin-bottom:1.2rem; }
+.hero h1 { max-width:880px; }
+.hero .lead { margin-top:1.4rem; max-width:720px; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:1.6rem 2.4rem; margin-top:2.3rem; font-family:var(--mono); font-size:0.78rem; color:var(--muted); }
+.hero-meta span { display:inline-flex; gap:0.5rem; align-items:baseline; }
+.hero-meta strong { color:var(--ink); font-weight:500; }
+.section-head { margin-bottom:2.5rem; }
+.section-head .eyebrow { margin-bottom:0.7rem; }
+.prose { max-width:760px; }
+.prose p + p { margin-top:1rem; }
+
+.catalog-cta {
+  margin-top:1.5rem; padding:1rem 1.4rem;
+  border:1px solid var(--rule-strong); border-radius:2px;
+  display:flex; justify-content:space-between; align-items:baseline;
+  font-family:var(--mono); font-size:0.85rem; color:var(--ink-soft);
+  flex-wrap:wrap; gap:1rem;
+}
+.catalog-cta a { color:var(--ink); border-bottom:1px solid var(--rule-strong); }
+.catalog-cta a:hover { color:var(--accent); border-color:var(--accent); }
+
+.principles { display:flex; flex-direction:column; }
+.principle {
+  padding:1.5rem 0; border-top:1px solid var(--rule);
+  display:grid; grid-template-columns:auto 1fr; gap:1.6rem; align-items:baseline;
+}
+.principle:first-child { border-top:none; padding-top:0; }
+.principle-num { font-family:var(--mono); font-size:0.82rem; color:var(--accent); letter-spacing:0.04em; font-weight:500; }
+.principle h3 { font-family:var(--serif); font-weight:500; font-size:1.15rem; margin-bottom:0.4rem; }
+.principle p { font-size:0.95rem; max-width:680px; }
+
+.contact { display:grid; grid-template-columns:repeat(2, 1fr); gap:2rem; max-width:720px; }
+.contact-block h3 { font-family:var(--mono); font-size:0.72rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.7rem; }
+.contact-block p { color:var(--ink); font-size:0.95rem; line-height:1.55; }
+.contact-block a { color:var(--ink); border-bottom:1px solid var(--rule-strong); }
+.contact-block a:hover { color:var(--accent); border-color:var(--accent); }
+
+footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
+footer.site-footer a { color:var(--muted); border-bottom:none; }
+footer.site-footer a:hover { color:var(--accent); }
+
+@media (max-width:860px) {
+  .contact { grid-template-columns:1fr; }
+  .principle { grid-template-columns:1fr; gap:0.4rem; }
+  .nav-links { display:none; }
+  section { padding:3.5rem 0; }
+  section.hero { padding:4.5rem 0 3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition:none !important; animation:none !important; }
+  html { scroll-behavior:auto; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" width="26" height="26" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text>
+    </svg>
+    <span>AIR<em>INA</em> Labs</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#what-we-are">About</a></li>
+    <li><a href="index.html#pillars" class="active">Pillars</a></li>
+    <li><a href="training.html">Training</a></li>
+    <li><a href="index.html#people">People</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link active" aria-current="page" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link" href="pilier-formation.html" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle light/dark theme">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="eyebrow">Pillar /03 · Training</div>
+  <h1>Training at <em>AIRINA</em>.</h1>
+  <p class="lead">Short-form. Mathematically rigorous. Built around what the unit actually publishes. The training pillar is how AIRINA's research reaches working data scientists, analysts, and graduate students — and how the unit recruits its next research collaborators.</p>
+  <div class="hero-meta">
+    <span><strong>Format</strong> 2 days to 2 weeks</span>
+    <span><strong>Languages</strong> EN / FR</span>
+    <span><strong>Certificate</strong> Graded, defended</span>
+  </div>
+</section>
+
+<section class="wrap" id="what">
+  <div class="section-head">
+    <div class="eyebrow">What we run</div>
+    <h2>Six programs across three tiers.</h2>
+  </div>
+  <div class="prose">
+    <p>The catalog has two anchor programs in Tier 1 (TDA for data scientists, and interpretable ML for regulated industries), two longer programs in Tier 2 (the 2-week summer school on topological foundations of deep learning, and a 1-week quantum-topological methods bootcamp), and two specialized programs in Tier 3 (an asymmetric-topology research school, and a robustness-and-OOD training in TDA). Tier 2 and 3 programs open as the unit's publications in each area mature — we do not teach a topic before we have published on it.</p>
+  </div>
+  <div class="catalog-cta">
+    <span>Full catalog with curricula, prerequisites, and registration:</span>
+    <span><a href="training.html">training.html →</a> &nbsp;·&nbsp; <a href="formations.html">formations.html (FR) →</a></span>
+  </div>
+</section>
+
+<section class="wrap" id="principles">
+  <div class="section-head">
+    <div class="eyebrow">How the training pillar works</div>
+    <h2>Four principles.</h2>
+  </div>
+  <div class="principles">
+    <div class="principle">
+      <span class="principle-num">/01</span>
+      <div>
+        <h3>Short-form, by design</h3>
+        <p>The longest program in the catalog is two weeks. Most are three to five days. We are not building a degree-granting school. We are giving working professionals and graduate students concentrated access to research they cannot get from a Coursera course.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">/02</span>
+      <div>
+        <h3>Mathematically deep</h3>
+        <p>The foundation we expect goes beyond Python and sklearn. Calculus, linear algebra, probability, and — for the longer programs — at least one of measure theory or algebraic topology. The unit's edge is mathematical depth. We do not water it down to widen the market.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">/03</span>
+      <div>
+        <h3>Graded, defended, real</h3>
+        <p>Every program ends with a project — a TDA pipeline on a real dataset, an interpretability and fairness audit of a real model, a research mini-project — defended in front of AIRINA researchers. No certificate of attendance. The certificate carries weight because the assessment has teeth.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">/04</span>
+      <div>
+        <h3>Bilingual, operationally</h3>
+        <p>Technical content is delivered in English (the research language); spoken sessions and written deliverables work in both EN and FR. Participants present in both. Francophone West African analysts and Anglophone graduate students sit in the same cohort.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="who-teaches">
+  <div class="section-head">
+    <div class="eyebrow">Who teaches</div>
+    <h2>Practitioners only.</h2>
+  </div>
+  <div class="prose">
+    <p>AIRINA researchers and invited faculty from partner institutions (AIMS, ACAS, university math and statistics departments). The director leads the topology-heavy material himself. We do not bring in non-practitioners. If a topic does not have a working practitioner in the unit, we either co-host with someone who does, or we do not run it.</p>
+    <p>The slow-catalog discipline is intentional. Adding a fifth or sixth program is cheap; teaching it well is not.</p>
+  </div>
+</section>
+
+<section class="wrap" id="loop">
+  <div class="section-head">
+    <div class="eyebrow">Training × research</div>
+    <h2>One engine, two timescales.</h2>
+  </div>
+  <div class="prose">
+    <p>Each program has a paid industry-consulting twin. A bank that sends two analysts to <em>TDA for Data Scientists</em> can then hire AIRINA on a six-week engagement applying TDA to its fraud-detection problem. The engagement generates the case study used in the next cohort. The published paper that comes out of the engagement gives the next cohort its credibility.</p>
+    <p>Top participants from the short trainings are recruited into AIRINA research collaborations on the deeper themes. The certificate program is the front door. The research arm is the back room. Same engine, different timescales, and the work compounds.</p>
+  </div>
+</section>
+
+<section class="wrap" id="get-involved">
+  <div class="section-head">
+    <div class="eyebrow">Get involved</div>
+    <h2>Three ways in.</h2>
+  </div>
+  <div class="contact">
+    <div class="contact-block">
+      <h3>As a participant</h3>
+      <p>See the catalog and register: <a href="training.html">training.html</a> · <a href="formations.html">formations.html (FR)</a></p>
+    </div>
+    <div class="contact-block">
+      <h3>As a hiring partner</h3>
+      <p>Banks, MFIs, fintechs sending analysts in exchange for first-look hiring rights: <a href="mailto:contact@airina.africa?subject=Training%20hiring%20partner">contact@airina.africa</a></p>
+    </div>
+    <div class="contact-block">
+      <h3>As a co-host</h3>
+      <p>Universities and research institutes that want to co-accredit Tier-2 or Tier-3 programs: <a href="mailto:contact@airina.africa?subject=Training%20co-host">contact@airina.africa</a></p>
+    </div>
+    <div class="contact-block">
+      <h3>As a funder</h3>
+      <p>Foundations and development banks underwriting cohort access: <a href="mailto:contact@airina.africa?subject=Training%20funder">contact@airina.africa</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="index.html">← Back to home</a></span>
+</footer>
+
+<script>
+(function () {
+  var saved = localStorage.getItem('airina-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('airina-theme', next);
+  });
+})();
+</script>
+
+</body>
+</html>

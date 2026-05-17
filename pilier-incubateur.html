@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Incubateur — AIRINA Labs</title>
+<meta name="description" content="AIRINA Ventures : l'incubateur prévu de l'unité pour fondateurs construisant des entreprises d'IA ancrées dans les problèmes africains. Engagement de troisième année, pas encore actif." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root { --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548; --muted:#5C6478; --dim:#9098AB; --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22); --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10); --nav-bg:rgba(245,241,234,0.92); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA; --muted:#8A91A3; --dim:#5F6680; --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22); --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12); --nav-bg:rgba(15,20,30,0.92); }
+* { box-sizing:border-box; margin:0; padding:0; } html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.2rem, 5vw, 3.8rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
+h1 em { font-style:italic; color:var(--accent); font-weight:500; }
+h2 { font-size:clamp(1.6rem, 3vw, 2.2rem); font-weight:500; letter-spacing:-0.012em; }
+h3 { font-size:1.15rem; font-weight:600; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.15rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+section { padding:5rem 0; border-top:1px solid var(--rule); }
+section.hero { border-top:none; padding:6rem 0 4rem; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; color:var(--ink); border-bottom:none; }
+.brand em { color:var(--accent); font-style:italic; font-weight:500; }
+.brand-mark { color:var(--ink); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); border-bottom:none; cursor:pointer; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; }
+.hero .eyebrow { margin-bottom:1.2rem; } .hero h1 { max-width:880px; } .hero .lead { margin-top:1.4rem; max-width:720px; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:1.6rem 2.4rem; margin-top:2.3rem; font-family:var(--mono); font-size:0.78rem; color:var(--muted); }
+.hero-meta span { display:inline-flex; gap:0.5rem; align-items:baseline; }
+.hero-meta strong { color:var(--ink); font-weight:500; }
+.section-head { margin-bottom:2.5rem; } .section-head .eyebrow { margin-bottom:0.7rem; }
+.prose { max-width:760px; } .prose p + p { margin-top:1rem; }
+.status-banner { background:var(--accent-soft); border-left:2px solid var(--accent); padding:1rem 1.2rem; font-family:var(--mono); font-size:0.85rem; color:var(--ink-soft); margin:1.5rem 0; line-height:1.55; }
+.status-banner strong { color:var(--accent); font-weight:500; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.06em; margin-right:0.4rem; }
+.offer-list { display:grid; grid-template-columns:repeat(2, 1fr); gap:1.5rem 2rem; }
+.offer { padding-top:1.3rem; border-top:1px solid var(--rule); }
+.offer h3 { font-family:var(--mono); font-size:0.82rem; font-weight:500; color:var(--accent); letter-spacing:0.04em; margin-bottom:0.5rem; }
+.offer p { font-size:0.93rem; }
+.fit-list { list-style:none; }
+.fit-list li { padding:0.8rem 0 0.8rem 1.6rem; border-top:1px solid var(--rule); font-size:0.95rem; position:relative; }
+.fit-list li:first-child { border-top:none; padding-top:0.2rem; }
+.fit-list li::before { content:'/'; position:absolute; left:0; top:0.85rem; font-family:var(--mono); color:var(--accent); font-size:0.85rem; }
+.contact { display:grid; grid-template-columns:repeat(2, 1fr); gap:2rem; max-width:720px; }
+.contact-block h3 { font-family:var(--mono); font-size:0.72rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.7rem; }
+.contact-block p { color:var(--ink); font-size:0.95rem; line-height:1.55; }
+.contact-block a { color:var(--ink); border-bottom:1px solid var(--rule-strong); }
+footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
+footer.site-footer a { color:var(--muted); border-bottom:none; }
+@media (max-width:860px) { .contact, .offer-list { grid-template-columns:1fr; } .nav-links { display:none; } section { padding:3.5rem 0; } section.hero { padding:4.5rem 0 3rem; } }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="brand" href="index.html"><svg viewBox="0 0 40 40" width="26" height="26"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/><text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text></svg><span>AIR<em>INA</em> Labs</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#what-we-are">À propos</a></li>
+    <li><a href="index.html#pillars" class="active">Piliers</a></li>
+    <li><a href="formations.html">Formations</a></li>
+    <li><a href="index.html#people">Équipe</a></li>
+    <li><a href="index.html#work">Travaux</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link" href="pillar-incubator.html" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link active" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Basculer thème">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="eyebrow">Pilier /04 · Incubateur</div>
+  <h1>AIRINA <em>Ventures</em>.</h1>
+  <p class="lead">L'incubateur prévu de l'unité pour les fondateurs construisant des entreprises d'IA ancrées dans des problèmes africains. Pas encore actif. Voici ce que nous bâtissons et pourquoi c'est un engagement de troisième année, pas une promesse de première année.</p>
+  <div class="hero-meta">
+    <span><strong>Statut</strong> Phase 2 · planifié</span>
+    <span><strong>Première cohorte</strong> 2028 au plus tôt</span>
+    <span><strong>Domaine</strong> IA pour les systèmes africains</span>
+  </div>
+</section>
+
+<section class="wrap" id="what">
+  <div class="section-head">
+    <div class="eyebrow">Ce que ce sera</div>
+    <h2>La réponse institutionnelle à un vrai échec récurrent.</h2>
+  </div>
+  <div class="prose">
+    <p>Des chercheurs et ingénieurs talentueux quittent les universités africaines chaque année avec les compétences techniques pour construire des produits d'IA qui comptent. La plupart ne le font pas. Le mentorat senior disparaît, le calcul disparaît, le réseau rétrécit, et le chemin de moindre résistance devient le conseil générique ou l'émigration. Ventures vise à garder les bonnes personnes dans l'orbite d'AIRINA assez longtemps pour livrer un premier produit défendable.</p>
+    <p>Ce n'est pas un accélérateur dans le moule YC. C'est plus proche de ce que Bell Labs, Xerox PARC ou le Recurse Center font dans des domaines différents : un espace adjacent à la recherche pour des bâtisseurs qui veulent un soutien institutionnel sans devenir salariés, avec la patience de laisser le travail mûrir sur un calendrier réel.</p>
+    <div class="status-banner">
+      <strong>Statut</strong> Ventures est un engagement de troisième année, pas une promesse de première année. La première cohorte significative arrive au plus tôt en 2028. Le bon moment pour lancer est lorsque le pôle Recherche aura produit assez de travaux mûrs pour qu'on puisse construire des produits défendables dessus, et que le pôle Formation aura produit assez d'alumni qui connaissent déjà la manière de travailler d'AIRINA. Pas avant.
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="who">
+  <div class="section-head">
+    <div class="eyebrow">À qui cela s'adresse</div>
+    <h2>Le type de fondateur que nous voulons soutenir.</h2>
+  </div>
+  <div class="prose">
+    <ul class="fit-list">
+      <li>Fondateurs, leads techniques et petites équipes ayant une idée technique défendable — souvent un axe qui a commencé comme recherche AIRINA, ou se trouve à côté.</li>
+      <li>Personnes travaillant sur quelque chose qui prend au sérieux les données africaines, la réglementation africaine et les réalités client africaines, au lieu de transposer un modèle étranger.</li>
+      <li>Bâtisseurs qui veulent un soutien institutionnel et un horizon long, pas un sprint de 12 semaines vers une journée de démonstration.</li>
+      <li>Chercheurs qui savent livrer du code, et ingénieurs qui savent lire des articles. L'intersection est plus petite que l'un ou l'autre ensemble ; c'est elle que nous essayons de garder dans l'orbite.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="wrap" id="offer">
+  <div class="section-head">
+    <div class="eyebrow">Ce que nous offrirons</div>
+    <h2>Le soutien concret.</h2>
+  </div>
+  <div class="offer-list">
+    <div class="offer"><h3>Mentorat</h3><p>Mentorat technique direct par les chercheurs d'AIRINA, complété par des conseillers seniors issus de la finance, de l'IA publique et de la diaspora africaine de la recherche.</p></div>
+    <div class="offer"><h3>Calcul et outillage</h3><p>Accès aux ressources de calcul de l'unité, à ses bibliothèques internes et à son infrastructure d'ingénierie partagée. Pas besoin de monter sa propre stack MLOps dès le premier jour.</p></div>
+    <div class="offer"><h3>Espace de travail</h3><p>Un bureau dans les locaux de Cotonou. Contact quotidien avec les chercheurs d'AIRINA, les cohortes de formation et les collaborateurs en visite. Le sens d'un institut est qu'on n'est pas seul.</p></div>
+    <div class="offer"><h3>Réseau</h3><p>Introductions au réseau de partenaires d'AIRINA : banques, institutions de microfinance, opérateurs mobile money, partenaires universitaires, bailleurs, le graphe des alumni AIMS.</p></div>
+    <div class="offer"><h3>Capital d'amorçage</h3><p>Financement d'amorçage sans dilution pour un petit nombre de projets par cohorte, conditionné à la réussite de la levée de fonds Phase 1. Nous ne prétendrons pas que c'est en place.</p></div>
+    <div class="offer"><h3>Flux de talents</h3><p>Accès prioritaire au recrutement des meilleurs participants du pôle Formation. Beaucoup de projets Ventures seront initialement dotés à partir du réseau d'alumni des certificats.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="why-not-yet">
+  <div class="section-head">
+    <div class="eyebrow">Pourquoi ce n'est pas encore actif</div>
+    <h2>La discipline de dire pas encore.</h2>
+  </div>
+  <div class="prose">
+    <p>Les écosystèmes de startups africains sont pleins d'accélérateurs qui ont ouvert avant d'avoir quelque chose à offrir. La plupart ont fait tourner une cohorte, l'ont bien photographiée, et se sont tus. Nous n'avons pas l'intention d'allonger cette liste.</p>
+    <p>Ventures ouvrira lorsque trois choses seront vraies : la production de recherche d'AIRINA aura produit des idées sur lesquelles des fondateurs peuvent vraiment construire ; le programme de formation aura produit des alumni qui peuvent rejoindre crédiblement les équipes de ces fondateurs ; et le réseau de partenariats sera assez dense pour que les introductions ne soient pas théoriques. La date plausible la plus proche est 2028. Cette date peut glisser ; nous préférons qu'elle glisse plutôt que d'ouvrir trop tôt.</p>
+  </div>
+</section>
+
+<section class="wrap" id="contact">
+  <div class="section-head">
+    <div class="eyebrow">Rester en contact</div>
+    <h2>Deux façons d'exprimer son intérêt.</h2>
+  </div>
+  <div class="contact">
+    <div class="contact-block">
+      <h3>Fondateurs potentiels</h3>
+      <p>Pour figurer sur la liste de la première cohorte quand Ventures ouvrira : <a href="mailto:contact@airina.africa?subject=Ventures%20fondateur">contact@airina.africa</a> avec « Ventures intérêt » dans l'objet et une ou deux phrases sur ce que vous construisez.</p>
+    </div>
+    <div class="contact-block">
+      <h3>Bailleurs / LPs / partenaires</h3>
+      <p>Pour soutenir ou co-concevoir Ventures : <a href="mailto:contact@airina.africa?subject=Ventures%20financement">contact@airina.africa</a>.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="index.html">← Retour à l'accueil</a></span>
+</footer>
+
+<script>
+(function () { var s = localStorage.getItem('airina-theme'); if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); var b = document.getElementById('theme-toggle'); if (!b) return; b.addEventListener('click', function () { var c = document.documentElement.getAttribute('data-theme'); var n = c === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', n); localStorage.setItem('airina-theme', n); }); })();
+</script>
+</body>
+</html>

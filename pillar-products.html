@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Products — AIRINA Labs</title>
+<meta name="description" content="The AIRINA Labs products line: applied AI tools for African financial systems. Research-led, open methods, commercial integrations." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Products — AIRINA Labs" />
+<meta property="og:description" content="How AIRINA moves research into deployable tools, beginning with financial inclusion in Africa." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root { --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548; --muted:#5C6478; --dim:#9098AB; --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22); --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10); --nav-bg:rgba(245,241,234,0.92); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA; --muted:#8A91A3; --dim:#5F6680; --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22); --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12); --nav-bg:rgba(15,20,30,0.92); }
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.2rem, 5vw, 3.8rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
+h1 em { font-style:italic; color:var(--accent); font-weight:500; }
+h2 { font-size:clamp(1.6rem, 3vw, 2.2rem); font-weight:500; letter-spacing:-0.012em; line-height:1.18; }
+h3 { font-size:1.15rem; font-weight:600; letter-spacing:-0.003em; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.15rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+.wrap-narrow { max-width:760px; margin:0 auto; padding:0 2rem; }
+section { padding:5rem 0; border-top:1px solid var(--rule); }
+section.hero { border-top:none; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; letter-spacing:-0.005em; color:var(--ink); border-bottom:none; }
+.brand em { color:var(--accent); font-style:italic; font-weight:500; }
+.brand-mark { flex-shrink:0; color:var(--ink); transition:color .2s; }
+.brand:hover .brand-mark { color:var(--accent); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); letter-spacing:0.05em; border-bottom:none; cursor:pointer; transition:color .2s; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-link:hover:not(.active) { color:var(--ink); }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; transition:color .2s, border-color .2s; }
+.theme-btn:hover { color:var(--accent); border-color:var(--accent); }
+section.hero { padding:6rem 0 4rem; }
+.hero .eyebrow { margin-bottom:1.2rem; }
+.hero h1 { max-width:880px; }
+.hero .lead { margin-top:1.4rem; max-width:720px; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:1.6rem 2.4rem; margin-top:2.3rem; font-family:var(--mono); font-size:0.78rem; color:var(--muted); }
+.hero-meta span { display:inline-flex; gap:0.5rem; align-items:baseline; }
+.hero-meta strong { color:var(--ink); font-weight:500; }
+.section-head { margin-bottom:2.5rem; }
+.section-head .eyebrow { margin-bottom:0.7rem; }
+.prose { max-width:760px; }
+.prose p + p { margin-top:1rem; }
+
+.rule-list { display:flex; flex-direction:column; }
+.rule {
+  padding:1.5rem 0; border-top:1px solid var(--rule);
+  display:grid; grid-template-columns:auto 1fr; gap:1.8rem; align-items:baseline;
+}
+.rule:first-child { border-top:none; padding-top:0; }
+.rule-num { font-family:var(--mono); font-size:0.82rem; color:var(--accent); letter-spacing:0.04em; font-weight:500; }
+.rule h3 { font-family:var(--serif); font-weight:500; font-size:1.15rem; margin-bottom:0.4rem; }
+.rule p { font-size:0.95rem; max-width:680px; }
+
+.split { display:grid; grid-template-columns:1fr 1fr; gap:2rem 3rem; }
+.split-block h3 { font-family:var(--mono); font-size:0.78rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem; }
+.split-block ul { list-style:none; }
+.split-block li { padding:0.5rem 0; border-top:1px solid var(--rule); font-size:0.95rem; color:var(--ink-soft); }
+.split-block li:first-child { border-top:none; padding-top:0; }
+.split-block li strong { color:var(--ink); font-weight:500; }
+
+.phases { display:flex; flex-direction:column; }
+.phase {
+  padding:1.4rem 0; border-top:1px solid var(--rule);
+  display:grid; grid-template-columns:120px 100px 1fr; gap:1.5rem; align-items:baseline;
+}
+.phase:first-child { border-top:none; padding-top:0; }
+.phase-name { font-family:var(--mono); font-size:0.85rem; color:var(--ink); font-weight:500; }
+.phase-window { font-family:var(--mono); font-size:0.78rem; color:var(--muted); }
+.phase-body { font-size:0.95rem; }
+
+.contact { display:grid; grid-template-columns:repeat(2, 1fr); gap:2rem; max-width:720px; }
+.contact-block h3 { font-family:var(--mono); font-size:0.72rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.7rem; }
+.contact-block p { color:var(--ink); font-size:0.95rem; line-height:1.55; }
+.contact-block a { color:var(--ink); border-bottom:1px solid var(--rule-strong); }
+.contact-block a:hover { color:var(--accent); border-color:var(--accent); }
+
+footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
+footer.site-footer a { color:var(--muted); border-bottom:none; }
+footer.site-footer a:hover { color:var(--accent); }
+
+@media (max-width:860px) {
+  .contact, .split { grid-template-columns:1fr; }
+  .rule, .phase { grid-template-columns:1fr; gap:0.4rem; }
+  .nav-links { display:none; }
+  section { padding:3.5rem 0; }
+  section.hero { padding:4.5rem 0 3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition:none !important; animation:none !important; }
+  html { scroll-behavior:auto; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" width="26" height="26" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text>
+    </svg>
+    <span>AIR<em>INA</em> Labs</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#what-we-are">About</a></li>
+    <li><a href="index.html#pillars" class="active">Pillars</a></li>
+    <li><a href="training.html">Training</a></li>
+    <li><a href="index.html#people">People</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link active" aria-current="page" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link" href="pilier-produits.html" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle light/dark theme">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="eyebrow">Pillar /02 · Products</div>
+  <h1>Research that does not ship does not <em>change anything</em>.</h1>
+  <p class="lead">Products is the line that moves the unit's research into deployable tools — primarily, in the first phase, for African financial systems. Open methods, paid integrations, real data.</p>
+  <div class="hero-meta">
+    <span><strong>Phase 1</strong> Financial inclusion</span>
+    <span><strong>Stack</strong> Python · open ML · custom topology pipeline</span>
+    <span><strong>Open</strong> github.com/AIRINA-Labs</span>
+  </div>
+</section>
+
+<section class="wrap" id="focus">
+  <div class="section-head">
+    <div class="eyebrow">Current focus</div>
+    <h2>Financial inclusion, Phase 1.</h2>
+  </div>
+  <div class="prose">
+    <p>The first cohort of products sits in credit scoring, fraud and anomaly detection, and customer-analytics tooling for banks, microfinance institutions, and mobile-money operators. The unifying technical bet is that interpretable, mathematically-grounded methods can match or beat black-box baselines on African banking and mobile-money data, once you take feature engineering seriously and stop pretending the data looks Western.</p>
+    <p>Two patterns we keep finding: time series in mobile-money settlements have non-trivial topological structure that classical features wash out; and credit data for semi-formal income earners carries information in its missingness that needs interpretable handling, not blind imputation. Our products are built around what these patterns enable.</p>
+  </div>
+</section>
+
+<section class="wrap" id="how">
+  <div class="section-head">
+    <div class="eyebrow">How we build</div>
+    <h2>Three operating rules.</h2>
+  </div>
+  <div class="rule-list">
+    <div class="rule">
+      <span class="rule-num">/01</span>
+      <div>
+        <h3>Research-led</h3>
+        <p>Every product traces back to a published or in-publication paper from the Research line. If we cannot point to the paper, we are not selling the method as ours.</p>
+      </div>
+    </div>
+    <div class="rule">
+      <span class="rule-num">/02</span>
+      <div>
+        <h3>Open by default</h3>
+        <p>Tools, libraries, evaluation benchmarks, and anonymized worked examples live on GitHub. Trained models built on client data stay closed; the methods that produced them do not.</p>
+      </div>
+    </div>
+    <div class="rule">
+      <span class="rule-num">/03</span>
+      <div>
+        <h3>African data realities</h3>
+        <p>We test on actual African banking, mobile-money, and microfinance data, with its missingness, its intermittent labels, and the regulatory constraints (BCEAO, BCBS, EU AI Act for European-facing institutions) that make some standard tricks unusable. Benchmarks that score well on US credit datasets do not earn a pass here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="open-vs-commercial">
+  <div class="section-head">
+    <div class="eyebrow">Open vs commercial</div>
+    <h2>What we give away, what we charge for.</h2>
+  </div>
+  <div class="split">
+    <div class="split-block">
+      <h3>Open</h3>
+      <ul>
+        <li><strong>Methods</strong> the algorithms, papers, mathematical justification</li>
+        <li><strong>Code</strong> reference implementations, libraries, evaluation harnesses</li>
+        <li><strong>Benchmarks</strong> public datasets and metrics we publish on</li>
+        <li><strong>Worked examples</strong> anonymized notebooks demonstrating the methods on representative data</li>
+      </ul>
+    </div>
+    <div class="split-block">
+      <h3>Commercial</h3>
+      <ul>
+        <li><strong>Trained models</strong> built on client data, owned by the client</li>
+        <li><strong>Integration</strong> deployment into the client's analytics stack, MLOps, monitoring</li>
+        <li><strong>Embedded engagements</strong> AIRINA researchers and engineers working inside the partner's team</li>
+        <li><strong>Custom benchmarks</strong> private evaluation against the client's data realities</li>
+      </ul>
+    </div>
+  </div>
+  <p class="prose" style="margin-top:2rem;">The split exists for a reason. Reputation compounds only if methods are public. Revenue exists because banks pay for outcomes, not for ideas. Both halves are needed; collapsing either kills the institution we are building.</p>
+</section>
+
+<section class="wrap" id="beyond">
+  <div class="section-head">
+    <div class="eyebrow">Beyond Phase 1</div>
+    <h2>Roadmap.</h2>
+  </div>
+  <div class="phases">
+    <div class="phase">
+      <span class="phase-name">Phase 1</span>
+      <span class="phase-window">Years 1–3</span>
+      <span class="phase-body">Financial inclusion. Active. Credit scoring, fraud and anomaly detection, customer analytics for banks, MFIs, mobile money.</span>
+    </div>
+    <div class="phase">
+      <span class="phase-name">Phase 2</span>
+      <span class="phase-window">Years 3–5</span>
+      <span class="phase-body">Agriculture. Credit and risk for smallholders, climate-stressed yield modeling, cooperative-level analytics. Same methods, different domain.</span>
+    </div>
+    <div class="phase">
+      <span class="phase-name">Phase 3</span>
+      <span class="phase-window">Years 5+</span>
+      <span class="phase-body">Health. The highest-complexity domain. Entered when the unit has the institutional maturity to handle clinical data responsibly. Not before.</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="engage">
+  <div class="section-head">
+    <div class="eyebrow">Engage with the Products line</div>
+    <h2>Who to write to.</h2>
+  </div>
+  <div class="contact">
+    <div class="contact-block">
+      <h3>Banks / MFIs / fintechs</h3>
+      <p>A 1-page brief of the problem and the data you can share: <a href="mailto:contact@airina.africa?subject=Products%20engagement">contact@airina.africa</a></p>
+    </div>
+    <div class="contact-block">
+      <h3>Open-source contributors</h3>
+      <p>See repositories at <a href="https://github.com/AIRINA-Labs">github.com/AIRINA-Labs</a></p>
+    </div>
+    <div class="contact-block">
+      <h3>Funders</h3>
+      <p>Scaling Phase-1 work into Phase-2 (agriculture) earlier: <a href="mailto:contact@airina.africa?subject=Funder%20interest">contact@airina.africa</a></p>
+    </div>
+    <div class="contact-block">
+      <h3>Press / partners</h3>
+      <p><a href="mailto:contact@airina.africa?subject=Press">contact@airina.africa</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="index.html">← Back to home</a></span>
+</footer>
+
+<script>
+(function () {
+  var saved = localStorage.getItem('airina-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('airina-theme', next);
+  });
+})();
+</script>
+
+</body>
+</html>

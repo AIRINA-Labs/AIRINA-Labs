@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IA interprétable pour secteurs régulés · Formation /02 — AIRINA Labs</title>
+<meta name="description" content="Formation de trois jours en apprentissage automatique interprétable pour banques, IMF et assureurs. Modèles interprétables par conception, explications post-hoc et leurs failles, audits d'équité sur données africaines." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root { --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548; --muted:#5C6478; --dim:#9098AB; --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22); --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10); --nav-bg:rgba(245,241,234,0.92); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA; --muted:#8A91A3; --dim:#5F6680; --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22); --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12); --nav-bg:rgba(15,20,30,0.92); }
+* { box-sizing:border-box; margin:0; padding:0; } html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.2rem, 5vw, 3.6rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
+h1 em { font-style:italic; color:var(--accent); font-weight:500; }
+h2 { font-size:clamp(1.5rem, 2.8vw, 2rem); font-weight:500; }
+h3 { font-size:1.1rem; font-weight:600; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.1rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+section { padding:4.5rem 0; border-top:1px solid var(--rule); }
+section.hero { border-top:none; padding:5.5rem 0 3.5rem; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; color:var(--ink); border-bottom:none; }
+.brand em { color:var(--accent); font-style:italic; font-weight:500; }
+.brand-mark { color:var(--ink); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); border-bottom:none; cursor:pointer; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; }
+.crumb { font-family:var(--mono); font-size:0.72rem; color:var(--muted); margin-bottom:1.2rem; letter-spacing:0.04em; }
+.crumb a { color:var(--muted); border-bottom:none; }
+.hero-meta { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:1.2rem 2rem; margin-top:2rem; font-family:var(--mono); font-size:0.76rem; color:var(--muted); padding-top:1.5rem; border-top:1px solid var(--rule); }
+.hero-meta-block strong { display:block; color:var(--ink); font-weight:500; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.25rem; }
+.status-pill { display:inline-block; padding:0.25rem 0.7rem; background:var(--accent-soft); border:1px solid var(--accent); color:var(--accent); font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; border-radius:2px; margin-bottom:1.2rem; }
+.section-head { margin-bottom:2rem; }
+.prose { max-width:760px; } .prose p + p { margin-top:1rem; }
+.bullets { list-style:none; }
+.bullets li { padding:0.6rem 0 0.6rem 1.5rem; border-top:1px solid var(--rule); font-size:0.95rem; position:relative; line-height:1.55; }
+.bullets li:first-child { border-top:none; padding-top:0.2rem; }
+.bullets li::before { content:'→'; position:absolute; left:0; top:0.7rem; color:var(--accent); font-family:var(--mono); font-size:0.85rem; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem 3rem; }
+.day { padding:2rem 0; border-top:1px solid var(--rule); display:grid; grid-template-columns:120px 1fr; gap:1.5rem; }
+.day:first-child { border-top:none; padding-top:0.5rem; }
+.day-tag { font-family:var(--mono); font-size:0.82rem; color:var(--accent); font-weight:500; letter-spacing:0.04em; padding-top:0.2rem; }
+.day h3 { font-family:var(--serif); font-weight:500; font-size:1.15rem; margin-bottom:0.8rem; }
+.session { padding:0.7rem 0; border-top:1px solid var(--rule); font-size:0.93rem; line-height:1.55; }
+.session:first-of-type { border-top:1px dashed var(--rule); }
+.session-time { font-family:var(--mono); font-size:0.72rem; color:var(--muted); letter-spacing:0.04em; margin-right:0.6rem; }
+.session-topic { color:var(--ink); font-weight:500; }
+.session-detail { color:var(--muted); display:block; margin-top:0.2rem; font-size:0.88rem; }
+.assessment-box { border:1px solid var(--rule-strong); padding:1.5rem; border-radius:2px; max-width:780px; }
+.assessment-box h3 { font-family:var(--mono); font-size:0.78rem; color:var(--accent); font-weight:500; letter-spacing:0.06em; margin-bottom:0.7rem; text-transform:uppercase; }
+.assessment-box p { font-size:0.95rem; margin-bottom:0.7rem; }
+.assessment-box ul { list-style:none; }
+.assessment-box li { padding:0.4rem 0 0.4rem 1.2rem; position:relative; font-size:0.92rem; }
+.assessment-box li::before { content:'/'; position:absolute; left:0; color:var(--accent); font-family:var(--mono); }
+.logistics { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1.5rem 2.5rem; }
+.logistics-item h3 { font-family:var(--mono); font-size:0.72rem; color:var(--muted); font-weight:400; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.4rem; }
+.logistics-item p { font-size:0.92rem; color:var(--ink); }
+.apply-cta { background:var(--ink); color:var(--bg); padding:3rem 2rem; border-radius:2px; }
+.apply-cta h2 { color:var(--bg); margin-bottom:0.8rem; }
+.apply-cta p { color:var(--bg); opacity:0.85; max-width:580px; margin-bottom:1.5rem; font-size:1.02rem; }
+.apply-cta a.btn { display:inline-block; padding:0.8rem 1.6rem; background:var(--accent); color:var(--bg); font-family:var(--mono); font-size:0.85rem; letter-spacing:0.06em; border-radius:2px; border-bottom:none; }
+[data-theme="dark"] .apply-cta { background:var(--bg-soft); color:var(--ink); }
+[data-theme="dark"] .apply-cta h2, [data-theme="dark"] .apply-cta p { color:var(--ink); }
+footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
+footer.site-footer a { color:var(--muted); border-bottom:none; }
+@media (max-width:860px) { .two-col, .logistics { grid-template-columns:1fr; } .day { grid-template-columns:1fr; gap:0.5rem; } .nav-links { display:none; } section, section.hero { padding:3rem 0; } }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="brand" href="index.html"><svg viewBox="0 0 40 40" width="26" height="26"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/><text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text></svg><span>AIR<em>INA</em> Labs</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#what-we-are">À propos</a></li>
+    <li><a href="index.html#pillars">Piliers</a></li>
+    <li><a href="formations.html" class="active">Formations</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link" href="training-02-interpretable.html" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link active" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Basculer thème">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="crumb"><a href="formations.html">Formations</a> / <a href="formations.html#niveau-1">Niveau 1</a> / /02</div>
+  <span class="status-pill">Lancement T4 2026</span>
+  <h1>IA interprétable pour <em>secteurs régulés</em>.</h1>
+  <p class="lead">Une formation de trois jours pour les équipes risque et analytics qui doivent répondre à la question que les régulateurs posent vraiment : <em>pourquoi cette décision, pour cette personne</em>. Modèles interprétables par conception, explications post-hoc et leurs failles, audits d'équité — testés sur les réalités des données de crédit africaines.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-block"><strong>Durée</strong> 3 jours</div>
+    <div class="hero-meta-block"><strong>Format</strong> En présentiel, Cotonou ou site client</div>
+    <div class="hero-meta-block"><strong>Langues</strong> FR / EN</div>
+    <div class="hero-meta-block"><strong>Cohorte</strong> ~12 participants</div>
+    <div class="hero-meta-block"><strong>Certificat</strong> AIRINA IA interprétable · noté</div>
+  </div>
+</section>
+
+<section class="wrap" id="about">
+  <div class="section-head">
+    <div class="eyebrow">À propos de cette formation</div>
+    <h2>La version honnête de l'interprétabilité.</h2>
+  </div>
+  <div class="prose">
+    <p>SHAP et LIME ne sont pas de l'interprétabilité. Ce sont des outils qui produisent des nombres que les régulateurs et les valideurs trouvent utiles. Les traiter pour davantage est l'une des erreurs les plus fréquentes en ML régulé. Cette formation est l'antidote : nous couvrons d'abord les méthodes interprétables par conception, puis les outils post-hoc avec une honnêteté explicite sur ce qu'ils vous disent ou ne vous disent pas, et terminons par un audit d'équité qui va au-delà du seul chiffre d'impact disparate.</p>
+    <p>La formation est construite pour les analystes et les valideurs de banques, IMF et assureurs opérant sur les marchés africains et africains exposés à l'Europe. Nous utilisons des données réelles de crédit et de mobile money africaines, avec leur rareté, leurs schémas de revenu semi-formel, et les contraintes réglementaires (BCEAO, BCBS, EU AI Act pour les institutions exposées à l'Europe) qui éliminent certaines astuces standard.</p>
+  </div>
+</section>
+
+<section class="wrap" id="objectives">
+  <div class="section-head">
+    <div class="eyebrow">Objectifs pédagogiques</div>
+    <h2>À la fin, vous saurez.</h2>
+  </div>
+  <ul class="bullets" style="max-width:760px;">
+    <li>Articuler la différence entre interprétabilité et explicabilité, et utiliser le bon mot dans les conversations réglementaires.</li>
+    <li>Construire un modèle interprétable par conception — un GAM, un gradient boosting monotone, une liste de décision — qui atteint un vrai seuil de performance.</li>
+    <li>Appliquer SHAP et LIME correctement, et reconnaître trois modes d'échec courants qui produisent des explications confiantes mais fausses.</li>
+    <li>Faire tourner un audit d'équité sur un modèle de scoring crédit sous plusieurs définitions d'équité, et expliquer à une partie prenante non technique pourquoi les définitions divergent.</li>
+    <li>Lire un texte réglementaire (circulaire BCEAO, principe BCBS, article de l'EU AI Act) et traduire ses exigences en tâches de validation de modèles.</li>
+    <li>Rédiger une fiche-modèle et un rapport de validation qu'un vrai valideur accepterait.</li>
+  </ul>
+</section>
+
+<section class="wrap" id="audience">
+  <div class="section-head">
+    <div class="eyebrow">À qui s'adresse cette formation</div>
+    <h2>Public et prérequis.</h2>
+  </div>
+  <div class="two-col">
+    <div>
+      <h4>Public</h4>
+      <ul class="bullets">
+        <li>Modélisateurs risque, analystes crédit, analystes fraude des banques, IMF, opérateurs mobile money, assureurs.</li>
+        <li>Équipes de validation de modèles responsables de la signature sous contraintes BCEAO, BCBS ou EU AI Act.</li>
+        <li>Responsables analytics dans les fintechs qui construisent des produits de prêt ou de scoring.</li>
+        <li>Régulateurs et superviseurs qui doivent poser les bonnes questions sur les modèles soumis.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Prérequis</h4>
+      <ul class="bullets">
+        <li>Python data science pratique (NumPy, pandas, scikit-learn). La formation est pratique.</li>
+        <li>Familiarité avec au moins un modèle de classification : régression logistique, forêts aléatoires, gradient boosting. Nous n'enseignons pas les bases.</li>
+        <li>Une exposition aux workflows de risque crédit ou de détection de fraude est utile mais pas requise.</li>
+        <li>Ordinateur portable avec environnement Python. Instructions envoyées 2 semaines avant.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="curriculum">
+  <div class="section-head">
+    <div class="eyebrow">Programme</div>
+    <h2>Trois jours, six demi-journées.</h2>
+  </div>
+
+  <div class="day">
+    <span class="day-tag">Jour 1</span>
+    <div>
+      <h3>Cadre réglementaire et modèles interprétables par conception</h3>
+      <div class="session"><span class="session-time">Matin</span> <span class="session-topic">Ce que les régulateurs demandent vraiment</span><span class="session-detail">Circulaires BCEAO sur le risque modèle ; principes BCBS de gestion du risque modèle ; dispositions IA à haut risque de l'EU AI Act pour les institutions exposées à l'Europe. La différence entre interprétabilité et explicabilité, et pourquoi elle compte quand le valideur insiste. Lecture commune d'un texte réglementaire réel, identification des exigences opérationnelles.</span></div>
+      <div class="session"><span class="session-time">Aprem</span> <span class="session-topic">Modèles interprétables qui tiennent la route</span><span class="session-detail">Modèles additifs généralisés (GAMs), gradient boosting monotone, listes de décision, modèles linéaires creux avec ingénierie de variables. Pratique : entraîner chacun sur un jeu de données de défaut de crédit, comparer la performance à un XGBoost non contraint. Les cas où le modèle interprétable gagne, et les cas où il perd suffisamment pour que ça compte.</span></div>
+    </div>
+  </div>
+
+  <div class="day">
+    <span class="day-tag">Jour 2</span>
+    <div>
+      <h3>Explications post-hoc et leurs modes d'échec</h3>
+      <div class="session"><span class="session-time">Matin</span> <span class="session-topic">SHAP, LIME, contrefactuels — proprement</span><span class="session-detail">TreeSHAP, KernelSHAP, partition explainers — ce qu'ils calculent vraiment et leurs hypothèses. LIME et son problème d'instabilité. Explications contrefactuelles et le coût de leur construction. Codage en direct de chaque outil sur les modèles du Jour 1 ; lecture critique des sorties.</span></div>
+      <div class="session"><span class="session-time">Aprem</span> <span class="session-topic">Où les explications cassent</span><span class="session-detail">Trois modes d'échec documentés : corrélation entre variables qui casse l'histoire de contribution marginale de SHAP ; sensibilité d'échantillonnage de LIME produisant des explications différentes à chaque exécution ; explications contrefactuelles mathématiquement valides mais pratiquement impossibles. Exercices : produire une explication confiante mais fausse, puis la corriger.</span></div>
+    </div>
+  </div>
+
+  <div class="day">
+    <span class="day-tag">Jour 3</span>
+    <div>
+      <h3>Audits d'équité, méthodes neuro-symboliques, projet final</h3>
+      <div class="session"><span class="session-time">Matin</span> <span class="session-topic">Audits d'équité sur données de crédit africaines</span><span class="session-detail">Définitions de l'équité de groupe (parité démographique, equalized odds, predictive parity) et pourquoi elles ne peuvent toutes tenir simultanément. Analyse d'impact disparate sous des données de revenu semi-formel, des champs d'attributs protégés manquants, et de petits sous-groupes minoritaires. Brève introduction aux méthodes neuro-symboliques pour la décision quand le ML pur n'atteint pas le niveau d'explicabilité requis.</span></div>
+      <div class="session"><span class="session-time">Aprem</span> <span class="session-topic">Projet final : construire un modèle défendable + audit</span><span class="session-detail">Les participants construisent un modèle de scoring crédit ou de détection de fraude sur un jeu de données fourni, produisent une fiche-modèle, un rapport de validation et un audit d'équité. Soutenance de 30 minutes devant les formateurs. Critiques constructives sur la signature potentielle d'un vrai valideur, et sur ce qu'il manque encore.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="assessment">
+  <div class="section-head">
+    <div class="eyebrow">Évaluation et certificat</div>
+    <h2>Ce qu'il faut faire pour réussir.</h2>
+  </div>
+  <div class="assessment-box">
+    <h3>Projet final</h3>
+    <p>Choisissez un problème (scoring crédit, détection de fraude, ou un problème de votre institution avec accord préalable). Livrez trois choses dans un dépôt Git :</p>
+    <ul>
+      <li>Un modèle entraîné — interprétable par conception ou couplé à des explications post-hoc solides — avec une comparaison de performance honnête.</li>
+      <li>Une fiche-modèle documentant l'usage prévu, les données d'entraînement, la performance, et les limites connues.</li>
+      <li>Un audit d'équité sous au moins deux définitions différentes, avec un commentaire écrit sur les arbitrages.</li>
+    </ul>
+    <p style="margin-top:1rem;">À la soutenance, vous répondez aux questions qu'un vrai valideur poserait. La note dépend du fait que votre livrable survivrait à une vraie soumission. Le certificat est <em>AIRINA IA interprétable pour la finance · noté</em>.</p>
+  </div>
+</section>
+
+<section class="wrap" id="faculty">
+  <div class="section-head">
+    <div class="eyebrow">Corps enseignant</div>
+    <h2>Qui enseigne.</h2>
+  </div>
+  <div class="prose">
+    <p>Formateurs principaux : chercheurs d'AIRINA en ML appliqué et modélisation des systèmes financiers. Intervention d'un praticien senior en validation de modèles d'une banque partenaire ou d'une autorité de supervision (nommé deux semaines avant chaque cohorte).</p>
+  </div>
+</section>
+
+<section class="wrap" id="logistics">
+  <div class="section-head">
+    <div class="eyebrow">Logistique</div>
+    <h2>Les détails pratiques.</h2>
+  </div>
+  <div class="logistics">
+    <div class="logistics-item"><h3>Lieu</h3><p>AIRINA Labs, Cotonou. Livraison sur site client pour cohortes de 8+ d'une même institution.</p></div>
+    <div class="logistics-item"><h3>Horaires</h3><p>3 jours consécutifs, 9h–17h heure locale.</p></div>
+    <div class="logistics-item"><h3>Supports</h3><p>Dépôt, slides, feuilles d'exercices, liste de lectures réglementaires partagés 2 semaines avant.</p></div>
+    <div class="logistics-item"><h3>Taille de cohorte</h3><p>12 participants. Min 8.</p></div>
+    <div class="logistics-item"><h3>Tarif</h3><p>Tarif industriel / académique. Tarifs de groupe pour cohortes institutionnelles.</p></div>
+    <div class="logistics-item"><h3>Langue</h3><p>Supports en anglais ; sessions orales en FR ou EN selon la cohorte.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="apply-cta">
+    <h2>Manifester son intérêt.</h2>
+    <p>La cohorte 1 ouvre au T4 2026. Écrivez-nous avec votre nom, votre institution et une phrase sur le type de modèle que vous devez valider ou construire. Nous envoyons le prospectus complet et la grille tarifaire.</p>
+    <a class="btn" href="mailto:contact@airina.africa?subject=IA%20interpretable%20-%20Cohorte%201">contact@airina.africa →</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="formations.html">← Retour au catalogue</a></span>
+</footer>
+
+<script>
+(function () { var s = localStorage.getItem('airina-theme'); if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); var b = document.getElementById('theme-toggle'); if (!b) return; b.addEventListener('click', function () { var c = document.documentElement.getAttribute('data-theme'); var n = c === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', n); localStorage.setItem('airina-theme', n); }); })();
+</script>
+</body>
+</html>

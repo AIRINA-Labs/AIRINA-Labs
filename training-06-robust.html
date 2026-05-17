@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TDA for Robust & OOD-Aware ML · Training /06 — AIRINA Labs</title>
+<meta name="description" content="Five-day training in adversarial robustness, OOD detection, and certified robustness via topological methods. AIRINA Labs, Cotonou." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root { --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548; --muted:#5C6478; --dim:#9098AB; --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22); --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10); --nav-bg:rgba(245,241,234,0.92); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA; --muted:#8A91A3; --dim:#5F6680; --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22); --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12); --nav-bg:rgba(15,20,30,0.92); }
+* { box-sizing:border-box; margin:0; padding:0; } html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.2rem, 5vw, 3.6rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
+h1 em { font-style:italic; color:var(--accent); font-weight:500; }
+h2 { font-size:clamp(1.5rem, 2.8vw, 2rem); font-weight:500; letter-spacing:-0.01em; }
+h3 { font-size:1.1rem; font-weight:600; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.1rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+section { padding:4.5rem 0; border-top:1px solid var(--rule); }
+section.hero { border-top:none; padding:5.5rem 0 3.5rem; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; color:var(--ink); border-bottom:none; }
+.brand em { color:var(--accent); font-style:italic; font-weight:500; }
+.brand-mark { color:var(--ink); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); border-bottom:none; cursor:pointer; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; }
+.crumb { font-family:var(--mono); font-size:0.72rem; color:var(--muted); margin-bottom:1.2rem; letter-spacing:0.04em; }
+.crumb a { color:var(--muted); border-bottom:none; }
+.hero-meta { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:1.2rem 2rem; margin-top:2rem; font-family:var(--mono); font-size:0.76rem; color:var(--muted); padding-top:1.5rem; border-top:1px solid var(--rule); }
+.hero-meta-block strong { display:block; color:var(--ink); font-weight:500; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.25rem; }
+.status-pill { display:inline-block; padding:0.25rem 0.7rem; border:1px solid var(--rule); color:var(--dim); font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; border-radius:2px; margin-bottom:1.2rem; }
+.section-head { margin-bottom:2rem; }
+.prose { max-width:760px; }
+.prose p + p { margin-top:1rem; }
+.bullets { list-style:none; }
+.bullets li { padding:0.6rem 0 0.6rem 1.5rem; border-top:1px solid var(--rule); font-size:0.95rem; position:relative; line-height:1.55; }
+.bullets li:first-child { border-top:none; padding-top:0.2rem; }
+.bullets li::before { content:'→'; position:absolute; left:0; top:0.7rem; color:var(--accent); font-family:var(--mono); font-size:0.85rem; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem 3rem; }
+.day { padding:1.5rem 0; border-top:1px solid var(--rule); display:grid; grid-template-columns:90px 1fr; gap:1.4rem; }
+.day:first-child { border-top:none; padding-top:0.5rem; }
+.day-tag { font-family:var(--mono); font-size:0.82rem; color:var(--accent); font-weight:500; letter-spacing:0.04em; padding-top:0.15rem; }
+.day h3 { font-family:var(--serif); font-weight:500; font-size:1.1rem; margin-bottom:0.4rem; }
+.day p { font-size:0.94rem; }
+.assessment-box { border:1px solid var(--rule-strong); padding:1.5rem; border-radius:2px; max-width:780px; }
+.assessment-box h3 { font-family:var(--mono); font-size:0.78rem; color:var(--accent); font-weight:500; letter-spacing:0.06em; margin-bottom:0.7rem; text-transform:uppercase; }
+.logistics { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1.5rem 2.5rem; }
+.logistics-item h3 { font-family:var(--mono); font-size:0.72rem; color:var(--muted); font-weight:400; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.4rem; }
+.logistics-item p { font-size:0.92rem; color:var(--ink); }
+.apply-cta { background:var(--ink); color:var(--bg); padding:3rem 2rem; border-radius:2px; }
+.apply-cta h2 { color:var(--bg); margin-bottom:0.8rem; }
+.apply-cta p { color:var(--bg); opacity:0.85; max-width:580px; margin-bottom:1.5rem; font-size:1.02rem; }
+.apply-cta a.btn { display:inline-block; padding:0.8rem 1.6rem; background:var(--accent); color:var(--bg); font-family:var(--mono); font-size:0.85rem; letter-spacing:0.06em; border-radius:2px; border-bottom:none; }
+[data-theme="dark"] .apply-cta { background:var(--bg-soft); color:var(--ink); }
+[data-theme="dark"] .apply-cta h2, [data-theme="dark"] .apply-cta p { color:var(--ink); }
+footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
+footer.site-footer a { color:var(--muted); border-bottom:none; }
+@media (max-width:860px) { .two-col, .logistics { grid-template-columns:1fr; } .day { grid-template-columns:1fr; gap:0.4rem; } .nav-links { display:none; } section, section.hero { padding:3rem 0; } }
+@media (prefers-reduced-motion: reduce) { * { transition:none !important; animation:none !important; } html { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="brand" href="index.html">
+    <svg viewBox="0 0 40 40" width="26" height="26" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text>
+    </svg>
+    <span>AIR<em>INA</em> Labs</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#pillars">Pillars</a></li>
+    <li><a href="training.html" class="active">Training</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link active" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link" href="formation-06-robuste.html" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="crumb"><a href="training.html">Training</a> / <a href="training.html#tier-3">Tier 3</a> / /06</div>
+  <span class="status-pill">When research matures</span>
+  <h1>TDA for Robust &amp; <em>OOD-Aware</em> ML.</h1>
+  <p class="lead">A five-day training for ML engineers and AI-safety researchers on what topological methods contribute to adversarial robustness, out-of-distribution detection, and certified robustness — and where they do not.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-block"><strong>Duration</strong> 5 days</div>
+    <div class="hero-meta-block"><strong>Format</strong> In-person, Cotonou</div>
+    <div class="hero-meta-block"><strong>Languages</strong> EN</div>
+    <div class="hero-meta-block"><strong>Cohort</strong> ~12</div>
+    <div class="hero-meta-block"><strong>Certificate</strong> AIRINA Robust ML with TDA · graded</div>
+  </div>
+</section>
+
+<section class="wrap" id="about">
+  <div class="section-head">
+    <div class="eyebrow">About this training</div>
+    <h2>Topology as a robustness tool, not a slogan.</h2>
+  </div>
+  <div class="prose">
+    <p>Adversarial robustness and out-of-distribution detection both have a topological flavor: small perturbations move points off the data manifold, OOD examples sit in different connected components of the support, distribution shift changes the global shape of the data. Several recent papers exploit this. Several others overclaim it. This week is for working ML practitioners who want a sober view of what topology actually contributes.</p>
+    <p>This program opens once AIRINA's own published work in the area is mature. The honest framing: we are not running it yet because we do not yet have the standing to teach it. Express interest now and we will reach out when the cohort opens.</p>
+  </div>
+</section>
+
+<section class="wrap" id="objectives">
+  <div class="section-head">
+    <div class="eyebrow">Learning objectives</div>
+    <h2>By the end, you can.</h2>
+  </div>
+  <ul class="bullets" style="max-width:760px;">
+    <li>Compute topological signatures of activations and inputs, and use them as features in a robustness pipeline.</li>
+    <li>Build a persistence-based OOD detector and benchmark it honestly against deep ensembles, energy-based detectors, and Mahalanobis-distance baselines.</li>
+    <li>Apply differentiable persistence in a robust-training loop, with awareness of the subgradient issues.</li>
+    <li>Read a recent "topology gives robustness" paper and identify whether the claim survives proper baselines.</li>
+    <li>Decide when topological methods are warranted for a robustness problem and when they are not. Both happen.</li>
+  </ul>
+</section>
+
+<section class="wrap" id="audience">
+  <div class="section-head">
+    <div class="eyebrow">Who this is for</div>
+    <h2>Audience and prerequisites.</h2>
+  </div>
+  <div class="two-col">
+    <div>
+      <h4>Audience</h4>
+      <ul class="bullets">
+        <li>ML engineers and research engineers working on robustness, OOD detection, model monitoring.</li>
+        <li>AI-safety researchers interested in topological methods.</li>
+        <li>Risk and security teams at financial institutions and beyond who deploy ML in adversarial settings.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Prerequisites</h4>
+      <ul class="bullets">
+        <li>Strong ML practitioner background: PyTorch, training loops, evaluation discipline.</li>
+        <li>Working familiarity with adversarial attacks (PGD, FGSM, AutoAttack) and OOD-detection baselines.</li>
+        <li>Some prior TDA exposure — Training /01 is a recommended prerequisite or equivalent.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="curriculum">
+  <div class="section-head">
+    <div class="eyebrow">Curriculum</div>
+    <h2>Five days.</h2>
+  </div>
+  <div class="day"><span class="day-tag">Day 1</span><div><h3>Adversarial robustness — current landscape</h3><p>Threat models, attacks (PGD, AutoAttack, transfer attacks), and defenses (adversarial training, randomized smoothing, certified bounds). Where each method works and where it does not. The honest picture of the robustness-accuracy trade-off.</p></div></div>
+  <div class="day"><span class="day-tag">Day 2</span><div><h3>Topological signatures of OOD examples</h3><p>Persistence diagrams of activations on in-distribution vs OOD inputs. Building a persistence-based OOD detector. Benchmarking against deep ensembles, energy scores, and Mahalanobis on CIFAR-style and tabular benchmarks.</p></div></div>
+  <div class="day"><span class="day-tag">Day 3</span><div><h3>Certified robustness via topological structure</h3><p>Where geometric/topological properties of the data give certificate-level guarantees, and where they merely give empirical robustness. Limitations and open problems.</p></div></div>
+  <div class="day"><span class="day-tag">Day 4</span><div><h3>Topology in the training loop</h3><p>Differentiable persistence applied to robust training; topological regularizers; the cost in clean accuracy and how to think about it.</p></div></div>
+  <div class="day"><span class="day-tag">Day 5</span><div><h3>Final project + defense</h3><p>Participants pick a robustness or OOD problem from a curated list (or bring their own with prior approval), build a topology-enhanced detector or robust trainer, and defend it against an honest baseline in a 30-minute session.</p></div></div>
+</section>
+
+<section class="wrap" id="assessment">
+  <div class="section-head">
+    <div class="eyebrow">Assessment and certificate</div>
+    <h2>Project, baseline, defense.</h2>
+  </div>
+  <div class="assessment-box">
+    <h3>Final project</h3>
+    <p>Topological method on a real robustness or OOD-detection problem, with a strong classical baseline in the same evaluation harness. The grade is on whether your comparison would survive a paper review. Certificate: <em>AIRINA Robust ML with TDA · graded</em>.</p>
+  </div>
+</section>
+
+<section class="wrap" id="faculty">
+  <div class="section-head">
+    <div class="eyebrow">Faculty</div>
+    <h2>Who teaches.</h2>
+  </div>
+  <div class="prose">
+    <p>AIRINA researchers in TDA and applied ML, plus an invited robustness researcher from the international AI-safety community (named four weeks before each cohort). The program opens for its first cohort once AIRINA's own publications in this area are in place.</p>
+  </div>
+</section>
+
+<section class="wrap" id="logistics">
+  <div class="section-head">
+    <div class="eyebrow">Logistics</div>
+    <h2>The practical details.</h2>
+  </div>
+  <div class="logistics">
+    <div class="logistics-item"><h3>Location</h3><p>AIRINA Labs, Cotonou.</p></div>
+    <div class="logistics-item"><h3>Schedule</h3><p>5 consecutive days.</p></div>
+    <div class="logistics-item"><h3>Materials</h3><p>Reading list and pre-course exercises 4 weeks ahead.</p></div>
+    <div class="logistics-item"><h3>Cohort size</h3><p>~12.</p></div>
+    <div class="logistics-item"><h3>Fee</h3><p>Industry / academic rates.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="apply-cta">
+    <h2>Express interest.</h2>
+    <p>This program opens once AIRINA's research output in the area is mature. Register your interest and we will reach out when a cohort is scheduled.</p>
+    <a class="btn" href="mailto:contact@airina.africa?subject=TDA%20for%20Robust%20ML%20-%20interest">contact@airina.africa →</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="training.html">← Back to catalog</a></span>
+</footer>
+
+<script>
+(function () {
+  var saved = localStorage.getItem('airina-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('airina-theme', next);
+  });
+})();
+</script>
+
+</body>
+</html>

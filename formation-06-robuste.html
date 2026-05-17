@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ATD pour ML robuste & détection OOD · Formation /06 — AIRINA Labs</title>
+<meta name="description" content="Formation de cinq jours en robustesse adverse, détection OOD et robustesse certifiée via méthodes topologiques." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root { --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548; --muted:#5C6478; --dim:#9098AB; --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22); --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10); --nav-bg:rgba(245,241,234,0.92); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA; --muted:#8A91A3; --dim:#5F6680; --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22); --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12); --nav-bg:rgba(15,20,30,0.92); }
+* { box-sizing:border-box; margin:0; padding:0; } html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.2rem, 5vw, 3.6rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
+h1 em { font-style:italic; color:var(--accent); font-weight:500; }
+h2 { font-size:clamp(1.5rem, 2.8vw, 2rem); font-weight:500; }
+h3 { font-size:1.1rem; font-weight:600; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.1rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+section { padding:4.5rem 0; border-top:1px solid var(--rule); }
+section.hero { border-top:none; padding:5.5rem 0 3.5rem; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; color:var(--ink); border-bottom:none; }
+.brand em { color:var(--accent); font-style:italic; font-weight:500; }
+.brand-mark { color:var(--ink); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); border-bottom:none; cursor:pointer; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; }
+.crumb { font-family:var(--mono); font-size:0.72rem; color:var(--muted); margin-bottom:1.2rem; letter-spacing:0.04em; }
+.crumb a { color:var(--muted); border-bottom:none; }
+.hero-meta { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:1.2rem 2rem; margin-top:2rem; font-family:var(--mono); font-size:0.76rem; color:var(--muted); padding-top:1.5rem; border-top:1px solid var(--rule); }
+.hero-meta-block strong { display:block; color:var(--ink); font-weight:500; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.25rem; }
+.status-pill { display:inline-block; padding:0.25rem 0.7rem; border:1px solid var(--rule); color:var(--dim); font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; border-radius:2px; margin-bottom:1.2rem; }
+.section-head { margin-bottom:2rem; }
+.prose { max-width:760px; } .prose p + p { margin-top:1rem; }
+.bullets { list-style:none; }
+.bullets li { padding:0.6rem 0 0.6rem 1.5rem; border-top:1px solid var(--rule); font-size:0.95rem; position:relative; line-height:1.55; }
+.bullets li:first-child { border-top:none; padding-top:0.2rem; }
+.bullets li::before { content:'→'; position:absolute; left:0; top:0.7rem; color:var(--accent); font-family:var(--mono); font-size:0.85rem; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem 3rem; }
+.day { padding:1.5rem 0; border-top:1px solid var(--rule); display:grid; grid-template-columns:90px 1fr; gap:1.4rem; }
+.day:first-child { border-top:none; padding-top:0.5rem; }
+.day-tag { font-family:var(--mono); font-size:0.82rem; color:var(--accent); font-weight:500; letter-spacing:0.04em; padding-top:0.15rem; }
+.day h3 { font-family:var(--serif); font-weight:500; font-size:1.1rem; margin-bottom:0.4rem; }
+.day p { font-size:0.94rem; }
+.assessment-box { border:1px solid var(--rule-strong); padding:1.5rem; border-radius:2px; max-width:780px; }
+.assessment-box h3 { font-family:var(--mono); font-size:0.78rem; color:var(--accent); font-weight:500; letter-spacing:0.06em; margin-bottom:0.7rem; text-transform:uppercase; }
+.logistics { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1.5rem 2.5rem; }
+.logistics-item h3 { font-family:var(--mono); font-size:0.72rem; color:var(--muted); font-weight:400; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.4rem; }
+.logistics-item p { font-size:0.92rem; color:var(--ink); }
+.apply-cta { background:var(--ink); color:var(--bg); padding:3rem 2rem; border-radius:2px; }
+.apply-cta h2 { color:var(--bg); margin-bottom:0.8rem; }
+.apply-cta p { color:var(--bg); opacity:0.85; max-width:580px; margin-bottom:1.5rem; font-size:1.02rem; }
+.apply-cta a.btn { display:inline-block; padding:0.8rem 1.6rem; background:var(--accent); color:var(--bg); font-family:var(--mono); font-size:0.85rem; letter-spacing:0.06em; border-radius:2px; border-bottom:none; }
+[data-theme="dark"] .apply-cta { background:var(--bg-soft); color:var(--ink); }
+[data-theme="dark"] .apply-cta h2, [data-theme="dark"] .apply-cta p { color:var(--ink); }
+footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
+footer.site-footer a { color:var(--muted); border-bottom:none; }
+@media (max-width:860px) { .two-col, .logistics { grid-template-columns:1fr; } .day { grid-template-columns:1fr; gap:0.4rem; } .nav-links { display:none; } section, section.hero { padding:3rem 0; } }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="brand" href="index.html"><svg viewBox="0 0 40 40" width="26" height="26"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/><text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text></svg><span>AIR<em>INA</em> Labs</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#pillars">Piliers</a></li>
+    <li><a href="formations.html" class="active">Formations</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link" href="training-06-robust.html" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link active" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Basculer thème">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="crumb"><a href="formations.html">Formations</a> / <a href="formations.html#niveau-3">Niveau 3</a> / /06</div>
+  <span class="status-pill">À maturité de la recherche</span>
+  <h1>ATD pour ML robuste &amp; <em>détection OOD</em>.</h1>
+  <p class="lead">Formation de cinq jours pour ingénieurs ML et chercheurs en sûreté de l'IA sur ce que les méthodes topologiques apportent à la robustesse adverse, à la détection hors-distribution et à la robustesse certifiée — et là où elles n'apportent rien.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-block"><strong>Durée</strong> 5 jours</div>
+    <div class="hero-meta-block"><strong>Format</strong> En présentiel, Cotonou</div>
+    <div class="hero-meta-block"><strong>Langues</strong> EN</div>
+    <div class="hero-meta-block"><strong>Cohorte</strong> ~12</div>
+    <div class="hero-meta-block"><strong>Certificat</strong> AIRINA ML robuste avec ATD · noté</div>
+  </div>
+</section>
+
+<section class="wrap" id="about">
+  <div class="section-head">
+    <div class="eyebrow">À propos de cette formation</div>
+    <h2>La topologie comme outil de robustesse, pas comme slogan.</h2>
+  </div>
+  <div class="prose">
+    <p>La robustesse adverse et la détection hors-distribution ont toutes deux une saveur topologique : de petites perturbations déplacent les points hors de la variété des données, les exemples OOD se trouvent dans des composantes connexes différentes du support, le décalage de distribution change la forme globale des données. Plusieurs articles récents exploitent cela. D'autres en font trop. Cette semaine s'adresse aux praticiens ML qui veulent une vue sobre de ce que la topologie apporte réellement.</p>
+    <p>Cette formation ouvrira quand les publications d'AIRINA dans le domaine seront mûres. Cadrage honnête : nous ne la lançons pas encore parce que nous n'avons pas encore l'autorité pour l'enseigner. Exprimez votre intérêt maintenant et nous reviendrons vers vous quand la cohorte ouvrira.</p>
+  </div>
+</section>
+
+<section class="wrap" id="objectives">
+  <div class="section-head">
+    <div class="eyebrow">Objectifs pédagogiques</div>
+    <h2>À la fin, vous saurez.</h2>
+  </div>
+  <ul class="bullets" style="max-width:760px;">
+    <li>Calculer les signatures topologiques des activations et des entrées, et les utiliser comme caractéristiques dans un pipeline de robustesse.</li>
+    <li>Construire un détecteur OOD basé sur la persistance et le comparer honnêtement à des ensembles profonds, à des détecteurs énergétiques, et à des références Mahalanobis.</li>
+    <li>Appliquer la persistance différentiable dans une boucle d'entraînement robuste, en étant conscient des problèmes de sous-gradient.</li>
+    <li>Lire un article récent « la topologie donne de la robustesse » et identifier si l'affirmation survit à des références correctes.</li>
+    <li>Décider quand les méthodes topologiques sont justifiées pour un problème de robustesse et quand elles ne le sont pas. Les deux arrivent.</li>
+  </ul>
+</section>
+
+<section class="wrap" id="audience">
+  <div class="section-head">
+    <div class="eyebrow">À qui s'adresse cette formation</div>
+    <h2>Public et prérequis.</h2>
+  </div>
+  <div class="two-col">
+    <div>
+      <h4>Public</h4>
+      <ul class="bullets">
+        <li>Ingénieurs ML et ingénieurs de recherche travaillant sur la robustesse, la détection OOD, la supervision de modèles.</li>
+        <li>Chercheurs en sûreté de l'IA intéressés par les méthodes topologiques.</li>
+        <li>Équipes risque et sécurité d'institutions financières et au-delà qui déploient du ML en contexte adverse.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Prérequis</h4>
+      <ul class="bullets">
+        <li>Pratique ML solide : PyTorch, boucles d'entraînement, discipline d'évaluation.</li>
+        <li>Familiarité avec les attaques adverses (PGD, FGSM, AutoAttack) et les références en détection OOD.</li>
+        <li>Une exposition préalable à l'ATD — la Formation /01 est un prérequis recommandé ou équivalent.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="curriculum">
+  <div class="section-head">
+    <div class="eyebrow">Programme</div>
+    <h2>Cinq jours.</h2>
+  </div>
+  <div class="day"><span class="day-tag">Jour 1</span><div><h3>Robustesse adverse — paysage actuel</h3><p>Modèles de menace, attaques (PGD, AutoAttack, attaques par transfert), et défenses (entraînement adverse, randomized smoothing, bornes certifiées). Où chaque méthode fonctionne et où elle ne fonctionne pas. La photographie honnête du compromis robustesse-précision.</p></div></div>
+  <div class="day"><span class="day-tag">Jour 2</span><div><h3>Signatures topologiques des exemples OOD</h3><p>Diagrammes de persistance des activations sur entrées in-distribution vs OOD. Construire un détecteur OOD basé sur la persistance. Comparaison à des ensembles profonds, scores énergétiques, et Mahalanobis sur benchmarks type CIFAR et tabulaires.</p></div></div>
+  <div class="day"><span class="day-tag">Jour 3</span><div><h3>Robustesse certifiée par structure topologique</h3><p>Là où les propriétés géométriques/topologiques des données donnent des garanties de niveau certificat, et là où elles ne donnent qu'une robustesse empirique. Limitations et problèmes ouverts.</p></div></div>
+  <div class="day"><span class="day-tag">Jour 4</span><div><h3>Topologie dans la boucle d'entraînement</h3><p>Persistance différentiable appliquée à l'entraînement robuste ; régularisateurs topologiques ; le coût en précision propre et comment y penser.</p></div></div>
+  <div class="day"><span class="day-tag">Jour 5</span><div><h3>Projet final + soutenance</h3><p>Les participants choisissent un problème de robustesse ou OOD dans une liste curatée (ou apportent le leur avec accord), construisent un détecteur topologiquement enrichi ou un entraîneur robuste, et le défendent contre une référence honnête en session de 30 minutes.</p></div></div>
+</section>
+
+<section class="wrap" id="assessment">
+  <div class="section-head">
+    <div class="eyebrow">Évaluation et certificat</div>
+    <h2>Projet, référence, soutenance.</h2>
+  </div>
+  <div class="assessment-box">
+    <h3>Projet final</h3>
+    <p>Méthode topologique sur un vrai problème de robustesse ou de détection OOD, avec une référence classique solide dans le même harnais d'évaluation. La note dépend de si votre comparaison survivrait à une relecture d'article. Certificat : <em>AIRINA ML robuste avec ATD · noté</em>.</p>
+  </div>
+</section>
+
+<section class="wrap" id="faculty">
+  <div class="section-head">
+    <div class="eyebrow">Corps enseignant</div>
+    <h2>Qui enseigne.</h2>
+  </div>
+  <div class="prose">
+    <p>Chercheurs AIRINA en ATD et ML appliqué, plus un chercheur invité de la communauté internationale de sûreté de l'IA (nommé quatre semaines avant chaque cohorte). Cette formation ouvre sa première cohorte une fois que les publications d'AIRINA dans ce domaine seront en place.</p>
+  </div>
+</section>
+
+<section class="wrap" id="logistics">
+  <div class="section-head">
+    <div class="eyebrow">Logistique</div>
+    <h2>Les détails pratiques.</h2>
+  </div>
+  <div class="logistics">
+    <div class="logistics-item"><h3>Lieu</h3><p>AIRINA Labs, Cotonou.</p></div>
+    <div class="logistics-item"><h3>Horaires</h3><p>5 jours consécutifs.</p></div>
+    <div class="logistics-item"><h3>Supports</h3><p>Liste de lectures et exercices pré-cohorte 4 semaines avant.</p></div>
+    <div class="logistics-item"><h3>Taille de cohorte</h3><p>~12.</p></div>
+    <div class="logistics-item"><h3>Tarif</h3><p>Tarif industriel / académique.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="apply-cta">
+    <h2>Exprimer son intérêt.</h2>
+    <p>Cette formation ouvre quand la production de recherche d'AIRINA dans le domaine sera mûre. Inscrivez votre intérêt et nous reviendrons vers vous quand une cohorte sera programmée.</p>
+    <a class="btn" href="mailto:contact@airina.africa?subject=ML%20robuste%20ATD%20-%20interet">contact@airina.africa →</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="formations.html">← Retour au catalogue</a></span>
+</footer>
+
+<script>
+(function () { var s = localStorage.getItem('airina-theme'); if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); var b = document.getElementById('theme-toggle'); if (!b) return; b.addEventListener('click', function () { var c = document.documentElement.getAttribute('data-theme'); var n = c === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', n); localStorage.setItem('airina-theme', n); }); })();
+</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Topological Foundations of Deep Learning · Training /03 — AIRINA Labs</title>
+<meta name="description" content="Two-week residential summer school on the topology of deep learning. Manifold hypothesis, persistent homology of activations, differentiable persistence, topology-aware regularization. AIRINA Labs, Cotonou." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root { --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548; --muted:#5C6478; --dim:#9098AB; --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22); --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10); --nav-bg:rgba(245,241,234,0.92); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA; --muted:#8A91A3; --dim:#5F6680; --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22); --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12); --nav-bg:rgba(15,20,30,0.92); }
+* { box-sizing:border-box; margin:0; padding:0; } html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.2rem, 5vw, 3.6rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
+h1 em { font-style:italic; color:var(--accent); font-weight:500; }
+h2 { font-size:clamp(1.5rem, 2.8vw, 2rem); font-weight:500; letter-spacing:-0.01em; }
+h3 { font-size:1.1rem; font-weight:600; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.1rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+section { padding:4.5rem 0; border-top:1px solid var(--rule); }
+section.hero { border-top:none; padding:5.5rem 0 3.5rem; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; color:var(--ink); border-bottom:none; }
+.brand em { color:var(--accent); font-style:italic; font-weight:500; }
+.brand-mark { color:var(--ink); transition:color .2s; }
+.brand:hover .brand-mark { color:var(--accent); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); letter-spacing:0.05em; border-bottom:none; cursor:pointer; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; }
+.theme-btn:hover { color:var(--accent); border-color:var(--accent); }
+.crumb { font-family:var(--mono); font-size:0.72rem; color:var(--muted); margin-bottom:1.2rem; letter-spacing:0.04em; }
+.crumb a { color:var(--muted); border-bottom:none; }
+.crumb a:hover { color:var(--accent); }
+.hero-meta { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:1.2rem 2rem; margin-top:2rem; font-family:var(--mono); font-size:0.76rem; color:var(--muted); padding-top:1.5rem; border-top:1px solid var(--rule); }
+.hero-meta-block strong { display:block; color:var(--ink); font-weight:500; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.25rem; }
+.status-pill { display:inline-block; padding:0.25rem 0.7rem; border:1px solid var(--rule-strong); color:var(--muted); font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; border-radius:2px; margin-bottom:1.2rem; }
+.section-head { margin-bottom:2rem; }
+.section-head .eyebrow { margin-bottom:0.7rem; }
+.prose { max-width:760px; }
+.prose p + p { margin-top:1rem; }
+.bullets { list-style:none; }
+.bullets li { padding:0.6rem 0 0.6rem 1.5rem; border-top:1px solid var(--rule); font-size:0.95rem; position:relative; line-height:1.55; }
+.bullets li:first-child { border-top:none; padding-top:0.2rem; }
+.bullets li::before { content:'→'; position:absolute; left:0; top:0.7rem; color:var(--accent); font-family:var(--mono); font-size:0.85rem; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem 3rem; }
+.week { padding:2rem 0; border-top:1px solid var(--rule); display:grid; grid-template-columns:140px 1fr; gap:1.5rem; }
+.week:first-child { border-top:none; padding-top:0.5rem; }
+.week-tag { font-family:var(--mono); font-size:0.82rem; color:var(--accent); font-weight:500; letter-spacing:0.04em; padding-top:0.2rem; }
+.week h3 { font-family:var(--serif); font-weight:500; font-size:1.15rem; margin-bottom:0.8rem; }
+.day-item { padding:0.6rem 0; border-top:1px dashed var(--rule); font-size:0.92rem; line-height:1.55; }
+.day-item:first-of-type { border-top:none; }
+.day-item-tag { font-family:var(--mono); font-size:0.72rem; color:var(--muted); margin-right:0.6rem; letter-spacing:0.04em; }
+.day-item-topic { color:var(--ink); font-weight:500; }
+.assessment-box { border:1px solid var(--rule-strong); padding:1.5rem; border-radius:2px; max-width:780px; }
+.assessment-box h3 { font-family:var(--mono); font-size:0.78rem; color:var(--accent); font-weight:500; letter-spacing:0.06em; margin-bottom:0.7rem; text-transform:uppercase; }
+.assessment-box p { font-size:0.95rem; margin-bottom:0.7rem; }
+.logistics { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1.5rem 2.5rem; }
+.logistics-item h3 { font-family:var(--mono); font-size:0.72rem; color:var(--muted); font-weight:400; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.4rem; }
+.logistics-item p { font-size:0.92rem; color:var(--ink); }
+.apply-cta { background:var(--ink); color:var(--bg); padding:3rem 2rem; border-radius:2px; }
+.apply-cta h2 { color:var(--bg); margin-bottom:0.8rem; }
+.apply-cta p { color:var(--bg); opacity:0.85; max-width:580px; margin-bottom:1.5rem; font-size:1.02rem; }
+.apply-cta a.btn { display:inline-block; padding:0.8rem 1.6rem; background:var(--accent); color:var(--bg); font-family:var(--mono); font-size:0.85rem; letter-spacing:0.06em; border-radius:2px; border-bottom:none; }
+[data-theme="dark"] .apply-cta { background:var(--bg-soft); color:var(--ink); }
+[data-theme="dark"] .apply-cta h2, [data-theme="dark"] .apply-cta p { color:var(--ink); }
+footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
+footer.site-footer a { color:var(--muted); border-bottom:none; }
+footer.site-footer a:hover { color:var(--accent); }
+@media (max-width:860px) { .two-col, .logistics { grid-template-columns:1fr; } .week { grid-template-columns:1fr; gap:0.5rem; } .nav-links { display:none; } section, section.hero { padding:3rem 0; } }
+@media (prefers-reduced-motion: reduce) { * { transition:none !important; animation:none !important; } html { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" width="26" height="26" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text>
+    </svg>
+    <span>AIR<em>INA</em> Labs</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#what-we-are">About</a></li>
+    <li><a href="index.html#pillars">Pillars</a></li>
+    <li><a href="training.html" class="active">Training</a></li>
+    <li><a href="index.html#people">People</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link active" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link" href="formation-03-topologie.html" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="crumb"><a href="training.html">Training</a> / <a href="training.html#tier-2">Tier 2</a> / /03</div>
+  <span class="status-pill">Summer school 2027</span>
+  <h1>Topological Foundations of <em>Deep Learning</em>.</h1>
+  <p class="lead">A two-week residential summer school on what topology has to say about deep learning. Manifold geometry of representations, persistent homology of activations and weights, differentiable persistence, and topology-aware regularization. Theory and code in equal measure.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-block"><strong>Duration</strong> 2 weeks (10 working days)</div>
+    <div class="hero-meta-block"><strong>Format</strong> Residential, Cotonou</div>
+    <div class="hero-meta-block"><strong>Languages</strong> EN (primary), FR (support)</div>
+    <div class="hero-meta-block"><strong>Cohort</strong> ~15 participants</div>
+    <div class="hero-meta-block"><strong>Certificate</strong> AIRINA Topological Foundations of DL · graded · seeking ECTS co-accreditation</div>
+  </div>
+</section>
+
+<section class="wrap" id="about">
+  <div class="section-head">
+    <div class="eyebrow">About this summer school</div>
+    <h2>The geometry behind the optimizer.</h2>
+  </div>
+  <div class="prose">
+    <p>Deep networks learn representations on manifolds. We are not yet sure which ones, but the data — when we look at activations across layers — comes with topological structure that is partly inherited from inputs and partly invented by the architecture. This summer school is two weeks of trying to understand that structure rigorously, and to use it: to regularize training, to detect failure, to certify robustness.</p>
+    <p>The format is a mix of morning lectures (theory) and afternoon labs (PyTorch, GUDHI, the giotto-deep stack). Each day has assigned readings, a problem set, and a small piece of code to ship. Week two ends with a research mini-project on a topic the participant chooses from a curated list.</p>
+  </div>
+</section>
+
+<section class="wrap" id="objectives">
+  <div class="section-head">
+    <div class="eyebrow">Learning objectives</div>
+    <h2>By the end, you can.</h2>
+  </div>
+  <ul class="bullets" style="max-width:760px;">
+    <li>State the manifold hypothesis precisely, identify when it is testable, and run the tests on a real representation.</li>
+    <li>Compute persistent homology of activations and weights at scale, using the appropriate filtration for the architecture (cubical for images, weighted-graph for transformers, etc.).</li>
+    <li>Read and reproduce a research paper on topological regularization or differentiable persistence.</li>
+    <li>Use a topological loss function in a PyTorch training loop, with awareness of the subgradient issues that arise.</li>
+    <li>Critically evaluate a "topology helps generalization" claim: design the right ablation, choose the right baseline, interpret the right metric.</li>
+    <li>Identify three open research problems in the field and write a 2-page proposal for one of them.</li>
+  </ul>
+</section>
+
+<section class="wrap" id="audience">
+  <div class="section-head">
+    <div class="eyebrow">Who this is for</div>
+    <h2>Audience and prerequisites.</h2>
+  </div>
+  <div class="two-col">
+    <div>
+      <h4>Audience</h4>
+      <ul class="bullets">
+        <li>Graduate students (master's, PhD) in mathematics, statistics, computer science, applied physics.</li>
+        <li>Industry research engineers and ML researchers wanting a sabbatical-style intensive on a research direction adjacent to their work.</li>
+        <li>Faculty interested in TDA × DL but lacking a colleague to walk them through it.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Prerequisites</h4>
+      <ul class="bullets">
+        <li>Solid practical deep learning: comfortable training a CNN or transformer in PyTorch, reading the loss curves, debugging optimizer choices.</li>
+        <li>At least one of: measure-theoretic probability, algebraic topology basics. We do not assume both.</li>
+        <li>Mathematical maturity at the senior-undergraduate / graduate-student level. We expect you to read a research paper without giving up.</li>
+        <li>Laptop and access to a remote GPU (we provide instructions for cloud setup).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="curriculum">
+  <div class="section-head">
+    <div class="eyebrow">Curriculum</div>
+    <h2>Two weeks, ten working days.</h2>
+  </div>
+
+  <div class="week">
+    <span class="week-tag">Week 1</span>
+    <div>
+      <h3>Foundations: where the topology lives</h3>
+      <div class="day-item"><span class="day-item-tag">Day 1</span> <span class="day-item-topic">Manifold hypothesis, intrinsic dimension</span> — testable formulations of the manifold hypothesis (PHate, intrinsic-dimension estimators); when the assumption is reasonable and when it breaks.</div>
+      <div class="day-item"><span class="day-item-tag">Day 2</span> <span class="day-item-topic">Latent geometry of representations</span> — geodesic distance, isomap, curvature estimators; visualizing latent spaces honestly.</div>
+      <div class="day-item"><span class="day-item-tag">Day 3</span> <span class="day-item-topic">Persistent homology of activations</span> — computing PH layer-by-layer, what each Betti number means for capacity and overfitting.</div>
+      <div class="day-item"><span class="day-item-tag">Day 4</span> <span class="day-item-topic">Persistent homology of weights and Jacobians</span> — topology of the parameter landscape, mode connectivity, flatness measures.</div>
+      <div class="day-item"><span class="day-item-tag">Day 5</span> <span class="day-item-topic">Topological signatures of generalization</span> — recent results, what's contested, week-1 lab synthesis.</div>
+    </div>
+  </div>
+
+  <div class="week">
+    <span class="week-tag">Week 2</span>
+    <div>
+      <h3>Topology in the training loop</h3>
+      <div class="day-item"><span class="day-item-tag">Day 6</span> <span class="day-item-topic">Differentiable persistence</span> — subgradients of persistence diagrams, what the autograd graph actually looks like.</div>
+      <div class="day-item"><span class="day-item-tag">Day 7</span> <span class="day-item-topic">Topological loss functions</span> — connectivity loss, topological autoencoders, lab on a real PyTorch implementation.</div>
+      <div class="day-item"><span class="day-item-tag">Day 8</span> <span class="day-item-topic">Topology-aware regularization</span> — when it helps, when it does not; ablation design for honest claims.</div>
+      <div class="day-item"><span class="day-item-tag">Day 9</span> <span class="day-item-topic">Robustness and OOD detection via topology</span> — adversarial robustness through a topological lens.</div>
+      <div class="day-item"><span class="day-item-tag">Day 10</span> <span class="day-item-topic">Research mini-project + final talks</span> — participants present a 20-minute talk on their chosen mini-project, defended in front of the cohort and faculty.</div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="assessment">
+  <div class="section-head">
+    <div class="eyebrow">Assessment and certificate</div>
+    <h2>Mini-project and defense.</h2>
+  </div>
+  <div class="assessment-box">
+    <h3>Mini-project</h3>
+    <p>You pick a question from a curated list of 15 — most are open research problems framed at a tractable scope for a 2-week project — or propose your own (with prior approval). Deliverables: a Git repository with code and writeup, a 20-minute talk, and a 2-page research-proposal continuation describing what you would do next if you had three months.</p>
+    <p>Grading is on quality of question, honesty of evaluation, and clarity of presentation. Vague "this kinda worked" projects do not pass; rigorously demonstrated negative results do. The certificate is <em>AIRINA Topological Foundations of DL · graded</em>. We are pursuing ECTS co-accreditation through a university partner; if achieved, the certificate carries credit.</p>
+  </div>
+</section>
+
+<section class="wrap" id="faculty">
+  <div class="section-head">
+    <div class="eyebrow">Faculty</div>
+    <h2>Who teaches.</h2>
+  </div>
+  <div class="prose">
+    <p>Lead instructor: Y. U. Gaba, AIRINA Labs director. Co-instructors from the AIRINA topology and ML lines, plus invited faculty from partner institutions (named four weeks before each cohort, drawn from AIMS, ACAS, and the international TDA / topological-DL research community).</p>
+  </div>
+</section>
+
+<section class="wrap" id="logistics">
+  <div class="section-head">
+    <div class="eyebrow">Logistics</div>
+    <h2>The practical details.</h2>
+  </div>
+  <div class="logistics">
+    <div class="logistics-item"><h3>Location</h3><p>Residential at AIRINA Labs, Cotonou. Accommodation arranged at partner guesthouses.</p></div>
+    <div class="logistics-item"><h3>Schedule</h3><p>10 working days over 2 weeks. AM lectures, PM labs, evenings for problem sets and reading.</p></div>
+    <div class="logistics-item"><h3>Materials</h3><p>Reading list and pre-course problem set 4 weeks ahead.</p></div>
+    <div class="logistics-item"><h3>Cohort size</h3><p>15 participants. Application-based.</p></div>
+    <div class="logistics-item"><h3>Fee</h3><p>Tuition + accommodation. Need-based fellowships available for African graduate students.</p></div>
+    <div class="logistics-item"><h3>Compute</h3><p>Remote GPU access provided.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="apply-cta">
+    <h2>Apply for the 2027 cohort.</h2>
+    <p>Applications open mid-2026 with a deadline around April 2027. We ask for a CV, a one-page research statement, and (for graduate students) a letter from your advisor. Notification within 4 weeks of the deadline.</p>
+    <a class="btn" href="mailto:contact@airina.africa?subject=Summer%20School%20-%20Topological%20Foundations">contact@airina.africa →</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="training.html">← Back to catalog</a></span>
+</footer>
+
+<script>
+(function () {
+  var saved = localStorage.getItem('airina-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('airina-theme', next);
+  });
+})();
+</script>
+
+</body>
+</html>

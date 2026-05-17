@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Formation — AIRINA Labs</title>
+<meta name="description" content="Le pôle formation d'AIRINA Labs : programmes courts, mathématiquement rigoureux, adossés à la recherche. Certificats avec évaluation notée. Bilingue FR / EN." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root { --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548; --muted:#5C6478; --dim:#9098AB; --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22); --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10); --nav-bg:rgba(245,241,234,0.92); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA; --muted:#8A91A3; --dim:#5F6680; --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22); --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12); --nav-bg:rgba(15,20,30,0.92); }
+* { box-sizing:border-box; margin:0; padding:0; } html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.2rem, 5vw, 3.8rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
+h1 em { font-style:italic; color:var(--accent); font-weight:500; }
+h2 { font-size:clamp(1.6rem, 3vw, 2.2rem); font-weight:500; letter-spacing:-0.012em; }
+h3 { font-size:1.15rem; font-weight:600; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.15rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+section { padding:5rem 0; border-top:1px solid var(--rule); }
+section.hero { border-top:none; padding:6rem 0 4rem; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; color:var(--ink); border-bottom:none; }
+.brand em { color:var(--accent); font-style:italic; font-weight:500; }
+.brand-mark { color:var(--ink); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); border-bottom:none; cursor:pointer; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; }
+.hero .eyebrow { margin-bottom:1.2rem; } .hero h1 { max-width:880px; } .hero .lead { margin-top:1.4rem; max-width:720px; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:1.6rem 2.4rem; margin-top:2.3rem; font-family:var(--mono); font-size:0.78rem; color:var(--muted); }
+.hero-meta span { display:inline-flex; gap:0.5rem; align-items:baseline; }
+.hero-meta strong { color:var(--ink); font-weight:500; }
+.section-head { margin-bottom:2.5rem; } .section-head .eyebrow { margin-bottom:0.7rem; }
+.prose { max-width:760px; } .prose p + p { margin-top:1rem; }
+.catalog-cta { margin-top:1.5rem; padding:1rem 1.4rem; border:1px solid var(--rule-strong); border-radius:2px; display:flex; justify-content:space-between; align-items:baseline; font-family:var(--mono); font-size:0.85rem; color:var(--ink-soft); flex-wrap:wrap; gap:1rem; }
+.catalog-cta a { color:var(--ink); border-bottom:1px solid var(--rule-strong); }
+.catalog-cta a:hover { color:var(--accent); border-color:var(--accent); }
+.principles { display:flex; flex-direction:column; }
+.principle { padding:1.5rem 0; border-top:1px solid var(--rule); display:grid; grid-template-columns:auto 1fr; gap:1.6rem; align-items:baseline; }
+.principle:first-child { border-top:none; padding-top:0; }
+.principle-num { font-family:var(--mono); font-size:0.82rem; color:var(--accent); letter-spacing:0.04em; font-weight:500; }
+.principle h3 { font-family:var(--serif); font-weight:500; font-size:1.15rem; margin-bottom:0.4rem; }
+.principle p { font-size:0.95rem; max-width:680px; }
+.contact { display:grid; grid-template-columns:repeat(2, 1fr); gap:2rem; max-width:720px; }
+.contact-block h3 { font-family:var(--mono); font-size:0.72rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.7rem; }
+.contact-block p { color:var(--ink); font-size:0.95rem; line-height:1.55; }
+.contact-block a { color:var(--ink); border-bottom:1px solid var(--rule-strong); }
+footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
+footer.site-footer a { color:var(--muted); border-bottom:none; }
+@media (max-width:860px) { .contact { grid-template-columns:1fr; } .principle { grid-template-columns:1fr; gap:0.4rem; } .nav-links { display:none; } section { padding:3.5rem 0; } section.hero { padding:4.5rem 0 3rem; } }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 40 40" width="26" height="26"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/><text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text></svg><span>AIR<em>INA</em> Labs</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#what-we-are">À propos</a></li>
+    <li><a href="index.html#pillars" class="active">Piliers</a></li>
+    <li><a href="formations.html">Formations</a></li>
+    <li><a href="index.html#people">Équipe</a></li>
+    <li><a href="index.html#work">Travaux</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link" href="pillar-training.html" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link active" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Basculer thème">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="eyebrow">Pilier /03 · Formation</div>
+  <h1>La formation à <em>AIRINA</em>.</h1>
+  <p class="lead">Format court. Rigueur mathématique. Construit autour de ce que l'unité publie réellement. Le pôle Formation est la voie par laquelle la recherche d'AIRINA atteint les data scientists, analystes et étudiants en exercice — et par laquelle l'unité recrute ses prochains collaborateurs.</p>
+  <div class="hero-meta">
+    <span><strong>Format</strong> 2 jours à 2 semaines</span>
+    <span><strong>Langues</strong> FR / EN</span>
+    <span><strong>Certificat</strong> Noté, soutenu</span>
+  </div>
+</section>
+
+<section class="wrap" id="what">
+  <div class="section-head">
+    <div class="eyebrow">Ce que nous proposons</div>
+    <h2>Six programmes sur trois niveaux.</h2>
+  </div>
+  <div class="prose">
+    <p>Le catalogue comprend deux programmes phares en Niveau 1 (ATD pour data scientists, et IA interprétable pour secteurs régulés), deux programmes plus longs en Niveau 2 (l'école d'été de 2 semaines sur les fondements topologiques de l'apprentissage profond et le bootcamp d'1 semaine sur les méthodes quantiques-topologiques), et deux programmes spécialisés en Niveau 3 (une école de recherche en topologie asymétrique, et une formation sur la robustesse et la détection OOD via l'ATD). Les programmes des Niveaux 2 et 3 ouvrent à mesure que les publications de l'unité dans chaque domaine mûrissent — nous n'enseignons pas un sujet avant d'y avoir publié.</p>
+  </div>
+  <div class="catalog-cta">
+    <span>Catalogue complet avec programmes, prérequis et inscription :</span>
+    <span><a href="formations.html">formations.html →</a> &nbsp;·&nbsp; <a href="training.html">training.html (EN) →</a></span>
+  </div>
+</section>
+
+<section class="wrap" id="principles">
+  <div class="section-head">
+    <div class="eyebrow">Comment fonctionne le pôle Formation</div>
+    <h2>Quatre principes.</h2>
+  </div>
+  <div class="principles">
+    <div class="principle">
+      <span class="principle-num">/01</span>
+      <div>
+        <h3>Format court, par discipline</h3>
+        <p>Le programme le plus long du catalogue dure deux semaines. La plupart durent trois à cinq jours. Nous ne construisons pas une école diplômante. Nous donnons à des professionnels en exercice et à des étudiants un accès concentré à de la recherche qu'un cours Coursera ne leur offrira jamais.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">/02</span>
+      <div>
+        <h3>Mathématiquement profond</h3>
+        <p>Le socle attendu va au-delà de Python et de sklearn. Calcul différentiel, algèbre linéaire, probabilités, et — pour les programmes longs — au moins l'un des deux : théorie de la mesure ou topologie algébrique. La spécificité de l'unité est la profondeur mathématique. Nous ne l'allégeons pas pour élargir le marché.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">/03</span>
+      <div>
+        <h3>Évalué, soutenu, réel</h3>
+        <p>Chaque programme se conclut par un projet — pipeline ATD sur jeu de données réel, audit d'interprétabilité et d'équité, mini-projet de recherche — soutenu devant les chercheurs d'AIRINA. Pas de certificat de présence. Le certificat porte du poids parce que l'évaluation a du mordant.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <span class="principle-num">/04</span>
+      <div>
+        <h3>Bilingue, en pratique</h3>
+        <p>Les supports techniques sont en anglais (la langue de la recherche) ; les sessions orales et les livrables écrits fonctionnent dans les deux langues. Les participants présentent dans les deux. Les analystes francophones et les étudiants anglophones siègent dans la même cohorte.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="who-teaches">
+  <div class="section-head">
+    <div class="eyebrow">Qui enseigne</div>
+    <h2>Des praticiens uniquement.</h2>
+  </div>
+  <div class="prose">
+    <p>Les chercheurs d'AIRINA et des intervenants des institutions partenaires (AIMS, ACAS, départements de mathématiques et statistiques universitaires). Le directeur conduit lui-même les contenus topologiquement denses. Nous ne faisons pas appel à des non-praticiens. Si un sujet n'a pas de praticien actif dans l'unité, nous co-organisons avec quelqu'un qui en a un, ou nous ne le proposons pas.</p>
+    <p>La discipline du catalogue lent est intentionnelle. Ajouter un cinquième ou sixième programme est peu coûteux ; bien l'enseigner ne l'est pas.</p>
+  </div>
+</section>
+
+<section class="wrap" id="loop">
+  <div class="section-head">
+    <div class="eyebrow">Formation × recherche</div>
+    <h2>Un seul moteur, deux échelles de temps.</h2>
+  </div>
+  <div class="prose">
+    <p>Chaque programme a un pendant en mission industrielle rémunérée. Une banque qui envoie deux analystes à <em>ATD pour data scientists</em> peut ensuite confier à AIRINA un engagement de six semaines appliquant l'ATD à son problème de détection de fraude. L'engagement produit l'étude de cas utilisée dans la cohorte suivante. La publication issue de cet engagement donne à la cohorte suivante sa crédibilité.</p>
+    <p>Les meilleurs participants aux formations courtes sont recrutés dans les collaborations de recherche d'AIRINA sur les thèmes plus profonds. Le programme de certification est la porte d'entrée. Le pôle de recherche est l'arrière-cour. Même moteur, échelles de temps différentes, et le travail capitalise.</p>
+  </div>
+</section>
+
+<section class="wrap" id="get-involved">
+  <div class="section-head">
+    <div class="eyebrow">S'impliquer</div>
+    <h2>Trois portes d'entrée.</h2>
+  </div>
+  <div class="contact">
+    <div class="contact-block">
+      <h3>Comme participant</h3>
+      <p>Voir le catalogue et s'inscrire : <a href="formations.html">formations.html</a> · <a href="training.html">training.html (EN)</a></p>
+    </div>
+    <div class="contact-block">
+      <h3>Comme partenaire recruteur</h3>
+      <p>Banques, IMF, fintechs qui envoient des analystes en échange d'un accès prioritaire au recrutement : <a href="mailto:contact@airina.africa?subject=Partenaire%20Formation">contact@airina.africa</a></p>
+    </div>
+    <div class="contact-block">
+      <h3>Comme co-organisateur</h3>
+      <p>Universités et instituts de recherche souhaitant co-accréditer les programmes Niveau 2 ou 3 : <a href="mailto:contact@airina.africa?subject=Co-organisateur">contact@airina.africa</a></p>
+    </div>
+    <div class="contact-block">
+      <h3>Comme bailleur</h3>
+      <p>Fondations et banques de développement finançant l'accès des cohortes : <a href="mailto:contact@airina.africa?subject=Bailleur%20Formation">contact@airina.africa</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="index.html">← Retour à l'accueil</a></span>
+</footer>
+
+<script>
+(function () { var s = localStorage.getItem('airina-theme'); if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); var b = document.getElementById('theme-toggle'); if (!b) return; b.addEventListener('click', function () { var c = document.documentElement.getAttribute('data-theme'); var n = c === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', n); localStorage.setItem('airina-theme', n); }); })();
+</script>
+</body>
+</html>

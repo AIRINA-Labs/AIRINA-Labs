@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Recherche — AIRINA Labs</title>
+<meta name="description" content="Le pôle recherche d'AIRINA Labs : analyse topologique des données, IA symbolique et interprétable, fondements topologiques de l'apprentissage et de l'apprentissage par renforcement, topologie asymétrique, méthodes quantiques-topologiques pour la finance." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Recherche — AIRINA Labs" />
+<meta property="og:description" content="Ce sur quoi travaille l'unité de recherche d'AIRINA Labs : ATD, IA interprétable, fondements topologiques de l'apprentissage, topologie asymétrique, finance quantique-topologique." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root { --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548; --muted:#5C6478; --dim:#9098AB; --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22); --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10); --nav-bg:rgba(245,241,234,0.92); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA; --muted:#8A91A3; --dim:#5F6680; --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22); --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12); --nav-bg:rgba(15,20,30,0.92); }
+* { box-sizing:border-box; margin:0; padding:0; } html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.2rem, 5vw, 3.8rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
+h1 em { font-style:italic; color:var(--accent); font-weight:500; }
+h2 { font-size:clamp(1.6rem, 3vw, 2.2rem); font-weight:500; letter-spacing:-0.012em; line-height:1.18; }
+h3 { font-size:1.15rem; font-weight:600; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.15rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+section { padding:5rem 0; border-top:1px solid var(--rule); }
+section.hero { border-top:none; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; color:var(--ink); border-bottom:none; }
+.brand em { color:var(--accent); font-style:italic; font-weight:500; }
+.brand-mark { color:var(--ink); transition:color .2s; }
+.brand:hover .brand-mark { color:var(--accent); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); letter-spacing:0.05em; border-bottom:none; cursor:pointer; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; }
+.theme-btn:hover { color:var(--accent); border-color:var(--accent); }
+section.hero { padding:6rem 0 4rem; }
+.hero .eyebrow { margin-bottom:1.2rem; }
+.hero h1 { max-width:880px; }
+.hero .lead { margin-top:1.4rem; max-width:720px; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:1.6rem 2.4rem; margin-top:2.3rem; font-family:var(--mono); font-size:0.78rem; color:var(--muted); }
+.hero-meta span { display:inline-flex; gap:0.5rem; align-items:baseline; }
+.hero-meta strong { color:var(--ink); font-weight:500; }
+.section-head { margin-bottom:2.5rem; }
+.section-head .eyebrow { margin-bottom:0.7rem; }
+.prose { max-width:760px; } .prose p + p { margin-top:1rem; }
+.themes { display:flex; flex-direction:column; }
+.theme { padding:2rem 0; border-top:1px solid var(--rule); display:grid; grid-template-columns:60px 1fr; gap:1.5rem; }
+.theme:first-child { border-top:none; padding-top:0.4rem; }
+.theme-num { font-family:var(--mono); font-size:0.82rem; color:var(--accent); font-weight:500; letter-spacing:0.04em; padding-top:0.4rem; }
+.theme h3 { font-family:var(--serif); font-weight:500; font-size:1.3rem; margin-bottom:0.5rem; }
+.theme p { font-size:0.97rem; max-width:740px; }
+.theme-tag { font-family:var(--mono); font-size:0.72rem; color:var(--muted); margin-top:0.7rem; letter-spacing:0.04em; }
+.theme-tag strong { color:var(--ink); font-weight:500; }
+.process { display:flex; flex-direction:column; }
+.process-item { padding:1.3rem 0; border-top:1px solid var(--rule); display:grid; grid-template-columns:auto 1fr; gap:1.4rem; align-items:baseline; }
+.process-item:first-child { border-top:none; padding-top:0; }
+.process-item h3 { font-family:var(--mono); font-size:0.82rem; font-weight:500; color:var(--accent); letter-spacing:0.04em; }
+.process-item p { font-size:0.95rem; max-width:680px; }
+.contact { display:grid; grid-template-columns:repeat(2, 1fr); gap:2rem; max-width:720px; }
+.contact-block h3 { font-family:var(--mono); font-size:0.72rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.7rem; }
+.contact-block p { color:var(--ink); font-size:0.95rem; line-height:1.55; }
+.contact-block a { color:var(--ink); border-bottom:1px solid var(--rule-strong); }
+.contact-block a:hover { color:var(--accent); border-color:var(--accent); }
+footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
+footer.site-footer a { color:var(--muted); border-bottom:none; }
+footer.site-footer a:hover { color:var(--accent); }
+@media (max-width:860px) { .contact { grid-template-columns:1fr; } .theme { grid-template-columns:1fr; gap:0.5rem; } .process-item { grid-template-columns:1fr; gap:0.4rem; } .nav-links { display:none; } section { padding:3.5rem 0; } section.hero { padding:4.5rem 0 3rem; } }
+@media (prefers-reduced-motion: reduce) { * { transition:none !important; animation:none !important; } html { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" width="26" height="26" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text>
+    </svg>
+    <span>AIR<em>INA</em> Labs</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#what-we-are">À propos</a></li>
+    <li><a href="index.html#pillars" class="active">Piliers</a></li>
+    <li><a href="formations.html">Formations</a></li>
+    <li><a href="index.html#people">Équipe</a></li>
+    <li><a href="index.html#work">Travaux</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link" href="pillar-research.html" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link active" aria-current="page" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Basculer thème clair/sombre">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="eyebrow">Pilier /01 · Recherche</div>
+  <h1>La recherche à <em>AIRINA</em>.</h1>
+  <p class="lead">Nous travaillons là où l'IA appliquée est mathématique. Les travaux actuels de l'unité se situent à l'intersection de la topologie, de la théorie de l'apprentissage et des problèmes posés par les systèmes financiers africains.</p>
+  <div class="hero-meta">
+    <span><strong>Productions</strong> Articles, code, jeux d'évaluation ouverts</span>
+    <span><strong>Collaborateurs</strong> AIMS · ACAS · partenaires universitaires</span>
+    <span><strong>Modèle de financement</strong> Subventions + missions industrielles rémunérées</span>
+  </div>
+</section>
+
+<section class="wrap" id="themes">
+  <div class="section-head">
+    <div class="eyebrow">Axes de recherche actifs</div>
+    <h2>Six axes, une seule direction.</h2>
+  </div>
+  <div class="themes">
+
+    <article class="theme">
+      <span class="theme-num">/01</span>
+      <div>
+        <h3>Analyse topologique des données</h3>
+        <p>L'ATD étudie la forme des données : quels groupes se relient, quelles boucles persistent, quels vides résistent à être comblés quand un paramètre d'échelle évolue. L'unité publie sur l'homologie persistante, la stabilité des diagrammes de persistance, la persistance multi-paramétrique et la vectorisation pour le ML en aval. Les travaux en cours portent sur les caractéristiques de persistance pour les séries temporelles financières et pour les graphes construits à partir des journaux de transactions mobile money.</p>
+        <div class="theme-tag"><strong>Code :</strong> GUDHI · Ripser · giotto-tda · cripser &nbsp;·&nbsp; <strong>Productions :</strong> prépublications arXiv, articles à comité de lecture, notebooks Jupyter ouverts</div>
+      </div>
+    </article>
+
+    <article class="theme">
+      <span class="theme-num">/02</span>
+      <div>
+        <h3>IA symbolique et interprétable</h3>
+        <p>L'apprentissage automatique en production dans les secteurs régulés ne sait pas répondre à la question que les régulateurs posent effectivement : <em>pourquoi cette décision, pour cette personne</em>. L'unité travaille sur les modèles interprétables par conception, l'extraction de règles de décision, et les méthodes neuro-symboliques qui conservent la puissance inductive de l'apprentissage profond tout en exposant ce qui a été appris. Nous testons contre les réalités des données de crédit africaines : étiquettes éparses, revenus semi-formels, observations intermittentes, et les contraintes réglementaires qui rendent certaines astuces standard inutilisables.</p>
+        <div class="theme-tag"><strong>Applications :</strong> scoring crédit, détection de fraude, gestion du risque modèle pour les institutions sous tutelle BCEAO</div>
+      </div>
+    </article>
+
+    <article class="theme">
+      <span class="theme-num">/03</span>
+      <div>
+        <h3>Fondements topologiques de l'IA et de l'apprentissage par renforcement</h3>
+        <p>Les réseaux profonds apprennent des représentations qui vivent sur des variétés. Nous nous intéressons à la structure topologique de ces représentations, aux cas où la topologie prédit la généralisation, et à la question de savoir si les invariants topologiques peuvent stabiliser l'optimisation de politiques en apprentissage par renforcement lorsque le paysage des récompenses est irrégulier. Cet axe se relie au travail de l'unité sur les fondements mathématiques et alimente l'école d'été de deux semaines sur les fondements topologiques de l'apprentissage profond.</p>
+        <div class="theme-tag"><strong>Connexions :</strong> hypothèse de variété · signatures topologiques de généralisation · persistance différentiable</div>
+      </div>
+    </article>
+
+    <article class="theme">
+      <span class="theme-num">/04</span>
+      <div>
+        <h3>ATD pour un apprentissage automatique robuste</h3>
+        <p>La robustesse adverse et la détection hors-distribution ont toutes deux une saveur topologique : de petites perturbations déplacent les points hors de la variété des données. Nous examinons si l'homologie persistante donne des signaux que les méthodes fondées uniquement sur des normes manquent, et si les régularisateurs topologiques réduisent la sensibilité au décalage de distribution sans payer le prix habituel en précision. Travaux en cours ; la formation correspondante ouvrira quand les publications seront en place.</p>
+      </div>
+    </article>
+
+    <article class="theme">
+      <span class="theme-num">/05</span>
+      <div>
+        <h3>Topologie asymétrique et complexité</h3>
+        <p>La spécialité en mathématiques pures du directeur : espaces quasi-métriques et métriques bipolaires, théorie du point fixe en cadre asymétrique, et applications à la complexité. C'est l'axe mathématique le plus profond de l'unité. Il se relie à la sémantique dénotationnelle en informatique théorique et à l'apprentissage de similarité en ML, où la dissimilarité est naturellement asymétrique (un client ressemble plus à un salarié que l'inverse, pour le risque crédit).</p>
+        <div class="theme-tag"><strong>Productions :</strong> articles à comité de lecture en mathématiques (collection Springer, revues de topologie et d'analyse)</div>
+      </div>
+    </article>
+
+    <article class="theme">
+      <span class="theme-num">/06</span>
+      <div>
+        <h3>IA quantique-topologique pour la finance</h3>
+        <p>L'apprentissage automatique quantique a été à la fois sur-vendu et sous-livré, à peu près à parts égales. Nous étudions où les caractéristiques topologiques et les méthodes à noyaux quantiques apportent ensemble un gain mesurable sur les problèmes financiers où les références classiques plafonnent : détection de régime dans les séries non-stationnaires, modélisation de la surface de volatilité sous hypothèses de queues lourdes, construction de portefeuille quand les corrélations s'effondrent. La réponse honnête à « est-ce que ça aide ? » est : parfois, sur des problèmes précis, et nous travaillons à les identifier.</p>
+        <div class="theme-tag"><strong>Stack :</strong> Qiskit · PennyLane · pipeline ATD classique · comparé à des références classiques solides</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="wrap" id="how">
+  <div class="section-head">
+    <div class="eyebrow">Comment l'unité travaille</div>
+    <h2>Ce que nous promettons, et ce que nous ne promettons pas.</h2>
+  </div>
+  <div class="process">
+    <div class="process-item">
+      <h3>Publier avant d'annoncer</h3>
+      <p>La référence de l'unité pour « ce que nous faisons » est ce qui se trouve sur arXiv, dans une revue à comité de lecture, ou dans un dépôt public. Pas ce qui figure sur un site web. Si un axe n'a pas encore de production publique, nous le disons.</p>
+    </div>
+    <div class="process-item">
+      <h3>Ouvrir le code</h3>
+      <p>Méthodes, code et jeux d'évaluation vivent dans l'organisation GitHub d'AIRINA-Labs. Nous ouvrons les données quand nous pouvons les partager, et documentons ce que nous ne pouvons pas partager et pourquoi.</p>
+    </div>
+    <div class="process-item">
+      <h3>Co-signer</h3>
+      <p>L'unité a des collaborations établies avec AIMS Sénégal, AIMS Afrique du Sud, AIMS Rwanda, et ACAS. Nous co-encadrons des travaux de master et de doctorat dans les universités partenaires, et publions avec les étudiants en tant que co-auteurs, pas en tant que contributeurs cités dans les remerciements.</p>
+    </div>
+    <div class="process-item">
+      <h3>Refuser ce que nous ne savons pas enseigner</h3>
+      <p>Si un sujet n'a pas de praticien actif dans l'unité, nous co-organisons avec quelqu'un qui en a un, ou nous ne l'enseignons pas. Le catalogue s'allonge lentement, par discipline.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="engage">
+  <div class="section-head">
+    <div class="eyebrow">Collaborer avec nous</div>
+    <h2>Trois portes d'entrée.</h2>
+  </div>
+  <div class="contact">
+    <div class="contact-block">
+      <h3>Recherche conjointe</h3>
+      <p>Écrivez à <a href="mailto:contact@airina.africa?subject=Recherche%20conjointe">contact@airina.africa</a> avec un résumé d'une page de la question et des données accessibles.</p>
+    </div>
+    <div class="contact-block">
+      <h3>Encadrement doctoral</h3>
+      <p>Pour les travaux de master ou doctorat impliquant AIRINA, passez par la page académique du directeur : <a href="https://gabayae.github.io">gabayae.github.io</a>.</p>
+    </div>
+    <div class="contact-block">
+      <h3>Recherche commanditée</h3>
+      <p>Pour les institutions financières et les bailleurs : <a href="mailto:contact@airina.africa?subject=Recherche%20commanditee">contact@airina.africa</a>. Nous répondons avec un dossier partenariats d'une page.</p>
+    </div>
+    <div class="contact-block">
+      <h3>Logiciels libres</h3>
+      <p>Lire ou contribuer : <a href="https://github.com/AIRINA-Labs">github.com/AIRINA-Labs</a>.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="index.html">← Retour à l'accueil</a></span>
+</footer>
+
+<script>
+(function () {
+  var saved = localStorage.getItem('airina-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('airina-theme', next);
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Méthodes quantiques-topologiques pour la finance · Formation /04 — AIRINA Labs</title>
+<meta name="description" content="Bootcamp d'une semaine à l'intersection de l'informatique quantique, de la topologie et de la finance quantitative." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root { --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548; --muted:#5C6478; --dim:#9098AB; --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22); --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10); --nav-bg:rgba(245,241,234,0.92); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA; --muted:#8A91A3; --dim:#5F6680; --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22); --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12); --nav-bg:rgba(15,20,30,0.92); }
+* { box-sizing:border-box; margin:0; padding:0; } html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.2rem, 5vw, 3.6rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
+h1 em { font-style:italic; color:var(--accent); font-weight:500; }
+h2 { font-size:clamp(1.5rem, 2.8vw, 2rem); font-weight:500; }
+h3 { font-size:1.1rem; font-weight:600; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.1rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+section { padding:4.5rem 0; border-top:1px solid var(--rule); }
+section.hero { border-top:none; padding:5.5rem 0 3.5rem; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; color:var(--ink); border-bottom:none; }
+.brand em { color:var(--accent); font-style:italic; font-weight:500; }
+.brand-mark { color:var(--ink); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); border-bottom:none; cursor:pointer; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; }
+.crumb { font-family:var(--mono); font-size:0.72rem; color:var(--muted); margin-bottom:1.2rem; letter-spacing:0.04em; }
+.crumb a { color:var(--muted); border-bottom:none; }
+.hero-meta { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:1.2rem 2rem; margin-top:2rem; font-family:var(--mono); font-size:0.76rem; color:var(--muted); padding-top:1.5rem; border-top:1px solid var(--rule); }
+.hero-meta-block strong { display:block; color:var(--ink); font-weight:500; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.25rem; }
+.status-pill { display:inline-block; padding:0.25rem 0.7rem; border:1px solid var(--rule-strong); color:var(--muted); font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; border-radius:2px; margin-bottom:1.2rem; }
+.section-head { margin-bottom:2rem; }
+.prose { max-width:760px; } .prose p + p { margin-top:1rem; }
+.bullets { list-style:none; }
+.bullets li { padding:0.6rem 0 0.6rem 1.5rem; border-top:1px solid var(--rule); font-size:0.95rem; position:relative; line-height:1.55; }
+.bullets li:first-child { border-top:none; padding-top:0.2rem; }
+.bullets li::before { content:'→'; position:absolute; left:0; top:0.7rem; color:var(--accent); font-family:var(--mono); font-size:0.85rem; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem 3rem; }
+.day { padding:1.5rem 0; border-top:1px solid var(--rule); display:grid; grid-template-columns:90px 1fr; gap:1.4rem; }
+.day:first-child { border-top:none; padding-top:0.5rem; }
+.day-tag { font-family:var(--mono); font-size:0.82rem; color:var(--accent); font-weight:500; letter-spacing:0.04em; padding-top:0.15rem; }
+.day h3 { font-family:var(--serif); font-weight:500; font-size:1.1rem; margin-bottom:0.4rem; }
+.day p { font-size:0.94rem; }
+.assessment-box { border:1px solid var(--rule-strong); padding:1.5rem; border-radius:2px; max-width:780px; }
+.assessment-box h3 { font-family:var(--mono); font-size:0.78rem; color:var(--accent); font-weight:500; letter-spacing:0.06em; margin-bottom:0.7rem; text-transform:uppercase; }
+.assessment-box p { font-size:0.95rem; }
+.logistics { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1.5rem 2.5rem; }
+.logistics-item h3 { font-family:var(--mono); font-size:0.72rem; color:var(--muted); font-weight:400; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.4rem; }
+.logistics-item p { font-size:0.92rem; color:var(--ink); }
+.apply-cta { background:var(--ink); color:var(--bg); padding:3rem 2rem; border-radius:2px; }
+.apply-cta h2 { color:var(--bg); margin-bottom:0.8rem; }
+.apply-cta p { color:var(--bg); opacity:0.85; max-width:580px; margin-bottom:1.5rem; font-size:1.02rem; }
+.apply-cta a.btn { display:inline-block; padding:0.8rem 1.6rem; background:var(--accent); color:var(--bg); font-family:var(--mono); font-size:0.85rem; letter-spacing:0.06em; border-radius:2px; border-bottom:none; }
+[data-theme="dark"] .apply-cta { background:var(--bg-soft); color:var(--ink); }
+[data-theme="dark"] .apply-cta h2, [data-theme="dark"] .apply-cta p { color:var(--ink); }
+footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
+footer.site-footer a { color:var(--muted); border-bottom:none; }
+@media (max-width:860px) { .two-col, .logistics { grid-template-columns:1fr; } .day { grid-template-columns:1fr; gap:0.4rem; } .nav-links { display:none; } section, section.hero { padding:3rem 0; } }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="brand" href="index.html"><svg viewBox="0 0 40 40" width="26" height="26"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/><text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text></svg><span>AIR<em>INA</em> Labs</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#pillars">Piliers</a></li>
+    <li><a href="formations.html" class="active">Formations</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link" href="training-04-quantum.html" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link active" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Basculer thème">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="crumb"><a href="formations.html">Formations</a> / <a href="formations.html#niveau-2">Niveau 2</a> / /04</div>
+  <span class="status-pill">Cohorte 2027</span>
+  <h1>Méthodes quantiques-topologiques pour la <em>finance</em>.</h1>
+  <p class="lead">Bootcamp en frontière où l'informatique quantique, la topologie et la finance quantitative se rencontrent. Circuits quantiques variationnels, noyaux quantiques, caractéristiques topologiques pour séries temporelles et analyse de portefeuille — et un état des lieux honnête des questions de recherche ouvertes à leur intersection. La semaine fait office d'atelier de recherche.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-block"><strong>Durée</strong> 1 semaine (5 jours)</div>
+    <div class="hero-meta-block"><strong>Format</strong> En présentiel + atelier de recherche</div>
+    <div class="hero-meta-block"><strong>Langues</strong> EN</div>
+    <div class="hero-meta-block"><strong>Cohorte</strong> ~15 participants</div>
+    <div class="hero-meta-block"><strong>Certificat</strong> AIRINA Méthodes quantiques-topologiques · noté</div>
+  </div>
+</section>
+
+<section class="wrap" id="about">
+  <div class="section-head">
+    <div class="eyebrow">À propos de ce bootcamp</div>
+    <h2>Honnête sur le battage médiatique.</h2>
+  </div>
+  <div class="prose">
+    <p>L'apprentissage automatique quantique a été à la fois sur-vendu et sous-livré à parts à peu près égales. Cette semaine n'est pas un argumentaire de vente pour la topologie ou pour le quantique ; c'est une semaine de travail pour celles et ceux qui veulent savoir où, précisément, ces outils apportent un gain mesurable par rapport à des références classiques solides sur des problèmes financiers. Parfois oui. Parfois non. Nous nous intéressons à ce qui distingue les deux cas.</p>
+    <p>Le bootcamp couvre les circuits quantiques variationnels et les méthodes à noyaux quantiques au niveau nécessaire pour les utiliser (Qiskit, PennyLane), les caractéristiques topologiques pour séries temporelles financières non stationnaires, et la question ouverte de savoir si les deux ensemble valent leur budget de calcul. La moitié de la semaine est cours et TP, l'autre moitié atelier de recherche.</p>
+  </div>
+</section>
+
+<section class="wrap" id="objectives">
+  <div class="section-head">
+    <div class="eyebrow">Objectifs pédagogiques</div>
+    <h2>À la fin, vous saurez.</h2>
+  </div>
+  <ul class="bullets" style="max-width:760px;">
+    <li>Construire un classifieur quantique variationnel en PennyLane ou Qiskit, l'entraîner, et le comparer honnêtement à une référence classique solide.</li>
+    <li>Calculer des noyaux quantiques pour un jeu de données financier réel et identifier le régime où ils dépassent les références RBF / Matérn / random features.</li>
+    <li>Appliquer des caractéristiques topologiques (persistence images, courbes de Betti) à des séries temporelles financières pour la détection de régime, avec une attention propre à la non-stationnarité.</li>
+    <li>Lire une prépublication récente en QML ou en finance topologique, identifier son affirmation, trouver sa référence la plus faible, et décider si l'affirmation tient.</li>
+    <li>Reconnaître les cas où ni le quantique ni la topologie n'aident, et le dire clairement quand c'est le cas.</li>
+  </ul>
+</section>
+
+<section class="wrap" id="audience">
+  <div class="section-head">
+    <div class="eyebrow">À qui s'adresse ce bootcamp</div>
+    <h2>Public et prérequis.</h2>
+  </div>
+  <div class="two-col">
+    <div>
+      <h4>Public</h4>
+      <ul class="bullets">
+        <li>Quants et praticiens en ingénierie financière de banques, hedge funds, gestionnaires d'actifs, fintechs.</li>
+        <li>Doctorants avancés (dernière année de master ou doctorat) en mathématiques, physique, informatique avec un intérêt pour la finance.</li>
+        <li>Chercheurs en apprentissage automatique quantique curieux du côté topologique et vice versa.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Prérequis</h4>
+      <ul class="bullets">
+        <li>Bagage en finance quantitative : à l'aise avec les bases du calcul stochastique, la modélisation de séries temporelles, l'optimisation de portefeuille.</li>
+        <li>Algèbre linéaire au niveau master supérieur. Une exposition préalable à l'informatique quantique aide ; pas strictement requise si vous savez avancer vite la première semaine.</li>
+        <li>Python pratique ; expérience avec Qiskit ou PennyLane est un plus.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="curriculum">
+  <div class="section-head">
+    <div class="eyebrow">Programme</div>
+    <h2>Cinq jours.</h2>
+  </div>
+  <div class="day"><span class="day-tag">Jour 1</span><div><h3>Informatique quantique pour la finance — passage rapide</h3><p>Qubits, portes, circuits en PennyLane et Qiskit. Circuits variationnels, règle du shift de paramètre, QAOA sur un problème de portefeuille-jouet. Noyaux quantiques et ce à quoi ils correspondent classiquement.</p></div></div>
+  <div class="day"><span class="day-tag">Jour 2</span><div><h3>Méthodes topologiques pour séries temporelles financières</h3><p>Filtrations cubiques et Vietoris–Rips appliquées aux séries de log-rendements. Persistence images et courbes de Betti comme caractéristiques. Détecter topologiquement les changements de régime. Pourquoi le théorème de stabilité compte quand les données sont non-stationnaires.</p></div></div>
+  <div class="day"><span class="day-tag">Jour 3</span><div><h3>Jeter le pont</h3><p>Espaces de caractéristiques quantiques enrichis par des caractéristiques topologiques. Pipelines hybrides quantique-classique. La question ouverte : quand le calcul investi côté quantique dépasse-t-il le même calcul investi en apprentissage profond classique ?</p></div></div>
+  <div class="day"><span class="day-tag">Jour 4</span><div><h3>Études de cas</h3><p>Modélisation de la surface de volatilité, détection de régime en change, construction de portefeuille sous structure de corrélation à queues lourdes, risque crédit sur petit échantillon. Chaque cas avec sa référence honnête et un verdict clair.</p></div></div>
+  <div class="day"><span class="day-tag">Jour 5</span><div><h3>Atelier de recherche et projet final</h3><p>Les participants travaillent en binôme sur un problème choisi dans la liste des questions ouvertes de la semaine. Après-midi : présentations et rédaction collective. La cohorte repart avec une note de recherche commune en brouillon.</p></div></div>
+</section>
+
+<section class="wrap" id="assessment">
+  <div class="section-head">
+    <div class="eyebrow">Évaluation et certificat</div>
+    <h2>Projet en binôme, rédigé.</h2>
+  </div>
+  <div class="assessment-box">
+    <h3>Projet final</h3>
+    <p>Une note de recherche en binôme (5–8 pages) sur un problème choisi dans la liste curatée — comparant une approche quantique-topologique à une référence classique solide sur un jeu de données financier réel. Les résultats négatifs honnêtes sont bienvenus ; l'évaluation porte sur la qualité de la question et la rigueur de la comparaison, pas sur le fait que la méthode quantique ou topologique « gagne ».</p>
+    <p>Certificat : <em>AIRINA Méthodes quantiques-topologiques · noté</em>.</p>
+  </div>
+</section>
+
+<section class="wrap" id="faculty">
+  <div class="section-head">
+    <div class="eyebrow">Corps enseignant</div>
+    <h2>Qui enseigne.</h2>
+  </div>
+  <div class="prose">
+    <p>Y. U. Gaba côté topologie ; co-enseignants en informatique quantique et finance quantitative issus du réseau de collaborateurs académiques et industriels d'AIRINA (nommés quatre semaines avant chaque cohorte).</p>
+  </div>
+</section>
+
+<section class="wrap" id="logistics">
+  <div class="section-head">
+    <div class="eyebrow">Logistique</div>
+    <h2>Les détails pratiques.</h2>
+  </div>
+  <div class="logistics">
+    <div class="logistics-item"><h3>Lieu</h3><p>AIRINA Labs, Cotonou.</p></div>
+    <div class="logistics-item"><h3>Horaires</h3><p>5 jours consécutifs. Cours le matin, TP l'après-midi, soirées ouvertes pour l'atelier du jour 5.</p></div>
+    <div class="logistics-item"><h3>Supports</h3><p>Liste de lectures préparatoires 4 semaines avant. Dépôt commun pour la cohorte.</p></div>
+    <div class="logistics-item"><h3>Taille de cohorte</h3><p>15. Sur dossier.</p></div>
+    <div class="logistics-item"><h3>Tarif</h3><p>Tarif industriel / académique. Bourses limitées pour doctorants.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="apply-cta">
+    <h2>Postuler pour la cohorte 2027.</h2>
+    <p>Les candidatures ouvrent début 2027. Nous demandons un CV et un court paragraphe sur l'usage que vous en feriez. La cohorte se remplit lentement pour préserver la densité de l'atelier.</p>
+    <a class="btn" href="mailto:contact@airina.africa?subject=Bootcamp%20Quantique-topologique">contact@airina.africa →</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="formations.html">← Retour au catalogue</a></span>
+</footer>
+
+<script>
+(function () { var s = localStorage.getItem('airina-theme'); if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); var b = document.getElementById('theme-toggle'); if (!b) return; b.addEventListener('click', function () { var c = document.documentElement.getAttribute('data-theme'); var n = c === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', n); localStorage.setItem('airina-theme', n); }); })();
+</script>
+</body>
+</html>

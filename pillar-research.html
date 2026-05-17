@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Research — AIRINA Labs</title>
+<meta name="description" content="The AIRINA Labs research line: topological data analysis, symbolic and interpretable AI, topological foundations of learning and RL, asymmetric topology, quantum-topological methods for finance." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Research — AIRINA Labs" />
+<meta property="og:description" content="What the AIRINA Labs research unit works on: TDA, interpretable AI, topological foundations of learning, asymmetric topology, quantum-topological finance." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548;
+  --muted:#5C6478; --dim:#9098AB;
+  --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22);
+  --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10);
+  --nav-bg:rgba(245,241,234,0.92);
+  --serif:'IBM Plex Serif', Georgia, serif;
+  --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+}
+[data-theme="dark"] {
+  --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA;
+  --muted:#8A91A3; --dim:#5F6680;
+  --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22);
+  --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12);
+  --nav-bg:rgba(15,20,30,0.92);
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--bg); color:var(--ink-soft);
+  font-family:var(--serif); font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.2rem, 5vw, 3.8rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
+h1 em { font-style:italic; color:var(--accent); font-weight:500; }
+h2 { font-size:clamp(1.6rem, 3vw, 2.2rem); font-weight:500; letter-spacing:-0.012em; line-height:1.18; }
+h3 { font-size:1.15rem; font-weight:600; letter-spacing:-0.003em; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.15rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+.wrap-narrow { max-width:760px; margin:0 auto; padding:0 2rem; }
+section { padding:5rem 0; border-top:1px solid var(--rule); }
+section.hero { border-top:none; }
+nav.site-nav {
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1rem 2rem;
+  background:var(--nav-bg);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; letter-spacing:-0.005em; color:var(--ink); border-bottom:none; }
+.brand em { color:var(--accent); font-style:italic; font-weight:500; }
+.brand-mark { flex-shrink:0; color:var(--ink); transition:color .2s; }
+.brand:hover .brand-mark { color:var(--accent); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); letter-spacing:0.05em; border-bottom:none; cursor:pointer; transition:color .2s; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-link:hover:not(.active) { color:var(--ink); }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; transition:color .2s, border-color .2s; }
+.theme-btn:hover { color:var(--accent); border-color:var(--accent); }
+
+section.hero { padding:6rem 0 4rem; }
+.hero .eyebrow { margin-bottom:1.2rem; }
+.hero h1 { max-width:880px; }
+.hero .lead { margin-top:1.4rem; max-width:720px; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:1.6rem 2.4rem; margin-top:2.3rem; font-family:var(--mono); font-size:0.78rem; color:var(--muted); }
+.hero-meta span { display:inline-flex; gap:0.5rem; align-items:baseline; }
+.hero-meta strong { color:var(--ink); font-weight:500; }
+
+.section-head { margin-bottom:2.5rem; }
+.section-head .eyebrow { margin-bottom:0.7rem; }
+.prose { max-width:760px; }
+.prose p + p { margin-top:1rem; }
+
+/* THEMES */
+.themes { display:flex; flex-direction:column; }
+.theme {
+  padding:2rem 0; border-top:1px solid var(--rule);
+  display:grid; grid-template-columns:60px 1fr; gap:1.5rem;
+}
+.theme:first-child { border-top:none; padding-top:0.4rem; }
+.theme-num { font-family:var(--mono); font-size:0.82rem; color:var(--accent); font-weight:500; letter-spacing:0.04em; padding-top:0.4rem; }
+.theme h3 { font-family:var(--serif); font-weight:500; font-size:1.3rem; margin-bottom:0.5rem; }
+.theme p { font-size:0.97rem; max-width:740px; }
+.theme-tag { font-family:var(--mono); font-size:0.72rem; color:var(--muted); margin-top:0.7rem; letter-spacing:0.04em; }
+.theme-tag strong { color:var(--ink); font-weight:500; }
+
+/* WORK PROCESS */
+.process { display:flex; flex-direction:column; }
+.process-item {
+  padding:1.3rem 0; border-top:1px solid var(--rule);
+  display:grid; grid-template-columns:auto 1fr; gap:1.4rem; align-items:baseline;
+}
+.process-item:first-child { border-top:none; padding-top:0; }
+.process-item h3 { font-family:var(--mono); font-size:0.82rem; font-weight:500; color:var(--accent); letter-spacing:0.04em; }
+.process-item p { font-size:0.95rem; max-width:680px; }
+
+/* CONTACT */
+.contact { display:grid; grid-template-columns:repeat(2, 1fr); gap:2rem; max-width:720px; }
+.contact-block h3 { font-family:var(--mono); font-size:0.72rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.7rem; }
+.contact-block p { color:var(--ink); font-size:0.95rem; line-height:1.55; }
+.contact-block a { color:var(--ink); border-bottom:1px solid var(--rule-strong); }
+.contact-block a:hover { color:var(--accent); border-color:var(--accent); }
+
+footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
+footer.site-footer a { color:var(--muted); border-bottom:none; }
+footer.site-footer a:hover { color:var(--accent); }
+
+@media (max-width:860px) {
+  .contact { grid-template-columns:1fr; }
+  .theme { grid-template-columns:1fr; gap:0.5rem; }
+  .process-item { grid-template-columns:1fr; gap:0.4rem; }
+  .nav-links { display:none; }
+  section { padding:3.5rem 0; }
+  section.hero { padding:4.5rem 0 3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition:none !important; animation:none !important; }
+  html { scroll-behavior:auto; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" width="26" height="26" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text>
+    </svg>
+    <span>AIR<em>INA</em> Labs</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#what-we-are">About</a></li>
+    <li><a href="index.html#pillars" class="active">Pillars</a></li>
+    <li><a href="training.html">Training</a></li>
+    <li><a href="index.html#people">People</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link active" aria-current="page" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link" href="pilier-recherche.html" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle light/dark theme">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="eyebrow">Pillar /01 · Research</div>
+  <h1>Research at <em>AIRINA</em>.</h1>
+  <p class="lead">We work where applied AI is mathematical. The unit's current research sits at the intersection of topology, learning theory, and the problems African financial systems put on the table.</p>
+  <div class="hero-meta">
+    <span><strong>Output</strong> Papers, code, open benchmarks</span>
+    <span><strong>Collaborators</strong> AIMS · ACAS · university partners</span>
+    <span><strong>Funding model</strong> Grants + industry-paid engagements</span>
+  </div>
+</section>
+
+<section class="wrap" id="themes">
+  <div class="section-head">
+    <div class="eyebrow">Active research themes</div>
+    <h2>Six lines, one direction.</h2>
+  </div>
+  <div class="themes">
+
+    <article class="theme">
+      <span class="theme-num">/01</span>
+      <div>
+        <h3>Topological Data Analysis</h3>
+        <p>TDA studies the shape of data: which clusters connect, which loops persist, which voids resist filling as a scale parameter slides. The unit publishes on persistent homology, stability of persistence diagrams, multi-parameter persistence, and vectorization for downstream ML. Current work focuses on persistence-based features for financial time series and for graphs built from mobile-money transaction logs.</p>
+        <div class="theme-tag"><strong>Code:</strong> GUDHI · Ripser · giotto-tda · cripser &nbsp;·&nbsp; <strong>Output:</strong> arXiv preprints, peer-reviewed papers, open Jupyter notebooks</div>
+      </div>
+    </article>
+
+    <article class="theme">
+      <span class="theme-num">/02</span>
+      <div>
+        <h3>Symbolic and Interpretable AI</h3>
+        <p>Production ML in regulated industries cannot answer the question regulators actually ask: <em>why this decision, for this person</em>. The unit works on interpretable-by-design models, decision-rule extraction, and neuro-symbolic methods that keep the inductive power of deep learning while exposing what was learned. We test against the realities of African credit data: sparse labels, semi-formal income, intermittent observations, and the regulatory constraints that make some standard tricks unusable.</p>
+        <div class="theme-tag"><strong>Applied to:</strong> credit scoring, fraud detection, model risk management for BCEAO-supervised institutions</div>
+      </div>
+    </article>
+
+    <article class="theme">
+      <span class="theme-num">/03</span>
+      <div>
+        <h3>Topological foundations of AI and Reinforcement Learning</h3>
+        <p>Deep networks learn representations that live on manifolds. We are interested in what topological structure those representations have, when topology predicts generalization, and whether topological invariants can stabilize policy optimization in RL settings where the reward landscape is irregular. This line connects to the unit's mathematical-foundations work and informs the 2-week summer school on topological foundations of deep learning.</p>
+        <div class="theme-tag"><strong>Related:</strong> manifold hypothesis · topological signatures of generalization · differentiable persistence</div>
+      </div>
+    </article>
+
+    <article class="theme">
+      <span class="theme-num">/04</span>
+      <div>
+        <h3>TDA for robust machine learning</h3>
+        <p>Adversarial robustness and out-of-distribution detection both have a topological flavor: small perturbations move points off the data manifold. We ask whether persistent homology gives signals that pure-norm-based methods miss, and whether topological regularizers reduce sensitivity to distribution shift without paying the usual robustness tax in accuracy. Work in progress; the corresponding training program comes online once the publications are in.</p>
+      </div>
+    </article>
+
+    <article class="theme">
+      <span class="theme-num">/05</span>
+      <div>
+        <h3>Asymmetric topology and complexity</h3>
+        <p>The director's pure-mathematics specialty: quasi-metric and bipolar metric spaces, fixed-point theory in asymmetric settings, and complexity-theoretic applications. This is the unit's deepest mathematical line. It connects to denotational semantics in theoretical computer science and to similarity learning in ML, where dissimilarity is naturally asymmetric (a customer is more like a salaried worker than the reverse, for credit-risk purposes).</p>
+        <div class="theme-tag"><strong>Output:</strong> peer-reviewed math papers (Springer book series, journals in topology and analysis)</div>
+      </div>
+    </article>
+
+    <article class="theme">
+      <span class="theme-num">/06</span>
+      <div>
+        <h3>Quantum-topological AI for finance</h3>
+        <p>Quantum machine learning has been overhyped and under-delivered in roughly equal measure. We are studying where topological features and quantum-kernel methods together give measurable lift on financial problems where classical baselines plateau: regime detection in non-stationary series, volatility-surface modeling under heavy-tailed assumptions, and portfolio construction when correlations break down. The honest answer to "does it help?" is: sometimes, on specific problems, and we are working out which.</p>
+        <div class="theme-tag"><strong>Stack:</strong> Qiskit · PennyLane · classical TDA pipeline · paired against strong classical baselines</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="wrap" id="how">
+  <div class="section-head">
+    <div class="eyebrow">How the unit works</div>
+    <h2>What we promise, and what we do not.</h2>
+  </div>
+  <div class="process">
+    <div class="process-item">
+      <h3>Publish before claim</h3>
+      <p>The unit's standard for "what we do" is what is on arXiv, in a peer-reviewed venue, or in a public repository. Not what is on a website. If a research thread has no public output yet, we say so.</p>
+    </div>
+    <div class="process-item">
+      <h3>Open the code</h3>
+      <p>Methods, code, and evaluation benchmarks live in the AIRINA-Labs GitHub organization. We open the data when we can share it, and document what we cannot share and why.</p>
+    </div>
+    <div class="process-item">
+      <h3>Co-author</h3>
+      <p>The unit has standing collaborations with AIMS Senegal, AIMS South Africa, AIMS Rwanda, and ACAS. We co-supervise master's and PhD students at partner universities, and write papers with them as authors, not contributors-in-the-acknowledgments.</p>
+    </div>
+    <div class="process-item">
+      <h3>Decline what we cannot teach</h3>
+      <p>If a topic does not have a working practitioner in the unit, we either co-host with someone who does, or we do not run it. The catalog gets longer slowly, on purpose.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="engage">
+  <div class="section-head">
+    <div class="eyebrow">Collaborate with us</div>
+    <h2>Three paths in.</h2>
+  </div>
+  <div class="contact">
+    <div class="contact-block">
+      <h3>Joint research</h3>
+      <p>Write to <a href="mailto:contact@airina.africa?subject=Joint%20research">contact@airina.africa</a> with a one-page sketch of the question and the data you can share.</p>
+    </div>
+    <div class="contact-block">
+      <h3>Graduate supervision</h3>
+      <p>For master's or PhD work involving AIRINA, write through the director's academic page at <a href="https://gabayae.github.io">gabayae.github.io</a>.</p>
+    </div>
+    <div class="contact-block">
+      <h3>Sponsored research</h3>
+      <p>For financial institutions and funders: <a href="mailto:contact@airina.africa?subject=Sponsored%20research">contact@airina.africa</a>. We will send back a one-page partnerships brief.</p>
+    </div>
+    <div class="contact-block">
+      <h3>Open source</h3>
+      <p>Read or contribute at <a href="https://github.com/AIRINA-Labs">github.com/AIRINA-Labs</a>.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="index.html">← Back to home</a></span>
+</footer>
+
+<script>
+(function () {
+  var saved = localStorage.getItem('airina-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('airina-theme', next);
+  });
+})();
+</script>
+
+</body>
+</html>
