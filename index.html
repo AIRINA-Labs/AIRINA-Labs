@@ -112,7 +112,19 @@ nav.site-nav {
   letter-spacing: 0.02em;
 }
 .nav-links a:hover { color: var(--accent); }
-.nav-controls { display: flex; gap: 0.6rem; align-items: center; }
+.nav-controls { display: flex; gap: 0.7rem; align-items: center; }
+.lang-link { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; border-bottom: none; cursor: pointer; transition: color .2s; }
+.lang-link.active { color: var(--accent); font-weight: 500; }
+.lang-link:hover:not(.active) { color: var(--ink); }
+.lang-sep { color: var(--rule-strong); font-family: var(--mono); font-size: 0.7rem; }
+.avatar {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--bg-soft); border: 1px solid var(--rule-strong);
+  font-family: var(--serif); font-size: 1.05rem; font-weight: 500;
+  font-style: italic; color: var(--accent);
+  letter-spacing: 0.02em; margin-bottom: 1rem; flex-shrink: 0;
+}
 .theme-btn {
   border: 1px solid var(--rule-strong); background: transparent;
   cursor: pointer; width: 30px; height: 30px; border-radius: 50%;
@@ -406,6 +418,9 @@ footer.site-footer a:hover { color: var(--accent); }
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-controls">
+    <a class="lang-link active" aria-current="page" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link" href="accueil.html" lang="fr">FR</a>
     <button class="theme-btn" id="theme-toggle" aria-label="Toggle light/dark theme">◐</button>
   </div>
 </nav>
@@ -608,12 +623,14 @@ footer.site-footer a:hover { color: var(--accent); }
   </div>
   <div class="people">
     <div class="person">
+      <div class="avatar" aria-hidden="true">YG</div>
       <h3>Yaé Ulrich Gaba</h3>
       <div class="role">Founder · Director</div>
       <p>Mathematician working at the intersection of topology, geometry, and applied AI. Research interests include topological data analysis, persistent homology, fixed-point theory, and machine learning for African systems.</p>
       <div class="links"><a href="https://gabayae.github.io">gabayae.github.io</a><a href="https://github.com/gabayae">github</a></div>
     </div>
     <div class="person">
+      <div class="avatar" aria-hidden="true">DL</div>
       <h3>Domini Jocema Leko Moutouo</h3>
       <div class="role">Research collaborator</div>
       <p>Mathematician and frequent research collaborator with Y. U. Gaba on topology and applied analysis.</p>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AIRINA Labs — Pôle de Recherche et d'Innovation en IA pour l'Afrique</title>
+<meta name="description" content="Une institution de recherche africaine pour l'IA appliquée, les mathématiques, et le développement du talent africain — savoir, talent et outils pour le continent. Siège à Cotonou, Bénin." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airina-labs.github.io/AIRINA-Labs/accueil.html" />
+<meta property="og:title" content="AIRINA Labs — Pôle de Recherche et d'Innovation en IA pour l'Afrique" />
+<meta property="og:description" content="Une institution de recherche africaine pour l'IA appliquée, les mathématiques, et le développement du talent africain. Siège à Cotonou, Bénin." />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="AIRINA Labs — Pôle de Recherche et d'Innovation en IA pour l'Afrique" />
+<meta name="twitter:description" content="Une institution de recherche africaine pour l'IA appliquée, les mathématiques, et le développement du talent africain." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root { --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548; --muted:#5C6478; --dim:#9098AB; --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22); --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10); --nav-bg:rgba(245,241,234,0.92); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA; --muted:#8A91A3; --dim:#5F6680; --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22); --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12); --nav-bg:rgba(15,20,30,0.92); }
+* { box-sizing:border-box; margin:0; padding:0; } html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.2rem, 5vw, 3.8rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
+h1 em { font-style:italic; color:var(--accent); font-weight:500; }
+h2 { font-size:clamp(1.8rem, 3.5vw, 2.6rem); font-weight:500; letter-spacing:-0.012em; line-height:1.15; }
+h3 { font-size:1.05rem; font-weight:600; letter-spacing:-0.003em; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.15rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+.wrap-narrow { max-width:760px; margin:0 auto; padding:0 2rem; }
+section { padding:5rem 0; border-top:1px solid var(--rule); }
+section.hero, section.manifesto { border-top:none; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; color:var(--ink); border-bottom:none; }
+.brand em { color:var(--accent); font-style:italic; font-weight:500; }
+.brand-mark { flex-shrink:0; color:var(--ink); transition:color .2s; }
+.brand:hover .brand-mark { color:var(--accent); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); letter-spacing:0.05em; border-bottom:none; cursor:pointer; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-link:hover:not(.active) { color:var(--ink); }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; }
+.theme-btn:hover { color:var(--accent); border-color:var(--accent); }
+section.hero { padding:6.5rem 0 4rem; }
+.hero .eyebrow { margin-bottom:1.5rem; }
+.hero h1 { max-width:880px; }
+.hero .lead { margin-top:1.5rem; max-width:660px; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:2rem 2.5rem; margin-top:2.5rem; font-family:var(--mono); font-size:0.78rem; color:var(--muted); }
+.hero-meta span { display:inline-flex; gap:0.5rem; align-items:baseline; }
+.hero-meta strong { color:var(--ink); font-weight:500; }
+section.manifesto { padding:7rem 0; background:var(--ink); color:var(--bg); border-top:none; border-bottom:none; }
+section.manifesto + section { border-top:none; }
+.manifesto p { font-family:var(--serif); font-style:italic; font-size:clamp(1.25rem, 2.2vw, 1.7rem); line-height:1.4; color:var(--bg); max-width:720px; }
+.manifesto strong { font-style:normal; font-weight:600; color:var(--accent); }
+[data-theme="dark"] section.manifesto { background:var(--bg-soft); }
+[data-theme="dark"] section.manifesto p { color:var(--ink); }
+.section-head { margin-bottom:2.5rem; } .section-head .eyebrow { margin-bottom:0.7rem; }
+
+/* PILLARS */
+.pillars { display:grid; grid-template-columns:repeat(4, 1fr); gap:2.5rem; }
+.pillar .num { font-family:var(--mono); font-size:0.72rem; color:var(--accent); margin-bottom:0.7rem; display:block; letter-spacing:0.05em; }
+.pillar h3 { margin-bottom:0.5rem; }
+.pillar p { font-size:0.92rem; line-height:1.6; color:var(--muted); }
+
+/* ROADMAP */
+.roadmap-row { display:grid; grid-template-columns:110px 110px 1fr 110px; gap:1.5rem; padding:1.4rem 0; border-bottom:1px solid var(--rule); align-items:center; }
+.roadmap-row:last-child { border-bottom:none; }
+.roadmap-phase { font-family:var(--mono); font-size:0.82rem; color:var(--ink); font-weight:500; }
+.roadmap-timeline { font-family:var(--mono); font-size:0.78rem; color:var(--muted); }
+.roadmap-domain { color:var(--ink-soft); font-size:0.95rem; }
+.roadmap-domain strong { color:var(--ink); font-weight:500; }
+.roadmap-status { justify-self:end; font-family:var(--mono); font-size:0.7rem; padding:0.2rem 0.65rem; border-radius:2px; letter-spacing:0.05em; }
+.roadmap-status.active { color:var(--accent); border:1px solid var(--accent); }
+.roadmap-status.planned { color:var(--muted); border:1px solid var(--rule-strong); }
+.roadmap-status.future { color:var(--dim); border:1px solid var(--rule); }
+
+/* PEOPLE */
+.people { display:grid; grid-template-columns:repeat(2, 1fr); gap:2rem 3rem; }
+.person { padding-top:1.4rem; border-top:1px solid var(--rule); }
+.people > .person:nth-child(-n+2) { padding-top:0; border-top:none; }
+.person h3 { margin-bottom:0.2rem; }
+.person .role { font-family:var(--mono); font-size:0.76rem; color:var(--accent); margin-bottom:0.7rem; }
+.person p { font-size:0.92rem; }
+.person .links { margin-top:0.7rem; font-family:var(--mono); font-size:0.78rem; }
+.person .links a { margin-right:1.2rem; }
+.avatar { display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:50%; background:var(--bg-soft); border:1px solid var(--rule-strong); font-family:var(--serif); font-size:1.05rem; font-weight:500; font-style:italic; color:var(--accent); letter-spacing:0.02em; margin-bottom:1rem; flex-shrink:0; }
+.hiring { margin-top:2rem; padding:1.1rem 1.4rem; border:1px dashed var(--rule-strong); border-radius:2px; font-family:var(--mono); font-size:0.85rem; color:var(--ink-soft); line-height:1.6; }
+.hiring strong { color:var(--accent); font-weight:500; letter-spacing:0.07em; text-transform:uppercase; font-size:0.74rem; margin-right:0.7rem; }
+.hiring a { color:var(--ink); border-bottom:1px solid var(--rule-strong); }
+.hiring a:hover { color:var(--accent); border-color:var(--accent); }
+.placeholder-note { margin-top:1.5rem; padding:0.6rem 0.9rem; border-left:2px solid var(--accent); background:var(--accent-soft); font-family:var(--mono); font-size:0.74rem; color:var(--ink-soft); line-height:1.55; }
+
+/* WORK */
+.work-intro { font-size:0.95rem; color:var(--muted); max-width:720px; margin-bottom:1.6rem; }
+.work-profiles { display:flex; flex-direction:column; }
+.work-profile { display:flex; justify-content:space-between; align-items:baseline; padding:1.1rem 0; border-top:1px solid var(--rule); text-decoration:none; color:inherit; border-bottom:none; transition:color .2s; }
+.work-profile:first-child { border-top:none; padding-top:0.3rem; }
+.work-profile-label { font-family:var(--serif); font-weight:500; color:var(--ink); transition:color .2s; }
+.work-profile-url { font-family:var(--mono); font-size:0.78rem; color:var(--muted); }
+.work-profile:hover .work-profile-label { color:var(--accent); }
+
+/* TECH */
+.tech-group { display:grid; grid-template-columns:180px 1fr; gap:2rem; padding:1rem 0; align-items:baseline; border-bottom:1px solid var(--rule); }
+.tech-group:last-child { border-bottom:none; }
+.tech-group h3 { font-family:var(--mono); font-size:0.74rem; font-weight:400; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; }
+.tech-list { display:flex; flex-wrap:wrap; gap:0.3rem 1.4rem; font-family:var(--mono); font-size:0.86rem; color:var(--ink-soft); }
+
+/* REPOS */
+.repos { display:grid; grid-template-columns:repeat(2, 1fr); gap:1.5rem 3rem; }
+.repo { padding-top:1.3rem; border-top:1px solid var(--rule); text-decoration:none; color:inherit; border-bottom:none; display:block; }
+.repo h3 { font-family:var(--mono); font-size:0.92rem; color:var(--ink); font-weight:500; transition:color .2s; }
+.repo h3::before { content:'/ '; color:var(--accent); }
+.repo p { font-size:0.9rem; margin-top:0.4rem; color:var(--muted); }
+.repo:hover h3 { color:var(--accent); }
+
+/* CONTACT */
+.contact { display:grid; grid-template-columns:repeat(4, 1fr); gap:2rem; }
+.contact-block h3 { font-family:var(--mono); font-size:0.72rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.7rem; }
+.contact-block p { color:var(--ink); font-size:0.95rem; }
+.contact-block a { color:var(--ink); border-bottom:1px solid var(--rule-strong); }
+.contact-block a:hover { color:var(--accent); border-color:var(--accent); }
+
+footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
+footer.site-footer a { color:var(--muted); border-bottom:none; }
+footer.site-footer a:hover { color:var(--accent); }
+
+/* ANNOUNCEMENT BANNER */
+.announce { background:var(--ink); color:var(--bg); padding:0.6rem 2rem; font-family:var(--mono); font-size:0.78rem; display:flex; justify-content:center; gap:0.8rem; align-items:baseline; flex-wrap:wrap; letter-spacing:0.02em; }
+.announce strong { color:var(--accent); font-weight:500; letter-spacing:0.06em; text-transform:uppercase; font-size:0.7rem; }
+.announce a { color:var(--bg); border-bottom:1px solid rgba(245,241,234,0.3); }
+.announce a:hover { color:var(--accent); border-color:var(--accent); }
+[data-theme="dark"] .announce { background:var(--bg-soft); color:var(--ink); }
+[data-theme="dark"] .announce a { color:var(--ink); border-bottom-color:var(--rule-strong); }
+
+/* HERO CARDS */
+.hero-cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; }
+.hero-card { display:flex; flex-direction:column; gap:0.4rem; padding:1.8rem 1.6rem; background:var(--bg-soft); border:1px solid var(--rule); border-radius:3px; text-decoration:none; color:inherit; border-bottom:none; transition:border-color .2s, transform .2s; }
+.hero-card:hover { border-color:var(--accent); transform:translateY(-2px); }
+.hero-card-visual { color:var(--accent); margin-bottom:0.6rem; }
+.hero-card h3 { font-family:var(--serif); font-weight:500; font-size:1.1rem; color:var(--ink); margin-bottom:0.3rem; transition:color .2s; }
+.hero-card:hover h3 { color:var(--accent); }
+.hero-card p { font-size:0.92rem; line-height:1.55; color:var(--muted); }
+.hero-card-more { font-family:var(--mono); font-size:0.75rem; color:var(--accent); margin-top:0.6rem; letter-spacing:0.04em; }
+
+/* VALUES */
+.values { display:grid; grid-template-columns:repeat(4, 1fr); gap:2rem 2.5rem; }
+.value h3 { font-family:var(--mono); font-size:0.82rem; color:var(--accent); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.6rem; font-weight:500; }
+.value p { font-size:0.92rem; line-height:1.55; }
+
+/* UPDATES */
+.updates { display:flex; flex-direction:column; }
+.update { padding:1.1rem 0; border-top:1px solid var(--rule); display:grid; grid-template-columns:110px 1fr; gap:1.4rem; align-items:baseline; }
+.update:first-child { border-top:none; padding-top:0; }
+.update-date { font-family:var(--mono); font-size:0.76rem; color:var(--muted); letter-spacing:0.04em; }
+.update-body h3 { font-family:var(--serif); font-weight:500; font-size:1rem; color:var(--ink); margin-bottom:0.2rem; }
+.update-body h3 em { font-style:italic; color:var(--accent); }
+.update-body p { font-size:0.9rem; color:var(--muted); }
+.update-body a { color:inherit; border-bottom:1px solid var(--rule-strong); }
+.update-body a:hover { color:var(--accent); border-color:var(--accent); }
+
+@media (max-width:860px) {
+  .pillars, .people, .repos { grid-template-columns:1fr; gap:1.5rem; }
+  .contact { grid-template-columns:repeat(2, 1fr); }
+  .roadmap-row { grid-template-columns:1fr; gap:0.4rem; padding:1.2rem 0; }
+  .roadmap-status { justify-self:start; }
+  .tech-group { grid-template-columns:1fr; gap:0.5rem; }
+  .nav-links { display:none; }
+  .hero-meta { gap:0.8rem 1.5rem; }
+  section { padding:3.5rem 0; }
+  section.hero { padding:4.5rem 0 3rem; }
+  .hero-cards { grid-template-columns:1fr; }
+  .values { grid-template-columns:1fr 1fr; gap:1.5rem; }
+  .update { grid-template-columns:1fr; gap:0.3rem; }
+  .announce { padding:0.6rem 1rem; font-size:0.74rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition:none !important; animation:none !important; } html { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+<div class="announce">
+  <strong>Cohorte 1</strong> ATD pour data scientists · en présentiel, Cotonou · Lancement T3 2026 · <a href="formation-01-atd.html">Postuler →</a>
+</div>
+
+<nav class="site-nav">
+  <a class="brand" href="accueil.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" width="26" height="26" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text>
+    </svg>
+    <span>AIR<em>INA</em> Labs</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#what-we-are">À propos</a></li>
+    <li><a href="#pillars">Piliers</a></li>
+    <li><a href="formations.html">Formations</a></li>
+    <li><a href="#people">Équipe</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link" href="index.html" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link active" aria-current="page" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Basculer thème clair/sombre">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="eyebrow">AIRINA Labs · Cotonou, Bénin · Fondé en 2025</div>
+  <h1>Une institution de recherche africaine pour l'<em>IA appliquée</em> — bâtir savoir, talent et outils pour le continent.</h1>
+  <p class="lead">Nous faisons progresser l'inclusion financière et le développement humain en Afrique par la recherche en IA appliquée, des produits de science des données, et des programmes structurés qui mènent les diplômés STEM vers des carrières utiles.</p>
+  <div class="hero-meta">
+    <span><strong>Siège</strong> Cotonou, République du Bénin</span>
+    <span><strong>Focus 2026</strong> Inclusion financière · Phase 1 sur 3</span>
+    <span><strong>Feuille de route</strong> Finance → Agriculture → Santé</span>
+  </div>
+</section>
+
+<section class="manifesto wrap-narrow" id="what-we-are">
+  <p>Nous sommes une institution — bâtie pour la durée, ancrée dans une recherche rigoureuse, et engagée pour le développement du talent et des solutions africaines.</p>
+</section>
+
+<section class="wrap" id="positions">
+  <div class="section-head">
+    <div class="eyebrow">Trois positions</div>
+    <h2>Où nous travaillons, en une phrase chacune.</h2>
+  </div>
+  <div class="hero-cards">
+    <a class="hero-card" href="pilier-recherche.html">
+      <div class="hero-card-visual">
+        <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
+          <polygon points="35,30 90,18 75,62" fill="currentColor" opacity="0.12"/>
+          <polygon points="90,18 75,62 130,42" fill="currentColor" opacity="0.10"/>
+          <polygon points="75,62 130,42 115,90" fill="currentColor" opacity="0.08"/>
+          <line x1="35" y1="30" x2="90" y2="18" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="35" y1="30" x2="75" y2="62" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="90" y1="18" x2="75" y2="62" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="90" y1="18" x2="130" y2="42" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="75" y1="62" x2="130" y2="42" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="130" y1="42" x2="165" y2="78" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="75" y1="62" x2="115" y2="90" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="115" y1="90" x2="165" y2="78" stroke="currentColor" stroke-width="0.9"/>
+          <line x1="130" y1="42" x2="115" y2="90" stroke="currentColor" stroke-width="0.9"/>
+          <circle cx="35" cy="30" r="3" fill="currentColor"/>
+          <circle cx="90" cy="18" r="3" fill="currentColor"/>
+          <circle cx="75" cy="62" r="3" fill="currentColor"/>
+          <circle cx="130" cy="42" r="3" fill="currentColor"/>
+          <circle cx="165" cy="78" r="3" fill="currentColor"/>
+          <circle cx="115" cy="90" r="3" fill="currentColor"/>
+        </svg>
+      </div>
+      <h3>IA pensée mathématiquement, pour des systèmes africains.</h3>
+      <p>Topologie, homologie persistante, modèles interprétables — appliqués là où les données, la régulation et le client sont africains, pas transposés d'ailleurs.</p>
+      <span class="hero-card-more">Recherche →</span>
+    </a>
+    <a class="hero-card" href="pilier-formation.html">
+      <div class="hero-card-visual">
+        <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
+          <line x1="20" y1="20" x2="20" y2="95" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
+          <line x1="20" y1="95" x2="185" y2="95" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
+          <line x1="30" y1="30" x2="170" y2="30" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="30" y1="45" x2="135" y2="45" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="30" y1="60" x2="90" y2="60" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="50" y1="75" x2="78" y2="75" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="60" y1="87" x2="68" y2="87" stroke="currentColor" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <h3>Une formation qui se termine par une soutenance.</h3>
+      <p>Pas de certificats de présence. Chaque programme se conclut par un projet noté, soutenu devant les chercheurs d'AIRINA. Le certificat mérite la ligne sur un CV.</p>
+      <span class="hero-card-more">Formation →</span>
+    </a>
+    <a class="hero-card" href="pilier-produits.html">
+      <div class="hero-card-visual">
+        <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
+          <ellipse cx="100" cy="55" rx="72" ry="32" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M 45,50 Q 100,78 155,50" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M 60,47 Q 100,63 140,47" fill="none" stroke="currentColor" stroke-width="1"/>
+          <ellipse cx="100" cy="55" rx="72" ry="32" fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.4" transform="rotate(12 100 55)"/>
+        </svg>
+      </div>
+      <h3>Méthodes ouvertes, intégrations rémunérées.</h3>
+      <p>Méthodes, code et benchmarks vivent sur GitHub. Les modèles entraînés et les missions intégrées sont commerciaux. La réputation capitalise ; les revenus suivent.</p>
+      <span class="hero-card-more">Produits →</span>
+    </a>
+  </div>
+</section>
+
+<section id="pillars" class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Ce que nous faisons</div>
+    <h2>Quatre piliers, une institution.</h2>
+  </div>
+  <div class="pillars">
+    <div class="pillar">
+      <span class="num">01</span>
+      <h3>Recherche</h3>
+      <p>Recherche appliquée originale en IA, mathématiques et systèmes de données ancrée dans les réalités africaines. Nous publions, contribuons au savoir global, et rendons les résultats accessibles aux décideurs et praticiens africains. <a href="pilier-recherche.html">Lire la suite →</a></p>
+    </div>
+    <div class="pillar">
+      <span class="num">02</span>
+      <h3>Produits</h3>
+      <p>Recherche traduite en outils pratiques — commençant par l'inclusion financière (scoring crédit, détection de fraude, analytics clients) et s'étendant à l'agriculture et à la santé sur la décennie. <a href="pilier-produits.html">Lire la suite →</a></p>
+    </div>
+    <div class="pillar">
+      <span class="num">03</span>
+      <h3>Formation</h3>
+      <p>Programmes courts adossés à la recherche en ATD, IA interprétable, et fondements mathématiques d'un ML robuste. 2 jours à 2 semaines, notés, bilingues. <a href="pilier-formation.html">Lire la suite →</a> · <a href="formations.html">Catalogue →</a></p>
+    </div>
+    <div class="pillar">
+      <span class="num">04</span>
+      <h3>Incubateur</h3>
+      <p>AIRINA Ventures (Phase 2) : mentorat, soutien technique, espace de travail et réseau institutionnel pour les diplômés STEM bâtissant des entreprises d'IA. <a href="pilier-incubateur.html">Lire la suite →</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="updates">
+  <div class="section-head">
+    <div class="eyebrow">Récents</div>
+    <h2>Actualités.</h2>
+  </div>
+  <div class="updates">
+    <div class="update">
+      <span class="update-date">Mai 2026</span>
+      <div class="update-body">
+        <h3>Catalogue de formations en ligne — bilingue FR / EN</h3>
+        <p>Six programmes sur trois niveaux, avec deux cohortes phares ouvrant en T3 et T4 2026. <a href="formations.html">Voir le catalogue</a> · <a href="training.html">English version</a>.</p>
+      </div>
+    </div>
+    <div class="update">
+      <span class="update-date">T3 2026</span>
+      <div class="update-body">
+        <h3>La cohorte 1 d'<em>ATD pour data scientists</em> ouvre les inscriptions</h3>
+        <p>Trois jours, en présentiel à Cotonou, ~12 participants. Pratique avec GUDHI, Ripser, giotto-tda. <a href="formation-01-atd.html">Programme complet</a>.</p>
+      </div>
+    </div>
+    <div class="update">
+      <span class="update-date">2025</span>
+      <div class="update-body">
+        <h3>AIRINA Labs fondé à Cotonou</h3>
+        <p>Phase 1 sur trois : IA appliquée à l'inclusion financière en Afrique de l'Ouest et du Centre. <a href="pilier-recherche.html">Nos axes de recherche</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap" class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Où nous allons</div>
+    <h2>Trois phases, une décennie.</h2>
+  </div>
+  <div class="roadmap">
+    <div class="roadmap-row">
+      <span class="roadmap-phase">Phase 1</span>
+      <span class="roadmap-timeline">Années 1–3</span>
+      <span class="roadmap-domain"><strong>Inclusion financière.</strong> Recherche en profondeur, produits appliqués, premières cohortes de formation.</span>
+      <span class="roadmap-status active">Active</span>
+    </div>
+    <div class="roadmap-row">
+      <span class="roadmap-phase">Phase 2</span>
+      <span class="roadmap-timeline">Années 3–5</span>
+      <span class="roadmap-domain"><strong>Agriculture.</strong> Extension naturelle, communautés qui se chevauchent, financement continental important.</span>
+      <span class="roadmap-status planned">Planifiée</span>
+    </div>
+    <div class="roadmap-row">
+      <span class="roadmap-phase">Phase 3</span>
+      <span class="roadmap-timeline">Années 5+</span>
+      <span class="roadmap-domain"><strong>Santé.</strong> Complexité la plus élevée, impact le plus élevé, entrée à pleine maturité institutionnelle.</span>
+      <span class="roadmap-status future">Future</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="values">
+  <div class="section-head">
+    <div class="eyebrow">Nos valeurs</div>
+    <h2>Quatre mots qui doivent dire quelque chose.</h2>
+  </div>
+  <div class="values">
+    <div class="value">
+      <h3>Rigueur</h3>
+      <p>Nous tenons notre recherche et nos produits aux standards les plus élevés que nous savons appliquer. Nous publions, nous validons, et nous sommes honnêtes sur ce que nous savons et ce que nous ignorons.</p>
+    </div>
+    <div class="value">
+      <h3>Pertinence</h3>
+      <p>Chaque question de recherche et chaque produit s'enracine dans les réalités des communautés, institutions et marchés africains. Les références génériques ne comptent pas.</p>
+    </div>
+    <div class="value">
+      <h3>Inclusion</h3>
+      <p>Nous existons pour celles et ceux qui sont exclus — financièrement, économiquement, professionnellement. Un travail qui n'atteint pas celles et ceux qui en ont le plus besoin n'est pas le travail que nous voulons faire.</p>
+    </div>
+    <div class="value">
+      <h3>Continuité</h3>
+      <p>Nous bâtissons une institution, pas un projet. Chaque décision se prend avec la décennie à venir en tête.</p>
+    </div>
+  </div>
+</section>
+
+<section id="people" class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Qui nous sommes</div>
+    <h2>Équipe.</h2>
+  </div>
+  <div class="people">
+    <div class="person">
+      <div class="avatar" aria-hidden="true">YG</div>
+      <h3>Yaé Ulrich Gaba</h3>
+      <div class="role">Fondateur · Directeur</div>
+      <p>Mathématicien à l'intersection de la topologie, de la géométrie et de l'IA appliquée. Intérêts de recherche : analyse topologique des données, homologie persistante, théorie du point fixe, apprentissage automatique pour les systèmes africains.</p>
+      <div class="links"><a href="https://gabayae.github.io">gabayae.github.io</a><a href="https://github.com/gabayae">github</a></div>
+    </div>
+    <div class="person">
+      <div class="avatar" aria-hidden="true">DL</div>
+      <h3>Domini Jocema Leko Moutouo</h3>
+      <div class="role">Collaborateur recherche</div>
+      <p>Mathématicien et collaborateur de recherche régulier avec Y. U. Gaba en topologie et analyse appliquée.</p>
+    </div>
+  </div>
+  <div class="hiring">
+    <strong>Postes ouverts</strong> Chercheurs · Stagiaires · Ingénieurs — si vous êtes mathématicien, statisticien ou ingénieur intéressé par l'IA appliquée aux systèmes africains, <a href="mailto:contact@airina.africa">prenez contact</a>.
+  </div>
+  <div class="placeholder-note">Biographies tenues courtes. Étoffer les profils et ajouter des membres / chercheurs affiliés (AIMS, ACAS, partenaires universitaires) à mesure que l'institution se constitue.</div>
+</section>
+
+<section id="work" class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Productions sélectionnées</div>
+    <h2>Travaux récents.</h2>
+  </div>
+  <p class="work-intro">Publications et productions de recherche sélectionnées des chercheurs affiliés à AIRINA, principalement Y. U. Gaba. Une liste curatée arrivera ici. Pour l'instant, le dossier complet vit sur ces profils :</p>
+  <div class="work-profiles">
+    <a class="work-profile" href="https://gabayae.github.io/">
+      <span class="work-profile-label">Site académique</span>
+      <span class="work-profile-url">gabayae.github.io</span>
+    </a>
+    <a class="work-profile" href="https://scholar.google.com/citations?user=UTszjV4AAAAJ&hl=en">
+      <span class="work-profile-label">Google Scholar</span>
+      <span class="work-profile-url">scholar.google.com</span>
+    </a>
+    <a class="work-profile" href="https://arxiv.org/a/gaba_y_1.html">
+      <span class="work-profile-label">arXiv</span>
+      <span class="work-profile-url">arxiv.org/a/gaba_y_1</span>
+    </a>
+    <a class="work-profile" href="https://orcid.org/0000-0001-8128-9704">
+      <span class="work-profile-label">ORCID</span>
+      <span class="work-profile-url">0000-0001-8128-9704</span>
+    </a>
+  </div>
+</section>
+
+<section id="tech" class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Outils que nous utilisons</div>
+    <h2>Stack.</h2>
+  </div>
+  <div class="tech-groups">
+    <div class="tech-group">
+      <h3>Langages</h3>
+      <div class="tech-list"><span>Python</span><span>R</span><span>Julia</span><span>SQL</span></div>
+    </div>
+    <div class="tech-group">
+      <h3>ML &amp; IA</h3>
+      <div class="tech-list"><span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span><span>XGBoost</span><span>Hugging&nbsp;Face</span></div>
+    </div>
+    <div class="tech-group">
+      <h3>Données &amp; Infra</h3>
+      <div class="tech-list"><span>pandas</span><span>Polars</span><span>Jupyter</span><span>PostgreSQL</span><span>Docker</span><span>FastAPI</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="repos" class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Open source</div>
+    <h2>Dépôts.</h2>
+  </div>
+  <div class="repos">
+    <a class="repo" href="https://github.com/AIRINA-Labs">
+      <h3>research</h3>
+      <p>Code de recherche reproductible, jeux de données et notebooks accompagnant nos publications.</p>
+    </a>
+    <a class="repo" href="https://github.com/AIRINA-Labs">
+      <h3>products</h3>
+      <p>Composantes ouvertes de nos outils d'IA pour systèmes africains — en commençant par l'inclusion financière (scoring crédit, détection d'anomalies, analytics clients).</p>
+    </a>
+    <a class="repo" href="https://github.com/AIRINA-Labs">
+      <h3>training</h3>
+      <p>Programmes, exercices et modèles de projets de nos formations. Bilingue (FR/EN).</p>
+    </a>
+    <a class="repo" href="https://github.com/AIRINA-Labs">
+      <h3>experiments</h3>
+      <p>Travail exploratoire et prototypes en cours.</p>
+    </a>
+  </div>
+</section>
+
+<section id="contact" class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">Nous contacter</div>
+    <h2>Contact.</h2>
+  </div>
+  <div class="contact">
+    <div class="contact-block">
+      <h3>Email</h3>
+      <p><a href="mailto:contact@airina.africa">contact@airina.africa</a></p>
+    </div>
+    <div class="contact-block">
+      <h3>Siège</h3>
+      <p>Cotonou<br/>République du Bénin</p>
+    </div>
+    <div class="contact-block">
+      <h3>Web</h3>
+      <p><a href="https://airina.africa">airina.africa</a></p>
+    </div>
+    <div class="contact-block">
+      <h3>Code</h3>
+      <p><a href="https://github.com/AIRINA-Labs">github.com/AIRINA-Labs</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="https://github.com/AIRINA-Labs/AIRINA-Labs">Éditer ce site →</a></span>
+</footer>
+
+<script>
+(function () { var s = localStorage.getItem('airina-theme'); if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); var b = document.getElementById('theme-toggle'); if (!b) return; b.addEventListener('click', function () { var c = document.documentElement.getAttribute('data-theme'); var n = c === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', n); localStorage.setItem('airina-theme', n); }); })();
+</script>
+
+</body>
+</html>
