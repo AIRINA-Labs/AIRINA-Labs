@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8" />
@@ -16,38 +16,45 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script>(function(){var t=localStorage.getItem('airina-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
 <style>
 /* DESIGN TOKENS — light (default) */
 :root {
-  --bg:           #F5F1EA;
-  --bg-soft:      #EFEAE0;
-  --ink:          #1A1F2C;
-  --ink-soft:     #2E3548;
-  --muted:        #5C6478;
-  --dim:          #9098AB;
-  --rule:         rgba(26,31,44,0.10);
-  --rule-strong:  rgba(26,31,44,0.22);
-  --accent:       #B6650A;
-  --accent-soft:  rgba(182,101,10,0.10);
-  --nav-bg:       rgba(245,241,234,0.92);
+  --bg:           #F2EBD3;
+  --bg-soft:      #E9DFBE;
+  --ink:          #1F2A18;
+  --ink-soft:     #2E3D25;
+  --muted:        #6B6A47;
+  --dim:          #9D9C7A;
+  --rule:         rgba(31,42,24,0.10);
+  --rule-strong:  rgba(31,42,24,0.22);
+  --accent:       #C97A1F;
+  --accent-soft:  rgba(201,122,31,0.10);
+  --nav-bg:       rgba(242,235,211,0.92); --research:#2D6A4F; --research-soft:rgba(45,106,79,0.10); --training:#C8A24A; --training-soft:rgba(200,162,74,0.10); --products:#C97A1F; --products-soft:rgba(201,122,31,0.10); --surface:#FFFFFF; --surface-shadow: 0 1px 2px rgba(31,42,24,0.04), 0 8px 24px rgba(31,42,24,0.06);
 
   --serif: 'IBM Plex Serif', Georgia, serif;
   --mono:  'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
 [data-theme="dark"] {
-  --bg:           #0F141E;
-  --bg-soft:      #161C2A;
-  --ink:          #ECE7DC;
-  --ink-soft:     #C9C5BA;
-  --muted:        #8A91A3;
-  --dim:          #5F6680;
-  --rule:         rgba(236,231,220,0.10);
-  --rule-strong:  rgba(236,231,220,0.22);
-  --accent:       #E0A24A;
-  --accent-soft:  rgba(224,162,74,0.12);
-  --nav-bg:       rgba(15,20,30,0.92);
+  --bg:           #14180D;
+  --bg-soft:      #1E2415;
+  --ink:          #ECE3C5;
+  --ink-soft:     #CDC4A4;
+  --muted:        #8E8A6E;
+  --dim:          #5F5C46;
+  --rule:         rgba(236,227,197,0.10);
+  --rule-strong:  rgba(236,227,197,0.22);
+  --accent:       #E5A94E;
+  --accent-soft:  rgba(229,169,78,0.12);
+  --nav-bg:       rgba(20,24,13,0.92); --research:#6FBF8E; --research-soft:rgba(111,191,142,0.12); --training:#E8C778; --training-soft:rgba(232,199,120,0.12); --products:#E5A94E; --products-soft:rgba(229,169,78,0.12); --surface:#1E2415; --surface-shadow: 0 1px 2px rgba(0,0,0,0.25), 0 12px 30px rgba(0,0,0,0.35);
 }
+.scope-research { --accent: var(--research); --accent-soft: var(--research-soft); }
+.scope-training { --accent: var(--training); --accent-soft: var(--training-soft); }
+.scope-products { --accent: var(--products); --accent-soft: var(--products-soft); }
+.brand .b-ai  { color: var(--research); }
+.brand .b-rin { color: var(--training); font-style: italic; font-weight: 500; }
+.brand .b-a   { color: var(--products); }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -84,7 +91,7 @@ a:hover { border-bottom-color: var(--accent); }
 .wrap        { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
 .wrap-narrow { max-width: 760px;  margin: 0 auto; padding: 0 2rem; }
 section { padding: 5rem 0; border-top: 1px solid var(--rule); }
-section.hero, section.manifesto { border-top: none; }
+section.hero { border-top: none; }
 
 /* NAV */
 nav.site-nav {
@@ -94,7 +101,7 @@ nav.site-nav {
   background: var(--nav-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--rule);
+   will-change: backdrop-filter;border-bottom: 1px solid var(--rule);
 }
 .brand {
   display: inline-flex; align-items: center; gap: 0.55rem;
@@ -120,10 +127,11 @@ nav.site-nav {
 .avatar {
   display: inline-flex; align-items: center; justify-content: center;
   width: 56px; height: 56px; border-radius: 50%;
-  background: var(--bg-soft); border: 1px solid var(--rule-strong);
+  background: var(--surface); border: 1px solid var(--rule-strong);
   font-family: var(--serif); font-size: 1.05rem; font-weight: 500;
   font-style: italic; color: var(--accent);
   letter-spacing: 0.02em; margin-bottom: 1rem; flex-shrink: 0;
+  box-shadow: var(--surface-shadow);
 }
 .theme-btn {
   border: 1px solid var(--rule-strong); background: transparent;
@@ -147,25 +155,6 @@ section.hero { padding: 6.5rem 0 4rem; }
 .hero-meta span { display: inline-flex; gap: 0.5rem; align-items: baseline; }
 .hero-meta strong { color: var(--ink); font-weight: 500; }
 
-/* MANIFESTO BAND — full-bleed dark contrast section */
-section.manifesto {
-  padding: 7rem 0;
-  background: var(--ink);
-  color: var(--bg);
-  border-top: none; border-bottom: none;
-}
-section.manifesto + section { border-top: none; }
-.manifesto p {
-  font-family: var(--serif); font-style: italic;
-  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
-  line-height: 1.4;
-  color: var(--bg);
-  max-width: 720px;
-}
-.manifesto strong { font-style: normal; font-weight: 600; color: var(--accent); }
-[data-theme="dark"] section.manifesto { background: var(--bg-soft); }
-[data-theme="dark"] section.manifesto p { color: var(--ink); }
-
 /* SECTION HEAD */
 .section-head { margin-bottom: 2.5rem; }
 .section-head .eyebrow { margin-bottom: 0.7rem; }
@@ -181,7 +170,6 @@ section.manifesto + section { border-top: none; }
 .pillar p  { font-size: 0.92rem; line-height: 1.6; color: var(--muted); }
 
 /* ROADMAP */
-.roadmap {}
 .roadmap-row {
   display: grid;
   grid-template-columns: 110px 110px 1fr 110px;
@@ -227,17 +215,6 @@ section.manifesto + section { border-top: none; }
 .work-intro {
   font-size: 0.95rem; color: var(--muted); max-width: 720px; margin-bottom: 1.6rem;
 }
-.work-profiles { display: flex; flex-direction: column; }
-.work-profile {
-  display: flex; justify-content: space-between; align-items: baseline;
-  padding: 1.1rem 0; border-top: 1px solid var(--rule);
-  text-decoration: none; color: inherit; border-bottom: none;
-  transition: color .2s;
-}
-.work-profile:first-child { border-top: none; padding-top: 0.3rem; }
-.work-profile-label { font-family: var(--serif); font-weight: 500; color: var(--ink); transition: color .2s; }
-.work-profile-url   { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
-.work-profile:hover .work-profile-label { color: var(--accent); }
 
 .hiring {
   margin-top: 2rem;
@@ -294,7 +271,6 @@ section.manifesto + section { border-top: none; }
 .partner-role { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); margin-top: 0.2rem; }
 
 /* CONTACT */
-.contact { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
 .contact-block h3 {
   font-family: var(--mono); font-size: 0.72rem; font-weight: 400;
   letter-spacing: 0.1em; text-transform: uppercase;
@@ -313,6 +289,42 @@ footer.site-footer {
 footer.site-footer a { color: var(--muted); border-bottom: none; }
 footer.site-footer a:hover { color: var(--accent); }
 
+/* TEAM GRID */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.2rem 1.8rem;
+}
+.team-member { display: flex; flex-direction: column; }
+.team-portrait {
+  aspect-ratio: 1 / 1;
+  background: var(--surface);
+  border: 1px solid var(--rule-strong);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: 2rem; color: var(--accent);
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+  box-shadow: var(--surface-shadow);
+}
+.team-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.team-portrait span { line-height: 1; }
+.team-member h3 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 1rem; color: var(--ink);
+  margin-bottom: 0.15rem; line-height: 1.25;
+}
+.team-member .role {
+  font-family: var(--mono); font-size: 0.72rem;
+  color: var(--accent); letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+.team-member p {
+  font-size: 0.86rem; line-height: 1.5;
+  color: var(--muted);
+}
+
 /* PLACEHOLDER NOTE */
 .placeholder-note {
   margin-top: 1.5rem; padding: 0.6rem 0.9rem;
@@ -323,7 +335,11 @@ footer.site-footer a:hover { color: var(--accent); }
 }
 
 /* RESPONSIVE */
+@media (max-width: 1024px) {
+  .team-grid { grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 860px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 1.8rem 1.2rem; }
   .pillars, .people, .repos, .partners-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .contact { grid-template-columns: repeat(2, 1fr); }
   .roadmap-row { grid-template-columns: 1fr; gap: 0.4rem; padding: 1.2rem 0; }
@@ -351,7 +367,7 @@ footer.site-footer a:hover { color: var(--accent); }
   letter-spacing: 0.02em;
 }
 .announce strong { color: var(--accent); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.7rem; }
-.announce a { color: var(--bg); border-bottom: 1px solid rgba(245,241,234,0.3); }
+.announce a { color: var(--bg); border-bottom: 1px solid rgba(242,235,211,0.3); }
 .announce a:hover { color: var(--accent); border-color: var(--accent); }
 [data-theme="dark"] .announce { background: var(--bg-soft); color: var(--ink); }
 [data-theme="dark"] .announce a { color: var(--ink); border-bottom-color: var(--rule-strong); }
@@ -360,12 +376,13 @@ footer.site-footer a:hover { color: var(--accent); }
 .hero-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .hero-card {
   display: flex; flex-direction: column; gap: 0.4rem;
-  padding: 1.8rem 1.6rem; background: var(--bg-soft);
+  padding: 1.8rem 1.6rem; background: var(--surface);
   border: 1px solid var(--rule); border-radius: 3px;
   text-decoration: none; color: inherit; border-bottom: none;
-  transition: border-color .2s, transform .2s;
+  box-shadow: var(--surface-shadow);
+  transition: border-color .2s, transform .2s, box-shadow .2s;
 }
-.hero-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.hero-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 2px 4px rgba(31,42,24,0.05), 0 16px 36px rgba(31,42,24,0.10); }
 .hero-card-visual { color: var(--accent); margin-bottom: 0.6rem; }
 .hero-card h3 { font-family: var(--serif); font-weight: 500; font-size: 1.1rem; color: var(--ink); margin-bottom: 0.3rem; transition: color .2s; }
 .hero-card:hover h3 { color: var(--accent); }
@@ -395,19 +412,10 @@ footer.site-footer a:hover { color: var(--accent); }
   .values { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .update { grid-template-columns: 1fr; gap: 0.3rem; }
   .announce { padding: 0.6rem 1rem; font-size: 0.74rem; }
-  .hero-watermark { font-size: 6rem !important; }
 }
 
 /* HERO REDESIGN */
 .hero-wrap { position: relative; overflow: hidden; }
-.hero-watermark {
-  position: absolute; top: -1rem; right: -3rem;
-  font-family: var(--serif); font-style: italic; font-weight: 700;
-  font-size: clamp(8rem, 22vw, 16rem); line-height: 0.95;
-  color: transparent; -webkit-text-stroke: 1px var(--rule);
-  letter-spacing: -0.04em; user-select: none; pointer-events: none;
-  z-index: 0;
-}
 .hero-content { position: relative; z-index: 1; }
 .hero-coords {
   font-family: var(--mono); font-size: 0.78rem; color: var(--muted);
@@ -427,21 +435,297 @@ footer.site-footer a:hover { color: var(--accent); }
 section.tight { padding: 3rem 0; }
 .headline { margin-bottom: 2.5rem; }
 .headline h2 { max-width: 620px; }
+
+/* PATH ROUTER — "What brings you here?" 4-up */
+.path-router { padding: 1rem 0 4.5rem; border-top: none; }
+.path-router-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.6rem; flex-wrap: wrap; }
+.path-router-eyebrow {
+  font-family: var(--mono); font-size: 0.76rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted);
+  display: flex; align-items: center; gap: 0.9rem;
+}
+.path-router-eyebrow::before { content: ''; width: 1.8rem; height: 1px; background: var(--rule-strong); display: block; }
+.path-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.path-card {
+  display: flex; flex-direction: column;
+  padding: 1.5rem 1.3rem 1.3rem;
+  background: var(--surface);
+  border: 1px solid var(--rule); border-radius: 3px;
+  text-decoration: none; color: inherit; border-bottom: none;
+  box-shadow: var(--surface-shadow);
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+  min-height: 200px;
+}
+.path-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 2px 4px rgba(31,42,24,0.05), 0 16px 36px rgba(31,42,24,0.10);
+}
+.path-card .path-num {
+  font-family: var(--mono); font-size: 0.7rem;
+  color: var(--accent); letter-spacing: 0.06em;
+  margin-bottom: 0.8rem;
+}
+.path-card h3 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 1.05rem; color: var(--ink);
+  margin-bottom: 0.4rem; transition: color .2s;
+}
+.path-card:hover h3 { color: var(--accent); }
+.path-card p {
+  font-size: 0.86rem; line-height: 1.5;
+  color: var(--muted); margin-bottom: 0.9rem; flex: 1;
+}
+.path-card .path-more {
+  font-family: var(--mono); font-size: 0.74rem;
+  color: var(--accent); letter-spacing: 0.04em;
+  margin-top: auto;
+}
+
+/* NOW STRIP — present-tense status */
+.now-strip { padding: 4rem 0; }
+.now-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.8rem; }
+.now-eyebrow {
+  font-family: var(--mono); font-size: 0.76rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted);
+  display: flex; align-items: center; gap: 0.9rem;
+}
+.now-eyebrow::before { content: ''; width: 1.8rem; height: 1px; background: var(--rule-strong); display: block; }
+.now-pulse { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.04em; }
+.now-pulse::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.now-grid { display: flex; flex-direction: column; }
+.now-row {
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: 1.5rem; padding: 1.4rem 0;
+  border-top: 1px solid var(--rule);
+  align-items: baseline;
+}
+.now-row:first-child { border-top: none; padding-top: 0.2rem; }
+.now-tag {
+  font-family: var(--mono); font-size: 0.74rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--accent);
+}
+.now-row h4 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 1rem; color: var(--ink);
+  margin-bottom: 0.25rem; line-height: 1.3;
+}
+.now-row p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+
+/* CONTACT — switch to auto-fit so 5 blocks fit gracefully */
+.contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; }
+
+@media (max-width: 1024px) { .path-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 720px) {
+  .path-grid { grid-template-columns: 1fr; }
+  .now-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+/* REFUSALS — five things we will not do */
+section.refusals { padding: 6rem 0; background: var(--bg); border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule-strong); position: relative; }
+section.refusals::before { content: ''; position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 4px; height: 70%; background: var(--accent); }
+.refusals-eyebrow { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.4rem; display: flex; align-items: center; gap: 0.9rem; }
+.refusals-eyebrow::before { content: ''; width: 1.8rem; height: 1px; background: var(--rule-strong); display: block; }
+.refusals-heading { font-family: var(--serif); font-weight: 500; font-size: clamp(1.9rem, 3.8vw, 2.8rem); line-height: 1.1; color: var(--ink); margin-bottom: 2.6rem; max-width: 680px; letter-spacing: -0.015em; }
+.refusals-heading em { font-style: italic; color: var(--accent); font-weight: 500; }
+.refusals-list { list-style: none; padding: 0; margin: 0; }
+.refusals-list li { padding: 1.5rem 0; border-top: 1px solid var(--rule); font-family: var(--serif); font-weight: 400; font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.3; color: var(--ink); letter-spacing: -0.008em; }
+.refusals-list li:first-child { border-top: 1px solid var(--rule-strong); }
+.refusals-list li:last-child { border-bottom: 1px solid var(--rule-strong); }
+.refusals-list .neg { color: var(--accent); font-style: italic; font-weight: 500; margin-right: 0.15em; }
+
+/* PAPER CLUB — visible, bold, scoped to research */
+section.paper-club {
+  padding: 6.5rem 0;
+  background: var(--research-soft);
+  border-top: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
+  position: relative;
+}
+.paper-club-head {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 2.2rem; margin-bottom: 3rem; align-items: start;
+}
+.paper-club-stamp {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: 2.6rem; line-height: 1;
+  color: var(--accent);
+  padding: 1.1rem 1.6rem 1rem;
+  border: 1.5px solid var(--accent);
+  border-radius: 3px;
+  white-space: nowrap;
+  background: var(--surface);
+  box-shadow: var(--surface-shadow);
+}
+.paper-club-stamp small {
+  display: block; font-style: normal; font-family: var(--mono);
+  font-size: 0.68rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--muted);
+  margin-top: 0.4rem;
+}
+.paper-club-eyebrow {
+  font-family: var(--mono); font-size: 0.8rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.2rem; font-weight: 500;
+}
+.paper-club-title {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  line-height: 1.05; color: var(--ink);
+  letter-spacing: -0.018em; margin-bottom: 1rem;
+  max-width: 720px;
+}
+.paper-club-title em { font-style: italic; color: var(--accent); font-weight: 500; }
+.paper-club-lede {
+  font-size: 1.08rem; line-height: 1.55;
+  color: var(--ink-soft); max-width: 660px;
+}
+
+/* Featured "Next session" card */
+.paper-next {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 5px solid var(--accent);
+  border-radius: 3px;
+  padding: 2rem 2.2rem;
+  box-shadow: var(--surface-shadow);
+  margin-bottom: 3rem;
+  max-width: 880px;
+}
+.paper-next-meta {
+  display: flex; gap: 1rem; align-items: center;
+  margin-bottom: 1.1rem; flex-wrap: wrap;
+}
+.paper-next-label {
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent); font-weight: 500;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+}
+.paper-next-date {
+  font-family: var(--mono); font-size: 0.84rem;
+  color: var(--ink); letter-spacing: 0.04em; font-weight: 500;
+}
+.paper-next-pulse {
+  display: inline-block; width: 7px; height: 7px;
+  border-radius: 50%; background: var(--accent);
+  animation: pulse 1.8s ease-in-out infinite;
+  margin-right: 0.3rem;
+}
+.paper-next-title {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+  color: var(--ink); margin-bottom: 0.4rem;
+  letter-spacing: -0.008em; line-height: 1.25;
+}
+.paper-next-citation {
+  font-family: var(--mono); font-size: 0.78rem;
+  color: var(--muted); margin-bottom: 0.9rem;
+  line-height: 1.5;
+}
+.paper-next-citation em { font-style: italic; }
+.paper-next-citation a { color: var(--muted); border-bottom: 1px solid var(--rule-strong); }
+.paper-next-citation a:hover { color: var(--accent); border-color: var(--accent); }
+.paper-next-note {
+  font-size: 1rem; line-height: 1.55;
+  color: var(--ink-soft); margin-bottom: 1.4rem;
+  max-width: 620px;
+}
+.paper-next-actions {
+  display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;
+}
+.paper-next-cta {
+  display: inline-block;
+  font-family: var(--mono); font-size: 0.78rem;
+  letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500;
+  color: var(--surface); background: var(--accent);
+  padding: 0.75rem 1.4rem;
+  border-radius: 2px; border-bottom: none;
+  transition: background .2s, transform .2s;
+}
+.paper-next-cta:hover {
+  background: var(--ink); border-bottom: none;
+  transform: translateY(-1px);
+}
+.paper-next-link {
+  font-family: var(--mono); font-size: 0.78rem;
+  letter-spacing: 0.04em; color: var(--accent);
+  border-bottom: 1px solid transparent;
+}
+.paper-next-link:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+/* Reading list */
+.paper-cycle-head {
+  font-family: var(--mono); font-size: 0.8rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink); font-weight: 500;
+  margin: 3rem 0 1.4rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.paper-cycle-head::before {
+  content: ''; width: 2.2rem; height: 2px;
+  background: var(--accent); display: block;
+}
+.paper-cycle-head em {
+  font-style: italic; color: var(--muted);
+  font-weight: 400; letter-spacing: 0.02em; text-transform: none;
+  font-size: 0.85rem; margin-left: 0.5rem;
+}
+.paper-list { list-style: none; padding: 0; margin: 0; }
+.paper-list li {
+  display: grid; grid-template-columns: 56px 1fr;
+  gap: 1.5rem; padding: 1.5rem 0;
+  border-top: 1px solid var(--rule);
+  align-items: baseline;
+}
+.paper-list li:first-child { border-top: 1px solid var(--rule-strong); }
+.paper-list:last-of-type li:last-child { border-bottom: 1px solid var(--rule-strong); }
+.paper-num { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); letter-spacing: 0.06em; font-weight: 500; }
+.paper-title { font-family: var(--serif); font-weight: 500; font-size: 1.1rem; color: var(--ink); margin-bottom: 0.35rem; line-height: 1.3; }
+.paper-citation { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.5rem; }
+.paper-citation em { font-style: italic; }
+.paper-citation a { color: var(--muted); border-bottom: 1px solid var(--rule-strong); }
+.paper-citation a:hover { color: var(--accent); border-color: var(--accent); }
+.paper-note { font-family: var(--serif); font-size: 0.95rem; line-height: 1.55; color: var(--ink-soft); }
+
+.paper-club-cta {
+  margin-top: 2.2rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--rule-strong); border-radius: 2px;
+  font-family: var(--mono); font-size: 0.88rem;
+  color: var(--ink-soft); line-height: 1.6;
+  box-shadow: var(--surface-shadow);
+}
+.paper-club-cta strong { color: var(--accent); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.74rem; margin-right: 0.7rem; display: inline-block; }
+.paper-club-cta a { color: var(--ink); border-bottom: 1px solid var(--rule-strong); }
+.paper-club-cta a:hover { color: var(--accent); border-color: var(--accent); }
+
+@media (max-width: 720px) {
+  .paper-club-head { grid-template-columns: 1fr; gap: 1.4rem; }
+  .paper-club-stamp { justify-self: start; }
+  .paper-list li { grid-template-columns: 1fr; gap: 0.3rem; }
+  .paper-next { padding: 1.5rem 1.4rem; }
+  .paper-next-actions { gap: 1rem; }
+}
 </style>
 </head>
 <body>
 
-<div class="announce">
+<div class="announce scope-training">
   <strong>Cohort 1</strong> TDA for Data Scientists opens this quarter in Cotonou. <a href="training-01-tda.html">Apply →</a>
 </div>
 
 <nav class="site-nav">
   <a class="brand" href="#">
-    <svg class="brand-mark" viewBox="0 0 40 40" width="26" height="26" aria-hidden="true">
-      <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
-      <text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text>
-    </svg>
-    <span>AIR<em>INA</em> Labs</span>
+    <svg class="brand-mark" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 8 L 16.08 9.22 L 13.57 12.35 L 13.32 14.18" stroke="var(--research)"/><path d="M 13.58 17.48 L 14.09 18.96 L 15.53 20.79 L 16.54 22 L 17.08 23.47 L 17.95 25.64 L 20 28 L 23.42 29.4 L 27.37 28.78 L 30.39 26" stroke="var(--research)"/><path d="M 30.39 26 L 31.29 21.99 L 29.85 18.26 L 28.39 17.13" stroke="var(--training)"/><path d="M 25.40 15.70 L 23.86 15.40 L 21.55 15.74 L 20 16 L 18.45 15.74 L 16.14 15.40 L 13.07 16 L 10.15 18.26 L 8.71 21.99 L 9.61 26" stroke="var(--training)"/><path d="M 9.61 26 L 12.63 28.78 L 16.58 29.40 L 18.29 28.70" stroke="var(--products)"/><path d="M 21.02 26.82 L 22.05 25.64 L 22.92 23.47 L 23.46 22 L 24.47 20.79 L 25.91 18.96 L 26.93 16 L 26.43 12.35 L 23.92 9.22 L 20 8" stroke="var(--products)"/></g></svg>
+    <span><span class="b-ai">AI</span><span class="b-rin">RIN</span><span class="b-a">A</span> Labs</span>
   </a>
   <ul class="nav-links">
     <li><a href="#what-we-are">About</a></li>
@@ -459,7 +743,6 @@ section.tight { padding: 3rem 0; }
 </nav>
 
 <section class="hero wrap hero-wrap">
-  <span class="hero-watermark" aria-hidden="true">AIRINA</span>
   <div class="hero-content">
     <h1>The <em>shape</em> of African data.</h1>
     <p class="lead">AIRINA is a research institute in Cotonou, founded in 2025. We work on topology and applied machine learning, applied to the questions West African banks and microfinance institutions actually ask. We publish before we claim. The institutions that pay our bills are the ones that send us their problems; the trainees do not pay.</p>
@@ -467,13 +750,53 @@ section.tight { padding: 3rem 0; }
   </div>
 </section>
 
-<section class="manifesto wrap-narrow" id="what-we-are">
-  <p>The longest program in our catalog is two weeks. Every program ends with a graded defense. We publish what we build. We do not charge the trainees. We expect to still be here in 2035.</p>
+<section class="wrap path-router">
+  <div class="path-router-head">
+    <div class="path-router-eyebrow">What brings you here?</div>
+  </div>
+  <div class="path-grid">
+    <a class="path-card scope-products" href="pillar-products.html">
+      <div class="path-num">01 · You build credit</div>
+      <h3>A bank or MFI</h3>
+      <p>Looking for credit scoring, anomaly detection, or risk tools deployable in the BCEAO zone.</p>
+      <span class="path-more">See the products →</span>
+    </a>
+    <a class="path-card scope-research" href="pillar-research.html">
+      <div class="path-num">02 · You work on problems</div>
+      <h3>A researcher</h3>
+      <p>Interested in topology, persistent homology, or interpretable ML applied to African data.</p>
+      <span class="path-more">See the research →</span>
+    </a>
+    <a class="path-card scope-training" href="training.html">
+      <div class="path-num">03 · You want depth</div>
+      <h3>A student or trainee</h3>
+      <p>Mathematician, statistician, or engineer ready for short-form, graded, research-led programs.</p>
+      <span class="path-more">See the catalog →</span>
+    </a>
+    <a class="path-card" href="#contact">
+      <div class="path-num">04 · You back institutions</div>
+      <h3>A funder or partner</h3>
+      <p>An institution that wants to fund a cohort, sponsor a research theme, or build with us.</p>
+      <span class="path-more">Get in touch →</span>
+    </a>
+  </div>
+</section>
+
+<section class="refusals wrap-narrow" id="what-we-are">
+  <div class="refusals-eyebrow">Charter</div>
+  <h2 class="refusals-heading">Five things we <em>will not</em> do.</h2>
+  <ul class="refusals-list">
+    <li><span class="neg">No</span> program runs longer than two weeks.</li>
+    <li><span class="neg">No</span> one graduates without defending.</li>
+    <li><span class="neg">No</span> work stays in a drawer.</li>
+    <li><span class="neg">No</span> trainee writes a check.</li>
+    <li><span class="neg">No</span> quarter is the horizon.</li>
+  </ul>
 </section>
 
 <section class="wrap" id="positions">
   <div class="hero-cards asym">
-    <a class="hero-card" href="pillar-research.html">
+    <a class="hero-card scope-research" href="pillar-research.html">
       <div class="hero-card-visual">
         <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
           <polygon points="35,30 90,18 75,62" fill="currentColor" opacity="0.12"/>
@@ -500,7 +823,7 @@ section.tight { padding: 3rem 0; }
       <p>Our edge is mathematical depth. Most labs working in African fintech bring engineering and call it AI. We bring the topology, the analysis, the interpretability work, and the publication record. The papers are on arXiv. The code is on GitHub. The methods are the same whether a bank pays us or not.</p>
       <span class="hero-card-more">Research →</span>
     </a>
-    <a class="hero-card" href="pillar-training.html">
+    <a class="hero-card scope-training" href="pillar-training.html">
       <div class="hero-card-visual">
         <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
           <line x1="20" y1="20" x2="20" y2="95" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
@@ -516,7 +839,7 @@ section.tight { padding: 3rem 0; }
       <p>Cohorts of twelve, taught by the people doing the research. Every program ends with a graded defense.</p>
       <span class="hero-card-more">Training →</span>
     </a>
-    <a class="hero-card" href="pillar-products.html">
+    <a class="hero-card scope-products" href="pillar-products.html">
       <div class="hero-card-visual">
         <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
           <ellipse cx="100" cy="55" rx="72" ry="32" fill="none" stroke="currentColor" stroke-width="1"/>
@@ -537,17 +860,17 @@ section.tight { padding: 3rem 0; }
     <h2>What the institute does, on a single page.</h2>
   </div>
   <div class="pillars">
-    <div class="pillar">
+    <div class="pillar scope-research">
       <span class="num">01</span>
       <h3>Research</h3>
       <p>Mostly at the intersection of topology and applied machine learning. Persistent homology, interpretable models, asymmetric topology, a small bet on quantum-topological methods for finance. The papers are on arXiv; the code is on GitHub. <a href="pillar-research.html">Six active themes →</a></p>
     </div>
-    <div class="pillar">
+    <div class="pillar scope-products">
       <span class="num">02</span>
       <h3>Products</h3>
       <p>Research turned into things banks and microfinance institutions can deploy. Right now: credit scoring and anomaly detection for institutions in the BCEAO zone. Later: agricultural risk. Later still: health. <a href="pillar-products.html">How we build →</a></p>
     </div>
-    <div class="pillar">
+    <div class="pillar scope-training">
       <span class="num">03</span>
       <h3>Training</h3>
       <p>Short cohorts, taught by the people doing the research. Two days to two weeks. Every program ends with a graded defense. Bilingual delivery. <a href="pillar-training.html">Philosophy →</a> · <a href="training.html">Catalog →</a></p>
@@ -557,6 +880,153 @@ section.tight { padding: 3rem 0; }
       <h3>Incubator</h3>
       <p>AIRINA Ventures opens in year three. Not active yet. Written down on this page so we hold ourselves to it. <a href="pillar-incubator.html">What it will be →</a></p>
     </div>
+  </div>
+</section>
+
+<section class="wrap now-strip" id="now">
+  <div class="now-head">
+    <div class="now-eyebrow">Right now</div>
+    <span class="now-pulse">Live state of the institute</span>
+  </div>
+  <div class="now-grid">
+    <div class="now-row">
+      <span class="now-tag scope-research">Currently drafting</span>
+      <div>
+        <h4>Persistence diagrams of microcredit default networks</h4>
+        <p>Methods paper targeting Q3 2026 submission. Companion code on GitHub once accepted.</p>
+      </div>
+    </div>
+    <div class="now-row">
+      <span class="now-tag scope-training">Currently teaching</span>
+      <div>
+        <h4>TDA for Data Scientists — Cohort 1 syllabus finalization</h4>
+        <p>Three days, in-person Cotonou, ~12 participants. Hands-on with GUDHI, Ripser, giotto-tda.</p>
+      </div>
+    </div>
+    <div class="now-row">
+      <span class="now-tag scope-products">Currently deploying</span>
+      <div>
+        <h4>Credit-scoring pilot · BCEAO zone</h4>
+        <p>Partner under NDA. Methods will be published on GitHub at the end of the engagement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap paper-club scope-research" id="paper-club">
+  <div class="paper-club-head">
+    <div class="paper-club-stamp">N&deg; 01<small>Vol. I · 2026</small></div>
+    <div>
+      <div class="paper-club-eyebrow">Paper Club · Bi-weekly · Open</div>
+      <h1 class="paper-club-title">We read what we <em>want to write</em>.</h1>
+      <p class="paper-club-lede">A reading group on topological data analysis, interpretable ML, and applied mathematics for African systems. One paper, two discussants, open to anyone who has read it before showing up. Hybrid: in-person at the Cotonou office or by Zoom.</p>
+    </div>
+  </div>
+
+  <div class="paper-next">
+    <div class="paper-next-meta">
+      <span class="paper-next-label"><span class="paper-next-pulse"></span>Next session</span>
+      <span class="paper-next-date">Thu 11 Jun 2026 &middot; 16:00 WAT</span>
+    </div>
+    <h2 class="paper-next-title">01 &middot; Topology and Data</h2>
+    <div class="paper-next-citation">Carlsson, G. (2009) &middot; <em>Bulletin of the AMS</em> 46(2), 255&ndash;308</div>
+    <p class="paper-next-note">The canonical introduction to TDA. Every subsequent paper assumes you have read this one — we open with it for exactly that reason.</p>
+    <div class="paper-next-actions">
+      <a class="paper-next-cta" href="mailto:paperclub@airina.africa?subject=Paper%20Club%20%E2%80%94%20Session%2001">Register &rarr;</a>
+      <a class="paper-next-link" href="https://www.ams.org/journals/bull/2009-46-02/S0273-0979-09-01249-X/">Read the paper &rarr;</a>
+    </div>
+  </div>
+
+  <div class="paper-cycle-head">Cycle 1 <em>Foundations to deployment</em></div>
+  <ol class="paper-list">
+    <li>
+      <span class="paper-num">01</span>
+      <div>
+        <h3 class="paper-title">Topology and Data</h3>
+        <div class="paper-citation">Carlsson, G. (2009) &middot; <em>Bulletin of the AMS</em> 46(2), 255&ndash;308 &middot; <a href="https://www.ams.org/journals/bull/2009-46-02/S0273-0979-09-01249-X/">DOI</a></div>
+        <p class="paper-note">The canonical introduction to TDA. Every subsequent paper assumes you have read this one.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">02</span>
+      <div>
+        <h3 class="paper-title">Topological persistence and simplification</h3>
+        <div class="paper-citation">Edelsbrunner, H., Letscher, D., &amp; Zomorodian, A. (2002) &middot; <em>Discrete &amp; Computational Geometry</em> 28(4), 511&ndash;533</div>
+        <p class="paper-note">The founding algorithm of persistent homology. Where the field was named and proven.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">03</span>
+      <div>
+        <h3 class="paper-title">On the local behavior of spaces of natural images</h3>
+        <div class="paper-citation">Carlsson, G., Ishkhanov, T., de Silva, V., &amp; Zomorodian, A. (2008) &middot; <em>International Journal of Computer Vision</em> 76(1), 1&ndash;12</div>
+        <p class="paper-note">The most beautiful applied-TDA paper: a Klein bottle hiding in the patches of every photograph.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">04</span>
+      <div>
+        <h3 class="paper-title">Topological methods for the analysis of high-dimensional data sets and 3D object recognition</h3>
+        <div class="paper-citation">Singh, G., M&eacute;moli, F., &amp; Carlsson, G. (2007) &middot; <em>Eurographics Symposium on Point-Based Graphics</em></div>
+        <p class="paper-note">Mapper, the second pillar of TDA. Required before anything Mapper-shaped shows up in our own work.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">05</span>
+      <div>
+        <h3 class="paper-title">Persistence images: a stable vector representation of persistent homology</h3>
+        <div class="paper-citation">Adams, H., Emerson, T., Kirby, M., et al. (2017) &middot; <em>Journal of Machine Learning Research</em> 18(8), 1&ndash;35</div>
+        <p class="paper-note">The bridge from persistence diagrams to standard ML pipelines. Required before any downstream classifier reads a TDA feature.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">06</span>
+      <div>
+        <h3 class="paper-title">Behavior revealed in mobile phone usage predicts credit repayment</h3>
+        <div class="paper-citation">Bj&ouml;rkegren, D., &amp; Grissen, D. (2020) &middot; <em>The World Bank Economic Review</em> 34(3), 618&ndash;634</div>
+        <p class="paper-note">The literature directly under our Phase 1 products. We agree, we disagree, we read it carefully.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="paper-cycle-head">Cycle 2 <em>On deck</em></div>
+  <ol class="paper-list" start="7">
+    <li>
+      <span class="paper-num">07</span>
+      <div>
+        <h3 class="paper-title">Stability of persistence diagrams</h3>
+        <div class="paper-citation">Cohen-Steiner, D., Edelsbrunner, H., &amp; Harer, J. (2007) &middot; <em>Discrete &amp; Computational Geometry</em> 37(1), 103&ndash;120</div>
+        <p class="paper-note">The stability theorem. Why persistent homology is a real signal and not noise.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">08</span>
+      <div>
+        <h3 class="paper-title">Statistical topological data analysis using persistence landscapes</h3>
+        <div class="paper-citation">Bubenik, P. (2015) &middot; <em>Journal of Machine Learning Research</em> 16, 77&ndash;102</div>
+        <p class="paper-note">The other major vectorization of persistence diagrams. Bubenik vs. Adams, head to head.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">09</span>
+      <div>
+        <h3 class="paper-title">Stop explaining black-box machine-learning models for high-stakes decisions and use interpretable models instead</h3>
+        <div class="paper-citation">Rudin, C. (2019) &middot; <em>Nature Machine Intelligence</em> 1(5), 206&ndash;215</div>
+        <p class="paper-note">The case for interpretable models, not post-hoc interpretations of black boxes. Why AIRINA products must be the former.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">10</span>
+      <div>
+        <h3 class="paper-title">Topology-based data analysis identifies a subgroup of breast cancers with a unique mutational profile and excellent survival</h3>
+        <div class="paper-citation">Nicolau, M., Levine, A. J., &amp; Carlsson, G. (2011) &middot; <em>PNAS</em> 108(17), 7265&ndash;7270</div>
+        <p class="paper-note">The high-stakes-medicine TDA paper. Precedent for our Phase 3 health work.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="paper-club-cta">
+    <strong>How to join</strong> Read the next paper, email <a href="mailto:paperclub@airina.africa">paperclub@airina.africa</a>, and show up Thursday at 16:00 WAT. No RSVP needed for in-person; Zoom link sent after email.
   </div>
 </section>
 
@@ -664,29 +1134,74 @@ section.tight { padding: 3rem 0; }
   <div class="placeholder-note">Bios kept minimal. Expand entries and add team members / affiliated researchers (AIMS, ACAS, university partners) as the institution staffs up.</div>
 </section>
 
-<section id="work" class="wrap section-soft">
+<section id="team" class="wrap section-soft">
   <div class="headline">
-    <h2>The work.</h2>
+    <h2>The team.</h2>
   </div>
-  <p class="work-intro">Selected publications and research outputs from AIRINA-affiliated researchers, primarily Y. U. Gaba. A curated list will land here. In the meantime, the full record lives on these profiles:</p>
-  <div class="work-profiles">
-    <a class="work-profile" href="https://gabayae.github.io/">
-      <span class="work-profile-label">Academic site</span>
-      <span class="work-profile-url">gabayae.github.io</span>
-    </a>
-    <a class="work-profile" href="https://scholar.google.com/citations?user=UTszjV4AAAAJ&hl=en">
-      <span class="work-profile-label">Google Scholar</span>
-      <span class="work-profile-url">scholar.google.com</span>
-    </a>
-    <a class="work-profile" href="https://arxiv.org/a/gaba_y_1.html">
-      <span class="work-profile-label">arXiv</span>
-      <span class="work-profile-url">arxiv.org/a/gaba_y_1</span>
-    </a>
-    <a class="work-profile" href="https://orcid.org/0000-0001-8128-9704">
-      <span class="work-profile-label">ORCID</span>
-      <span class="work-profile-url">0000-0001-8128-9704</span>
-    </a>
+  <p class="work-intro">Researchers, engineers, and affiliated fellows. Photos and bios are filled in as the institute staffs up.</p>
+  <div class="team-grid">
+    <div class="team-member">
+      <div class="team-portrait" aria-hidden="true"><span>&mdash;</span></div>
+      <h3>Name to be announced</h3>
+      <div class="role">Researcher</div>
+      <p>Short bio &mdash; one to two sentences on background, focus area, and affiliation.</p>
+    </div>
+    <div class="team-member">
+      <div class="team-portrait" aria-hidden="true"><span>&mdash;</span></div>
+      <h3>Name to be announced</h3>
+      <div class="role">Researcher</div>
+      <p>Short bio &mdash; one to two sentences on background, focus area, and affiliation.</p>
+    </div>
+    <div class="team-member">
+      <div class="team-portrait" aria-hidden="true"><span>&mdash;</span></div>
+      <h3>Name to be announced</h3>
+      <div class="role">Affiliated researcher</div>
+      <p>Short bio &mdash; one to two sentences on background, focus area, and affiliation.</p>
+    </div>
+    <div class="team-member">
+      <div class="team-portrait" aria-hidden="true"><span>&mdash;</span></div>
+      <h3>Name to be announced</h3>
+      <div class="role">Affiliated researcher</div>
+      <p>Short bio &mdash; one to two sentences on background, focus area, and affiliation.</p>
+    </div>
+    <div class="team-member">
+      <div class="team-portrait" aria-hidden="true"><span>&mdash;</span></div>
+      <h3>Name to be announced</h3>
+      <div class="role">Engineer</div>
+      <p>Short bio &mdash; one to two sentences on background, focus area, and affiliation.</p>
+    </div>
+    <div class="team-member">
+      <div class="team-portrait" aria-hidden="true"><span>&mdash;</span></div>
+      <h3>Name to be announced</h3>
+      <div class="role">Engineer</div>
+      <p>Short bio &mdash; one to two sentences on background, focus area, and affiliation.</p>
+    </div>
+    <div class="team-member">
+      <div class="team-portrait" aria-hidden="true"><span>&mdash;</span></div>
+      <h3>Name to be announced</h3>
+      <div class="role">Research fellow</div>
+      <p>Short bio &mdash; one to two sentences on background, focus area, and affiliation.</p>
+    </div>
+    <div class="team-member">
+      <div class="team-portrait" aria-hidden="true"><span>&mdash;</span></div>
+      <h3>Name to be announced</h3>
+      <div class="role">Research fellow</div>
+      <p>Short bio &mdash; one to two sentences on background, focus area, and affiliation.</p>
+    </div>
+    <div class="team-member">
+      <div class="team-portrait" aria-hidden="true"><span>&mdash;</span></div>
+      <h3>Name to be announced</h3>
+      <div class="role">Trainee</div>
+      <p>Short bio &mdash; one to two sentences on background, focus area, and affiliation.</p>
+    </div>
+    <div class="team-member">
+      <div class="team-portrait" aria-hidden="true"><span>&mdash;</span></div>
+      <h3>Name to be announced</h3>
+      <div class="role">Trainee</div>
+      <p>Short bio &mdash; one to two sentences on background, focus area, and affiliation.</p>
+    </div>
   </div>
+  <div class="placeholder-note">Replace each <code>&lt;span&gt;&mdash;&lt;/span&gt;</code> with an <code>&lt;img src="�" alt="�"&gt;</code> when photos are ready. Layout stretches gracefully for any count from one to ten.</div>
 </section>
 
 <section id="tech" class="wrap">
@@ -745,6 +1260,10 @@ section.tight { padding: 3rem 0; }
     <div class="contact-block">
       <h3>HQ</h3>
       <p>Cotonou<br/>Benin Republic</p>
+    </div>
+    <div class="contact-block">
+      <h3>Office hours</h3>
+      <p>Tuesdays 14:00–16:00 WAT<br/>Walk-in or by Zoom</p>
     </div>
     <div class="contact-block">
       <h3>Web</h3>
