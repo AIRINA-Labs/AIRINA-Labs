@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
 <meta charset="UTF-8" />
@@ -16,9 +16,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script>(function(){var t=localStorage.getItem('airina-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
 <style>
-:root { --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548; --muted:#5C6478; --dim:#9098AB; --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22); --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10); --nav-bg:rgba(245,241,234,0.92); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
-[data-theme="dark"] { --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA; --muted:#8A91A3; --dim:#5F6680; --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22); --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12); --nav-bg:rgba(15,20,30,0.92); }
+:root { --bg:#F2EBD3; --bg-soft:#E9DFBE; --ink:#1F2A18; --ink-soft:#2E3D25; --muted:#6B6A47; --dim:#9D9C7A; --rule:rgba(31,42,24,0.10); --rule-strong:rgba(31,42,24,0.22); --accent:#C97A1F; --accent-soft:rgba(201,122,31,0.10); --nav-bg:rgba(242,235,211,0.92); --research:#2D6A4F; --research-soft:rgba(45,106,79,0.10); --training:#C8A24A; --training-soft:rgba(200,162,74,0.10); --products:#C97A1F; --products-soft:rgba(201,122,31,0.10); --surface:#FFFFFF; --surface-shadow: 0 1px 2px rgba(31,42,24,0.04), 0 8px 24px rgba(31,42,24,0.06); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#14180D; --bg-soft:#1E2415; --ink:#ECE3C5; --ink-soft:#CDC4A4; --muted:#8E8A6E; --dim:#5F5C46; --rule:rgba(236,227,197,0.10); --rule-strong:rgba(236,227,197,0.22); --accent:#E5A94E; --accent-soft:rgba(229,169,78,0.12); --nav-bg:rgba(20,24,13,0.92); --research:#6FBF8E; --research-soft:rgba(111,191,142,0.12); --training:#E8C778; --training-soft:rgba(232,199,120,0.12); --products:#E5A94E; --products-soft:rgba(229,169,78,0.12); --surface:#1E2415; --surface-shadow: 0 1px 2px rgba(0,0,0,0.25), 0 12px 30px rgba(0,0,0,0.35); }
+.scope-research { --accent: var(--research); --accent-soft: var(--research-soft); }
+.scope-training { --accent: var(--training); --accent-soft: var(--training-soft); }
+.scope-products { --accent: var(--products); --accent-soft: var(--products-soft); }
+.brand .b-ai  { color: var(--research); }
+.brand .b-rin { color: var(--training); font-style: italic; font-weight: 500; }
+.brand .b-a   { color: var(--products); }
 * { box-sizing:border-box; margin:0; padding:0; } html { scroll-behavior:smooth; }
 body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
 h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
@@ -34,8 +41,8 @@ a:hover { border-bottom-color:var(--accent); }
 .wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
 .wrap-narrow { max-width:760px; margin:0 auto; padding:0 2rem; }
 section { padding:5rem 0; border-top:1px solid var(--rule); }
-section.hero, section.manifesto { border-top:none; }
-nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+section.hero { border-top:none; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px);  will-change: backdrop-filter;border-bottom:1px solid var(--rule); }
 .brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; color:var(--ink); border-bottom:none; }
 .brand em { color:var(--accent); font-style:italic; font-weight:500; }
 .brand-mark { flex-shrink:0; color:var(--ink); transition:color .2s; }
@@ -57,12 +64,6 @@ section.hero { padding:6.5rem 0 4rem; }
 .hero-meta { display:flex; flex-wrap:wrap; gap:2rem 2.5rem; margin-top:2.5rem; font-family:var(--mono); font-size:0.78rem; color:var(--muted); }
 .hero-meta span { display:inline-flex; gap:0.5rem; align-items:baseline; }
 .hero-meta strong { color:var(--ink); font-weight:500; }
-section.manifesto { padding:7rem 0; background:var(--ink); color:var(--bg); border-top:none; border-bottom:none; }
-section.manifesto + section { border-top:none; }
-.manifesto p { font-family:var(--serif); font-style:italic; font-size:clamp(1.25rem, 2.2vw, 1.7rem); line-height:1.4; color:var(--bg); max-width:720px; }
-.manifesto strong { font-style:normal; font-weight:600; color:var(--accent); }
-[data-theme="dark"] section.manifesto { background:var(--bg-soft); }
-[data-theme="dark"] section.manifesto p { color:var(--ink); }
 .section-head { margin-bottom:2.5rem; } .section-head .eyebrow { margin-bottom:0.7rem; }
 
 /* PILLARS */
@@ -92,7 +93,7 @@ section.manifesto + section { border-top:none; }
 .person p { font-size:0.92rem; }
 .person .links { margin-top:0.7rem; font-family:var(--mono); font-size:0.78rem; }
 .person .links a { margin-right:1.2rem; }
-.avatar { display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:50%; background:var(--bg-soft); border:1px solid var(--rule-strong); font-family:var(--serif); font-size:1.05rem; font-weight:500; font-style:italic; color:var(--accent); letter-spacing:0.02em; margin-bottom:1rem; flex-shrink:0; }
+.avatar { display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:50%; background:var(--surface); border:1px solid var(--rule-strong); font-family:var(--serif); font-size:1.05rem; font-weight:500; font-style:italic; color:var(--accent); letter-spacing:0.02em; margin-bottom:1rem; flex-shrink:0; box-shadow: var(--surface-shadow); }
 .hiring { margin-top:2rem; padding:1.1rem 1.4rem; border:1px dashed var(--rule-strong); border-radius:2px; font-family:var(--mono); font-size:0.85rem; color:var(--ink-soft); line-height:1.6; }
 .hiring strong { color:var(--accent); font-weight:500; letter-spacing:0.07em; text-transform:uppercase; font-size:0.74rem; margin-right:0.7rem; }
 .hiring a { color:var(--ink); border-bottom:1px solid var(--rule-strong); }
@@ -123,7 +124,6 @@ section.manifesto + section { border-top:none; }
 .repo:hover h3 { color:var(--accent); }
 
 /* CONTACT */
-.contact { display:grid; grid-template-columns:repeat(4, 1fr); gap:2rem; }
 .contact-block h3 { font-family:var(--mono); font-size:0.72rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.7rem; }
 .contact-block p { color:var(--ink); font-size:0.95rem; }
 .contact-block a { color:var(--ink); border-bottom:1px solid var(--rule-strong); }
@@ -136,15 +136,15 @@ footer.site-footer a:hover { color:var(--accent); }
 /* ANNOUNCEMENT BANNER */
 .announce { background:var(--ink); color:var(--bg); padding:0.6rem 2rem; font-family:var(--mono); font-size:0.78rem; display:flex; justify-content:center; gap:0.8rem; align-items:baseline; flex-wrap:wrap; letter-spacing:0.02em; }
 .announce strong { color:var(--accent); font-weight:500; letter-spacing:0.06em; text-transform:uppercase; font-size:0.7rem; }
-.announce a { color:var(--bg); border-bottom:1px solid rgba(245,241,234,0.3); }
+.announce a { color:var(--bg); border-bottom:1px solid rgba(242,235,211,0.3); }
 .announce a:hover { color:var(--accent); border-color:var(--accent); }
 [data-theme="dark"] .announce { background:var(--bg-soft); color:var(--ink); }
 [data-theme="dark"] .announce a { color:var(--ink); border-bottom-color:var(--rule-strong); }
 
 /* HERO CARDS */
 .hero-cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; }
-.hero-card { display:flex; flex-direction:column; gap:0.4rem; padding:1.8rem 1.6rem; background:var(--bg-soft); border:1px solid var(--rule); border-radius:3px; text-decoration:none; color:inherit; border-bottom:none; transition:border-color .2s, transform .2s; }
-.hero-card:hover { border-color:var(--accent); transform:translateY(-2px); }
+.hero-card { display:flex; flex-direction:column; gap:0.4rem; padding:1.8rem 1.6rem; background:var(--surface); border:1px solid var(--rule); border-radius:3px; text-decoration:none; color:inherit; border-bottom:none; box-shadow: var(--surface-shadow); transition:border-color .2s, transform .2s, box-shadow .2s; }
+.hero-card:hover { border-color:var(--accent); transform:translateY(-3px); box-shadow: 0 2px 4px rgba(31,42,24,0.05), 0 16px 36px rgba(31,42,24,0.10); }
 .hero-card-visual { color:var(--accent); margin-bottom:0.6rem; }
 .hero-card h3 { font-family:var(--serif); font-weight:500; font-size:1.1rem; color:var(--ink); margin-bottom:0.3rem; transition:color .2s; }
 .hero-card:hover h3 { color:var(--accent); }
@@ -183,21 +183,124 @@ footer.site-footer a:hover { color:var(--accent); }
   .announce { padding:0.6rem 1rem; font-size:0.74rem; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition:none !important; animation:none !important; } html { scroll-behavior:auto; } }
+
+/* PATH ROUTER */
+.path-router { padding: 1rem 0 4.5rem; border-top: none; }
+.path-router-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.6rem; flex-wrap: wrap; }
+.path-router-eyebrow { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.9rem; }
+.path-router-eyebrow::before { content: ''; width: 1.8rem; height: 1px; background: var(--rule-strong); display: block; }
+.path-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.path-card { display: flex; flex-direction: column; padding: 1.5rem 1.3rem 1.3rem; background: var(--surface); border: 1px solid var(--rule); border-radius: 3px; text-decoration: none; color: inherit; border-bottom: none; box-shadow: var(--surface-shadow); transition: border-color .2s, transform .2s, box-shadow .2s; min-height: 200px; }
+.path-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 2px 4px rgba(31,42,24,0.05), 0 16px 36px rgba(31,42,24,0.10); }
+.path-card .path-num { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 0.8rem; }
+.path-card h3 { font-family: var(--serif); font-weight: 500; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.4rem; transition: color .2s; }
+.path-card:hover h3 { color: var(--accent); }
+.path-card p { font-size: 0.86rem; line-height: 1.5; color: var(--muted); margin-bottom: 0.9rem; flex: 1; }
+.path-card .path-more { font-family: var(--mono); font-size: 0.74rem; color: var(--accent); letter-spacing: 0.04em; margin-top: auto; }
+
+/* NOW STRIP */
+.now-strip { padding: 4rem 0; }
+.now-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.8rem; }
+.now-eyebrow { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.9rem; }
+.now-eyebrow::before { content: ''; width: 1.8rem; height: 1px; background: var(--rule-strong); display: block; }
+.now-pulse { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.04em; }
+.now-pulse::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.now-grid { display: flex; flex-direction: column; }
+.now-row { display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem; padding: 1.4rem 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.now-row:first-child { border-top: none; padding-top: 0.2rem; }
+.now-tag { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.now-row h4 { font-family: var(--serif); font-weight: 500; font-size: 1rem; color: var(--ink); margin-bottom: 0.25rem; line-height: 1.3; }
+.now-row p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+
+.contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; }
+
+@media (max-width: 1024px) { .path-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 720px) {
+  .path-grid { grid-template-columns: 1fr; }
+  .now-row { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+/* REFUSALS — five things we will not do */
+section.refusals { padding: 6rem 0; background: var(--bg); border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule-strong); position: relative; }
+section.refusals::before { content: ''; position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 4px; height: 70%; background: var(--accent); }
+.refusals-eyebrow { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.4rem; display: flex; align-items: center; gap: 0.9rem; }
+.refusals-eyebrow::before { content: ''; width: 1.8rem; height: 1px; background: var(--rule-strong); display: block; }
+.refusals-heading { font-family: var(--serif); font-weight: 500; font-size: clamp(1.9rem, 3.8vw, 2.8rem); line-height: 1.1; color: var(--ink); margin-bottom: 2.6rem; max-width: 680px; letter-spacing: -0.015em; }
+.refusals-heading em { font-style: italic; color: var(--accent); font-weight: 500; }
+.refusals-list { list-style: none; padding: 0; margin: 0; }
+.refusals-list li { padding: 1.5rem 0; border-top: 1px solid var(--rule); font-family: var(--serif); font-weight: 400; font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.3; color: var(--ink); letter-spacing: -0.008em; }
+.refusals-list li:first-child { border-top: 1px solid var(--rule-strong); }
+.refusals-list li:last-child { border-bottom: 1px solid var(--rule-strong); }
+.refusals-list .neg { color: var(--accent); font-style: italic; font-weight: 500; margin-right: 0.15em; }
+
+
+/* PAPER CLUB — visible, bold, scoped to research */
+section.paper-club { padding: 6.5rem 0; background: var(--research-soft); border-top: 3px solid var(--accent); border-bottom: 3px solid var(--accent); position: relative; }
+.paper-club-head { display: grid; grid-template-columns: auto 1fr; gap: 2.2rem; margin-bottom: 3rem; align-items: start; }
+.paper-club-stamp { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 2.6rem; line-height: 1; color: var(--accent); padding: 1.1rem 1.6rem 1rem; border: 1.5px solid var(--accent); border-radius: 3px; white-space: nowrap; background: var(--surface); box-shadow: var(--surface-shadow); }
+.paper-club-stamp small { display: block; font-style: normal; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
+.paper-club-eyebrow { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; font-weight: 500; }
+.paper-club-title { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 4.5vw, 3.2rem); line-height: 1.05; color: var(--ink); letter-spacing: -0.018em; margin-bottom: 1rem; max-width: 720px; }
+.paper-club-title em { font-style: italic; color: var(--accent); font-weight: 500; }
+.paper-club-lede { font-size: 1.08rem; line-height: 1.55; color: var(--ink-soft); max-width: 660px; }
+
+.paper-next { background: var(--surface); border: 1px solid var(--rule); border-left: 5px solid var(--accent); border-radius: 3px; padding: 2rem 2.2rem; box-shadow: var(--surface-shadow); margin-bottom: 3rem; max-width: 880px; }
+.paper-next-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.1rem; flex-wrap: wrap; }
+.paper-next-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 500; padding: 0.3rem 0.7rem; border: 1px solid var(--accent); border-radius: 2px; }
+.paper-next-date { font-family: var(--mono); font-size: 0.84rem; color: var(--ink); letter-spacing: 0.04em; font-weight: 500; }
+.paper-next-pulse { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 1.8s ease-in-out infinite; margin-right: 0.3rem; }
+.paper-next-title { font-family: var(--serif); font-weight: 500; font-size: clamp(1.35rem, 2.6vw, 1.75rem); color: var(--ink); margin-bottom: 0.4rem; letter-spacing: -0.008em; line-height: 1.25; }
+.paper-next-citation { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); margin-bottom: 0.9rem; line-height: 1.5; }
+.paper-next-citation em { font-style: italic; }
+.paper-next-citation a { color: var(--muted); border-bottom: 1px solid var(--rule-strong); }
+.paper-next-citation a:hover { color: var(--accent); border-color: var(--accent); }
+.paper-next-note { font-size: 1rem; line-height: 1.55; color: var(--ink-soft); margin-bottom: 1.4rem; max-width: 620px; }
+.paper-next-actions { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+.paper-next-cta { display: inline-block; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; color: var(--surface); background: var(--accent); padding: 0.75rem 1.4rem; border-radius: 2px; border-bottom: none; transition: background .2s, transform .2s; }
+.paper-next-cta:hover { background: var(--ink); border-bottom: none; transform: translateY(-1px); }
+.paper-next-link { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.04em; color: var(--accent); border-bottom: 1px solid transparent; }
+.paper-next-link:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+.paper-cycle-head { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); font-weight: 500; margin: 3rem 0 1.4rem; display: flex; align-items: center; gap: 1rem; }
+.paper-cycle-head::before { content: ''; width: 2.2rem; height: 2px; background: var(--accent); display: block; }
+.paper-cycle-head em { font-style: italic; color: var(--muted); font-weight: 400; letter-spacing: 0.02em; text-transform: none; font-size: 0.85rem; margin-left: 0.5rem; }
+.paper-list { list-style: none; padding: 0; margin: 0; }
+.paper-list li { display: grid; grid-template-columns: 56px 1fr; gap: 1.5rem; padding: 1.5rem 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.paper-list li:first-child { border-top: 1px solid var(--rule-strong); }
+.paper-list:last-of-type li:last-child { border-bottom: 1px solid var(--rule-strong); }
+.paper-num { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); letter-spacing: 0.06em; font-weight: 500; }
+.paper-title { font-family: var(--serif); font-weight: 500; font-size: 1.1rem; color: var(--ink); margin-bottom: 0.35rem; line-height: 1.3; }
+.paper-citation { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.5rem; }
+.paper-citation em { font-style: italic; }
+.paper-citation a { color: var(--muted); border-bottom: 1px solid var(--rule-strong); }
+.paper-citation a:hover { color: var(--accent); border-color: var(--accent); }
+.paper-note { font-family: var(--serif); font-size: 0.95rem; line-height: 1.55; color: var(--ink-soft); }
+
+.paper-club-cta { margin-top: 2.2rem; padding: 1.2rem 1.5rem; background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 2px; font-family: var(--mono); font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; box-shadow: var(--surface-shadow); }
+.paper-club-cta strong { color: var(--accent); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.74rem; margin-right: 0.7rem; display: inline-block; }
+.paper-club-cta a { color: var(--ink); border-bottom: 1px solid var(--rule-strong); }
+.paper-club-cta a:hover { color: var(--accent); border-color: var(--accent); }
+
+@media (max-width: 720px) {
+  .paper-club-head { grid-template-columns: 1fr; gap: 1.4rem; }
+  .paper-club-stamp { justify-self: start; }
+  .paper-list li { grid-template-columns: 1fr; gap: 0.3rem; }
+  .paper-next { padding: 1.5rem 1.4rem; }
+  .paper-next-actions { gap: 1rem; }
+}
 </style>
 </head>
 <body>
 
-<div class="announce">
+<div class="announce scope-training">
   <strong>Cohorte 1</strong> ATD pour data scientists · en présentiel, Cotonou · Lancement T3 2026 · <a href="formation-01-atd.html">Postuler →</a>
 </div>
 
 <nav class="site-nav">
   <a class="brand" href="accueil.html">
-    <svg class="brand-mark" viewBox="0 0 40 40" width="26" height="26" aria-hidden="true">
-      <circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
-      <text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text>
-    </svg>
-    <span>AIR<em>INA</em> Labs</span>
+    <svg class="brand-mark" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 8 L 16.08 9.22 L 13.57 12.35 L 13.32 14.18" stroke="var(--research)"/><path d="M 13.58 17.48 L 14.09 18.96 L 15.53 20.79 L 16.54 22 L 17.08 23.47 L 17.95 25.64 L 20 28 L 23.42 29.4 L 27.37 28.78 L 30.39 26" stroke="var(--research)"/><path d="M 30.39 26 L 31.29 21.99 L 29.85 18.26 L 28.39 17.13" stroke="var(--training)"/><path d="M 25.40 15.70 L 23.86 15.40 L 21.55 15.74 L 20 16 L 18.45 15.74 L 16.14 15.40 L 13.07 16 L 10.15 18.26 L 8.71 21.99 L 9.61 26" stroke="var(--training)"/><path d="M 9.61 26 L 12.63 28.78 L 16.58 29.40 L 18.29 28.70" stroke="var(--products)"/><path d="M 21.02 26.82 L 22.05 25.64 L 22.92 23.47 L 23.46 22 L 24.47 20.79 L 25.91 18.96 L 26.93 16 L 26.43 12.35 L 23.92 9.22 L 20 8" stroke="var(--products)"/></g></svg>
+    <span><span class="b-ai">AI</span><span class="b-rin">RIN</span><span class="b-a">A</span> Labs</span>
   </a>
   <ul class="nav-links">
     <li><a href="#what-we-are">À propos</a></li>
@@ -225,8 +328,48 @@ footer.site-footer a:hover { color:var(--accent); }
   </div>
 </section>
 
-<section class="manifesto wrap-narrow" id="what-we-are">
-  <p>Nous sommes une institution — bâtie pour la durée, ancrée dans une recherche rigoureuse, et engagée pour le développement du talent et des solutions africaines.</p>
+<section class="wrap path-router">
+  <div class="path-router-head">
+    <div class="path-router-eyebrow">Vous êtes ici parce que…</div>
+  </div>
+  <div class="path-grid">
+    <a class="path-card scope-products" href="pilier-produits.html">
+      <div class="path-num">01 · Vous accordez du crédit</div>
+      <h3>Une banque ou une IMF</h3>
+      <p>Vous cherchez du scoring crédit, de la détection d'anomalies, ou des outils de risque déployables en zone BCEAO.</p>
+      <span class="path-more">Voir les produits →</span>
+    </a>
+    <a class="path-card scope-research" href="pilier-recherche.html">
+      <div class="path-num">02 · Vous travaillez sur des problèmes</div>
+      <h3>Un chercheur</h3>
+      <p>Topologie, homologie persistante, ou ML interprétable appliqué aux données africaines.</p>
+      <span class="path-more">Voir la recherche →</span>
+    </a>
+    <a class="path-card scope-training" href="formations.html">
+      <div class="path-num">03 · Vous voulez de la profondeur</div>
+      <h3>Un étudiant ou stagiaire</h3>
+      <p>Mathématicien, statisticien, ou ingénieur prêt pour des programmes courts, notés, adossés à la recherche.</p>
+      <span class="path-more">Voir le catalogue →</span>
+    </a>
+    <a class="path-card" href="#contact">
+      <div class="path-num">04 · Vous soutenez des institutions</div>
+      <h3>Un financeur ou partenaire</h3>
+      <p>Une institution qui veut financer une cohorte, sponsoriser un thème de recherche, ou construire avec nous.</p>
+      <span class="path-more">Nous contacter →</span>
+    </a>
+  </div>
+</section>
+
+<section class="refusals wrap-narrow" id="what-we-are">
+  <div class="refusals-eyebrow">Charte</div>
+  <h2 class="refusals-heading">Cinq choses que nous <em>ne ferons pas</em>.</h2>
+  <ul class="refusals-list">
+    <li><span class="neg">Aucun</span> programme ne dépasse deux semaines.</li>
+    <li><span class="neg">Aucun</span> diplôme sans soutenance.</li>
+    <li><span class="neg">Aucun</span> travail ne reste dans un tiroir.</li>
+    <li><span class="neg">Aucun</span> stagiaire ne paie.</li>
+    <li><span class="neg">Aucun</span> trimestre n'est l'horizon.</li>
+  </ul>
 </section>
 
 <section class="wrap" id="positions">
@@ -235,7 +378,7 @@ footer.site-footer a:hover { color:var(--accent); }
     <h2>Où nous travaillons, en une phrase chacune.</h2>
   </div>
   <div class="hero-cards">
-    <a class="hero-card" href="pilier-recherche.html">
+    <a class="hero-card scope-research" href="pilier-recherche.html">
       <div class="hero-card-visual">
         <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
           <polygon points="35,30 90,18 75,62" fill="currentColor" opacity="0.12"/>
@@ -262,7 +405,7 @@ footer.site-footer a:hover { color:var(--accent); }
       <p>Topologie, homologie persistante, modèles interprétables — appliqués là où les données, la régulation et le client sont africains, pas transposés d'ailleurs.</p>
       <span class="hero-card-more">Recherche →</span>
     </a>
-    <a class="hero-card" href="pilier-formation.html">
+    <a class="hero-card scope-training" href="pilier-formation.html">
       <div class="hero-card-visual">
         <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
           <line x1="20" y1="20" x2="20" y2="95" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
@@ -278,7 +421,7 @@ footer.site-footer a:hover { color:var(--accent); }
       <p>Pas de certificats de présence. Chaque programme se conclut par un projet noté, soutenu devant les chercheurs d'AIRINA. Le certificat mérite la ligne sur un CV.</p>
       <span class="hero-card-more">Formation →</span>
     </a>
-    <a class="hero-card" href="pilier-produits.html">
+    <a class="hero-card scope-products" href="pilier-produits.html">
       <div class="hero-card-visual">
         <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
           <ellipse cx="100" cy="55" rx="72" ry="32" fill="none" stroke="currentColor" stroke-width="1"/>
@@ -300,17 +443,17 @@ footer.site-footer a:hover { color:var(--accent); }
     <h2>Quatre piliers, une institution.</h2>
   </div>
   <div class="pillars">
-    <div class="pillar">
+    <div class="pillar scope-research">
       <span class="num">01</span>
       <h3>Recherche</h3>
       <p>Recherche appliquée originale en IA, mathématiques et systèmes de données ancrée dans les réalités africaines. Nous publions, contribuons au savoir global, et rendons les résultats accessibles aux décideurs et praticiens africains. <a href="pilier-recherche.html">Lire la suite →</a></p>
     </div>
-    <div class="pillar">
+    <div class="pillar scope-products">
       <span class="num">02</span>
       <h3>Produits</h3>
       <p>Recherche traduite en outils pratiques — commençant par l'inclusion financière (scoring crédit, détection de fraude, analytics clients) et s'étendant à l'agriculture et à la santé sur la décennie. <a href="pilier-produits.html">Lire la suite →</a></p>
     </div>
-    <div class="pillar">
+    <div class="pillar scope-training">
       <span class="num">03</span>
       <h3>Formation</h3>
       <p>Programmes courts adossés à la recherche en ATD, IA interprétable, et fondements mathématiques d'un ML robuste. 2 jours à 2 semaines, notés, bilingues. <a href="pilier-formation.html">Lire la suite →</a> · <a href="formations.html">Catalogue →</a></p>
@@ -320,6 +463,153 @@ footer.site-footer a:hover { color:var(--accent); }
       <h3>Incubateur</h3>
       <p>AIRINA Ventures (Phase 2) : mentorat, soutien technique, espace de travail et réseau institutionnel pour les diplômés STEM bâtissant des entreprises d'IA. <a href="pilier-incubateur.html">Lire la suite →</a></p>
     </div>
+  </div>
+</section>
+
+<section class="wrap now-strip" id="now">
+  <div class="now-head">
+    <div class="now-eyebrow">En ce moment</div>
+    <span class="now-pulse">État vivant de l'institut</span>
+  </div>
+  <div class="now-grid">
+    <div class="now-row">
+      <span class="now-tag scope-research">En rédaction</span>
+      <div>
+        <h4>Diagrammes de persistance des réseaux de défaut microcrédit</h4>
+        <p>Article méthodologique visant une soumission T3 2026. Code accompagnant sur GitHub à l'acceptation.</p>
+      </div>
+    </div>
+    <div class="now-row">
+      <span class="now-tag scope-training">En enseignement</span>
+      <div>
+        <h4>ATD pour data scientists — finalisation du syllabus de la Cohorte 1</h4>
+        <p>Trois jours en présentiel à Cotonou, ~12 participants. Pratique avec GUDHI, Ripser, giotto-tda.</p>
+      </div>
+    </div>
+    <div class="now-row">
+      <span class="now-tag scope-products">En déploiement</span>
+      <div>
+        <h4>Pilote de scoring crédit · zone BCEAO</h4>
+        <p>Partenaire sous NDA. Méthodes publiées sur GitHub à la fin de l'engagement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap paper-club scope-research" id="paper-club">
+  <div class="paper-club-head">
+    <div class="paper-club-stamp">N&deg; 01<small>Vol. I · 2026</small></div>
+    <div>
+      <div class="paper-club-eyebrow">Paper Club · Bimensuel · Ouvert</div>
+      <h1 class="paper-club-title">Nous lisons ce que <em>nous voulons écrire</em>.</h1>
+      <p class="paper-club-lede">Un groupe de lecture en analyse topologique des données, IA interprétable, et mathématiques appliquées aux systèmes africains. Un article, deux discutants, ouvert à quiconque l'a lu avant la séance. Hybride : en présentiel à Cotonou ou par Zoom.</p>
+    </div>
+  </div>
+
+  <div class="paper-next">
+    <div class="paper-next-meta">
+      <span class="paper-next-label"><span class="paper-next-pulse"></span>Prochaine séance</span>
+      <span class="paper-next-date">Jeu. 11 juin 2026 &middot; 16h00 WAT</span>
+    </div>
+    <h2 class="paper-next-title">01 &middot; Topology and Data</h2>
+    <div class="paper-next-citation">Carlsson, G. (2009) &middot; <em>Bulletin of the AMS</em> 46(2), 255&ndash;308</div>
+    <p class="paper-next-note">L'introduction canonique à l'ATD. Tout article postérieur suppose que vous avez lu celui-ci — nous ouvrons donc le cycle avec lui.</p>
+    <div class="paper-next-actions">
+      <a class="paper-next-cta" href="mailto:paperclub@airina.africa?subject=Paper%20Club%20%E2%80%94%20S%C3%A9ance%2001">S'inscrire &rarr;</a>
+      <a class="paper-next-link" href="https://www.ams.org/journals/bull/2009-46-02/S0273-0979-09-01249-X/">Lire l'article &rarr;</a>
+    </div>
+  </div>
+
+  <div class="paper-cycle-head">Cycle 1 <em>Fondations vers déploiement</em></div>
+  <ol class="paper-list">
+    <li>
+      <span class="paper-num">01</span>
+      <div>
+        <h3 class="paper-title">Topology and Data</h3>
+        <div class="paper-citation">Carlsson, G. (2009) &middot; <em>Bulletin of the AMS</em> 46(2), 255&ndash;308 &middot; <a href="https://www.ams.org/journals/bull/2009-46-02/S0273-0979-09-01249-X/">DOI</a></div>
+        <p class="paper-note">L'introduction canonique à l'ATD. Tout article postérieur suppose que vous avez lu celui-ci.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">02</span>
+      <div>
+        <h3 class="paper-title">Topological persistence and simplification</h3>
+        <div class="paper-citation">Edelsbrunner, H., Letscher, D., &amp; Zomorodian, A. (2002) &middot; <em>Discrete &amp; Computational Geometry</em> 28(4), 511&ndash;533</div>
+        <p class="paper-note">L'algorithme fondateur de l'homologie persistante. Là où la discipline a été nommée et démontrée.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">03</span>
+      <div>
+        <h3 class="paper-title">On the local behavior of spaces of natural images</h3>
+        <div class="paper-citation">Carlsson, G., Ishkhanov, T., de Silva, V., &amp; Zomorodian, A. (2008) &middot; <em>International Journal of Computer Vision</em> 76(1), 1&ndash;12</div>
+        <p class="paper-note">Le plus beau papier d'ATD appliquée : une bouteille de Klein cachée dans les patches de toute photographie.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">04</span>
+      <div>
+        <h3 class="paper-title">Topological methods for the analysis of high-dimensional data sets and 3D object recognition</h3>
+        <div class="paper-citation">Singh, G., M&eacute;moli, F., &amp; Carlsson, G. (2007) &middot; <em>Eurographics Symposium on Point-Based Graphics</em></div>
+        <p class="paper-note">Mapper, le second pilier de l'ATD. À lire avant toute apparition d'un Mapper dans nos travaux.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">05</span>
+      <div>
+        <h3 class="paper-title">Persistence images: a stable vector representation of persistent homology</h3>
+        <div class="paper-citation">Adams, H., Emerson, T., Kirby, M., et al. (2017) &middot; <em>Journal of Machine Learning Research</em> 18(8), 1&ndash;35</div>
+        <p class="paper-note">Le pont entre diagrammes de persistance et pipelines ML standards. Préalable à tout classifieur consommant des features ATD.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">06</span>
+      <div>
+        <h3 class="paper-title">Behavior revealed in mobile phone usage predicts credit repayment</h3>
+        <div class="paper-citation">Bj&ouml;rkegren, D., &amp; Grissen, D. (2020) &middot; <em>The World Bank Economic Review</em> 34(3), 618&ndash;634</div>
+        <p class="paper-note">La littérature directement sous nos produits Phase 1. Nous sommes d'accord, nous sommes en désaccord, nous le lisons avec soin.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="paper-cycle-head">Cycle 2 <em>Au programme</em></div>
+  <ol class="paper-list" start="7">
+    <li>
+      <span class="paper-num">07</span>
+      <div>
+        <h3 class="paper-title">Stability of persistence diagrams</h3>
+        <div class="paper-citation">Cohen-Steiner, D., Edelsbrunner, H., &amp; Harer, J. (2007) &middot; <em>Discrete &amp; Computational Geometry</em> 37(1), 103&ndash;120</div>
+        <p class="paper-note">Le théorème de stabilité. Pourquoi l'homologie persistante est un vrai signal, pas du bruit.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">08</span>
+      <div>
+        <h3 class="paper-title">Statistical topological data analysis using persistence landscapes</h3>
+        <div class="paper-citation">Bubenik, P. (2015) &middot; <em>Journal of Machine Learning Research</em> 16, 77&ndash;102</div>
+        <p class="paper-note">L'autre grande vectorisation des diagrammes de persistance. Bubenik vs Adams, en face-à-face.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">09</span>
+      <div>
+        <h3 class="paper-title">Stop explaining black-box machine-learning models for high-stakes decisions and use interpretable models instead</h3>
+        <div class="paper-citation">Rudin, C. (2019) &middot; <em>Nature Machine Intelligence</em> 1(5), 206&ndash;215</div>
+        <p class="paper-note">Le plaidoyer pour des modèles interprétables — pas des interprétations a posteriori de boîtes noires. Pourquoi nos produits doivent être les premiers.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">10</span>
+      <div>
+        <h3 class="paper-title">Topology-based data analysis identifies a subgroup of breast cancers with a unique mutational profile and excellent survival</h3>
+        <div class="paper-citation">Nicolau, M., Levine, A. J., &amp; Carlsson, G. (2011) &middot; <em>PNAS</em> 108(17), 7265&ndash;7270</div>
+        <p class="paper-note">Le papier ATD en médecine à haut enjeu. Précédent pour nos travaux Phase 3 en santé.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="paper-club-cta">
+    <strong>Comment rejoindre</strong> Lisez l'article suivant, écrivez à <a href="mailto:paperclub@airina.africa">paperclub@airina.africa</a>, et venez le jeudi à 16h00 WAT. Pas de RSVP nécessaire en présentiel ; le lien Zoom est envoyé après mail.
   </div>
 </section>
 
@@ -516,6 +806,10 @@ footer.site-footer a:hover { color:var(--accent); }
     <div class="contact-block">
       <h3>Siège</h3>
       <p>Cotonou<br/>République du Bénin</p>
+    </div>
+    <div class="contact-block">
+      <h3>Permanences</h3>
+      <p>Mardis 14h00–16h00 WAT<br/>Sur place ou par Zoom</p>
     </div>
     <div class="contact-block">
       <h3>Web</h3>

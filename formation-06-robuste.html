@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
 <meta charset="UTF-8" />
@@ -9,9 +9,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script>(function(){var t=localStorage.getItem('airina-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
 <style>
-:root { --bg:#F5F1EA; --bg-soft:#EFEAE0; --ink:#1A1F2C; --ink-soft:#2E3548; --muted:#5C6478; --dim:#9098AB; --rule:rgba(26,31,44,0.10); --rule-strong:rgba(26,31,44,0.22); --accent:#B6650A; --accent-soft:rgba(182,101,10,0.10); --nav-bg:rgba(245,241,234,0.92); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
-[data-theme="dark"] { --bg:#0F141E; --bg-soft:#161C2A; --ink:#ECE7DC; --ink-soft:#C9C5BA; --muted:#8A91A3; --dim:#5F6680; --rule:rgba(236,231,220,0.10); --rule-strong:rgba(236,231,220,0.22); --accent:#E0A24A; --accent-soft:rgba(224,162,74,0.12); --nav-bg:rgba(15,20,30,0.92); }
+:root { --bg:#F2EBD3; --bg-soft:#E9DFBE; --ink:#1F2A18; --ink-soft:#2E3D25; --muted:#6B6A47; --dim:#9D9C7A; --rule:rgba(31,42,24,0.10); --rule-strong:rgba(31,42,24,0.22); --accent:#C97A1F; --accent-soft:rgba(201,122,31,0.10); --nav-bg:rgba(242,235,211,0.92); --research:#2D6A4F; --research-soft:rgba(45,106,79,0.10); --training:#C8A24A; --training-soft:rgba(200,162,74,0.10); --products:#C97A1F; --products-soft:rgba(201,122,31,0.10); --surface:#FFFFFF; --surface-shadow: 0 1px 2px rgba(31,42,24,0.04), 0 8px 24px rgba(31,42,24,0.06); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#14180D; --bg-soft:#1E2415; --ink:#ECE3C5; --ink-soft:#CDC4A4; --muted:#8E8A6E; --dim:#5F5C46; --rule:rgba(236,227,197,0.10); --rule-strong:rgba(236,227,197,0.22); --accent:#E5A94E; --accent-soft:rgba(229,169,78,0.12); --nav-bg:rgba(20,24,13,0.92); --research:#6FBF8E; --research-soft:rgba(111,191,142,0.12); --training:#E8C778; --training-soft:rgba(232,199,120,0.12); --products:#E5A94E; --products-soft:rgba(229,169,78,0.12); --surface:#1E2415; --surface-shadow: 0 1px 2px rgba(0,0,0,0.25), 0 12px 30px rgba(0,0,0,0.35); }
+.scope-research { --accent: var(--research); --accent-soft: var(--research-soft); }
+.scope-training { --accent: var(--training); --accent-soft: var(--training-soft); }
+.scope-products { --accent: var(--products); --accent-soft: var(--products-soft); }
+.brand .b-ai  { color: var(--research); }
+.brand .b-rin { color: var(--training); font-style: italic; font-weight: 500; }
+.brand .b-a   { color: var(--products); }
 * { box-sizing:border-box; margin:0; padding:0; } html { scroll-behavior:smooth; }
 body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; }
 h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
@@ -28,7 +35,7 @@ a:hover { border-bottom-color:var(--accent); }
 .wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
 section { padding:4.5rem 0; border-top:1px solid var(--rule); }
 section.hero { border-top:none; padding:5.5rem 0 3.5rem; }
-nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--rule); }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px);  will-change: backdrop-filter;border-bottom:1px solid var(--rule); }
 .brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; color:var(--ink); border-bottom:none; }
 .brand em { color:var(--accent); font-style:italic; font-weight:500; }
 .brand-mark { color:var(--ink); }
@@ -71,11 +78,25 @@ nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:cen
 footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
 footer.site-footer a { color:var(--muted); border-bottom:none; }
 @media (max-width:860px) { .two-col, .logistics { grid-template-columns:1fr; } .day { grid-template-columns:1fr; gap:0.4rem; } .nav-links { display:none; } section, section.hero { padding:3rem 0; } }
+
+section.commitments { padding: 6rem 0; background: var(--bg); border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule-strong); position: relative; }
+section.commitments::before { content: ''; position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 4px; height: 65%; background: var(--accent); }
+.commitments-eyebrow { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.9rem; }
+.commitments-eyebrow::before { content: ''; width: 1.8rem; height: 1px; background: var(--rule-strong); display: block; }
+.commitments-heading { font-family: var(--serif); font-weight: 500; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.25; color: var(--ink); margin-bottom: 2.5rem; max-width: 640px; letter-spacing: -0.005em; }
+.commitments-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 0; }
+.commitments-list li { display: grid; grid-template-columns: 72px 1fr; gap: 2rem; padding: 1.5rem 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.commitments-list li:first-child { border-top: 1px solid var(--rule-strong); }
+.commit-num { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); letter-spacing: 0.06em; }
+.commit-body { font-family: var(--serif); font-weight: 400; font-size: clamp(1.15rem, 1.9vw, 1.35rem); line-height: 1.4; color: var(--ink); }
+.commit-key { font-style: italic; color: var(--accent); font-weight: 500; margin-right: 0.4rem; }
+
+@media (max-width: 720px) { .commitments-list li { grid-template-columns: 1fr; gap: 0.3rem; } }
 </style>
 </head>
-<body>
+<body class="scope-training">
 <nav class="site-nav">
-  <a class="brand" href="index.html"><svg viewBox="0 0 40 40" width="26" height="26"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/><text x="20" y="27" text-anchor="middle" font-family="'IBM Plex Serif', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="currentColor">A</text></svg><span>AIR<em>INA</em> Labs</span></a>
+  <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 8 L 16.08 9.22 L 13.57 12.35 L 13.32 14.18" stroke="var(--research)"/><path d="M 13.58 17.48 L 14.09 18.96 L 15.53 20.79 L 16.54 22 L 17.08 23.47 L 17.95 25.64 L 20 28 L 23.42 29.4 L 27.37 28.78 L 30.39 26" stroke="var(--research)"/><path d="M 30.39 26 L 31.29 21.99 L 29.85 18.26 L 28.39 17.13" stroke="var(--training)"/><path d="M 25.40 15.70 L 23.86 15.40 L 21.55 15.74 L 20 16 L 18.45 15.74 L 16.14 15.40 L 13.07 16 L 10.15 18.26 L 8.71 21.99 L 9.61 26" stroke="var(--training)"/><path d="M 9.61 26 L 12.63 28.78 L 16.58 29.40 L 18.29 28.70" stroke="var(--products)"/><path d="M 21.02 26.82 L 22.05 25.64 L 22.92 23.47 L 23.46 22 L 24.47 20.79 L 25.91 18.96 L 26.93 16 L 26.43 12.35 L 23.92 9.22 L 20 8" stroke="var(--products)"/></g></svg><span><span class="b-ai">AI</span><span class="b-rin">RIN</span><span class="b-a">A</span> Labs</span></a>
   <ul class="nav-links">
     <li><a href="index.html#pillars">Piliers</a></li>
     <li><a href="formations.html" class="active">Formations</a></li>
