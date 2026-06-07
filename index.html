@@ -232,20 +232,32 @@ section.hero { padding: 6.5rem 0 4rem; }
 .hiring a { color: var(--ink); border-bottom: 1px solid var(--rule-strong); }
 .hiring a:hover { color: var(--accent); border-color: var(--accent); }
 
-/* TECH */
-.tech-group {
-  display: grid; grid-template-columns: 180px 1fr; gap: 2rem;
-  padding: 1rem 0; align-items: baseline;
-  border-bottom: 1px solid var(--rule);
+/* BENCH — what's on the working bench */
+.bench { max-width: 940px; }
+.bench-group {
+  display: grid; grid-template-columns: 220px 1fr;
+  gap: 2.4rem; align-items: start;
+  padding: 1.6rem 0; border-top: 1px solid var(--rule);
 }
-.tech-group:last-child { border-bottom: none; }
-.tech-group h3 {
-  font-family: var(--mono); font-size: 0.74rem; font-weight: 400;
-  color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+.bench-group:first-child { border-top: 1px solid var(--rule-strong); }
+.bench-group:last-child { border-bottom: 1px solid var(--rule-strong); }
+.bench-group-label {
+  font-family: var(--serif); font-style: italic;
+  font-weight: 500; font-size: 1.1rem;
+  color: var(--accent); line-height: 1.3;
 }
-.tech-list {
-  display: flex; flex-wrap: wrap; gap: 0.3rem 1.4rem;
-  font-family: var(--mono); font-size: 0.86rem; color: var(--ink-soft);
+.bench-tools {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0.55rem 2rem;
+}
+.bench-tool {
+  font-family: var(--mono); font-size: 0.82rem;
+  color: var(--muted); line-height: 1.5;
+}
+.bench-tool b { color: var(--ink); font-weight: 500; margin-right: 0.25em; }
+@media (max-width: 860px) {
+  .bench-group { grid-template-columns: 1fr; gap: 0.9rem; }
+  .bench-tools { grid-template-columns: 1fr; }
 }
 
 /* REPOS */
@@ -344,7 +356,6 @@ footer.site-footer a:hover { color: var(--accent); }
   .contact { grid-template-columns: repeat(2, 1fr); }
   .roadmap-row { grid-template-columns: 1fr; gap: 0.4rem; padding: 1.2rem 0; }
   .roadmap-status { justify-self: start; }
-  .tech-group { grid-template-columns: 1fr; gap: 0.5rem; }
   .work-item { grid-template-columns: 1fr; gap: 0.4rem; }
   .nav-links { display: none; }
   .hero-meta { gap: 0.8rem 1.5rem; }
@@ -1324,21 +1335,60 @@ section.paper-club {
 </section>
 
 <section id="tech" class="wrap">
-  <div class="headline">
-    <h2>What we use.</h2>
+  <div class="section-head">
+    <div class="eyebrow">Stack</div>
+    <h2>What's on the bench.</h2>
   </div>
-  <div class="tech-groups">
-    <div class="tech-group">
-      <h3>Languages</h3>
-      <div class="tech-list"><span>Python</span><span>R</span><span>Julia</span><span>SQL</span></div>
+  <div class="bench">
+    <div class="bench-group">
+      <div class="bench-group-label">For TDA</div>
+      <div class="bench-tools">
+        <div class="bench-tool"><b>GUDHI</b> · full persistence pipeline</div>
+        <div class="bench-tool"><b>Ripser</b> · fast Vietoris&ndash;Rips</div>
+        <div class="bench-tool"><b>giotto-tda</b> · TDA &times; scikit-learn</div>
+        <div class="bench-tool"><b>persim</b> · diagrams &amp; images</div>
+        <div class="bench-tool"><b>KeplerMapper</b> · Mapper graphs</div>
+      </div>
     </div>
-    <div class="tech-group">
-      <h3>ML &amp; AI</h3>
-      <div class="tech-list"><span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span><span>XGBoost</span><span>Hugging&nbsp;Face</span></div>
+    <div class="bench-group">
+      <div class="bench-group-label">For interpretable ML</div>
+      <div class="bench-tools">
+        <div class="bench-tool"><b>InterpretML</b> · glassbox + blackbox</div>
+        <div class="bench-tool"><b>SHAP / LIME</b> · post-hoc attribution</div>
+        <div class="bench-tool"><b>EBM</b> · explainable boosting</div>
+        <div class="bench-tool"><b>DiCE</b> · counterfactuals</div>
+        <div class="bench-tool"><b>Aequitas</b> · fairness audit</div>
+      </div>
     </div>
-    <div class="tech-group">
-      <h3>Data &amp; Infra</h3>
-      <div class="tech-list"><span>pandas</span><span>Polars</span><span>Jupyter</span><span>PostgreSQL</span><span>Docker</span><span>FastAPI</span></div>
+    <div class="bench-group">
+      <div class="bench-group-label">For modeling</div>
+      <div class="bench-tools">
+        <div class="bench-tool"><b>PyTorch</b> · neural training</div>
+        <div class="bench-tool"><b>scikit-learn</b> · classical ML</div>
+        <div class="bench-tool"><b>XGBoost</b> · gradient boosting</div>
+        <div class="bench-tool"><b>Hugging&nbsp;Face</b> · pretrained models</div>
+        <div class="bench-tool"><b>Qiskit / PennyLane</b> · quantum circuits</div>
+      </div>
+    </div>
+    <div class="bench-group">
+      <div class="bench-group-label">For data &amp; shipping</div>
+      <div class="bench-tools">
+        <div class="bench-tool"><b>pandas / Polars</b> · dataframes</div>
+        <div class="bench-tool"><b>PostgreSQL</b> · primary store</div>
+        <div class="bench-tool"><b>Jupyter</b> · exploration</div>
+        <div class="bench-tool"><b>FastAPI</b> · service layer</div>
+        <div class="bench-tool"><b>Docker</b> · containerization</div>
+        <div class="bench-tool"><b>DVC</b> · data versioning</div>
+      </div>
+    </div>
+    <div class="bench-group">
+      <div class="bench-group-label">Languages</div>
+      <div class="bench-tools">
+        <div class="bench-tool"><b>Python</b> · primary</div>
+        <div class="bench-tool"><b>R</b> · statistics</div>
+        <div class="bench-tool"><b>Julia</b> · scientific computing</div>
+        <div class="bench-tool"><b>SQL</b> · query layer</div>
+      </div>
     </div>
   </div>
 </section>
