@@ -281,27 +281,104 @@ footer.site-footer a:hover { color: var(--accent); }
   html { scroll-behavior: auto; }
 }
 
-section.commitments { padding: 6rem 0; background: var(--bg); border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule-strong); position: relative; }
-section.commitments::before { content: ''; position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 4px; height: 65%; background: var(--accent); }
-.commitments-eyebrow { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.9rem; }
-.commitments-eyebrow::before { content: ''; width: 1.8rem; height: 1px; background: var(--rule-strong); display: block; }
-.commitments-heading { font-family: var(--serif); font-weight: 500; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.25; color: var(--ink); margin-bottom: 2.5rem; max-width: 640px; letter-spacing: -0.005em; }
-.commitments-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 0; }
-.commitments-list li { display: grid; grid-template-columns: 72px 1fr; gap: 2rem; padding: 1.5rem 0; border-top: 1px solid var(--rule); align-items: baseline; }
-.commitments-list li:first-child { border-top: 1px solid var(--rule-strong); }
-.commit-num { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); letter-spacing: 0.06em; }
-.commit-body { font-family: var(--serif); font-weight: 400; font-size: clamp(1.15rem, 1.9vw, 1.35rem); line-height: 1.4; color: var(--ink); }
-.commit-key { font-style: italic; color: var(--accent); font-weight: 500; margin-right: 0.4rem; }
+/* PRINCIPLE MARK — editorial pull-quote with TDA glyph */
+section.principle-mark { padding: 5.5rem 0; position: relative; overflow: hidden; }
+.principle-mark-glyph {
+  position: absolute; top: 50%; right: 1.5rem; transform: translateY(-50%);
+  width: 240px; height: 240px;
+  color: var(--accent); opacity: 0.14;
+  pointer-events: none;
+}
+.principle-mark-eyebrow {
+  font-family: var(--mono); font-size: 0.74rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.4rem;
+  display: inline-flex; align-items: center; gap: 1rem;
+  position: relative;
+}
+.principle-mark-eyebrow::before {
+  content: ''; width: 2.4rem; height: 1px;
+  background: var(--accent); display: block;
+}
+.principle-mark-motto {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--ink); max-width: 720px;
+  margin-bottom: 1.8rem; position: relative;
+}
+.principle-mark-motto em {
+  font-style: italic; color: var(--accent); font-weight: 500;
+}
+.principle-mark-body {
+  font-family: var(--serif); font-size: 1.02rem;
+  line-height: 1.6; color: var(--ink-soft);
+  max-width: 680px;
+  padding-top: 1.5rem; border-top: 1px solid var(--rule-strong);
+  position: relative;
+}
+.principle-mark-body strong { color: var(--accent); font-weight: 500; }
 
-section.principle-light { padding: 6rem 0; background: var(--bg); border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule-strong); position: relative; }
-section.principle-light::before { content: ''; position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 4px; height: 65%; background: var(--accent); }
-.principle-light .principle-eyebrow { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.6rem; display: flex; align-items: center; gap: 0.9rem; font-style: normal; }
-.principle-light .principle-eyebrow::before { content: ''; width: 1.8rem; height: 1px; background: var(--rule-strong); display: block; }
-.principle-light .principle-body { font-family: var(--serif); font-style: normal; font-weight: 400; font-size: clamp(1.45rem, 2.9vw, 2.1rem); line-height: 1.32; color: var(--ink); max-width: 760px; margin-bottom: 2.2rem; }
-.principle-light .principle-body strong { color: var(--accent); font-weight: 600; }
-.principle-light .principle-motto { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(1.2rem, 2.2vw, 1.55rem); color: var(--accent); border-top: 1px solid var(--rule-strong); padding-top: 1.6rem; max-width: 760px; line-height: 1.4; }
+/* CATALOG SNAPSHOT — three-tier overview tiles */
+.snapshot-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem;
+}
+.snapshot-tier {
+  display: grid; grid-template-rows: auto auto 1fr;
+  gap: 1rem; padding: 1.8rem 1.6rem;
+  background: var(--surface);
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  color: var(--ink); border-bottom: 1px solid var(--rule-strong);
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.snapshot-tier:hover {
+  border-color: var(--accent); transform: translateY(-2px);
+  box-shadow: var(--surface-shadow);
+}
+.snapshot-tier-roman {
+  font-family: var(--serif); font-style: italic;
+  font-weight: 500; font-size: 2.4rem;
+  color: var(--accent); line-height: 1; letter-spacing: -0.02em;
+}
+.snapshot-tier-meta { display: flex; flex-direction: column; gap: 0.3rem; }
+.snapshot-tier-label {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 1.05rem; color: var(--ink); line-height: 1.3;
+}
+.snapshot-tier-when {
+  font-family: var(--mono); font-size: 0.72rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted);
+}
+.snapshot-tier-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  border-top: 1px solid var(--rule); padding-top: 1rem;
+}
+.snapshot-tier-list li {
+  font-family: var(--mono); font-size: 0.76rem;
+  color: var(--muted); letter-spacing: 0.01em; line-height: 1.5;
+}
 
-@media (max-width: 720px) { .commitments-list li { grid-template-columns: 1fr; gap: 0.3rem; } }
+/* TIER HEAD — Roman marker beside the section title */
+.tier-head {
+  display: grid; grid-template-columns: auto 1fr;
+  column-gap: 1.8rem; align-items: baseline;
+}
+.tier-head .tier-roman {
+  font-family: var(--serif); font-style: italic;
+  font-weight: 500;
+  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+  color: var(--accent); line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 860px) {
+  .principle-mark-glyph { display: none; }
+  .snapshot-grid { grid-template-columns: 1fr; }
+  .tier-head { grid-template-columns: 1fr; column-gap: 0; row-gap: 0.6rem; }
+}
 </style>
 </head>
 <body class="scope-training">
@@ -338,17 +415,83 @@ section.principle-light::before { content: ''; position: absolute; top: 50%; lef
   </div>
 </section>
 
-<section class="principle-light wrap-narrow">
-  <div class="principle-eyebrow">The training principle</div>
-  <p class="principle-body">Our trainings are <strong>not</strong> an introduction to data science. They are <strong>short-form, mathematically deep</strong>, and built around the unit's active research programs.</p>
-  <p class="principle-motto">— What we teach is what we publish.</p>
+<section class="principle-mark wrap">
+  <svg class="principle-mark-glyph" viewBox="0 0 240 240" aria-hidden="true">
+    <polygon points="50,60 130,30 110,110" fill="currentColor" opacity="0.18"/>
+    <polygon points="130,30 200,80 170,150" fill="currentColor" opacity="0.14"/>
+    <polygon points="110,110 170,150 120,200" fill="currentColor" opacity="0.10"/>
+    <line x1="50" y1="60" x2="130" y2="30" stroke="currentColor" stroke-width="0.9"/>
+    <line x1="50" y1="60" x2="110" y2="110" stroke="currentColor" stroke-width="0.9"/>
+    <line x1="130" y1="30" x2="110" y2="110" stroke="currentColor" stroke-width="0.9"/>
+    <line x1="130" y1="30" x2="200" y2="80" stroke="currentColor" stroke-width="0.9"/>
+    <line x1="110" y1="110" x2="200" y2="80" stroke="currentColor" stroke-width="0.9"/>
+    <line x1="200" y1="80" x2="170" y2="150" stroke="currentColor" stroke-width="0.9"/>
+    <line x1="110" y1="110" x2="170" y2="150" stroke="currentColor" stroke-width="0.9"/>
+    <line x1="170" y1="150" x2="120" y2="200" stroke="currentColor" stroke-width="0.9"/>
+    <line x1="110" y1="110" x2="120" y2="200" stroke="currentColor" stroke-width="0.9"/>
+    <circle cx="50" cy="60" r="3" fill="currentColor"/>
+    <circle cx="130" cy="30" r="3" fill="currentColor"/>
+    <circle cx="110" cy="110" r="3" fill="currentColor"/>
+    <circle cx="200" cy="80" r="3" fill="currentColor"/>
+    <circle cx="170" cy="150" r="3" fill="currentColor"/>
+    <circle cx="120" cy="200" r="3" fill="currentColor"/>
+  </svg>
+  <div class="principle-mark-eyebrow">The training principle</div>
+  <p class="principle-mark-motto">What we teach is what we <em>publish</em>.</p>
+  <p class="principle-mark-body">Our trainings are <strong>not</strong> an introduction to data science. They are <strong>short-form, mathematically deep</strong>, and built around the unit's active research programs.</p>
+</section>
+
+<!-- CATALOG SNAPSHOT -->
+<section class="wrap" id="catalog">
+  <div class="section-head">
+    <div class="eyebrow">Catalog at a glance</div>
+    <h2>Six programs, three tiers.</h2>
+  </div>
+  <div class="snapshot-grid">
+    <a href="#tier-1" class="snapshot-tier">
+      <span class="snapshot-tier-roman">I</span>
+      <div class="snapshot-tier-meta">
+        <span class="snapshot-tier-label">Anchor programs</span>
+        <span class="snapshot-tier-when">Launching 2026</span>
+      </div>
+      <ul class="snapshot-tier-list">
+        <li>/01 &nbsp; TDA for Data Scientists</li>
+        <li>/02 &nbsp; Interpretable ML for Regulated Industries</li>
+      </ul>
+    </a>
+    <a href="#tier-2" class="snapshot-tier">
+      <span class="snapshot-tier-roman">II</span>
+      <div class="snapshot-tier-meta">
+        <span class="snapshot-tier-label">Year-two expansion</span>
+        <span class="snapshot-tier-when">2027 cohorts</span>
+      </div>
+      <ul class="snapshot-tier-list">
+        <li>/03 &nbsp; Topological Foundations of Deep Learning</li>
+        <li>/04 &nbsp; Quantum-Topological Methods for Finance</li>
+      </ul>
+    </a>
+    <a href="#tier-3" class="snapshot-tier">
+      <span class="snapshot-tier-roman">III</span>
+      <div class="snapshot-tier-meta">
+        <span class="snapshot-tier-label">Specialized &middot; lower volume</span>
+        <span class="snapshot-tier-when">2027&ndash;2028</span>
+      </div>
+      <ul class="snapshot-tier-list">
+        <li>/05 &nbsp; Asymmetric Topology &amp; Complexity</li>
+        <li>/06 &nbsp; TDA for Robust &amp; OOD-Aware ML</li>
+      </ul>
+    </a>
+  </div>
 </section>
 
 <!-- TIER 1 -->
 <section class="wrap" id="tier-1">
-  <div class="section-head">
-    <div class="eyebrow">Anchor programs · Launching first</div>
-    <h2>Tier 1 — what we run now.</h2>
+  <div class="section-head tier-head">
+    <span class="tier-roman">I</span>
+    <div>
+      <div class="eyebrow">Anchor programs · Launching first</div>
+      <h2>What we run now.</h2>
+    </div>
   </div>
   <div class="trainings">
 
@@ -429,9 +572,12 @@ section.principle-light::before { content: ''; position: absolute; top: 50%; lef
 
 <!-- TIER 2 -->
 <section class="wrap" id="tier-2">
-  <div class="section-head">
-    <div class="eyebrow">Year-two expansion</div>
-    <h2>Tier 2 — once the catalog matures.</h2>
+  <div class="section-head tier-head">
+    <span class="tier-roman">II</span>
+    <div>
+      <div class="eyebrow">Year-two expansion</div>
+      <h2>Once the catalog matures.</h2>
+    </div>
   </div>
   <div class="trainings">
 
@@ -513,9 +659,12 @@ section.principle-light::before { content: ''; position: absolute; top: 50%; lef
 
 <!-- TIER 3 -->
 <section class="wrap" id="tier-3">
-  <div class="section-head">
-    <div class="eyebrow">Specialized · Lower volume</div>
-    <h2>Tier 3 — research school and advanced.</h2>
+  <div class="section-head tier-head">
+    <span class="tier-roman">III</span>
+    <div>
+      <div class="eyebrow">Specialized · Lower volume</div>
+      <h2>Research school and advanced.</h2>
+    </div>
   </div>
   <div class="trainings">
 
