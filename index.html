@@ -407,8 +407,15 @@ footer.site-footer a:hover { color: var(--accent); }
 
 @media (max-width: 860px) {
   .hero-cards { grid-template-columns: 1fr; }
-  .hero-cards.asym { grid-template-columns: 1fr; grid-template-rows: auto; }
-  .hero-cards.asym > a:first-child { grid-row: auto; }
+  .hero-cards.asym { grid-template-columns: 1fr; }
+  .hero-cards.asym > a:first-child {
+    grid-column: 1;
+    grid-template-columns: 1fr;
+    grid-template-areas: "visual" "h3" "p" "more";
+    column-gap: 0; padding: 2rem 1.5rem;
+  }
+  .hero-cards.asym > a:first-child .hero-card-visual { margin-bottom: 0.6rem; }
+  .hero-cards.asym > a:first-child .hero-card-visual svg { height: 100px; }
   .values { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .update { grid-template-columns: 1fr; gap: 0.3rem; }
   .announce { padding: 0.6rem 1rem; font-size: 0.74rem; }
@@ -424,10 +431,28 @@ footer.site-footer a:hover { color: var(--accent); }
 .hero-coords strong { color: var(--ink); font-weight: 500; }
 
 /* ASYMMETRIC HERO CARDS — 1 large + 2 small */
-.hero-cards.asym { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: 1fr 1fr; gap: 1.4rem; }
-.hero-cards.asym > a:first-child { grid-row: span 2; padding: 2.5rem 2rem; }
-.hero-cards.asym > a:first-child h3 { font-size: 1.4rem; }
-.hero-cards.asym > a:first-child .hero-card-visual svg { height: 110px; }
+.hero-cards.asym { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+.hero-cards.asym > a:first-child {
+  grid-column: 1 / -1;
+  padding: 2.6rem;
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) 1fr;
+  grid-template-areas: "visual h3" "visual p" "visual more";
+  column-gap: 2.8rem; align-items: start;
+}
+.hero-cards.asym > a:first-child .hero-card-visual {
+  grid-area: visual; align-self: center; margin-bottom: 0;
+}
+.hero-cards.asym > a:first-child .hero-card-visual svg { height: 140px; }
+.hero-cards.asym > a:first-child h3 {
+  grid-area: h3; font-size: 1.5rem; margin-bottom: 0.6rem;
+}
+.hero-cards.asym > a:first-child p {
+  grid-area: p; font-size: 0.98rem; line-height: 1.6;
+}
+.hero-cards.asym > a:first-child .hero-card-more {
+  grid-area: more; margin-top: 0.8rem;
+}
 
 /* SECTION VARIANTS */
 .section-soft { background: var(--bg-soft); }
@@ -885,6 +910,10 @@ section.paper-club {
 </section>
 
 <section class="wrap" id="positions">
+  <div class="section-head">
+    <div class="eyebrow">Three positions</div>
+    <h2>Research leads. Two more, alongside.</h2>
+  </div>
   <div class="hero-cards asym">
     <a class="hero-card scope-research" href="pillar-research.html">
       <div class="hero-card-visual">
