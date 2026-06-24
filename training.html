@@ -191,6 +191,65 @@ section.hero { padding: 6.5rem 0 4rem; }
 .status-year-two  { color: var(--muted);  border: 1px solid var(--rule-strong); }
 .status-specialty { color: var(--dim);    border: 1px solid var(--rule); }
 
+/* OPEN COHORTS STRIP — schedule-forward summary above the tier accordions */
+.open-cohorts-band { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+.open-cohorts {
+  background: var(--surface);
+  border: 1px solid var(--rule-strong);
+  border-left: 4px solid var(--accent);
+  border-radius: 2px;
+}
+.open-cohorts-head {
+  padding: 0.95rem 1.5rem;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg-soft);
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 1rem; flex-wrap: wrap;
+}
+.open-cohorts-eyebrow {
+  font-family: var(--mono); font-size: 0.72rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.open-cohorts-note {
+  font-family: var(--mono); font-size: 0.7rem;
+  color: var(--muted); letter-spacing: 0.03em;
+}
+.cohort-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto;
+  gap: 1.5rem; align-items: center;
+  padding: 1.35rem 1.5rem;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink); text-decoration: none;
+  transition: background 140ms;
+}
+.cohort-row:last-child { border-bottom: 0; }
+.cohort-row:hover { background: var(--accent-soft); }
+.cohort-num { font-family: var(--mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.04em; }
+.cohort-body h3 { font-size: 1.05rem; margin: 0 0 0.2rem 0; line-height: 1.3; }
+.cohort-meta { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.03em; }
+.cohort-when { font-family: var(--mono); font-size: 0.85rem; color: var(--ink-soft); letter-spacing: 0.04em; white-space: nowrap; }
+.cohort-status {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent); background: var(--accent-soft);
+  padding: 0.25rem 0.55rem; border-radius: 2px;
+}
+.cohort-cta { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); white-space: nowrap; }
+.cohort-row:hover .cohort-cta { text-decoration: underline; }
+
+@media (max-width: 800px) {
+  .cohort-row {
+    grid-template-columns: auto 1fr;
+    gap: 0.55rem 1rem;
+    padding: 1.2rem 1.2rem;
+  }
+  .cohort-body { grid-column: 2; }
+  .cohort-when { grid-column: 2; }
+  .cohort-status { grid-column: 2; justify-self: start; margin-top: 0.2rem; }
+  .cohort-cta { grid-column: 2; margin-top: 0.4rem; }
+}
+
 .training-toggle {
   font-family: var(--mono); font-size: 0.78rem;
   color: var(--muted); margin-left: 0.4rem;
@@ -412,6 +471,35 @@ section.principle-mark { padding: 5.5rem 0; position: relative; overflow: hidden
     <span><strong>Format</strong> In-person · Cotonou &amp; partner sites</span>
     <span><strong>Languages</strong> EN / FR</span>
     <span><strong>Cohorts</strong> 8–18 participants</span>
+  </div>
+</section>
+
+<section class="wrap open-cohorts-band">
+  <div class="open-cohorts">
+    <header class="open-cohorts-head">
+      <span class="open-cohorts-eyebrow">Open cohorts</span>
+      <span class="open-cohorts-note">Registration interest open · No trainee writes a check</span>
+    </header>
+    <a class="cohort-row" href="training-01-tda.html">
+      <span class="cohort-num">/01</span>
+      <div class="cohort-body">
+        <h3>TDA for Data Scientists</h3>
+        <div class="cohort-meta">3 days · Cotonou · Cohort ~12</div>
+      </div>
+      <span class="cohort-when">Q3 2026</span>
+      <span class="cohort-status">Open</span>
+      <span class="cohort-cta">Full curriculum &rarr;</span>
+    </a>
+    <a class="cohort-row" href="training-02-interpretable.html">
+      <span class="cohort-num">/02</span>
+      <div class="cohort-body">
+        <h3>Interpretable ML for Regulated Industries</h3>
+        <div class="cohort-meta">3 days · Cotonou · Cohort ~12</div>
+      </div>
+      <span class="cohort-when">Q4 2026</span>
+      <span class="cohort-status">Open</span>
+      <span class="cohort-cta">Full curriculum &rarr;</span>
+    </a>
   </div>
 </section>
 
