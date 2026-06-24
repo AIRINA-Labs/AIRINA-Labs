@@ -68,6 +68,8 @@ section.hero { padding:6.5rem 0 4rem; }
 
 /* PILLARS */
 .pillars { display:grid; grid-template-columns:repeat(4, 1fr); gap:2.5rem; }
+.pillar-visual { color:var(--accent); height:56px; display:block; margin-bottom:0.95rem; }
+.pillar-visual svg { height:100%; width:auto; max-width:130px; display:block; }
 .pillar .num { font-family:var(--mono); font-size:0.72rem; color:var(--accent); margin-bottom:0.7rem; display:block; letter-spacing:0.05em; }
 .pillar h3 { margin-bottom:0.5rem; }
 .pillar p { font-size:0.92rem; line-height:1.6; color:var(--muted); }
@@ -484,15 +486,15 @@ section.paper-club { padding: 6.5rem 0; background: var(--research-soft); border
   </div>
 </section>
 
-<section class="wrap" id="positions">
+<section id="pillars" class="wrap">
   <div class="section-head">
-    <div class="eyebrow">Trois positions</div>
-    <h2>Où nous travaillons, en une phrase chacune.</h2>
+    <div class="eyebrow">Ce que nous faisons</div>
+    <h2>Quatre piliers, une institution.</h2>
   </div>
-  <div class="hero-cards">
-    <a class="hero-card scope-research" href="pilier-recherche.html">
-      <div class="hero-card-visual">
-        <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
+  <div class="pillars">
+    <div class="pillar scope-research">
+      <div class="pillar-visual">
+        <svg viewBox="0 0 200 110" aria-hidden="true">
           <polygon points="35,30 90,18 75,62" fill="currentColor" opacity="0.12"/>
           <polygon points="90,18 75,62 130,42" fill="currentColor" opacity="0.10"/>
           <polygon points="75,62 130,42 115,90" fill="currentColor" opacity="0.08"/>
@@ -513,13 +515,26 @@ section.paper-club { padding: 6.5rem 0; background: var(--research-soft); border
           <circle cx="115" cy="90" r="3" fill="currentColor"/>
         </svg>
       </div>
-      <h3>IA pensée mathématiquement, pour des systèmes africains.</h3>
-      <p>Topologie, homologie persistante, modèles interprétables — appliqués là où les données, la régulation et le client sont africains, pas transposés d'ailleurs.</p>
-      <span class="hero-card-more">Recherche →</span>
-    </a>
-    <a class="hero-card scope-training" href="pilier-formation.html">
-      <div class="hero-card-visual">
-        <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
+      <span class="num">01</span>
+      <h3>Recherche</h3>
+      <p>Recherche appliquée originale en IA, mathématiques et systèmes de données ancrée dans les réalités africaines. Nous publions, contribuons au savoir global, et rendons les résultats accessibles aux décideurs et praticiens africains. <a href="pilier-recherche.html">Lire la suite →</a></p>
+    </div>
+    <div class="pillar scope-products">
+      <div class="pillar-visual">
+        <svg viewBox="0 0 200 110" aria-hidden="true">
+          <ellipse cx="100" cy="55" rx="72" ry="32" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M 45,50 Q 100,78 155,50" fill="none" stroke="currentColor" stroke-width="1"/>
+          <path d="M 60,47 Q 100,63 140,47" fill="none" stroke="currentColor" stroke-width="1"/>
+          <ellipse cx="100" cy="55" rx="72" ry="32" fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.4" transform="rotate(12 100 55)"/>
+        </svg>
+      </div>
+      <span class="num">02</span>
+      <h3>Produits</h3>
+      <p>Recherche traduite en outils pratiques — commençant par l'inclusion financière (scoring crédit, détection de fraude, analytics clients) et s'étendant à l'agriculture et à la santé sur la décennie. <a href="pilier-produits.html">Lire la suite →</a></p>
+    </div>
+    <div class="pillar scope-training">
+      <div class="pillar-visual">
+        <svg viewBox="0 0 200 110" aria-hidden="true">
           <line x1="20" y1="20" x2="20" y2="95" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
           <line x1="20" y1="95" x2="185" y2="95" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
           <line x1="30" y1="30" x2="170" y2="30" stroke="currentColor" stroke-width="2.5"/>
@@ -529,48 +544,22 @@ section.paper-club { padding: 6.5rem 0; background: var(--research-soft); border
           <line x1="60" y1="87" x2="68" y2="87" stroke="currentColor" stroke-width="2.5"/>
         </svg>
       </div>
-      <h3>Une formation qui se termine par une soutenance.</h3>
-      <p>Pas de certificats de présence. Chaque programme se conclut par un projet noté, soutenu devant les chercheurs d'AIRINA. Le certificat mérite la ligne sur un CV.</p>
-      <span class="hero-card-more">Formation →</span>
-    </a>
-    <a class="hero-card scope-products" href="pilier-produits.html">
-      <div class="hero-card-visual">
-        <svg viewBox="0 0 200 110" width="100%" height="80" aria-hidden="true">
-          <ellipse cx="100" cy="55" rx="72" ry="32" fill="none" stroke="currentColor" stroke-width="1"/>
-          <path d="M 45,50 Q 100,78 155,50" fill="none" stroke="currentColor" stroke-width="1"/>
-          <path d="M 60,47 Q 100,63 140,47" fill="none" stroke="currentColor" stroke-width="1"/>
-          <ellipse cx="100" cy="55" rx="72" ry="32" fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.4" transform="rotate(12 100 55)"/>
-        </svg>
-      </div>
-      <h3>Méthodes ouvertes, intégrations rémunérées.</h3>
-      <p>Méthodes, code et benchmarks vivent sur GitHub. Les modèles entraînés et les missions intégrées sont commerciaux. La réputation capitalise ; les revenus suivent.</p>
-      <span class="hero-card-more">Produits →</span>
-    </a>
-  </div>
-</section>
-
-<section id="pillars" class="wrap">
-  <div class="section-head">
-    <div class="eyebrow">Ce que nous faisons</div>
-    <h2>Quatre piliers, une institution.</h2>
-  </div>
-  <div class="pillars">
-    <div class="pillar scope-research">
-      <span class="num">01</span>
-      <h3>Recherche</h3>
-      <p>Recherche appliquée originale en IA, mathématiques et systèmes de données ancrée dans les réalités africaines. Nous publions, contribuons au savoir global, et rendons les résultats accessibles aux décideurs et praticiens africains. <a href="pilier-recherche.html">Lire la suite →</a></p>
-    </div>
-    <div class="pillar scope-products">
-      <span class="num">02</span>
-      <h3>Produits</h3>
-      <p>Recherche traduite en outils pratiques — commençant par l'inclusion financière (scoring crédit, détection de fraude, analytics clients) et s'étendant à l'agriculture et à la santé sur la décennie. <a href="pilier-produits.html">Lire la suite →</a></p>
-    </div>
-    <div class="pillar scope-training">
       <span class="num">03</span>
       <h3>Formation</h3>
       <p>Programmes courts adossés à la recherche en ATD, IA interprétable, et fondements mathématiques d'un ML robuste. 2 jours à 2 semaines, notés, bilingues. <a href="pilier-formation.html">Lire la suite →</a> · <a href="formations.html">Catalogue →</a></p>
     </div>
     <div class="pillar">
+      <div class="pillar-visual">
+        <svg viewBox="0 0 200 110" aria-hidden="true">
+          <circle cx="100" cy="55" r="38" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.55"/>
+          <circle cx="100" cy="55" r="22" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.4"/>
+          <line x1="100" y1="13" x2="100" y2="22" stroke="currentColor" stroke-width="0.9" stroke-dasharray="1 2" opacity="0.45"/>
+          <line x1="100" y1="88" x2="100" y2="97" stroke="currentColor" stroke-width="0.9" stroke-dasharray="1 2" opacity="0.45"/>
+          <line x1="58" y1="55" x2="67" y2="55" stroke="currentColor" stroke-width="0.9" stroke-dasharray="1 2" opacity="0.45"/>
+          <line x1="133" y1="55" x2="142" y2="55" stroke="currentColor" stroke-width="0.9" stroke-dasharray="1 2" opacity="0.45"/>
+          <circle cx="100" cy="55" r="4.5" fill="currentColor"/>
+        </svg>
+      </div>
       <span class="num">04</span>
       <h3>Incubateur</h3>
       <p>AIRINA Ventures (Phase 2) : mentorat, soutien technique, espace de travail et réseau institutionnel pour les diplômés STEM bâtissant des entreprises d'IA. <a href="pilier-incubateur.html">Lire la suite →</a></p>
