@@ -140,6 +140,6 @@ Working chronologically backward from HEAD:
 - `7182c15` — Paper Club: swap the stale dated card for an honest TBA state
 - `b5d58c1` — Pillars: absorb the SVG glyphs from Positions, drop the duplicate section
 - `4eda89c` — Homepage: kill placeholder Team grid and leaked internal notes
-- (preceded by the filter-branch rewrite that stripped Claude trailers from `4536776..b5195df`)
+- (preceded by the filter-branch rewrite that stripped AI-assistant co-author trailers from `4536776..b5195df`)
 
 All commits author `ai-technipreneurs <ai.technipreneurs@gmail.com>`. None carry an AI-assistant co-author trailer. Going forward: the `hooks/commit-msg` hook rejects any commit message that contains one — see that file for the enforced patterns. Activate the hook in any fresh clone with `git config core.hooksPath hooks`.
