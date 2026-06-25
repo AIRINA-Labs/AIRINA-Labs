@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Topologie asymétrique & complexité — École de recherche · Formation /05 — AIRINA Labs</title>
-<meta name="description" content="École de recherche d'une semaine en topologie asymétrique : espaces quasi-métriques, métriques bipolaires, théorie du point fixe en cadre asymétrique." />
+<title>Topologie asymétrique et complexité — école de recherche — AIRINA Labs</title>
+<meta name="description" content="École de recherche avancée sur la spécialité mathématique du directeur d'AIRINA — espaces quasi-métriques, métriques bipolaires, théorie du point fixe en cadre asymétrique, applications à l'informatique théorique et au ML." />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,89 +13,41 @@
 <style>
 :root { --bg:#F2EBD3; --bg-soft:#E9DFBE; --ink:#1F2A18; --ink-soft:#2E3D25; --muted:#6B6A47; --dim:#9D9C7A; --rule:rgba(31,42,24,0.10); --rule-strong:rgba(31,42,24,0.22); --accent:#C97A1F; --accent-soft:rgba(201,122,31,0.10); --nav-bg:rgba(242,235,211,0.92); --research:#2D6A4F; --research-soft:rgba(45,106,79,0.10); --training:#C8A24A; --training-soft:rgba(200,162,74,0.10); --products:#C97A1F; --products-soft:rgba(201,122,31,0.10); --surface:#FFFFFF; --surface-shadow: 0 1px 2px rgba(31,42,24,0.04), 0 8px 24px rgba(31,42,24,0.06); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
 [data-theme="dark"] { --bg:#14180D; --bg-soft:#1E2415; --ink:#ECE3C5; --ink-soft:#CDC4A4; --muted:#8E8A6E; --dim:#5F5C46; --rule:rgba(236,227,197,0.10); --rule-strong:rgba(236,227,197,0.22); --accent:#E5A94E; --accent-soft:rgba(229,169,78,0.12); --nav-bg:rgba(20,24,13,0.92); --research:#6FBF8E; --research-soft:rgba(111,191,142,0.12); --training:#E8C778; --training-soft:rgba(232,199,120,0.12); --products:#E5A94E; --products-soft:rgba(229,169,78,0.12); --surface:#1E2415; --surface-shadow: 0 1px 2px rgba(0,0,0,0.25), 0 12px 30px rgba(0,0,0,0.35); }
-.scope-research { --accent: var(--research); --accent-soft: var(--research-soft); }
-.scope-training { --accent: var(--training); --accent-soft: var(--training-soft); }
-.scope-products { --accent: var(--products); --accent-soft: var(--products-soft); }
+body.scope-training { --accent: var(--training); --accent-soft: var(--training-soft); }
 .brand .b-ai  { color: var(--research); }
 .brand .b-rin { color: var(--training); font-style: italic; font-weight: 500; }
 .brand .b-a   { color: var(--products); }
-* { box-sizing:border-box; margin:0; padding:0; } html { scroll-behavior:smooth; }
-body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
 h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
-h1 { font-size:clamp(2.2rem, 5vw, 3.6rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
-h1 em { font-style:italic; color:var(--accent); font-weight:500; }
-h2 { font-size:clamp(1.5rem, 2.8vw, 2rem); font-weight:500; }
-h3 { font-size:1.1rem; font-weight:600; }
+h1 { font-size:clamp(2rem, 4.5vw, 3.2rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; color: var(--bg); }
+h2 { font-size:clamp(1.4rem, 2.6vw, 1.85rem); font-weight:500; letter-spacing:-0.012em; line-height:1.25; }
+h3 { font-size:1.1rem; font-weight:600; letter-spacing:-0.003em; }
 h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
 p { color:var(--ink-soft); }
 a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
 a:hover { border-bottom-color:var(--accent); }
 .eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
-.lead { font-size:1.1rem; line-height:1.55; color:var(--ink-soft); }
-.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
-section { padding:4.5rem 0; border-top:1px solid var(--rule); }
-section.hero { border-top:none; padding:5.5rem 0 3.5rem; }
-nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px);  will-change: backdrop-filter;border-bottom:1px solid var(--rule); }
-.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; color:var(--ink); border-bottom:none; }
-.brand em { color:var(--accent); font-style:italic; font-weight:500; }
-.brand-mark { color:var(--ink); }
+.wrap { max-width:1200px; margin:0 auto; padding:0 2rem; }
+
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); will-change: backdrop-filter; border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; letter-spacing:-0.005em; color:var(--ink); border-bottom:none; }
+.brand-mark { flex-shrink:0; color:var(--ink); transition:color .2s; }
+.brand:hover .brand-mark { color:var(--accent); }
 .nav-links { display:flex; gap:1.8rem; list-style:none; }
 .nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
 .nav-links a:hover, .nav-links a.active { color:var(--accent); }
 .nav-controls { display:flex; gap:0.7rem; align-items:center; }
-.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); border-bottom:none; cursor:pointer; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); letter-spacing:0.05em; border-bottom:none; cursor:pointer; transition:color .2s; }
 .lang-link.active { color:var(--accent); font-weight:500; }
+.lang-link:hover:not(.active) { color:var(--ink); }
 .lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
-.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; }
-.crumb { font-family:var(--mono); font-size:0.72rem; color:var(--muted); margin-bottom:1.2rem; letter-spacing:0.04em; }
-.crumb a { color:var(--muted); border-bottom:none; }
-.hero-meta { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:1.2rem 2rem; margin-top:2rem; font-family:var(--mono); font-size:0.76rem; color:var(--muted); padding-top:1.5rem; border-top:1px solid var(--rule); }
-.hero-meta-block strong { display:block; color:var(--ink); font-weight:500; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.25rem; }
-.status-pill { display:inline-block; padding:0.25rem 0.7rem; border:1px solid var(--rule); color:var(--dim); font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; border-radius:2px; margin-bottom:1.2rem; }
-.section-head { margin-bottom:2rem; }
-.prose { max-width:760px; } .prose p + p { margin-top:1rem; }
-.bullets { list-style:none; }
-.bullets li { padding:0.6rem 0 0.6rem 1.5rem; border-top:1px solid var(--rule); font-size:0.95rem; position:relative; line-height:1.55; }
-.bullets li:first-child { border-top:none; padding-top:0.2rem; }
-.bullets li::before { content:'→'; position:absolute; left:0; top:0.7rem; color:var(--accent); font-family:var(--mono); font-size:0.85rem; }
-.two-col { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem 3rem; }
-.module { padding:1.5rem 0; border-top:1px solid var(--rule); display:grid; grid-template-columns:120px 1fr; gap:1.4rem; }
-.module:first-child { border-top:none; padding-top:0.5rem; }
-.module-tag { font-family:var(--mono); font-size:0.78rem; color:var(--accent); font-weight:500; letter-spacing:0.04em; padding-top:0.15rem; }
-.module h3 { font-family:var(--serif); font-weight:500; font-size:1.1rem; margin-bottom:0.4rem; }
-.module p { font-size:0.94rem; }
-.assessment-box { border:1px solid var(--rule-strong); padding:1.5rem; border-radius:2px; max-width:780px; }
-.assessment-box h3 { font-family:var(--mono); font-size:0.78rem; color:var(--accent); font-weight:500; letter-spacing:0.06em; margin-bottom:0.7rem; text-transform:uppercase; }
-.logistics { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1.5rem 2.5rem; }
-.logistics-item h3 { font-family:var(--mono); font-size:0.72rem; color:var(--muted); font-weight:400; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.4rem; }
-.logistics-item p { font-size:0.92rem; color:var(--ink); }
-.apply-cta { background:var(--ink); color:var(--bg); padding:3rem 2rem; border-radius:2px; }
-.apply-cta h2 { color:var(--bg); margin-bottom:0.8rem; }
-.apply-cta p { color:var(--bg); opacity:0.85; max-width:580px; margin-bottom:1.5rem; font-size:1.02rem; }
-.apply-cta a.btn { display:inline-block; padding:0.8rem 1.6rem; background:var(--accent); color:var(--bg); font-family:var(--mono); font-size:0.85rem; letter-spacing:0.06em; border-radius:2px; border-bottom:none; }
-[data-theme="dark"] .apply-cta { background:var(--bg-soft); color:var(--ink); }
-[data-theme="dark"] .apply-cta h2, [data-theme="dark"] .apply-cta p { color:var(--ink); }
-footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
-footer.site-footer a { color:var(--muted); border-bottom:none; }
-@media (max-width:860px) { .two-col, .logistics { grid-template-columns:1fr; } .module { grid-template-columns:1fr; gap:0.4rem; } .nav-links { display:none; } section, section.hero { padding:3rem 0; } }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; transition:color .2s, border-color .2s; }
+.theme-btn:hover { color:var(--accent); border-color:var(--accent); }
 
-section.commitments { padding: 6rem 0; background: var(--bg); border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule-strong); position: relative; }
-section.commitments::before { content: ''; position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 4px; height: 65%; background: var(--accent); }
-.commitments-eyebrow { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.9rem; }
-.commitments-eyebrow::before { content: ''; width: 1.8rem; height: 1px; background: var(--rule-strong); display: block; }
-.commitments-heading { font-family: var(--serif); font-weight: 500; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.25; color: var(--ink); margin-bottom: 2.5rem; max-width: 640px; letter-spacing: -0.005em; }
-.commitments-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 0; }
-.commitments-list li { display: grid; grid-template-columns: 72px 1fr; gap: 2rem; padding: 1.5rem 0; border-top: 1px solid var(--rule); align-items: baseline; }
-.commitments-list li:first-child { border-top: 1px solid var(--rule-strong); }
-.commit-num { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); letter-spacing: 0.06em; }
-.commit-body { font-family: var(--serif); font-weight: 400; font-size: clamp(1.15rem, 1.9vw, 1.35rem); line-height: 1.4; color: var(--ink); }
-.commit-key { font-style: italic; color: var(--accent); font-weight: 500; margin-right: 0.4rem; }
-
-@media (max-width: 720px) { .commitments-list li { grid-template-columns: 1fr; gap: 0.3rem; } }
-
-/* MENU-BAR — audience strip below the main nav (MIT-style) */
 .menu-bar { position: sticky; top: 62px; z-index: 49; background: var(--bg-soft); border-bottom: 1px solid var(--rule); }
-.menu-bar-inner { display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; padding: 0.55rem 2rem; max-width: 1080px; margin: 0 auto; }
+.menu-bar-inner { display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; padding: 0.55rem 2rem; max-width: 1200px; margin: 0 auto; }
 .menu-bar-eyebrow { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-right: auto; }
 .audience-nav { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
 .audience-nav a { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; color: var(--ink-soft); letter-spacing: 0.05em; text-transform: uppercase; border-bottom: none; transition: color .15s; }
@@ -106,23 +58,112 @@ section.commitments::before { content: ''; position: absolute; top: 50%; left: 0
   .audience-nav { gap: 0.9rem; }
   .audience-nav a { font-size: 0.7rem; }
 }
+
+/* COURSE TITLE BAR — dark forest band with the course title */
+.course-titlebar { background: var(--ink); color: var(--bg); padding: 4rem 0 3.5rem; position: relative; overflow: hidden; }
+.course-titlebar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent); }
+.course-titlebar .wrap { position: relative; z-index: 1; }
+.course-back { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bg); opacity: 0.7; margin-bottom: 1.2rem; display: inline-flex; align-items: center; gap: 0.4rem; border-bottom: none; }
+.course-back:hover { opacity: 1; color: var(--accent); border-bottom: none; }
+.course-tier-tag { display: inline-block; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 0.25rem 0.65rem; border-radius: 2px; margin-bottom: 1.2rem; }
+.course-titlebar h1 { color: var(--bg); max-width: 880px; }
+.course-titlebar-tagline { font-family: var(--serif); font-size: 1.15rem; line-height: 1.55; color: rgba(242,235,211,0.85); max-width: 740px; margin-top: 1.4rem; font-style: italic; }
+
+/* COURSE LAYOUT — two-column: left sidebar (metadata) + right content (tabs) */
+.course-layout { display: grid; grid-template-columns: 320px 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto; padding: 3.5rem 2rem 4rem; align-items: flex-start; }
+
+/* LEFT SIDEBAR — sticky course metadata */
+.course-sidebar { position: sticky; top: 110px; background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 2px; padding: 1.6rem 1.5rem; box-shadow: var(--surface-shadow); }
+.course-register-btn { display: block; text-align: center; background: var(--accent); color: var(--surface); font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem 1rem; border-radius: 2px; margin-bottom: 1.5rem; border-bottom: none; transition: background .15s, transform .1s; font-weight: 500; }
+.course-register-btn:hover { background: var(--ink); border-bottom: none; transform: translateY(-1px); }
+.course-meta-field { padding: 0.75rem 0; border-top: 1px solid var(--rule); }
+.course-meta-field:first-of-type { border-top: none; padding-top: 0; }
+.course-meta-label { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+.course-meta-value { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
+.course-meta-value.blank { color: var(--dim); font-style: italic; font-size: 0.85rem; }
+.course-meta-value a { color: var(--ink); border-bottom: 1px solid var(--rule-strong); font-size: 0.92rem; }
+.course-meta-value a:hover { color: var(--accent); border-color: var(--accent); }
+.course-updates-btn { display: block; text-align: center; background: transparent; color: var(--accent); font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.06em; padding: 0.7rem 1rem; border: 1px solid var(--accent); border-radius: 2px; margin-top: 1.5rem; transition: background .15s, color .15s; }
+.course-updates-btn:hover { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+
+/* RIGHT CONTENT — description + tabs */
+.course-content { min-width: 0; }
+.course-intro { font-size: 1.05rem; line-height: 1.7; color: var(--ink-soft); margin-bottom: 0.8rem; max-width: 720px; }
+.course-intro:first-of-type { font-size: 1.15rem; line-height: 1.6; color: var(--ink); }
+.course-intro strong { color: var(--accent); font-weight: 500; }
+.course-intro a { color: var(--accent); border-bottom: 1px solid transparent; }
+.course-intro a:hover { border-bottom-color: var(--accent); }
+
+/* TABS — Program Overview / Learning Outcomes / Who Should Attend / Brochure */
+.course-tabs { margin-top: 2.8rem; }
+.course-tab-list { display: flex; gap: 0; border-bottom: 1px solid var(--rule-strong); margin-bottom: 0; list-style: none; flex-wrap: wrap; }
+.course-tab { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; padding: 0.95rem 1.4rem; border: 0; border-bottom: 2px solid transparent; background: transparent; cursor: pointer; transition: color .15s, border-color .15s; margin-bottom: -1px; }
+.course-tab:hover { color: var(--ink); }
+.course-tab[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.course-tab-panel { display: none; padding: 2rem 0 0; }
+.course-tab-panel[data-active="true"] { display: block; }
+.course-tab-panel h2 { font-family: var(--serif); font-weight: 500; margin-bottom: 1.4rem; }
+.course-tab-panel h3 { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; margin: 2rem 0 0.8rem; color: var(--ink); }
+.course-tab-panel h4 { margin-top: 1.6rem; margin-bottom: 0.6rem; }
+.course-tab-panel p { font-size: 1rem; line-height: 1.7; margin-bottom: 1rem; max-width: 720px; }
+.course-tab-panel ul, .course-tab-panel ol { max-width: 720px; padding-left: 1.4rem; margin-bottom: 1rem; }
+.course-tab-panel li { font-size: 1rem; line-height: 1.65; margin-bottom: 0.5rem; color: var(--ink-soft); }
+.course-tab-panel li strong { color: var(--ink); font-weight: 500; }
+.course-tab-panel a { color: var(--accent); border-bottom: 1px solid transparent; }
+.course-tab-panel a:hover { border-bottom-color: var(--accent); }
+
+/* WEEK / OUTLINE BLOCKS inside Learning Outcomes tab */
+.week-block { padding: 1rem 0 1rem 1.2rem; border-left: 2px solid var(--rule); margin-bottom: 0.6rem; max-width: 720px; }
+.week-block.feature { border-left-color: var(--accent); }
+.week-block-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.35rem; }
+.week-block p { margin-bottom: 0.4rem; font-size: 0.96rem; }
+.week-block ul { margin-bottom: 0; padding-left: 1.2rem; }
+.week-block li { font-size: 0.94rem; margin-bottom: 0.25rem; }
+
+/* BROCHURE TAB — placeholder card */
+.brochure-card { background: var(--bg-soft); border: 1px dashed var(--rule-strong); padding: 1.6rem 1.8rem; border-radius: 2px; max-width: 720px; }
+.brochure-card p { margin-bottom: 0.8rem; }
+.brochure-card p:last-child { margin-bottom: 0; }
+
+footer.site-footer { padding: 2rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 0.74rem; color: var(--muted); }
+footer.site-footer a { color: var(--muted); border-bottom: none; }
+footer.site-footer a:hover { color: var(--accent); }
+
+@media (max-width: 960px) {
+  .course-layout { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.4rem 3rem; }
+  .course-sidebar { position: static; }
+  .course-tab-list { overflow-x: auto; flex-wrap: nowrap; }
+  .course-tab { white-space: nowrap; padding: 0.85rem 1rem; }
+  .nav-links { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+  html { scroll-behavior: auto; }
+}
 </style>
 </head>
 <body class="scope-training">
+
 <nav class="site-nav">
-  <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 8 L 16.08 9.22 L 13.57 12.35 L 13.32 14.18" stroke="var(--research)"/><path d="M 13.58 17.48 L 14.09 18.96 L 15.53 20.79 L 16.54 22 L 17.08 23.47 L 17.95 25.64 L 20 28 L 23.42 29.4 L 27.37 28.78 L 30.39 26" stroke="var(--research)"/><path d="M 30.39 26 L 31.29 21.99 L 29.85 18.26 L 28.39 17.13" stroke="var(--training)"/><path d="M 25.40 15.70 L 23.86 15.40 L 21.55 15.74 L 20 16 L 18.45 15.74 L 16.14 15.40 L 13.07 16 L 10.15 18.26 L 8.71 21.99 L 9.61 26" stroke="var(--training)"/><path d="M 9.61 26 L 12.63 28.78 L 16.58 29.40 L 18.29 28.70" stroke="var(--products)"/><path d="M 21.02 26.82 L 22.05 25.64 L 22.92 23.47 L 23.46 22 L 24.47 20.79 L 25.91 18.96 L 26.93 16 L 26.43 12.35 L 23.92 9.22 L 20 8" stroke="var(--products)"/></g></svg><span><span class="b-ai">AI</span><span class="b-rin">RIN</span><span class="b-a">A</span> Labs</span></a>
+  <a class="brand" href="accueil.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 8 L 16.08 9.22 L 13.57 12.35 L 13.32 14.18" stroke="var(--research)"/><path d="M 13.58 17.48 L 14.09 18.96 L 15.53 20.79 L 16.54 22 L 17.08 23.47 L 17.95 25.64 L 20 28 L 23.42 29.4 L 27.37 28.78 L 30.39 26" stroke="var(--research)"/><path d="M 30.39 26 L 31.29 21.99 L 29.85 18.26 L 28.39 17.13" stroke="var(--training)"/><path d="M 25.40 15.70 L 23.86 15.40 L 21.55 15.74 L 20 16 L 18.45 15.74 L 16.14 15.40 L 13.07 16 L 10.15 18.26 L 8.71 21.99 L 9.61 26" stroke="var(--training)"/><path d="M 9.61 26 L 12.63 28.78 L 16.58 29.40 L 18.29 28.70" stroke="var(--products)"/><path d="M 21.02 26.82 L 22.05 25.64 L 22.92 23.47 L 23.46 22 L 24.47 20.79 L 25.91 18.96 L 26.93 16 L 26.43 12.35 L 23.92 9.22 L 20 8" stroke="var(--products)"/></g></svg>
+    <span><span class="b-ai">AI</span><span class="b-rin">RIN</span><span class="b-a">A</span> Labs</span>
+  </a>
   <ul class="nav-links">
-    <li><a href="index.html#pillars">Piliers</a></li>
-    <li><a href="formations.html" class="active">Formations</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="accueil.html#what-we-are">À propos</a></li>
+    <li><a href="accueil.html#pillars">Piliers</a></li>
+    <li><a href="formations.html" class="active" aria-current="page">Formations</a></li>
+    <li><a href="accueil.html#people">Équipe</a></li>
+    <li><a href="accueil.html#contact">Contact</a></li>
   </ul>
   <div class="nav-controls">
     <a class="lang-link" href="training-05-asymmetric.html" lang="en">EN</a>
     <span class="lang-sep">·</span>
-    <a class="lang-link active" lang="fr">FR</a>
-    <button class="theme-btn" id="theme-toggle" aria-label="Basculer thème">◐</button>
+    <a class="lang-link active" aria-current="page" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Basculer thème clair/sombre">◐</button>
   </div>
 </nav>
+
 <div class="menu-bar">
   <div class="menu-bar-inner">
     <span class="menu-bar-eyebrow">Public visé</span>
@@ -134,133 +175,201 @@ section.commitments::before { content: ''; position: absolute; top: 50%; left: 0
   </div>
 </div>
 
-
-<section class="hero wrap">
-  <div class="crumb"><a href="formations.html">Formations</a> / <a href="formations.html#niveau-3">Niveau 3</a> / /05</div>
-  <span class="status-pill">2027–2028</span>
-  <h1>Topologie asymétrique &amp; complexité — <em>école de recherche</em>.</h1>
-  <p class="lead">École de recherche avancée d'une semaine sur la spécialité en mathématiques pures du directeur d'AIRINA : espaces quasi-métriques et métriques bipolaires, théorie du point fixe en cadre asymétrique, complexité asymétrique, et les ponts vers l'informatique théorique et l'apprentissage automatique là où ces outils comptent.</p>
-  <div class="hero-meta">
-    <div class="hero-meta-block"><strong>Durée</strong> 1 semaine (5 jours ouvrés)</div>
-    <div class="hero-meta-block"><strong>Format</strong> Résidentiel, co-organisé avec un partenaire universitaire</div>
-    <div class="hero-meta-block"><strong>Langues</strong> EN (principal), FR (soutien)</div>
-    <div class="hero-meta-block"><strong>Cohorte</strong> ~12 participants</div>
-    <div class="hero-meta-block"><strong>Certificat</strong> École de recherche · académique</div>
+<section class="course-titlebar">
+  <div class="wrap">
+    <a class="course-back" href="formations.html">← Retour au catalogue</a>
+    <span class="course-tier-tag">/09 · Niveau III</span>
+    <h1>Topologie asymétrique et complexité — école de recherche</h1>
+    <p class="course-titlebar-tagline">École de recherche avancée sur la spécialité mathématique du directeur d'AIRINA &mdash; espaces quasi-métriques, métriques bipolaires, théorie du point fixe en cadre asymétrique, applications à l'informatique théorique et au ML.</p>
   </div>
 </section>
 
-<section class="wrap" id="about">
-  <div class="section-head">
-    <div class="eyebrow">À propos de cette école</div>
-    <h2>Des mathématiques pures qui méritent leur place.</h2>
-  </div>
-  <div class="prose">
-    <p>La topologie asymétrique — l'étude des espaces où la distance de <em>x</em> à <em>y</em> peut différer de la distance de <em>y</em> à <em>x</em> — est un coin restreint et actif des mathématiques. La semaine couvre les résultats centraux (espaces quasi-métriques, métriques bipolaires, théorèmes de point fixe en cadre asymétrique, connexions aux boules formelles et à la weightability), et les applications qui justifient l'attention continue portée au domaine : sémantique dénotationnelle en informatique théorique, apprentissage de similarité en ML, et théorie de l'approximation.</p>
-    <p>L'école est de posture et de ton académiques. Les matinées sont des cours, les après-midi des sessions de travail avec feuilles d'exercices, les soirées sont ouvertes à la collaboration. Nous attendons de chaque participant qu'il reparte avec au moins une question ouverte sur laquelle il compte travailler, et idéalement avec un co-auteur.</p>
-  </div>
-</section>
+<div class="course-layout">
 
-<section class="wrap" id="objectives">
-  <div class="section-head">
-    <div class="eyebrow">Objectifs pédagogiques</div>
-    <h2>À la fin, vous saurez.</h2>
-  </div>
-  <ul class="bullets" style="max-width:760px;">
-    <li>Définir les espaces quasi-métriques, bipolaires et à métrique partielle, et expliquer quand chacun est le cadre approprié pour un problème donné.</li>
-    <li>Démontrer un théorème de point fixe en cadre asymétrique à partir de zéro, en identifiant le rôle de la complétude et de la condition de contraction.</li>
-    <li>Relier la topologie asymétrique à la sémantique dénotationnelle via les boules formelles et la complétion de Smyth.</li>
-    <li>Identifier un problème concret d'apprentissage automatique (par ex. apprentissage de similarité dirigée) où les outils asymétriques donnent une formulation plus nette que le défaut symétrique.</li>
-    <li>Lire un article ouvert du domaine et rédiger une fiche critique d'une page.</li>
-  </ul>
-</section>
+  <aside class="course-sidebar" aria-label="Informations sur l'école">
+    <a class="course-register-btn" href="mailto:contact@airina.africa?subject=Topologie%20asym%C3%A9trique%20%E2%80%94%20inscription">S'inscrire</a>
 
-<section class="wrap" id="audience">
-  <div class="section-head">
-    <div class="eyebrow">À qui s'adresse cette école</div>
-    <h2>Public et prérequis.</h2>
-  </div>
-  <div class="two-col">
-    <div>
-      <h4>Public</h4>
-      <ul class="bullets">
-        <li>Doctorants et post-doctorants en mathématiques travaillant en topologie, analyse, ou analyse fonctionnelle.</li>
-        <li>Informaticiens théoriciens intéressés par la théorie des domaines, la sémantique dénotationnelle, ou les méthodes formelles.</li>
-        <li>Chercheurs en ML à orientation mathématique voulant une boîte à outils plus profonde pour les problèmes de similarité / dissimilarité asymétrique.</li>
-      </ul>
+    <div class="course-meta-field">
+      <div class="course-meta-label">Intervenant(s)</div>
+      <div class="course-meta-value">
+        Yaé Ulrich Gaba<br>
+        + partenaires universitaires
+      </div>
     </div>
-    <div>
-      <h4>Prérequis</h4>
-      <ul class="bullets">
-        <li>Topologie au niveau master/doctoral (point-set essentielle, algébrique utile).</li>
-        <li>Analyse fonctionnelle jusqu'aux espaces métriques complets et au théorème de l'application contractante.</li>
-        <li>Aisance à lire des mathématiques de recherche. La semaine est dense en articles.</li>
-      </ul>
+
+    <div class="course-meta-field">
+      <div class="course-meta-label">Date(s)</div>
+      <div class="course-meta-value">2027–2028 &mdash; <span class="course-meta-value blank">dates à confirmer</span></div>
     </div>
-  </div>
-</section>
 
-<section class="wrap" id="curriculum">
-  <div class="section-head">
-    <div class="eyebrow">Programme</div>
-    <h2>Cinq jours ouvrés.</h2>
-  </div>
-  <div class="module"><span class="module-tag">Jour 1</span><div><h3>Espaces quasi-métriques et à métrique partielle</h3><p>Définitions, exemples motivants, topologie standard induite par une quasi-métrique. T0, T1, espaces sobres dans ce cadre. Résultats sélectionnés de l'école de Künzi et de la tradition espagnole.</p></div></div>
-  <div class="module"><span class="module-tag">Jour 2</span><div><h3>Espaces métriques bipolaires</h3><p>Définition (Mutlu &amp; Gürdal et la littérature ultérieure), exemples, propriétés. Complétude à deux pôles, théorèmes de point fixe pour applications contractantes. Travaux publiés du directeur dans ce domaine ; problèmes ouverts actuels.</p></div></div>
-  <div class="module"><span class="module-tag">Jour 3</span><div><h3>Théorie du point fixe en cadre asymétrique</h3><p>Principe de Banach reformulé ; contractions de type Ćirić, Reich, Kannan en cadre quasi-métrique et bipolaire. Techniques de preuve et rôle des conditions de complétude asymétrique. Session de problèmes communs.</p></div></div>
-  <div class="module"><span class="module-tag">Jour 4</span><div><h3>Complexité asymétrique et applications à l'informatique théorique</h3><p>La quasi-métrique de complexité de Schellekens ; boules formelles et complétion de Smyth ; sémantique dénotationnelle des langages de programmation avec effets. Là où l'asymétrie est essentielle plutôt qu'incidente.</p></div></div>
-  <div class="module"><span class="module-tag">Jour 5</span><div><h3>Applications à l'apprentissage automatique, et ce qui reste ouvert</h3><p>Apprentissage de similarité asymétrique, plongements de type divergence de KL, représentations de graphes orientés. Survol de problèmes ouverts adaptés à un projet de recherche d'un an. Exposés finaux : chaque participant présente un problème qu'il compte ramener.</p></div></div>
-</section>
+    <div class="course-meta-field">
+      <div class="course-meta-label">Date limite d'inscription</div>
+      <div class="course-meta-value blank">À annoncer</div>
+    </div>
 
-<section class="wrap" id="assessment">
-  <div class="section-head">
-    <div class="eyebrow">Évaluation</div>
-    <h2>Académique dans la forme, érudite dans le fond.</h2>
-  </div>
-  <div class="assessment-box">
-    <h3>Ce qu'on attend</h3>
-    <p>L'école délivre un certificat de présence. Les participants qui le souhaitent peuvent soumettre une note de recherche écrite (5–10 pages) dans les trois mois suivant l'école ; les enseignants d'AIRINA fournissent un retour écrit. Plusieurs notes passées sont devenues des articles communs avec l'unité. L'école est académique, non notée — la valeur réside dans les conversations et le réseau.</p>
-  </div>
-</section>
+    <div class="course-meta-field">
+      <div class="course-meta-label">Lieu</div>
+      <div class="course-meta-value">Co-organisé avec partenaire universitaire &middot; Hybride</div>
+    </div>
 
-<section class="wrap" id="faculty">
-  <div class="section-head">
-    <div class="eyebrow">Corps enseignant</div>
-    <h2>Qui enseigne.</h2>
-  </div>
-  <div class="prose">
-    <p>Pilote : Y. U. Gaba, qui publie régulièrement dans ce domaine et co-signe avec plusieurs figures seniors de la topologie asymétrique. Co-organisateurs : un topologue senior d'un département de mathématiques partenaire (nommé quatre semaines avant l'école). Chaque cohorte a des intervenants invités ; AIRINA prend en charge les honoraires.</p>
-  </div>
-</section>
+    <div class="course-meta-field">
+      <div class="course-meta-label">Durée</div>
+      <div class="course-meta-value">1 semaine</div>
+    </div>
 
-<section class="wrap" id="logistics">
-  <div class="section-head">
-    <div class="eyebrow">Logistique</div>
-    <h2>Les détails pratiques.</h2>
-  </div>
-  <div class="logistics">
-    <div class="logistics-item"><h3>Lieu</h3><p>Cotonou, co-organisée avec un département de mathématiques partenaire. Résidentielle.</p></div>
-    <div class="logistics-item"><h3>Horaires</h3><p>5 jours ouvrés. Cours le matin, sessions de problèmes l'après-midi.</p></div>
-    <div class="logistics-item"><h3>Supports</h3><p>Liste de lectures 6 semaines avant. Feuille d'exercices pré-école facultative.</p></div>
-    <div class="logistics-item"><h3>Taille de cohorte</h3><p>~12. Sur dossier.</p></div>
-    <div class="logistics-item"><h3>Bourses</h3><p>Bourses au besoin pour doctorants africains.</p></div>
-  </div>
-</section>
+    <div class="course-meta-field">
+      <div class="course-meta-label">Frais</div>
+      <div class="course-meta-value blank">&mdash;</div>
+    </div>
 
-<section class="wrap">
-  <div class="apply-cta">
-    <h2>Exprimer son intérêt.</h2>
-    <p>Prochaine cohorte : 2027–2028. Nous demandons un CV, une déclaration de recherche d'une page, et (pour les doctorants) une lettre de votre directeur.</p>
-    <a class="btn" href="mailto:contact@airina.africa?subject=Ecole%20Topologie%20Asymetrique">contact@airina.africa →</a>
-  </div>
-</section>
+    <div class="course-meta-field">
+      <div class="course-meta-label">Certificat</div>
+      <div class="course-meta-value">Attestation école de recherche &middot; académique</div>
+    </div>
+
+    <a class="course-updates-btn" href="mailto:contact@airina.africa?subject=Topologie%20asym%C3%A9trique%20%E2%80%94%20mises%20%C3%A0%20jour">S'abonner aux mises à jour</a>
+  </aside>
+
+  <main class="course-content">
+
+    <p class="course-intro">La topologie asymétrique &mdash; l'étude des espaces où la distance de <em>x</em> à <em>y</em> peut différer de la distance de <em>y</em> à <em>x</em> &mdash; est un coin restreint et actif des mathématiques. <strong>La semaine couvre les résultats centraux</strong> (espaces quasi-métriques, métriques bipolaires, théorèmes de point fixe en cadre asymétrique, connexions aux boules formelles et à la weightability), et les applications qui justifient l'attention continue portée au domaine : sémantique dénotationnelle en informatique théorique, apprentissage de similarité en ML, et théorie de l'approximation.</p>
+
+    <p class="course-intro">L'école est de posture et de ton académiques. Les matinées sont des cours, les après-midi des sessions de travail avec feuilles d'exercices, les soirées sont ouvertes à la collaboration. Nous attendons de chaque participant qu'il reparte avec au moins une question ouverte sur laquelle il compte travailler, et idéalement avec un co-auteur.</p>
+
+    <div class="course-tabs">
+      <div class="course-tab-list" role="tablist">
+        <button class="course-tab" id="tab-overview"  role="tab" aria-selected="true"  aria-controls="panel-overview">Aperçu du programme</button>
+        <button class="course-tab" id="tab-outcomes"  role="tab" aria-selected="false" aria-controls="panel-outcomes">Acquis pédagogiques</button>
+        <button class="course-tab" id="tab-audience"  role="tab" aria-selected="false" aria-controls="panel-audience">À qui s'adresse cette formation</button>
+        <button class="course-tab" id="tab-brochure"  role="tab" aria-selected="false" aria-controls="panel-brochure">Brochure</button>
+      </div>
+
+      <div class="course-tab-panel" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" data-active="true">
+        <h2>Aperçu du programme</h2>
+        <p>Une semaine résidentielle à Cotonou, co-organisée avec un département de mathématiques partenaire. Cours le matin, sessions de problèmes l'après-midi. Pilote : Y. U. Gaba, qui publie régulièrement dans ce domaine et co-signe avec plusieurs figures seniors de la topologie asymétrique. Co-organisateurs : un topologue senior d'un département de mathématiques partenaire, nommé quatre semaines avant l'école. Chaque cohorte a des intervenants invités ; AIRINA prend en charge les honoraires.</p>
+        <p>Cohorte de ~12 participants, sur dossier. Liste de lectures envoyée 6 semaines avant. Feuille d'exercices pré-école facultative. Bourses au besoin pour doctorants africains.</p>
+
+        <h3>Structure du programme</h3>
+        <ul>
+          <li><strong>Jour 1.</strong> Espaces quasi-métriques et à métrique partielle &mdash; définitions, exemples motivants, topologie standard induite, T0, T1, espaces sobres dans ce cadre.</li>
+          <li><strong>Jour 2.</strong> Espaces métriques bipolaires &mdash; définitions, complétude à deux pôles, théorèmes de point fixe pour applications contractantes. Travaux publiés du directeur ; problèmes ouverts.</li>
+          <li><strong>Jour 3.</strong> Théorie du point fixe en cadre asymétrique &mdash; Banach reformulé ; contractions de type Ćirić, Reich, Kannan. Session de problèmes communs.</li>
+          <li><strong>Jour 4.</strong> Complexité asymétrique et applications à l'informatique théorique &mdash; quasi-métrique de Schellekens, boules formelles, complétion de Smyth, sémantique dénotationnelle.</li>
+          <li><strong>Jour 5.</strong> Applications au ML et ce qui reste ouvert &mdash; apprentissage de similarité asymétrique, plongements type KL, représentations de graphes orientés. Exposés finaux.</li>
+        </ul>
+
+        <h3>Évaluation</h3>
+        <p>L'école délivre un certificat de présence. Les participants qui le souhaitent peuvent soumettre une note de recherche écrite (5–10 pages) dans les trois mois suivant l'école ; les enseignants d'AIRINA fournissent un retour écrit. Plusieurs notes passées sont devenues des articles communs avec l'unité.</p>
+
+        <h3>Certificat</h3>
+        <p>L'école est académique, non notée &mdash; la valeur réside dans les conversations et le réseau. Délivrance d'une <strong>attestation école de recherche · académique</strong>.</p>
+      </div>
+
+      <div class="course-tab-panel" id="panel-outcomes" role="tabpanel" aria-labelledby="tab-outcomes">
+        <h2>Acquis pédagogiques</h2>
+        <p>À l'issue du programme, les participants sauront :</p>
+        <ul>
+          <li>Définir les espaces quasi-métriques, bipolaires et à métrique partielle, et expliquer quand chacun est le cadre approprié pour un problème donné.</li>
+          <li>Démontrer un théorème de point fixe en cadre asymétrique à partir de zéro, en identifiant le rôle de la complétude et de la condition de contraction.</li>
+          <li>Relier la topologie asymétrique à la sémantique dénotationnelle via les boules formelles et la complétion de Smyth.</li>
+          <li>Identifier un problème concret d'apprentissage automatique (par ex. apprentissage de similarité dirigée) où les outils asymétriques donnent une formulation plus nette que le défaut symétrique.</li>
+          <li>Lire un article ouvert du domaine et rédiger une fiche critique d'une page.</li>
+        </ul>
+
+        <h3>Programme détaillé</h3>
+
+        <div class="week-block">
+          <div class="week-block-label">Jour 1 &middot; Espaces quasi-métriques et à métrique partielle</div>
+          <p>Définitions, exemples motivants, topologie standard induite par une quasi-métrique. T0, T1, espaces sobres dans ce cadre. Résultats sélectionnés de l'école de Künzi et de la tradition espagnole.</p>
+        </div>
+
+        <div class="week-block">
+          <div class="week-block-label">Jour 2 &middot; Espaces métriques bipolaires</div>
+          <p>Définition (Mutlu &amp; Gürdal et la littérature ultérieure), exemples, propriétés. Complétude à deux pôles, théorèmes de point fixe pour applications contractantes. Travaux publiés du directeur dans ce domaine ; problèmes ouverts actuels.</p>
+        </div>
+
+        <div class="week-block">
+          <div class="week-block-label">Jour 3 &middot; Théorie du point fixe en cadre asymétrique</div>
+          <p>Principe de Banach reformulé ; contractions de type Ćirić, Reich, Kannan en cadre quasi-métrique et bipolaire. Techniques de preuve et rôle des conditions de complétude asymétrique. Session de problèmes communs.</p>
+        </div>
+
+        <div class="week-block">
+          <div class="week-block-label">Jour 4 &middot; Complexité asymétrique et applications à l'informatique théorique</div>
+          <p>La quasi-métrique de complexité de Schellekens ; boules formelles et complétion de Smyth ; sémantique dénotationnelle des langages de programmation avec effets. Là où l'asymétrie est essentielle plutôt qu'incidente.</p>
+        </div>
+
+        <div class="week-block feature">
+          <div class="week-block-label">Jour 5 &middot; Applications au ML et ce qui reste ouvert</div>
+          <p>Apprentissage de similarité asymétrique, plongements de type divergence de KL, représentations de graphes orientés. Survol de problèmes ouverts adaptés à un projet de recherche d'un an. Exposés finaux : chaque participant présente un problème qu'il compte ramener.</p>
+        </div>
+      </div>
+
+      <div class="course-tab-panel" id="panel-audience" role="tabpanel" aria-labelledby="tab-audience">
+        <h2>À qui s'adresse cette formation</h2>
+        <p>Cette école de recherche s'adresse aux mathématiciens en activité et aux chercheurs voisins qui veulent une boîte à outils profonde sur l'asymétrie &mdash; et l'occasion de nouer des collaborations.</p>
+        <ul>
+          <li>Doctorants et post-doctorants en mathématiques travaillant en topologie, analyse, ou analyse fonctionnelle.</li>
+          <li>Informaticiens théoriciens intéressés par la théorie des domaines, la sémantique dénotationnelle, ou les méthodes formelles.</li>
+          <li>Chercheurs en ML à orientation mathématique voulant une boîte à outils plus profonde pour les problèmes de similarité / dissimilarité asymétrique.</li>
+        </ul>
+
+        <h3>Prérequis</h3>
+        <ul>
+          <li><strong>Topologie.</strong> Au niveau master/doctoral (point-set essentielle, algébrique utile).</li>
+          <li><strong>Analyse fonctionnelle.</strong> Jusqu'aux espaces métriques complets et au théorème de l'application contractante.</li>
+          <li><strong>Lecture mathématique.</strong> Aisance à lire des mathématiques de recherche. La semaine est dense en articles.</li>
+        </ul>
+
+        <h3>Sélection</h3>
+        <p>Cohorte de ~12 participants, sur dossier. Nous demandons un CV, une déclaration de recherche d'une page, et (pour les doctorants) une lettre de votre directeur.</p>
+      </div>
+
+      <div class="course-tab-panel" id="panel-brochure" role="tabpanel" aria-labelledby="tab-brochure">
+        <h2>Brochure</h2>
+        <div class="brochure-card">
+          <p>La brochure détaillée de l'école (PDF, FR/EN) est envoyée sur demande &mdash; avec le programme jour par jour, les profils des intervenants et co-organisateurs, la liste des lectures préparatoires, et le calendrier de la cohorte.</p>
+          <p>Pour recevoir la brochure courante, écrivez à <a href="mailto:contact@airina.africa?subject=Topologie%20asym%C3%A9trique%20%E2%80%94%20demande%20de%20brochure">contact@airina.africa</a> avec <em>« Topologie asymétrique &mdash; demande de brochure »</em> en objet. La brochure est mise à jour à chaque cohorte ; nous envoyons la version courante au moment de votre demande.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
 
 <footer class="site-footer">
   <span>© 2025–2026 AIRINA Labs</span>
-  <span><a href="formations.html">← Retour au catalogue</a></span>
+  <span><a href="formations.html">← Retour au catalogue des formations</a></span>
 </footer>
 
 <script>
-(function () { var s = localStorage.getItem('airina-theme'); if (s === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); var b = document.getElementById('theme-toggle'); if (!b) return; b.addEventListener('click', function () { var c = document.documentElement.getAttribute('data-theme'); var n = c === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', n); localStorage.setItem('airina-theme', n); }); })();
+(function () {
+  var saved = localStorage.getItem('airina-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  var btn = document.getElementById('theme-toggle');
+  if (btn) {
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('airina-theme', next);
+    });
+  }
+
+  // Tabs
+  var tabs = document.querySelectorAll('.course-tab');
+  var panels = document.querySelectorAll('.course-tab-panel');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.setAttribute('aria-selected', 'false'); });
+      panels.forEach(function (p) { p.setAttribute('data-active', 'false'); });
+      tab.setAttribute('aria-selected', 'true');
+      var panelId = tab.getAttribute('aria-controls');
+      var panel = document.getElementById(panelId);
+      if (panel) panel.setAttribute('data-active', 'true');
+    });
+  });
+})();
 </script>
+
 </body>
 </html>
