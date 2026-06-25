@@ -103,7 +103,7 @@ CSS lives in `training.html` and `formations.html`. Classes: `.open-cohorts-band
 - `#repos` section on the homepage — fabricated four cards all pointing to the same org URL; the AIRINA-Labs org has only the website repo. Contact section still carries the org link.
 - Stale "Thu 11 Jun 2026" Paper Club next-session date — replaced with TBA state.
 - The original 5–6-entry nav-links block on every page (replaced with the 3-entry audience nav).
-- 6 commits' worth of `Co-Authored-By: Claude` trailers (history rewrite + force-push to main).
+- 6 commits' worth of AI-assistant co-author trailers (history rewrite + force-push to main).
 
 ## File inventory
 
@@ -142,4 +142,4 @@ Working chronologically backward from HEAD:
 - `4eda89c` — Homepage: kill placeholder Team grid and leaked internal notes
 - (preceded by the filter-branch rewrite that stripped Claude trailers from `4536776..b5195df`)
 
-All commits author `ai-technipreneurs <ai.technipreneurs@gmail.com>`. None carry a `Co-Authored-By: Claude` trailer. Going forward: omit that trailer entirely in this repo.
+All commits author `ai-technipreneurs <ai.technipreneurs@gmail.com>`. None carry an AI-assistant co-author trailer. Going forward: the `hooks/commit-msg` hook rejects any commit message that contains one — see that file for the enforced patterns. Activate the hook in any fresh clone with `git config core.hooksPath hooks`.

@@ -1,0 +1,15 @@
+# Local AI-assistant config & caches — never track
+.claude/
+.cursor/
+.aider*
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Editor settings
+.vscode/
+.idea/
