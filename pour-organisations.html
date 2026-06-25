@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pour organisations — AIRINA Labs</title>
+<meta name="description" content="Banque, IMF, bailleur, institution partenaire : si vous voulez déployer, financer ou collaborer avec AIRINA — c'est ici que cela commence." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script>(function(){var t=localStorage.getItem('airina-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+<style>
+:root { --bg:#F2EBD3; --bg-soft:#E9DFBE; --ink:#1F2A18; --ink-soft:#2E3D25; --muted:#6B6A47; --dim:#9D9C7A; --rule:rgba(31,42,24,0.10); --rule-strong:rgba(31,42,24,0.22); --accent:#C97A1F; --accent-soft:rgba(201,122,31,0.10); --nav-bg:rgba(242,235,211,0.92); --research:#2D6A4F; --research-soft:rgba(45,106,79,0.10); --training:#C8A24A; --training-soft:rgba(200,162,74,0.10); --products:#C97A1F; --products-soft:rgba(201,122,31,0.10); --surface:#FFFFFF; --surface-shadow: 0 1px 2px rgba(31,42,24,0.04), 0 8px 24px rgba(31,42,24,0.06); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#14180D; --bg-soft:#1E2415; --ink:#ECE3C5; --ink-soft:#CDC4A4; --muted:#8E8A6E; --dim:#5F5C46; --rule:rgba(236,227,197,0.10); --rule-strong:rgba(236,227,197,0.22); --accent:#E5A94E; --accent-soft:rgba(229,169,78,0.12); --nav-bg:rgba(20,24,13,0.92); --research:#6FBF8E; --research-soft:rgba(111,191,142,0.12); --training:#E8C778; --training-soft:rgba(232,199,120,0.12); --products:#E5A94E; --products-soft:rgba(229,169,78,0.12); --surface:#1E2415; --surface-shadow: 0 1px 2px rgba(0,0,0,0.25), 0 12px 30px rgba(0,0,0,0.35); }
+body.scope-products { --accent: var(--products); --accent-soft: var(--products-soft); }
+.brand .b-ai  { color: var(--research); }
+.brand .b-rin { color: var(--training); font-style: italic; font-weight: 500; }
+.brand .b-a   { color: var(--products); }
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.2rem, 5vw, 3.8rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; }
+h1 em { font-style:italic; color:var(--accent); font-weight:500; }
+h2 { font-size:clamp(1.6rem, 3vw, 2.2rem); font-weight:500; letter-spacing:-0.012em; line-height:1.18; }
+h3 { font-size:1.15rem; font-weight:600; letter-spacing:-0.003em; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.15rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+.wrap-narrow { max-width:760px; margin:0 auto; padding:0 2rem; }
+section { padding:5rem 0; border-top:1px solid var(--rule); }
+section.hero { border-top:none; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); will-change: backdrop-filter; border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; letter-spacing:-0.005em; color:var(--ink); border-bottom:none; }
+.brand-mark { flex-shrink:0; color:var(--ink); transition:color .2s; }
+.brand:hover .brand-mark { color:var(--accent); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); letter-spacing:0.05em; border-bottom:none; cursor:pointer; transition:color .2s; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-link:hover:not(.active) { color:var(--ink); }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; transition:color .2s, border-color .2s; }
+.theme-btn:hover { color:var(--accent); border-color:var(--accent); }
+section.hero { padding:6rem 0 4rem; }
+.hero .eyebrow { margin-bottom:1.2rem; }
+.hero h1 { max-width:880px; }
+.hero .lead { margin-top:1.4rem; max-width:720px; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:1.6rem 2.4rem; margin-top:2.3rem; font-family:var(--mono); font-size:0.78rem; color:var(--muted); }
+.hero-meta span { display:inline-flex; gap:0.5rem; align-items:baseline; }
+.hero-meta strong { color:var(--ink); font-weight:500; }
+.section-head { margin-bottom:2.8rem; }
+.section-head .eyebrow { margin-bottom:0.7rem; }
+.prose { max-width:760px; }
+.prose p + p { margin-top:1rem; }
+
+.paths { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.4rem; }
+.path { display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--rule-strong); border-left:3px solid var(--accent); border-radius:2px; padding:1.6rem 1.6rem 1.5rem; box-shadow:var(--surface-shadow); color:var(--ink-soft); border-bottom-color:var(--rule-strong); transition:transform .15s, border-left-color .15s; }
+.path:hover { transform:translateY(-2px); border-bottom-color:var(--rule-strong); }
+.path-num { font-family:var(--mono); font-size:0.74rem; letter-spacing:0.08em; color:var(--accent); margin-bottom:0.85rem; }
+.path h3 { color:var(--ink); margin-bottom:0.6rem; font-family:var(--serif); font-size:1.18rem; font-weight:500; letter-spacing:-0.005em; line-height:1.3; }
+.path p { font-size:0.93rem; line-height:1.55; flex:1; }
+.path-cta { margin-top:1.3rem; font-family:var(--mono); font-size:0.78rem; color:var(--accent); border-top:1px solid var(--rule); padding-top:1rem; }
+.path-cta a { color:var(--accent); border-bottom:none; }
+.path-cta a:hover { border-bottom:1px solid var(--accent); }
+
+.who-list { list-style:none; max-width:720px; }
+.who-list li { padding:0.85rem 0 0.85rem 1.7rem; border-top:1px solid var(--rule); font-size:0.98rem; color:var(--ink-soft); position:relative; }
+.who-list li:first-child { border-top:none; padding-top:0.3rem; }
+.who-list li::before { content:'/'; position:absolute; left:0; top:0.85rem; font-family:var(--mono); color:var(--accent); font-size:0.9rem; }
+.who-list li:first-child::before { top:0.3rem; }
+.who-list strong { color:var(--ink); font-weight:500; }
+
+.refusals-band { background:var(--bg-soft); border-top:1px solid var(--rule-strong); border-bottom:1px solid var(--rule-strong); padding:3.5rem 0; }
+.refusals-band .wrap { max-width:880px; }
+.refusals-band .eyebrow { margin-bottom:1rem; }
+.refusals-band h2 { font-family:var(--serif); font-weight:500; font-size:clamp(1.4rem, 2.6vw, 1.8rem); line-height:1.4; color:var(--ink); }
+.refusals-band h2 em { font-style:italic; color:var(--accent); font-weight:500; }
+.refusals-band p { margin-top:1.2rem; max-width:680px; }
+
+.contact { display:grid; grid-template-columns:repeat(2, 1fr); gap:2rem; max-width:760px; }
+.contact-block h3 { font-family:var(--mono); font-size:0.72rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.7rem; }
+.contact-block p { color:var(--ink); font-size:0.95rem; line-height:1.55; }
+.contact-block a { color:var(--ink); border-bottom:1px solid var(--rule-strong); }
+.contact-block a:hover { color:var(--accent); border-color:var(--accent); }
+
+footer.site-footer { padding:2rem; border-top:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:0.74rem; color:var(--muted); }
+footer.site-footer a { color:var(--muted); border-bottom:none; }
+footer.site-footer a:hover { color:var(--accent); }
+
+@media (max-width:860px) {
+  .paths, .contact { grid-template-columns:1fr; }
+  .nav-links { display:none; }
+  section { padding:3.5rem 0; }
+  section.hero { padding:4.5rem 0 3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition:none !important; animation:none !important; }
+  html { scroll-behavior:auto; }
+}
+</style>
+</head>
+<body class="scope-products">
+
+<nav class="site-nav">
+  <a class="brand" href="accueil.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 8 L 16.08 9.22 L 13.57 12.35 L 13.32 14.18" stroke="var(--research)"/><path d="M 13.58 17.48 L 14.09 18.96 L 15.53 20.79 L 16.54 22 L 17.08 23.47 L 17.95 25.64 L 20 28 L 23.42 29.4 L 27.37 28.78 L 30.39 26" stroke="var(--research)"/><path d="M 30.39 26 L 31.29 21.99 L 29.85 18.26 L 28.39 17.13" stroke="var(--training)"/><path d="M 25.40 15.70 L 23.86 15.40 L 21.55 15.74 L 20 16 L 18.45 15.74 L 16.14 15.40 L 13.07 16 L 10.15 18.26 L 8.71 21.99 L 9.61 26" stroke="var(--training)"/><path d="M 9.61 26 L 12.63 28.78 L 16.58 29.40 L 18.29 28.70" stroke="var(--products)"/><path d="M 21.02 26.82 L 22.05 25.64 L 22.92 23.47 L 23.46 22 L 24.47 20.79 L 25.91 18.96 L 26.93 16 L 26.43 12.35 L 23.92 9.22 L 20 8" stroke="var(--products)"/></g></svg>
+    <span><span class="b-ai">AI</span><span class="b-rin">RIN</span><span class="b-a">A</span> Labs</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="formations.html">Formations</a></li>
+    <li><a href="pour-particuliers.html">Pour particuliers</a></li>
+    <li><a href="pour-organisations.html" class="active" aria-current="page">Pour organisations</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link" href="for-organizations.html" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link active" aria-current="page" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Basculer thème clair/sombre">◐</button>
+  </div>
+</nav>
+
+<section class="hero wrap">
+  <div class="eyebrow">Pour organisations</div>
+  <h1>Pour les banques, IMF, bailleurs et <em>institutions partenaires</em>.</h1>
+  <p class="lead">Si votre institution souhaite déployer la recherche d'AIRINA en outils de production, financer une cohorte, ou co-concevoir un engagement de recherche — c'est ici. Nous travaillons avec les institutions qui nous envoient leurs problèmes réels, pas avec des canaux commerciaux.</p>
+  <div class="hero-meta">
+    <span><strong>Siège</strong> Cotonou, Bénin</span>
+    <span><strong>Périmètre</strong> Zone BCEAO &amp; Afrique de l'Ouest</span>
+    <span><strong>Engagement</strong> Direct, sans intermédiaires</span>
+  </div>
+</section>
+
+<section class="wrap" id="paths">
+  <div class="section-head">
+    <div class="eyebrow">Trois portes d'entrée</div>
+    <h2>Choisissez celle qui correspond au problème.</h2>
+  </div>
+  <div class="paths">
+    <a class="path" href="pilier-produits.html">
+      <span class="path-num">01 · Déployer un produit</span>
+      <h3>Scoring crédit &amp; détection d'anomalies.</h3>
+      <p>Produits de Phase 1 pour les institutions de la zone BCEAO : scoring crédit fondé sur des modèles interprétables, détection de fraude et d'anomalies sur les flux transactionnels. Méthodes ouvertes sur GitHub ; modèles entraînés et intégrations sur site sont commerciaux. Pilote sous NDA disponible.</p>
+      <div class="path-cta">Voir les produits &rarr;</div>
+    </a>
+    <a class="path" href="pilier-recherche.html">
+      <span class="path-num">02 · Co-concevoir une recherche</span>
+      <h3>Engagement de recherche conjoint.</h3>
+      <p>Si votre institution a un problème que la littérature n'a pas encore résolu — détection d'anomalies sur les rails de mobile money, topologie asymétrique sur les réseaux de défaut, modèles interprétables pour la revue réglementaire — nous cadrons un engagement de recherche commun. Les papiers vont sur arXiv ; l'implémentation est à vous.</p>
+      <div class="path-cta">Axes de recherche &rarr;</div>
+    </a>
+    <a class="path" href="mailto:contact@airina.africa?subject=Parrainage%20de%20cohorte">
+      <span class="path-num">03 · Parrainer une cohorte</span>
+      <h3>Financer une formation.</h3>
+      <p>Les stagiaires ne paient pas. Les institutions qui parrainent, oui. Soutenez une cohorte publique, ou commanditez une cohorte sur mesure pour votre équipe analytique, risque ou validation de modèles. Dans les deux cas, le programme est le travail de recherche en cours de l'institut, pas un module générique de data science.</p>
+      <div class="path-cta">Boîte parrainage &rarr;</div>
+    </a>
+  </div>
+</section>
+
+<section class="wrap" id="who">
+  <div class="section-head">
+    <div class="eyebrow">À qui cela s'adresse</div>
+    <h2>L'adéquation, honnêtement.</h2>
+  </div>
+  <ul class="who-list">
+    <li><strong>Banques et institutions de microfinance</strong> de la zone BCEAO (et de l'Afrique de l'Ouest francophone adjacente) opérant des pipelines réels de crédit, fraude ou risque sur données locales.</li>
+    <li><strong>Opérateurs de mobile money et fintechs</strong> avec des données transactionnelles à grande échelle et un intérêt pour des modèles interprétables qui passent la revue réglementaire.</li>
+    <li><strong>Fondations et bailleurs de développement</strong> investissant dans le renforcement de capacités en data science africaine, en recherche IA appliquée, ou en outillage pour l'inclusion financière.</li>
+    <li><strong>Universités et instituts de recherche partenaires</strong> (AIMS, ACAS, universités partenaires) intéressés par des publications conjointes ou des séjours de chercheurs invités.</li>
+    <li><strong>Pas pour</strong> les institutions cherchant une relation vendeur sur étagère ou du conseil IA générique. L'engagement commence par un problème réel, dans notre bureau, au tableau.</li>
+  </ul>
+</section>
+
+<section class="refusals-band">
+  <div class="wrap">
+    <div class="eyebrow">Charte</div>
+    <h2>Ce que nous ne ferons <em>pas</em>.</h2>
+    <p>Aucun programme ne dépasse deux semaines. Personne n'obtient le certificat sans soutenance. Aucun travail ne reste dans un tiroir. Aucun stagiaire ne paie. Aucun trimestre n'est l'horizon. Ces contraintes structurent les engagements institutionnels — le calendrier est celui de la recherche, le livrable est la production de recherche, et la valeur pour votre équipe est dans les personnes qu'elle rencontre dans la pièce.</p>
+  </div>
+</section>
+
+<section class="wrap" id="contact">
+  <div class="section-head">
+    <div class="eyebrow">Nous écrire</div>
+    <h2>Deux boîtes pour les institutions.</h2>
+  </div>
+  <div class="contact">
+    <div class="contact-block">
+      <h3>Produits &amp; engagements</h3>
+      <p>Pour cadrer un pilote produit, une recherche conjointe, ou une formation sur mesure : <a href="mailto:contact@airina.africa?subject=Engagement%20institutionnel">contact@airina.africa</a> avec une description en un paragraphe du problème et du contexte institutionnel.</p>
+    </div>
+    <div class="contact-block">
+      <h3>Financement &amp; partenariats</h3>
+      <p>Pour discuter du parrainage d'une cohorte, du soutien à un axe de recherche, ou d'un partenariat institutionnel plus long : <a href="mailto:contact@airina.africa?subject=Demande%20de%20partenariat">contact@airina.africa</a>.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="accueil.html">← Retour à l'accueil</a></span>
+</footer>
+
+<script>
+(function () {
+  var saved = localStorage.getItem('airina-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('airina-theme', next);
+  });
+})();
+</script>
+
+</body>
+</html>
