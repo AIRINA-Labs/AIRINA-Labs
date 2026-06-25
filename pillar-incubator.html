@@ -126,6 +126,20 @@ section.commitments::before { content: ''; position: absolute; top: 50%; left: 0
 .commit-key { font-style: italic; color: var(--accent); font-weight: 500; margin-right: 0.4rem; }
 
 @media (max-width: 720px) { .commitments-list li { grid-template-columns: 1fr; gap: 0.3rem; } }
+
+/* MENU-BAR — audience strip below the main nav (MIT-style) */
+.menu-bar { position: sticky; top: 62px; z-index: 49; background: var(--bg-soft); border-bottom: 1px solid var(--rule); }
+.menu-bar-inner { display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; padding: 0.55rem 2rem; max-width: 1080px; margin: 0 auto; }
+.menu-bar-eyebrow { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-right: auto; }
+.audience-nav { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+.audience-nav a { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; color: var(--ink-soft); letter-spacing: 0.05em; text-transform: uppercase; border-bottom: none; transition: color .15s; }
+.audience-nav a:hover, .audience-nav a.active { color: var(--accent); }
+@media (max-width: 860px) {
+  .menu-bar-inner { padding: 0.5rem 1.2rem; gap: 0.8rem; flex-wrap: wrap; justify-content: flex-start; }
+  .menu-bar-eyebrow { display: none; }
+  .audience-nav { gap: 0.9rem; }
+  .audience-nav a { font-size: 0.7rem; }
+}
 </style>
 </head>
 <body>
@@ -150,6 +164,17 @@ section.commitments::before { content: ''; position: absolute; top: 50%; left: 0
     <button class="theme-btn" id="theme-toggle" aria-label="Toggle light/dark theme">◐</button>
   </div>
 </nav>
+<div class="menu-bar">
+  <div class="menu-bar-inner">
+    <span class="menu-bar-eyebrow">Audience</span>
+    <ul class="audience-nav">
+      <li><a href="training.html">Programs</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="for-organizations.html">For Organizations</a></li>
+    </ul>
+  </div>
+</div>
+
 
 <section class="hero wrap">
   <div class="eyebrow">Pillar /04 · Incubator</div>
