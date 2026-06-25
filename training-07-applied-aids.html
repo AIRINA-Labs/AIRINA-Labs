@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Applied AI & Data Science for African Systems — AIRINA Labs</title>
+<meta name="description" content="A 14-week, research-led, mentored cohort program covering applied AI and data science — calibrated to the data, regulators, and institutions of West Africa. Free for trainees. Bilingual EN/FR. Live Online." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script>(function(){var t=localStorage.getItem('airina-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+<style>
+:root { --bg:#F2EBD3; --bg-soft:#E9DFBE; --ink:#1F2A18; --ink-soft:#2E3D25; --muted:#6B6A47; --dim:#9D9C7A; --rule:rgba(31,42,24,0.10); --rule-strong:rgba(31,42,24,0.22); --accent:#C97A1F; --accent-soft:rgba(201,122,31,0.10); --nav-bg:rgba(242,235,211,0.92); --research:#2D6A4F; --research-soft:rgba(45,106,79,0.10); --training:#C8A24A; --training-soft:rgba(200,162,74,0.10); --products:#C97A1F; --products-soft:rgba(201,122,31,0.10); --surface:#FFFFFF; --surface-shadow: 0 1px 2px rgba(31,42,24,0.04), 0 8px 24px rgba(31,42,24,0.06); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#14180D; --bg-soft:#1E2415; --ink:#ECE3C5; --ink-soft:#CDC4A4; --muted:#8E8A6E; --dim:#5F5C46; --rule:rgba(236,227,197,0.10); --rule-strong:rgba(236,227,197,0.22); --accent:#E5A94E; --accent-soft:rgba(229,169,78,0.12); --nav-bg:rgba(20,24,13,0.92); --research:#6FBF8E; --research-soft:rgba(111,191,142,0.12); --training:#E8C778; --training-soft:rgba(232,199,120,0.12); --products:#E5A94E; --products-soft:rgba(229,169,78,0.12); --surface:#1E2415; --surface-shadow: 0 1px 2px rgba(0,0,0,0.25), 0 12px 30px rgba(0,0,0,0.35); }
+body.scope-training { --accent: var(--training); --accent-soft: var(--training-soft); }
+.brand .b-ai  { color: var(--research); }
+.brand .b-rin { color: var(--training); font-style: italic; font-weight: 500; }
+.brand .b-a   { color: var(--products); }
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2rem, 4.5vw, 3.2rem); font-weight:500; letter-spacing:-0.018em; line-height:1.1; color: var(--bg); }
+h2 { font-size:clamp(1.4rem, 2.6vw, 1.85rem); font-weight:500; letter-spacing:-0.012em; line-height:1.25; }
+h3 { font-size:1.1rem; font-weight:600; letter-spacing:-0.003em; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.wrap { max-width:1200px; margin:0 auto; padding:0 2rem; }
+
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); will-change: backdrop-filter; border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; letter-spacing:-0.005em; color:var(--ink); border-bottom:none; }
+.brand-mark { flex-shrink:0; color:var(--ink); transition:color .2s; }
+.brand:hover .brand-mark { color:var(--accent); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); letter-spacing:0.05em; border-bottom:none; cursor:pointer; transition:color .2s; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-link:hover:not(.active) { color:var(--ink); }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; transition:color .2s, border-color .2s; }
+.theme-btn:hover { color:var(--accent); border-color:var(--accent); }
+
+.menu-bar { position: sticky; top: 62px; z-index: 49; background: var(--bg-soft); border-bottom: 1px solid var(--rule); }
+.menu-bar-inner { display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; padding: 0.55rem 2rem; max-width: 1200px; margin: 0 auto; }
+.menu-bar-eyebrow { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-right: auto; }
+.audience-nav { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+.audience-nav a { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; color: var(--ink-soft); letter-spacing: 0.05em; text-transform: uppercase; border-bottom: none; transition: color .15s; }
+.audience-nav a:hover, .audience-nav a.active { color: var(--accent); }
+@media (max-width: 860px) {
+  .menu-bar-inner { padding: 0.5rem 1.2rem; gap: 0.8rem; flex-wrap: wrap; justify-content: flex-start; }
+  .menu-bar-eyebrow { display: none; }
+  .audience-nav { gap: 0.9rem; }
+  .audience-nav a { font-size: 0.7rem; }
+}
+
+/* COURSE TITLE BAR — dark forest band with the course title */
+.course-titlebar { background: var(--ink); color: var(--bg); padding: 4rem 0 3.5rem; position: relative; overflow: hidden; }
+.course-titlebar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent); }
+.course-titlebar .wrap { position: relative; z-index: 1; }
+.course-back { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bg); opacity: 0.7; margin-bottom: 1.2rem; display: inline-flex; align-items: center; gap: 0.4rem; border-bottom: none; }
+.course-back:hover { opacity: 1; color: var(--accent); border-bottom: none; }
+.course-tier-tag { display: inline-block; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 0.25rem 0.65rem; border-radius: 2px; margin-bottom: 1.2rem; }
+.course-titlebar h1 { color: var(--bg); max-width: 880px; }
+.course-titlebar-tagline { font-family: var(--serif); font-size: 1.15rem; line-height: 1.55; color: rgba(242,235,211,0.85); max-width: 740px; margin-top: 1.4rem; font-style: italic; }
+
+/* COURSE LAYOUT — two-column: left sidebar (metadata) + right content (tabs) */
+.course-layout { display: grid; grid-template-columns: 320px 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto; padding: 3.5rem 2rem 4rem; align-items: flex-start; }
+
+/* LEFT SIDEBAR — sticky course metadata */
+.course-sidebar { position: sticky; top: 110px; background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 2px; padding: 1.6rem 1.5rem; box-shadow: var(--surface-shadow); }
+.course-register-btn { display: block; text-align: center; background: var(--accent); color: var(--surface); font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem 1rem; border-radius: 2px; margin-bottom: 1.5rem; border-bottom: none; transition: background .15s, transform .1s; font-weight: 500; }
+.course-register-btn:hover { background: var(--ink); border-bottom: none; transform: translateY(-1px); }
+.course-meta-field { padding: 0.75rem 0; border-top: 1px solid var(--rule); }
+.course-meta-field:first-of-type { border-top: none; padding-top: 0; }
+.course-meta-label { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+.course-meta-value { font-family: var(--serif); font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
+.course-meta-value.blank { color: var(--dim); font-style: italic; font-size: 0.85rem; }
+.course-meta-value a { color: var(--ink); border-bottom: 1px solid var(--rule-strong); font-size: 0.92rem; }
+.course-meta-value a:hover { color: var(--accent); border-color: var(--accent); }
+.course-updates-btn { display: block; text-align: center; background: transparent; color: var(--accent); font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.06em; padding: 0.7rem 1rem; border: 1px solid var(--accent); border-radius: 2px; margin-top: 1.5rem; transition: background .15s, color .15s; }
+.course-updates-btn:hover { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+
+/* RIGHT CONTENT — description + tabs */
+.course-content { min-width: 0; }
+.course-intro { font-size: 1.05rem; line-height: 1.7; color: var(--ink-soft); margin-bottom: 0.8rem; max-width: 720px; }
+.course-intro:first-of-type { font-size: 1.15rem; line-height: 1.6; color: var(--ink); }
+.course-intro strong { color: var(--accent); font-weight: 500; }
+.course-intro a { color: var(--accent); border-bottom: 1px solid transparent; }
+.course-intro a:hover { border-bottom-color: var(--accent); }
+
+/* TABS — Program Overview / Learning Outcomes / Who Should Attend / Brochure */
+.course-tabs { margin-top: 2.8rem; }
+.course-tab-list { display: flex; gap: 0; border-bottom: 1px solid var(--rule-strong); margin-bottom: 0; list-style: none; flex-wrap: wrap; }
+.course-tab { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; padding: 0.95rem 1.4rem; border: 0; border-bottom: 2px solid transparent; background: transparent; cursor: pointer; transition: color .15s, border-color .15s; margin-bottom: -1px; }
+.course-tab:hover { color: var(--ink); }
+.course-tab[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.course-tab-panel { display: none; padding: 2rem 0 0; }
+.course-tab-panel[data-active="true"] { display: block; }
+.course-tab-panel h2 { font-family: var(--serif); font-weight: 500; margin-bottom: 1.4rem; }
+.course-tab-panel h3 { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; margin: 2rem 0 0.8rem; color: var(--ink); }
+.course-tab-panel h4 { margin-top: 1.6rem; margin-bottom: 0.6rem; }
+.course-tab-panel p { font-size: 1rem; line-height: 1.7; margin-bottom: 1rem; max-width: 720px; }
+.course-tab-panel ul, .course-tab-panel ol { max-width: 720px; padding-left: 1.4rem; margin-bottom: 1rem; }
+.course-tab-panel li { font-size: 1rem; line-height: 1.65; margin-bottom: 0.5rem; color: var(--ink-soft); }
+.course-tab-panel li strong { color: var(--ink); font-weight: 500; }
+.course-tab-panel a { color: var(--accent); border-bottom: 1px solid transparent; }
+.course-tab-panel a:hover { border-bottom-color: var(--accent); }
+
+/* WEEK / OUTLINE BLOCKS inside Learning Outcomes tab */
+.week-block { padding: 1rem 0 1rem 1.2rem; border-left: 2px solid var(--rule); margin-bottom: 0.6rem; max-width: 720px; }
+.week-block.feature { border-left-color: var(--accent); }
+.week-block-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.35rem; }
+.week-block p { margin-bottom: 0.4rem; font-size: 0.96rem; }
+.week-block ul { margin-bottom: 0; padding-left: 1.2rem; }
+.week-block li { font-size: 0.94rem; margin-bottom: 0.25rem; }
+
+/* BROCHURE TAB — placeholder card */
+.brochure-card { background: var(--bg-soft); border: 1px dashed var(--rule-strong); padding: 1.6rem 1.8rem; border-radius: 2px; max-width: 720px; }
+.brochure-card p { margin-bottom: 0.8rem; }
+.brochure-card p:last-child { margin-bottom: 0; }
+
+footer.site-footer { padding: 2rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 0.74rem; color: var(--muted); }
+footer.site-footer a { color: var(--muted); border-bottom: none; }
+footer.site-footer a:hover { color: var(--accent); }
+
+@media (max-width: 960px) {
+  .course-layout { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.4rem 3rem; }
+  .course-sidebar { position: static; }
+  .course-tab-list { overflow-x: auto; flex-wrap: nowrap; }
+  .course-tab { white-space: nowrap; padding: 0.85rem 1rem; }
+  .nav-links { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body class="scope-training">
+
+<nav class="site-nav">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 8 L 16.08 9.22 L 13.57 12.35 L 13.32 14.18" stroke="var(--research)"/><path d="M 13.58 17.48 L 14.09 18.96 L 15.53 20.79 L 16.54 22 L 17.08 23.47 L 17.95 25.64 L 20 28 L 23.42 29.4 L 27.37 28.78 L 30.39 26" stroke="var(--research)"/><path d="M 30.39 26 L 31.29 21.99 L 29.85 18.26 L 28.39 17.13" stroke="var(--training)"/><path d="M 25.40 15.70 L 23.86 15.40 L 21.55 15.74 L 20 16 L 18.45 15.74 L 16.14 15.40 L 13.07 16 L 10.15 18.26 L 8.71 21.99 L 9.61 26" stroke="var(--training)"/><path d="M 9.61 26 L 12.63 28.78 L 16.58 29.40 L 18.29 28.70" stroke="var(--products)"/><path d="M 21.02 26.82 L 22.05 25.64 L 22.92 23.47 L 23.46 22 L 24.47 20.79 L 25.91 18.96 L 26.93 16 L 26.43 12.35 L 23.92 9.22 L 20 8" stroke="var(--products)"/></g></svg>
+    <span><span class="b-ai">AI</span><span class="b-rin">RIN</span><span class="b-a">A</span> Labs</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#what-we-are">About</a></li>
+    <li><a href="index.html#pillars">Pillars</a></li>
+    <li><a href="training.html" class="active" aria-current="page">Training</a></li>
+    <li><a href="index.html#people">People</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link active" aria-current="page" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link" href="formation-07-ia-ds-appliquee.html" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle light/dark theme">◐</button>
+  </div>
+</nav>
+
+<div class="menu-bar">
+  <div class="menu-bar-inner">
+    <span class="menu-bar-eyebrow">Audience</span>
+    <ul class="audience-nav">
+      <li><a href="training.html" class="active" aria-current="page">Programs</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="for-organizations.html">For Organizations</a></li>
+    </ul>
+  </div>
+</div>
+
+<section class="course-titlebar">
+  <div class="wrap">
+    <a class="course-back" href="training.html">← Back to Course Catalog</a>
+    <span class="course-tier-tag">/05 · Tier II</span>
+    <h1>Applied AI &amp; Data Science for African Systems</h1>
+    <p class="course-titlebar-tagline">A 14-week mentored cohort program — the breadth of applied AI and data science, calibrated to the data, the regulators, and the institutions of West Africa.</p>
+  </div>
+</section>
+
+<div class="course-layout">
+
+  <aside class="course-sidebar" aria-label="Course information">
+    <a class="course-register-btn" href="mailto:contact@airina.africa?subject=Applied%20AI%20%26%20DS%20for%20African%20Systems%20%E2%80%94%20register%20interest">Register Interest</a>
+
+    <div class="course-meta-field">
+      <div class="course-meta-label">Lead Instructor(s)</div>
+      <div class="course-meta-value">
+        Yaé Ulrich Gaba<br>
+        + AIRINA research team<br>
+        + invited industry mentors
+      </div>
+    </div>
+
+    <div class="course-meta-field">
+      <div class="course-meta-label">Date(s)</div>
+      <div class="course-meta-value">2027 cohort &mdash; <span class="course-meta-value blank">dates TBA</span></div>
+    </div>
+
+    <div class="course-meta-field">
+      <div class="course-meta-label">Registration Deadline</div>
+      <div class="course-meta-value blank">To be announced</div>
+    </div>
+
+    <div class="course-meta-field">
+      <div class="course-meta-label">Location</div>
+      <div class="course-meta-value">Live Online · Bilingual EN/FR</div>
+    </div>
+
+    <div class="course-meta-field">
+      <div class="course-meta-label">Course Length</div>
+      <div class="course-meta-value">14 weeks &middot; mentored cohort</div>
+    </div>
+
+    <div class="course-meta-field">
+      <div class="course-meta-label">Course Fee</div>
+      <div class="course-meta-value blank">&mdash;</div>
+    </div>
+
+    <div class="course-meta-field">
+      <div class="course-meta-label">Certificate</div>
+      <div class="course-meta-value">AIRINA Applied AI &amp; DS &middot; graded final &middot; capstone defense</div>
+    </div>
+
+    <a class="course-updates-btn" href="mailto:contact@airina.africa?subject=Applied%20AI%20%26%20DS%20%E2%80%94%20updates">Sign up for course updates</a>
+  </aside>
+
+  <main class="course-content">
+
+    <p class="course-intro">Data is produced at scale across every African institution &mdash; mobile-money rails, microcredit ledgers, agricultural cooperatives, health systems. <strong>Most of it is never analyzed.</strong> When it is, the tools and benchmarks come from elsewhere, calibrated on data that looks nothing like the population the institution actually serves.</p>
+
+    <p class="course-intro">The Applied AI &amp; Data Science for African Systems program addresses both gaps: it builds a rigorous, end-to-end working capability in modern applied AI and data science &mdash; and it does so on case studies, datasets, and regulatory contexts drawn from West Africa. Curriculum delivered by AIRINA Labs research faculty, with industry mentors from banks, MFIs, telecoms, and the African research diaspora.</p>
+
+    <div class="course-tabs">
+      <div class="course-tab-list" role="tablist">
+        <button class="course-tab" id="tab-overview"  role="tab" aria-selected="true"  aria-controls="panel-overview">Program Overview</button>
+        <button class="course-tab" id="tab-outcomes"  role="tab" aria-selected="false" aria-controls="panel-outcomes">Learning Outcomes</button>
+        <button class="course-tab" id="tab-audience"  role="tab" aria-selected="false" aria-controls="panel-audience">Who Should Attend</button>
+        <button class="course-tab" id="tab-brochure"  role="tab" aria-selected="false" aria-controls="panel-brochure">Brochure</button>
+      </div>
+
+      <div class="course-tab-panel" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" data-active="true">
+        <h2>Program Overview</h2>
+        <p>Over 14 weeks, participants move from foundations to a defended capstone project. The program is taught live online &mdash; bilingual, cohort-paced, mentored &mdash; with weekly research-led lectures by AIRINA faculty and weekend working sessions with industry mentors. Course materials, code, and reading lists are open.</p>
+        <p>Unlike a generic data-science MOOC, every module is anchored in West African institutional data realities: credit scoring on BCEAO-zone microcredit, anomaly detection on mobile-money transaction streams, regulatory reporting under BCEAO/BCBS interpretability constraints, and applied generative AI for institutional knowledge work in French and English.</p>
+
+        <h3>Program structure</h3>
+        <ul>
+          <li><strong>Pre-work (2 weeks).</strong> Python for data science, statistics refresher, the data science lifecycle, the evolution of AI through Generative AI &mdash; with practice quizzes. So the cohort arrives at the live sessions on the same footing.</li>
+          <li><strong>Core curriculum (8 weeks).</strong> Live, research-led, working from real institutional case studies. Detail in the <em>Learning Outcomes</em> tab.</li>
+          <li><strong>Project window (1 week).</strong> Time to finalize and submit individual mid-program projects.</li>
+          <li><strong>Capstone (3 weeks).</strong> Integrative team capstone on a real institutional dataset (under NDA where required). Final defense before AIRINA faculty and invited industry reviewers.</li>
+        </ul>
+
+        <h3>Mentorship model</h3>
+        <p>Beyond the lecture stream, every participant is assigned to a small mentored micro-group (5&ndash;7 people grouped by background) led by an industry mentor &mdash; senior data scientists, ML engineers, and applied-AI practitioners drawn from AIRINA's partner network. Mentors meet the group weekly to translate concepts into hands-on practice, run coding walkthroughs, and prepare participants for the capstone defense.</p>
+
+        <h3>Certificate</h3>
+        <p>Successful completion &mdash; pre-work + core modules + capstone defense &mdash; earns an <strong>AIRINA Labs certificate in Applied AI &amp; Data Science</strong>, graded, with the capstone reviewer's comments included.</p>
+      </div>
+
+      <div class="course-tab-panel" id="panel-outcomes" role="tabpanel" aria-labelledby="tab-outcomes">
+        <h2>Learning Outcomes</h2>
+        <p>By the end of the program, participants will be able to:</p>
+        <ul>
+          <li>Frame an applied AI &amp; data science problem from a real West African institutional context &mdash; translating an operational question into a data-science scoping document defensible to both engineering and regulatory reviewers.</li>
+          <li>Build the standard supervised, unsupervised, and time-series ML pipeline end-to-end in Python (NumPy / pandas / scikit-learn / PyTorch) on real institutional data.</li>
+          <li>Design and audit interpretable models for high-stakes financial-inclusion decisions &mdash; GAMs, monotonic gradient boosting, SHAP/LIME, counterfactuals, and fairness audits under BCEAO regulatory constraints.</li>
+          <li>Apply modern deep learning (CNNs, encoder-decoder architectures, attention, transformer-based methods) to text, image, and time-series problems originating from African systems.</li>
+          <li>Use modern generative AI and agentic AI as a working tool &mdash; prompt engineering, retrieval-augmented generation, light agent construction &mdash; with explicit awareness of failure modes and ethical risks.</li>
+          <li>Deliver a defended capstone: scoped problem, dataset, model, evaluation, fairness audit, written report, oral defense.</li>
+        </ul>
+
+        <h3>Program curriculum (weeks 1&ndash;14)</h3>
+
+        <div class="week-block">
+          <div class="week-block-label">Weeks 1&ndash;2 &middot; Foundations of AI</div>
+          <ul>
+            <li>Python for data science (NumPy, pandas)</li>
+            <li>Python for visualization (Matplotlib, Plotly)</li>
+            <li>Inferential statistics</li>
+            <li>Hypothesis testing</li>
+          </ul>
+        </div>
+
+        <div class="week-block">
+          <div class="week-block-label">Week 3 &middot; Data analysis &amp; visualization</div>
+          <ul>
+            <li>Hypothesis testing in applied contexts</li>
+            <li>Dimensionality reduction: PCA, t-SNE</li>
+            <li>Network analysis on transaction data</li>
+            <li>Clustering algorithms and their failure modes</li>
+          </ul>
+        </div>
+
+        <div class="week-block">
+          <div class="week-block-label">Week 4 &middot; Machine learning fundamentals</div>
+          <ul>
+            <li>Maximum likelihood, Bayesian estimators</li>
+            <li>Linear regression &amp; its assumptions</li>
+            <li>Cross-validation, bootstrapping</li>
+            <li>Logistic regression, KNN, Gaussian models</li>
+          </ul>
+        </div>
+
+        <div class="week-block">
+          <div class="week-block-label">Week 5 &middot; Revision break + 1:1 mentor check-in</div>
+        </div>
+
+        <div class="week-block">
+          <div class="week-block-label">Week 6 &middot; Practical data science</div>
+          <ul>
+            <li>Decision trees, entropy &amp; information gain</li>
+            <li>Ensemble learning: bagging, random forests, gradient boosting</li>
+            <li>Time-series forecasting on financial-inclusion data</li>
+          </ul>
+        </div>
+
+        <div class="week-block">
+          <div class="week-block-label">Week 7 &middot; Deep learning</div>
+          <ul>
+            <li>From perceptron to multi-layer architectures</li>
+            <li>Convolutions, pooling, CNN architectures</li>
+            <li>Transfer learning &amp; augmentation</li>
+            <li>Encoder-decoder, attention mechanism, positional encoding</li>
+          </ul>
+        </div>
+
+        <div class="week-block">
+          <div class="week-block-label">Week 8 &middot; Recommendation systems</div>
+          <ul>
+            <li>Content-based recommendation</li>
+            <li>Collaborative filtering &amp; SVT</li>
+            <li>Matrix estimation methods</li>
+          </ul>
+        </div>
+
+        <div class="week-block">
+          <div class="week-block-label">Week 9 &middot; Project week</div>
+          <p>Time to finalize and submit mid-program projects. Mentor review and feedback.</p>
+        </div>
+
+        <div class="week-block">
+          <div class="week-block-label">Week 10 &middot; Generative AI foundations</div>
+          <ul>
+            <li>Origins of generative modeling</li>
+            <li>Generative AI as a matrix-estimation problem</li>
+            <li>LLMs as probabilistic models for sequence completion</li>
+            <li>Prompt engineering &mdash; practice and pitfalls</li>
+          </ul>
+        </div>
+
+        <div class="week-block">
+          <div class="week-block-label">Week 11 &middot; Business applications of generative AI</div>
+          <ul>
+            <li>Summarization, classification, generation</li>
+            <li>Retrieval-augmented generation (RAG)</li>
+            <li>Agentic AI &mdash; light agents and their failure modes</li>
+            <li>Bilingual EN/FR application contexts</li>
+          </ul>
+        </div>
+
+        <div class="week-block feature">
+          <div class="week-block-label">Weeks 12&ndash;14 &middot; Capstone</div>
+          <p>Integrative team capstone on a real institutional dataset (under NDA where required). Final defense before AIRINA faculty and invited industry reviewers. Written report graded; cohort presentation.</p>
+        </div>
+      </div>
+
+      <div class="course-tab-panel" id="panel-audience" role="tabpanel" aria-labelledby="tab-audience">
+        <h2>Who Should Attend</h2>
+        <p>This program is for working and aspiring data &amp; AI professionals who want a rigorous end-to-end working capability, calibrated to West African institutional realities.</p>
+        <ul>
+          <li>Data scientists, ML engineers, and analysts in West African banks, microfinance institutions, mobile-money operators, fintechs, and insurers.</li>
+          <li>Engineers and software practitioners transitioning into applied AI &amp; data science roles.</li>
+          <li>Graduate students in mathematics, statistics, computer science, or quantitative economics &mdash; including AIMS alumni and partner-university students.</li>
+          <li>Public-sector analysts and regulatory-affairs professionals working with quantitative methods in West Africa.</li>
+          <li>Entrepreneurs building data- or AI-driven products for African markets.</li>
+        </ul>
+
+        <h3>Prerequisites</h3>
+        <ul>
+          <li><strong>Programming.</strong> Working Python (functions, classes, NumPy/pandas at the level of small data manipulations).</li>
+          <li><strong>Mathematics.</strong> Calculus and linear algebra at undergraduate level; comfort with basic probability and statistics.</li>
+          <li><strong>Time commitment.</strong> ~8&ndash;10 hours per week across 14 weeks &mdash; live lectures (2&ndash;3 hrs), mentored sessions (1&ndash;2 hrs), and individual project work (4&ndash;6 hrs).</li>
+        </ul>
+
+        <h3>Selection</h3>
+        <p>For oversubscribed cohorts, applicants complete a one-question selection prompt drawn from their stated background. Selection priority is given to applicants from the BCEAO zone and to underrepresented groups in technical fields.</p>
+      </div>
+
+      <div class="course-tab-panel" id="panel-brochure" role="tabpanel" aria-labelledby="tab-brochure">
+        <h2>Brochure</h2>
+        <div class="brochure-card">
+          <p>The detailed program brochure (PDF, EN/FR) is sent on request &mdash; including week-by-week curriculum, mentor profiles, capstone examples, and the cohort calendar.</p>
+          <p>To receive the current brochure, write to <a href="mailto:contact@airina.africa?subject=Applied%20AI%20%26%20DS%20%E2%80%94%20brochure%20request">contact@airina.africa</a> with <em>"Applied AI &amp; DS &mdash; brochure request"</em> in the subject. The brochure is updated each cohort; we send the version current at the time of your request.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="training.html">← Back to Course Catalog</a></span>
+</footer>
+
+<script>
+(function () {
+  var saved = localStorage.getItem('airina-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  var btn = document.getElementById('theme-toggle');
+  if (btn) {
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('airina-theme', next);
+    });
+  }
+
+  // Tabs
+  var tabs = document.querySelectorAll('.course-tab');
+  var panels = document.querySelectorAll('.course-tab-panel');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.setAttribute('aria-selected', 'false'); });
+      panels.forEach(function (p) { p.setAttribute('data-active', 'false'); });
+      tab.setAttribute('aria-selected', 'true');
+      var panelId = tab.getAttribute('aria-controls');
+      var panel = document.getElementById(panelId);
+      if (panel) panel.setAttribute('data-active', 'true');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
