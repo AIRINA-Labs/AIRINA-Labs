@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# AIRINA Labs commit-msg hook.
+# Rejects any commit whose message attributes Claude / Anthropic as a contributor.
+# Sole listed contributor for this repository: ai-technipreneurs.
+#
+# Install (one-time, per clone):  git config core.hooksPath hooks
+
+msg_file="$1"
+
+if grep -qiE '(co-?authored-?by:[[:space:]]*claude|@anthropic\.com|generated[[:space:]]+with[[:space:]]+\[?claude)' "$msg_file"; then
+  echo "" >&2
+  echo "REJECTED: commit message references Claude / Anthropic as a contributor." >&2
+  echo "" >&2
+  echo "  AIRINA Labs repo policy: no AI-assistant attribution in commits." >&2
+  echo "  Sole listed contributor: ai-technipreneurs." >&2
+  echo "" >&2
+  echo "Fix: edit the commit message to remove the Co-Authored-By trailer" >&2
+  echo "or any 'Generated with Claude' line, then re-run the commit." >&2
+  echo "" >&2
+  exit 1
+fi
+
+exit 0
