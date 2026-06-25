@@ -13,3 +13,6 @@ Thumbs.db
 # Editor settings
 .vscode/
 .idea/
+
+# Local backup bundles (created outside the repo by convention; this is defense)
+*.bundle
