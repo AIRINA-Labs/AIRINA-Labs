@@ -57,6 +57,8 @@ The 12 existing AIRINA detail pages had their original content (audience, prereq
 
 `for-organizations.html` carries a `refusals-band` restating the five charter refusals — institutional readers see the non-negotiables before they hit the contact form.
 
+**Color-scope decision (2026-06-26, settled):** the audience pages' body scope class maps to the first/dominant path-card's pillar. For Individuals leads with "Take a cohort" → `scope-training` (gold). For Organizations leads with "Deploy a product" → `scope-products` (amber). Considered and rejected: both pages `scope-research` (would make them look like the research pillar page), and dropping the scope class altogether (kills the audience-routing visual signal). Current mapping is the only one that keeps the two pages visually distinct, ties the accent to the visitor's dominant action mode, and avoids misleading about which pillar the page belongs to.
+
 ## Paper Club (dedicated pages)
 
 `paper-club.html` (EN) and `groupe-de-lecture.html` (FR) — dedicated reading-group destination pages, both scope-research (green). Seven sections each:
@@ -118,8 +120,7 @@ FR files (same structure, mirror filenames):
 ## Outstanding (priority order)
 
 1. **Extract shared CSS to `styles.css`.** Each page carries ~250 lines of identical CSS boilerplate × 38 files ≈ 460 KB total CSS payload. Single source cuts to ~150 KB (~67% reduction) and turns the next brand-token change from a 38-file sweep into a 1-file edit. Higher leverage than ever given the page count.
-2. **Color-scope decision for the four audience landing pages.** Currently: For Individuals = `scope-training` (gold), For Organizations = `scope-products` (amber), and FR mirrors. Open question whether to keep, swap, route both to research-green, or drop scope class altogether (default amber). User has not yet decided.
-3. **EN/FR mirror drift on homepage.**
+2. **EN/FR mirror drift on homepage.**
    - `accueil.html` carries an extra `<section id="work">` (publications profile list) absent from `index.html`.
    - `index.html` uses `.hero-cards.asym`; `accueil.html` uses symmetric `.hero-cards`.
    - Section-head pattern inconsistent — EN uses `class="headline"`, FR uses `class="section-head"` with eyebrow.
