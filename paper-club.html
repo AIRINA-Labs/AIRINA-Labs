@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Paper Club — AIRINA Labs</title>
+<meta name="description" content="The AIRINA Labs Paper Club: a bi-weekly reading group on topological data analysis, interpretable ML, and applied mathematics for African systems. One paper, two discussants, an hour of careful argument. Hybrid: Cotonou and Zoom. Open to all." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://airina-labs.github.io/AIRINA-Labs/paper-club.html" />
+<meta property="og:title" content="Paper Club — AIRINA Labs" />
+<meta property="og:description" content="Bi-weekly reading group on TDA, interpretable ML, and applied mathematics for African systems. Hybrid, open, bilingual." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script>(function(){var t=localStorage.getItem('airina-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+<style>
+:root { --bg:#F2EBD3; --bg-soft:#E9DFBE; --ink:#1F2A18; --ink-soft:#2E3D25; --muted:#6B6A47; --dim:#9D9C7A; --rule:rgba(31,42,24,0.10); --rule-strong:rgba(31,42,24,0.22); --accent:#C97A1F; --accent-soft:rgba(201,122,31,0.10); --nav-bg:rgba(242,235,211,0.92); --research:#2D6A4F; --research-soft:rgba(45,106,79,0.10); --training:#C8A24A; --training-soft:rgba(200,162,74,0.10); --products:#C97A1F; --products-soft:rgba(201,122,31,0.10); --surface:#FFFFFF; --surface-shadow: 0 1px 2px rgba(31,42,24,0.04), 0 8px 24px rgba(31,42,24,0.06); --serif:'IBM Plex Serif', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace; }
+[data-theme="dark"] { --bg:#14180D; --bg-soft:#1E2415; --ink:#ECE3C5; --ink-soft:#CDC4A4; --muted:#8E8A6E; --dim:#5F5C46; --rule:rgba(236,227,197,0.10); --rule-strong:rgba(236,227,197,0.22); --accent:#E5A94E; --accent-soft:rgba(229,169,78,0.12); --nav-bg:rgba(20,24,13,0.92); --research:#6FBF8E; --research-soft:rgba(111,191,142,0.12); --training:#E8C778; --training-soft:rgba(232,199,120,0.12); --products:#E5A94E; --products-soft:rgba(229,169,78,0.12); --surface:#1E2415; --surface-shadow: 0 1px 2px rgba(0,0,0,0.25), 0 12px 30px rgba(0,0,0,0.35); }
+body.scope-research { --accent: var(--research); --accent-soft: var(--research-soft); }
+.brand .b-ai  { color: var(--research); }
+.brand .b-rin { color: var(--training); font-style: italic; font-weight: 500; }
+.brand .b-a   { color: var(--products); }
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink-soft); font-family:var(--serif); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+h1,h2,h3,h4 { color:var(--ink); font-weight:600; line-height:1.2; }
+h1 { font-size:clamp(2.4rem, 5vw, 3.6rem); font-weight:500; letter-spacing:-0.018em; line-height:1.05; color: var(--bg); }
+h2 { font-size:clamp(1.6rem, 3vw, 2.1rem); font-weight:500; letter-spacing:-0.012em; line-height:1.2; }
+h3 { font-size:1.1rem; font-weight:600; letter-spacing:-0.003em; }
+h4 { font-size:0.78rem; font-weight:400; font-family:var(--mono); letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+p { color:var(--ink-soft); }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+a:hover { border-bottom-color:var(--accent); }
+.eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.lead { font-size:1.15rem; line-height:1.55; color:var(--ink-soft); }
+.wrap { max-width:1080px; margin:0 auto; padding:0 2rem; }
+.wrap-narrow { max-width:760px; margin:0 auto; padding:0 2rem; }
+section { padding:4.5rem 0; border-top:1px solid var(--rule); }
+section.no-rule { border-top:none; }
+nav.site-nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:1rem 2rem; background:var(--nav-bg); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); will-change: backdrop-filter; border-bottom:1px solid var(--rule); }
+.brand { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--serif); font-weight:600; font-size:1.05rem; letter-spacing:-0.005em; color:var(--ink); border-bottom:none; }
+.brand-mark { flex-shrink:0; color:var(--ink); transition:color .2s; }
+.brand:hover .brand-mark { color:var(--accent); }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a { font-family:var(--mono); font-size:0.76rem; color:var(--muted); border-bottom:none; letter-spacing:0.02em; }
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-controls { display:flex; gap:0.7rem; align-items:center; }
+.lang-link { font-family:var(--mono); font-size:0.75rem; color:var(--muted); letter-spacing:0.05em; border-bottom:none; cursor:pointer; transition:color .2s; }
+.lang-link.active { color:var(--accent); font-weight:500; }
+.lang-link:hover:not(.active) { color:var(--ink); }
+.lang-sep { color:var(--rule-strong); font-family:var(--mono); font-size:0.7rem; }
+.theme-btn { border:1px solid var(--rule-strong); background:transparent; cursor:pointer; width:30px; height:30px; border-radius:50%; color:var(--muted); font-size:0.9rem; display:flex; align-items:center; justify-content:center; transition:color .2s, border-color .2s; }
+.theme-btn:hover { color:var(--accent); border-color:var(--accent); }
+
+.menu-bar { position: sticky; top: 62px; z-index: 49; background: var(--bg-soft); border-bottom: 1px solid var(--rule); }
+.menu-bar-inner { display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; padding: 0.55rem 2rem; max-width: 1080px; margin: 0 auto; }
+.menu-bar-eyebrow { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-right: auto; }
+.audience-nav { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+.audience-nav a { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; color: var(--ink-soft); letter-spacing: 0.05em; text-transform: uppercase; border-bottom: none; transition: color .15s; }
+.audience-nav a:hover, .audience-nav a.active { color: var(--accent); }
+@media (max-width: 860px) {
+  .menu-bar-inner { padding: 0.5rem 1.2rem; gap: 0.8rem; flex-wrap: wrap; justify-content: flex-start; }
+  .menu-bar-eyebrow { display: none; }
+  .audience-nav { gap: 0.9rem; }
+  .audience-nav a { font-size: 0.7rem; }
+}
+
+/* TITLE BAR — dark forest band, scoped to research (green) */
+section.title-bar { background: var(--ink); color: var(--bg); padding: 5rem 0 4rem; position: relative; overflow: hidden; border-top: none; }
+section.title-bar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent); }
+.title-bar .wrap { position: relative; z-index: 1; }
+.title-bar-eyebrow { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; font-weight: 500; }
+.title-bar-stamp { display: inline-block; font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 1.4rem; color: var(--accent); border: 1.5px solid var(--accent); padding: 0.4rem 0.9rem; border-radius: 3px; margin-bottom: 1.5rem; line-height: 1; }
+.title-bar-stamp small { display: inline-block; font-style: normal; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bg); opacity: 0.7; margin-left: 0.7rem; vertical-align: middle; }
+.title-bar h1 { color: var(--bg); max-width: 860px; margin-bottom: 1.5rem; }
+.title-bar h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
+.title-bar-lede { font-family: var(--serif); font-size: 1.15rem; line-height: 1.55; color: rgba(242,235,211,0.85); max-width: 720px; }
+
+/* HOW A SESSION WORKS — timeline-style block */
+.session-flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; max-width: 1080px; margin-top: 1.5rem; }
+.session-step { padding-top: 1rem; border-top: 2px solid var(--accent); }
+.session-step-time { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+.session-step h3 { font-family: var(--serif); font-weight: 500; font-size: 0.98rem; color: var(--ink); margin-bottom: 0.4rem; line-height: 1.3; }
+.session-step p { font-family: var(--serif); font-size: 0.88rem; line-height: 1.5; color: var(--ink-soft); }
+
+/* LOGISTICS — two-column grid */
+.logistics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.8rem 2.4rem; max-width: 880px; }
+.logistics-item { padding-top: 0.8rem; border-top: 1px solid var(--rule); }
+.logistics-item h3 { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.45rem; }
+.logistics-item p { font-size: 0.95rem; line-height: 1.55; color: var(--ink); }
+
+/* NEXT SESSION card — same shape as the homepage block */
+.paper-next { background: var(--surface); border: 1px solid var(--rule); border-left: 5px solid var(--accent); border-radius: 3px; padding: 2rem 2.2rem; box-shadow: var(--surface-shadow); max-width: 880px; }
+.paper-next-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1.1rem; flex-wrap: wrap; }
+.paper-next-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 500; padding: 0.3rem 0.7rem; border: 1px solid var(--accent); border-radius: 2px; }
+.paper-next-date { font-family: var(--mono); font-size: 0.84rem; color: var(--ink); letter-spacing: 0.04em; font-weight: 500; }
+.paper-next-pulse { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 1.8s ease-in-out infinite; margin-right: 0.3rem; }
+@keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
+.paper-next-title { font-family: var(--serif); font-weight: 500; font-size: clamp(1.35rem, 2.6vw, 1.75rem); color: var(--ink); margin-bottom: 0.4rem; letter-spacing: -0.008em; line-height: 1.25; }
+.paper-next-note { font-size: 1rem; line-height: 1.55; color: var(--ink-soft); margin-bottom: 1.4rem; max-width: 620px; }
+.paper-next-actions { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+.paper-next-cta { display: inline-block; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; color: var(--surface); background: var(--accent); padding: 0.75rem 1.4rem; border-radius: 2px; border-bottom: none; transition: background .2s, transform .2s; }
+.paper-next-cta:hover { background: var(--ink); border-bottom: none; transform: translateY(-1px); }
+.paper-next-link { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.04em; color: var(--accent); border-bottom: 1px solid transparent; }
+.paper-next-link:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+/* Reading list */
+.paper-cycle-head { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); font-weight: 500; margin: 2.5rem 0 1.4rem; display: flex; align-items: center; gap: 1rem; }
+.paper-cycle-head:first-of-type { margin-top: 0; }
+.paper-cycle-head::before { content: ''; width: 2.2rem; height: 2px; background: var(--accent); display: block; }
+.paper-cycle-head em { font-style: italic; color: var(--muted); font-weight: 400; letter-spacing: 0.02em; text-transform: none; font-size: 0.85rem; margin-left: 0.5rem; }
+.paper-list { list-style: none; padding: 0; margin: 0; max-width: 980px; }
+.paper-list li { display: grid; grid-template-columns: 56px 1fr; gap: 1.5rem; padding: 1.5rem 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.paper-list li:first-child { border-top: 1px solid var(--rule-strong); }
+.paper-list:last-of-type li:last-child { border-bottom: 1px solid var(--rule-strong); }
+.paper-num { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); letter-spacing: 0.06em; font-weight: 500; }
+.paper-title { font-family: var(--serif); font-weight: 500; font-size: 1.1rem; color: var(--ink); margin-bottom: 0.35rem; line-height: 1.3; }
+.paper-citation { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.5rem; }
+.paper-citation em { font-style: italic; }
+.paper-citation a { color: var(--muted); border-bottom: 1px solid var(--rule-strong); }
+.paper-citation a:hover { color: var(--accent); border-color: var(--accent); }
+.paper-note { font-family: var(--serif); font-size: 0.95rem; line-height: 1.55; color: var(--ink-soft); }
+
+/* SUBSCRIBE + PROPOSE — call-to-action cards */
+.cta-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 980px; }
+.cta-card { background: var(--surface); border: 1px solid var(--rule-strong); border-left: 4px solid var(--accent); border-radius: 2px; padding: 1.6rem 1.7rem; box-shadow: var(--surface-shadow); }
+.cta-card h3 { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.7rem; }
+.cta-card p { font-size: 0.95rem; line-height: 1.55; color: var(--ink-soft); margin-bottom: 1rem; }
+.cta-card-cta { display: inline-block; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; color: var(--accent); border-bottom: none; }
+.cta-card-cta:hover { border-bottom: 1px solid var(--accent); }
+
+/* PAST SESSIONS placeholder */
+.archive-note { padding: 1.4rem 1.6rem; background: var(--bg-soft); border-left: 2px solid var(--rule-strong); font-family: var(--mono); font-size: 0.86rem; line-height: 1.6; color: var(--ink-soft); max-width: 760px; border-radius: 2px; }
+
+footer.site-footer { padding: 2rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 0.74rem; color: var(--muted); }
+footer.site-footer a { color: var(--muted); border-bottom: none; }
+footer.site-footer a:hover { color: var(--accent); }
+
+@media (max-width: 860px) {
+  .session-flow { grid-template-columns: 1fr; gap: 1rem; }
+  .logistics, .cta-cards { grid-template-columns: 1fr; }
+  .paper-list li { grid-template-columns: 1fr; gap: 0.3rem; }
+  .paper-next { padding: 1.5rem 1.4rem; }
+  .paper-next-actions { gap: 1rem; }
+  .nav-links { display: none; }
+  section { padding: 3.5rem 0; }
+  section.title-bar { padding: 4rem 0 3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body class="scope-research">
+
+<nav class="site-nav">
+  <a class="brand" href="index.html">
+    <svg class="brand-mark" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true"><g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 20 8 L 16.08 9.22 L 13.57 12.35 L 13.32 14.18" stroke="var(--research)"/><path d="M 13.58 17.48 L 14.09 18.96 L 15.53 20.79 L 16.54 22 L 17.08 23.47 L 17.95 25.64 L 20 28 L 23.42 29.4 L 27.37 28.78 L 30.39 26" stroke="var(--research)"/><path d="M 30.39 26 L 31.29 21.99 L 29.85 18.26 L 28.39 17.13" stroke="var(--training)"/><path d="M 25.40 15.70 L 23.86 15.40 L 21.55 15.74 L 20 16 L 18.45 15.74 L 16.14 15.40 L 13.07 16 L 10.15 18.26 L 8.71 21.99 L 9.61 26" stroke="var(--training)"/><path d="M 9.61 26 L 12.63 28.78 L 16.58 29.40 L 18.29 28.70" stroke="var(--products)"/><path d="M 21.02 26.82 L 22.05 25.64 L 22.92 23.47 L 23.46 22 L 24.47 20.79 L 25.91 18.96 L 26.93 16 L 26.43 12.35 L 23.92 9.22 L 20 8" stroke="var(--products)"/></g></svg>
+    <span><span class="b-ai">AI</span><span class="b-rin">RIN</span><span class="b-a">A</span> Labs</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#what-we-are">About</a></li>
+    <li><a href="index.html#pillars">Pillars</a></li>
+    <li><a href="training.html">Training</a></li>
+    <li><a href="index.html#people">People</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <a class="lang-link active" aria-current="page" lang="en">EN</a>
+    <span class="lang-sep">·</span>
+    <a class="lang-link" href="groupe-de-lecture.html" lang="fr">FR</a>
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle light/dark theme">◐</button>
+  </div>
+</nav>
+
+<div class="menu-bar">
+  <div class="menu-bar-inner">
+    <span class="menu-bar-eyebrow">Audience</span>
+    <ul class="audience-nav">
+      <li><a href="training.html">Programs</a></li>
+      <li><a href="for-individuals.html">For Individuals</a></li>
+      <li><a href="for-organizations.html">For Organizations</a></li>
+    </ul>
+  </div>
+</div>
+
+<section class="title-bar">
+  <div class="wrap">
+    <div class="title-bar-eyebrow">Paper Club · Bi-weekly · Open · Hybrid</div>
+    <div class="title-bar-stamp">N&deg; 01<small>Vol. I · 2026</small></div>
+    <h1>We read what we <em>want to write</em>.</h1>
+    <p class="title-bar-lede">A reading group on topological data analysis, interpretable ML, and applied mathematics for African systems. One paper, two discussants, an hour of careful argument. Hybrid: in-person at the Cotonou office or by Zoom. Open to all &mdash; first-timers welcome.</p>
+  </div>
+</section>
+
+<section class="wrap" id="how-a-session-works">
+  <div class="section-head" style="margin-bottom:2rem;">
+    <div class="eyebrow">How a session works</div>
+    <h2>One hour. Five movements.</h2>
+  </div>
+  <div class="session-flow">
+    <div class="session-step">
+      <div class="session-step-time">00 · 10 min</div>
+      <h3>Arrivals &amp; framing</h3>
+      <p>Soft start; one of the discussants frames why the paper was chosen and what question we are testing it against.</p>
+    </div>
+    <div class="session-step">
+      <div class="session-step-time">01 · 15 min</div>
+      <h3>First discussant</h3>
+      <p>Steel-man the paper. Walk the room through the contribution as the authors meant it to be read.</p>
+    </div>
+    <div class="session-step">
+      <div class="session-step-time">02 · 15 min</div>
+      <h3>Second discussant</h3>
+      <p>Critique. What does the paper not earn? What hidden assumption is doing the work? What would replicate, what would not?</p>
+    </div>
+    <div class="session-step">
+      <div class="session-step-time">03 · 15 min</div>
+      <h3>Open discussion</h3>
+      <p>The room argues. Newcomers and senior researchers in the same conversation; the chair keeps the thread tight.</p>
+    </div>
+    <div class="session-step">
+      <div class="session-step-time">04 · 5 min</div>
+      <h3>Close</h3>
+      <p>What the room agreed on, what stayed contested, what we want to read next. Notes go on the mailing list within 48 hours.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="logistics">
+  <div class="section-head" style="margin-bottom:2rem;">
+    <div class="eyebrow">Format &amp; logistics</div>
+    <h2>The practical details.</h2>
+  </div>
+  <div class="logistics">
+    <div class="logistics-item">
+      <h3>Cadence</h3>
+      <p>Bi-weekly, Thursdays, 16:00 WAT. The specific Thursday and the paper go out on the mailing list one week ahead.</p>
+    </div>
+    <div class="logistics-item">
+      <h3>Where</h3>
+      <p>Hybrid. In-person at the AIRINA Labs office in Cotonou, Bénin. Remote attendees join by Zoom &mdash; link sent with the mailing-list announcement.</p>
+    </div>
+    <div class="logistics-item">
+      <h3>Languages</h3>
+      <p>Bilingual EN / FR. Discussion switches between the two as the room requires; the chair will translate on request.</p>
+    </div>
+    <div class="logistics-item">
+      <h3>Preparation</h3>
+      <p>Read it if you can. Come anyway if you cannot &mdash; the discussants frame the paper at the top of the session, and the discussion is more useful for newcomers when they listen first.</p>
+    </div>
+    <div class="logistics-item">
+      <h3>Notes &amp; archive</h3>
+      <p>Short discussion notes are sent on the mailing list within 48 hours of each session. The archive of past sessions and notes is shared with subscribers.</p>
+    </div>
+    <div class="logistics-item">
+      <h3>Cost</h3>
+      <p>Free. The Paper Club is an open institutional activity; no registration fee in person or online.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="next-session">
+  <div class="section-head" style="margin-bottom:2rem;">
+    <div class="eyebrow">Next session</div>
+    <h2>Where we are in the cycle.</h2>
+  </div>
+  <div class="paper-next">
+    <div class="paper-next-meta">
+      <span class="paper-next-label"><span class="paper-next-pulse"></span>Cycle 1 &middot; In progress</span>
+      <span class="paper-next-date">Next paper &middot; date announced via mailing list</span>
+    </div>
+    <h2 class="paper-next-title">Get on the list.</h2>
+    <p class="paper-next-note">We're working through Cycle 1's reading list now. Each session's paper and date go out on the mailing list a week ahead, with the Zoom link.</p>
+    <div class="paper-next-actions">
+      <a class="paper-next-cta" href="mailto:paperclub@airina.africa?subject=Paper%20Club%20%E2%80%94%20Subscribe&amp;body=Add%20me%20to%20the%20Paper%20Club%20mailing%20list.">Subscribe &rarr;</a>
+      <a class="paper-next-link" href="#cycle-1">See the reading list ↓</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="reading-list">
+  <div class="section-head" style="margin-bottom:2rem;">
+    <div class="eyebrow">Reading list</div>
+    <h2>Ten papers, two cycles, one trajectory.</h2>
+  </div>
+
+  <div class="paper-cycle-head" id="cycle-1">Cycle 1 <em>Foundations to deployment</em></div>
+  <ol class="paper-list">
+    <li>
+      <span class="paper-num">01</span>
+      <div>
+        <h3 class="paper-title">Topology and Data</h3>
+        <div class="paper-citation">Carlsson, G. (2009) &middot; <em>Bulletin of the AMS</em> 46(2), 255&ndash;308 &middot; <a href="https://www.ams.org/journals/bull/2009-46-02/S0273-0979-09-01249-X/">DOI</a></div>
+        <p class="paper-note">The canonical introduction to TDA. Every subsequent paper assumes you have read this one &mdash; we open with it for exactly that reason.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">02</span>
+      <div>
+        <h3 class="paper-title">Topological persistence and simplification</h3>
+        <div class="paper-citation">Edelsbrunner, H., Letscher, D., &amp; Zomorodian, A. (2002) &middot; <em>Discrete &amp; Computational Geometry</em> 28(4), 511&ndash;533</div>
+        <p class="paper-note">The founding algorithm of persistent homology. Where the field was named and proven.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">03</span>
+      <div>
+        <h3 class="paper-title">On the local behavior of spaces of natural images</h3>
+        <div class="paper-citation">Carlsson, G., Ishkhanov, T., de Silva, V., &amp; Zomorodian, A. (2008) &middot; <em>International Journal of Computer Vision</em> 76(1), 1&ndash;12</div>
+        <p class="paper-note">The most beautiful applied-TDA paper: a Klein bottle hiding in the patches of every photograph.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">04</span>
+      <div>
+        <h3 class="paper-title">Topological methods for the analysis of high-dimensional data sets and 3D object recognition</h3>
+        <div class="paper-citation">Singh, G., M&eacute;moli, F., &amp; Carlsson, G. (2007) &middot; <em>Eurographics Symposium on Point-Based Graphics</em></div>
+        <p class="paper-note">Mapper, the second pillar of TDA. Required before anything Mapper-shaped shows up in our own work.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">05</span>
+      <div>
+        <h3 class="paper-title">Persistence images: a stable vector representation of persistent homology</h3>
+        <div class="paper-citation">Adams, H., Emerson, T., Kirby, M., et al. (2017) &middot; <em>Journal of Machine Learning Research</em> 18(8), 1&ndash;35</div>
+        <p class="paper-note">The bridge from persistence diagrams to standard ML pipelines. Required before any downstream classifier reads a TDA feature.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">06</span>
+      <div>
+        <h3 class="paper-title">Behavior revealed in mobile phone usage predicts credit repayment</h3>
+        <div class="paper-citation">Bj&ouml;rkegren, D., &amp; Grissen, D. (2020) &middot; <em>The World Bank Economic Review</em> 34(3), 618&ndash;634</div>
+        <p class="paper-note">The literature directly under our Phase 1 products. We agree, we disagree, we read it carefully.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="paper-cycle-head" id="cycle-2">Cycle 2 <em>On deck</em></div>
+  <ol class="paper-list" start="7">
+    <li>
+      <span class="paper-num">07</span>
+      <div>
+        <h3 class="paper-title">Stability of persistence diagrams</h3>
+        <div class="paper-citation">Cohen-Steiner, D., Edelsbrunner, H., &amp; Harer, J. (2007) &middot; <em>Discrete &amp; Computational Geometry</em> 37(1), 103&ndash;120</div>
+        <p class="paper-note">The stability theorem. Why persistent homology is a real signal and not noise.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">08</span>
+      <div>
+        <h3 class="paper-title">Statistical topological data analysis using persistence landscapes</h3>
+        <div class="paper-citation">Bubenik, P. (2015) &middot; <em>Journal of Machine Learning Research</em> 16, 77&ndash;102</div>
+        <p class="paper-note">The other major vectorization of persistence diagrams. Bubenik vs. Adams, head to head.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">09</span>
+      <div>
+        <h3 class="paper-title">Stop explaining black-box machine-learning models for high-stakes decisions and use interpretable models instead</h3>
+        <div class="paper-citation">Rudin, C. (2019) &middot; <em>Nature Machine Intelligence</em> 1(5), 206&ndash;215</div>
+        <p class="paper-note">The case for interpretable models, not post-hoc interpretations of black boxes. Why AIRINA products must be the former.</p>
+      </div>
+    </li>
+    <li>
+      <span class="paper-num">10</span>
+      <div>
+        <h3 class="paper-title">Topology-based data analysis identifies a subgroup of breast cancers with a unique mutational profile and excellent survival</h3>
+        <div class="paper-citation">Nicolau, M., Levine, A. J., &amp; Carlsson, G. (2011) &middot; <em>PNAS</em> 108(17), 7265&ndash;7270</div>
+        <p class="paper-note">The high-stakes-medicine TDA paper. Precedent for our Phase 3 health work.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section class="wrap" id="join-or-propose">
+  <div class="section-head" style="margin-bottom:2rem;">
+    <div class="eyebrow">Two ways in</div>
+    <h2>Subscribe, or propose a paper.</h2>
+  </div>
+  <div class="cta-cards">
+    <div class="cta-card">
+      <h3>Subscribe to the mailing list</h3>
+      <p>Get the next session's paper, date, and Zoom link a week ahead. Plus the discussion notes within 48 hours of each session. The list is low-volume: typically one announcement and one notes email per session.</p>
+      <a class="cta-card-cta" href="mailto:paperclub@airina.africa?subject=Paper%20Club%20%E2%80%94%20Subscribe&amp;body=Add%20me%20to%20the%20Paper%20Club%20mailing%20list.">Subscribe &rarr;</a>
+    </div>
+    <div class="cta-card">
+      <h3>Propose a paper for a future cycle</h3>
+      <p>Suggest a paper that fits the institute's lines: TDA, interpretable ML, applied mathematics for African systems. One paragraph on why it matters and what you would want the room to argue about. Cycle 3 is open for proposals.</p>
+      <a class="cta-card-cta" href="mailto:paperclub@airina.africa?subject=Paper%20Club%20%E2%80%94%20Paper%20proposal&amp;body=Proposed%20paper%3A%0AReason%20it%20matters%20%2F%20what%20to%20argue%3A">Propose a paper &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="archive">
+  <div class="section-head" style="margin-bottom:1.5rem;">
+    <div class="eyebrow">Past sessions</div>
+    <h2>Archive in progress.</h2>
+  </div>
+  <p class="archive-note">The Paper Club is in its first volume. Once Cycle 1 closes, the discussion notes, contested points, and follow-up references for each past session will be linked here &mdash; freely readable. Subscribers receive the notes by mail within 48 hours of each session in the meantime.</p>
+</section>
+
+<footer class="site-footer">
+  <span>© 2025–2026 AIRINA Labs</span>
+  <span><a href="index.html">← Back to home</a></span>
+</footer>
+
+<script>
+(function () {
+  var saved = localStorage.getItem('airina-theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  var btn = document.getElementById('theme-toggle');
+  if (btn) {
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('airina-theme', next);
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
